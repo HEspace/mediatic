@@ -6,11 +6,27 @@
         <link rel="stylesheet" href="bootstrap/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
     </head>
 
     <body>
 
     <script>
+
+        //Fonction recherche
+        function search(){
+                var word = document.getElementById('inputSearch').value;
+                //console.log(word);
+
+            }
 
     </script>
 
@@ -20,30 +36,55 @@
                 <div class="input-group">
                     <div class="input-group-btn search-panel">
 
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filtrer
-                            <span class="caret"></span>
-                        </button>
-
-                        <ul class="dropdown-menu">
-                            <li><a value="medias" id="medias" style="cursor: pointer">Médias</a></li>
-                            <li><a value="adherents" id="adherents" style="cursor: pointer">Adhérents</a></li>
-                        </ul>
+                        <div class="form-group d-inline bg-success">
+                            <select class="selectpicker show-tick" id="sel1" data-width="fit" data-style="btn-primary">
+                                <option>Médias</option>
+                                <option>Adhérents</option>
+                            </select>
+                        </div>
 
                     </div>
 
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Titre, auteur, adhérent...">
 
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                    <input type="text" class="form-control" id="inputSearch" placeholder="Titre, auteur, adhérent...">
+
+                    <span class="input-group-btn d-inline bg-success">
+                        <button class="btn btn-default" type="button" onclick="search()">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
+
                 </div>
             </div>
         </div>
     </div>
 
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Filter by</span> <span class="caret"></span>
+                        </button>
+                        <div class="form-group">
+                            <select class="selectpicker show-tick" id="sel1" data-width="fit" data-style="btn-primary">
+                                <option>Médias</option>
+                                <option>Adhérents</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="x" placeholder="Search term...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -67,6 +108,8 @@
             </div>
 
         </div>
+
+
 
     </body>
 

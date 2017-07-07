@@ -1,0 +1,14 @@
+#theadSearch{
+    background-color: #5e5e5e;
+    color: whitesmoke;
+
+}
+table {
+    overflow:hidden;
+    border-radius: 10px;
+}
+
+.divHidden, .trHidden{
+    display: none;
+}
+

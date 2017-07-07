@@ -1,10 +1,101 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="UTF8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/contour.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="js/contour.js"></script>
+	<title>On vous Baize</title>
 </head>
 <body>
-
+	
+	<div class="row text-center">
+		<div class="col-lg-2 col-md-3 col-sm-3 text-left">
+			<div id="boutonside">
+	  			<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-6 col-sm-6 hidden-xs">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Accueil</a></li>
+						<li><a href="#">Recherche</a></li>
+						<li class="dropdown hidden-sm"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#">Collection<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Livre</a></li>
+								<li><a href="#">CD</a></li>
+								<li><a href="#">DVD</a></li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-right inline-form">
+						<div class="form-group">
+							<input type="search" class="input-sm form-control hidden-md hidden-sm hidden-xs"
+								placeholder="Recherche">
+							<button type="submit" class="btn btn-primary btn-sm hidden-md hidden-sm hidden-xs">
+								<span class="glyphicon glyphicon-eye-open"></span> Chercher
+							</button>
+							<label class="btn btn-warning btn-sm"
+								onclick="openNav()" > Login </label>
+						</div>
+					</form>
+				</div>
+			</nav>
+		</div>
+		<div class="col-lg-2 col-md-3 col-sm-3 text-right"> </div>
+	</div>
+	<div id="idsidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div id="sideMenu">
+			<ul class="hidden-lg hidden-sm hidden-md">
+				<li class="active"><a href="#">Accueil</a></li>
+				<li><a href="#">Recherche</a></li>
+				<li><a class="dropdown-toggle" href="#" onclick=inverserCollectionMenu() >Collection<span class="caret"></span></a>
+					<ul class="menu collection" id="menuCollection">
+						<li><a href="#">Livre</a></li>
+						<li><a href="#">CD</a></li>
+						<li><a href="#">DVD</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div id="divlogin">
+			<div class="row">
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+				<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+				<form>
+					<div class="form-group">
+						<label for="identifiant">identifiant :</label>
+						<input type="identifiant" class="form-control" id="identifiant">
+					</div>
+		    		<div class="form-group">
+						<label for="password">password :</label>
+		    			<input type="password" type="password" class="form-control" id="password">
+		    		</div>
+					<button type="submit" class="btn btn-default pull-right">Connect</button>
+				</form>
+			</div>
+			<div class="col-lg-1 col-md-1 col-ms-1 col-xs-1"></div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div id="footer" class="container-fluid text-center">
+		<strong>
+			<a class="lienAuteur" href="http://192.168.1.87:8082/accueil.html">Auteur : HLH </a>
+			<p>Tous droits réservés - HLH Production</p>
+			<p>Publié le 06/07/2017</p>
+		</strong>   
+	</div>
 </body>
 </html>

@@ -1,72 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/contour.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #778899;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
 
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-
-#boutonside {
-    transition: margin-left .5s;
-    padding: 16px;
-    display : none;
-}
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
 
-<div id="idsidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-</div>
 
-<div id="boutonside">
-  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-</div>
+
+
 
 <script>
-function openNav() {
-    document.getElementById("idsidenav").style.width = "250px";
-    document.getElementById("boutonside").style.marginLeft = "250px";
-    $('#boutonside').css('display','none');
-}
-
-function closeNav() {
-    document.getElementById("idsidenav").style.width = "0";
-    document.getElementById("boutonside").style.marginLeft= "0";
-    $('#boutonside').css('display','block');
-}
-openNav();
 </script>
      
 </body>

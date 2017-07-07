@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF8">
+<link rel="stylesheet" href="styleAdherent.css" type="text/css" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <!--  -->   
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+   	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+<title>Création Adhérent</title>
+
+
+
+
+</head>
+<body>
+
+<section id="contact">
+			<div class="section-content">
+				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">Création d'un nouvel Adhérent</span></h1>
+				
+			</div>
+			
+			<div class="contact-section">
+			<div class="container">
+				<form>
+					<div class="col-md-6">
+			  			<div class="form-group">
+			  				<label for="nom">Nom *</label>
+					    	<input type="text" class="form-control" id="nom" placeholder="Nom">
+				  		</div>
+				  		<div class="form-group">
+			  				<label for="Prenom">Prenom *</label>
+					    	<input type="text" class="form-control" id="prenom" placeholder="Prénom">
+				  		</div>
+				  		<div class="form-group">
+					    	<label for="dateDeNaissance">Date de Naissance *</label>
+					    	<input type="date" class="form-control" id="dateNaissance" placeholder=" Date de Naissance">
+					  	</div>	
+					  		<div class="form-group">
+					    	<label for="age">Age</label>
+					    	<input disabled="disabled" type="number" class="form-control" id="age" placeholder="Age">
+					  	</div>	
+				  		<div class="form-group">
+					    	<label for="exampleInputEmail">Email</label>
+					    	<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email ">
+					  	</div>	
+					  	
+					  <div class="form-group">
+					    	<label for="datePaiement">Date de paiement de la cotisation</label>
+					    	<input type="date" class="form-control" id="dateCotisation" placeholder=" Date de paiement de la cotisation">
+					  	</div>	
+			  		</div>
+			  		<div class="col-md-6 ">
+			  		
+					  	
+			  			<div class="form-group">
+					    	<label for="montantCostisation">Montant de la cotisation</label>
+					    	<input type="number" class="form-control" id="montantCotisation" placeholder=" Montant de la cotisation">
+					  	</div>	
+					  	
+					  	 <div class="form-group">
+					    	<label for="dateFinAbonnement">Date de fin d'abonnment</label>
+					    	<input disabled="disabled" type="date" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation">
+					  	</div>	
+			  			
+			  					<div class="form-group">
+									<fieldset class="adresse">
+										<legend>Adresse Postale</legend>
+					
+								<div class="form-group">
+
+										<label for="rue"></label> <input type="text"
+										class="form-control" id="rue" placeholder="Rue"> <label for="codePostale">
+										</label> <input type="text" class="form-control" id="codePostale" placeholder="Code Postale">
+										<label for="ville"></label> <input type="text"
+										class="form-control" id="ville" placeholder="Ville">
+
+								</div>
+					
+					</fieldset>
+				</div>
+			  			
+			  	
+					  	
+					  
+
+			  				<button type="button" class="btn btn-default submit"><i class="fa fa-user-circle" aria-hidden="true"></i> Création</button>
+			  			
+			  			
+					</div>
+				</form>
+			</div>
+			</div>
+		</section>
+
+
+</body>
+
+
+<script>
+
+/*
+$(document).ready(function(){
+	if (document.getElementById("dateNaissance")== option.getAttribute("value")){
+		
+	f =	function jourDepuis(document.getElementById("dateNaissance"));
+	f.elements["age"].value = 'montexte';
+		
+		
+	}
+	else
+		return 0;
+	
+});
+*/
+function jourDepuis(date) {
+	var temps = (new Date()).getTime()-date.getTime();
+	return (temps/1000/60/60/24).toFixed(0);
+}
+
+console.log("Le Nombre de jour est de : "+jourDepuis(new Date("2016-06-24")));
+
+</script>
+
+
+</html>

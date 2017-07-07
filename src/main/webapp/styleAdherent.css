@@ -1,0 +1,67 @@
+.content-header{
+  font-family: 'Oleo Script', cursive;
+  color:black;
+  font-size: 45px;
+}
+
+.section-content{
+  text-align: center;
+} 
+
+
+
+
+#contact{
+    
+    font-family: 'Teko', sans-serif;
+  padding-top: 60px;
+  width: 100%;
+  width: 100vw;
+  height: 650px;
+ 
+
+    color : #fff;    
+}
+.contact-section{
+  padding-top: 40px;
+}
+.contact-section .col-xs-6{
+  width: 100%;
+  
+}
+
+
+
+.form-line{
+  border-right: 3px solid Ivory;
+}
+
+.form-group{
+  margin-top: 10px;
+}
+label{
+  font-size: 1.3em;
+  line-height: 1em;
+  font-weight: normal;
+  font-family: Georgia;
+  font-style:italic;
+  color :black;
+  
+}
+.form-control{
+  font-size: 1.3em;
+  color: #080808;
+}
+textarea.form-control {
+    height: 135px;
+   /* margin-top: px;*/
+}
+
+.submit{
+  font-size: 1.1em;
+  float: right;
+  width: 150px;
+  background-color: transparent;
+  color: #fff;
+
+}

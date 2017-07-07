@@ -29,6 +29,25 @@
             }
 
 
+
+            function drawTab(){
+
+                $.getJSON("donnees.json", function(data){
+                    var tableau = '<div class="col-xs-offset-1 col-xs-10" id="tabMedia">' +
+                                    '<table class="table table-hover"><thead class="theadSearch">' +
+                                    '<tr><th>Type</th><th>Titre</th><th>Auteur</th><th>Emprunté par</th>'+
+                                    '<th>Retour prévu</th></tr></thead><tbody>';
+                        '<tr class="rowTab"><td><span class="glyphicon glyphicon-book"></span></td><td>';
+                    $.each(data, function(i, val){
+                        //console.log(val);
+                        for(var m in val){
+                            console.log(val[m].titre);
+                        }
+                    });
+                });
+
+            }
+
         function getval(sel){
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
@@ -73,6 +92,9 @@
                 $(this).css('cursor', 'pointer');
             });
 
+
+            drawTab();
+
         });
 
 
@@ -85,17 +107,13 @@
 
 
 
-            <div class="col-xs-8 col-xs-offset-2">
+            <div class="col-xs-12 col-xs-offset-1">
                 <div class="input-group">
                     <div class="input-group-btn search-panel">
-
-                        <div class="form-group d-inline bg-success">
                             <select class="selectpicker show-tick" id="sel" onchange="getval(this);" data-width="fit" data-style="btn-primary">
                                 <option value="medias">Médias</option>
                                 <option value="adherents">Adhérents</option>
                             </select>
-                        </div>
-
                     </div>
 
 
@@ -183,11 +201,9 @@
     </div><br><br>
 
 
-
-
         <div class="col-xs-offset-1 col-xs-10" id="tabMedia">
             <table class="table table-hover">
-                <thead id="theadSearch">
+                <thead class="theadSearch">
                     <tr>
                         <th>Type</th>
                         <th>Titre</th>

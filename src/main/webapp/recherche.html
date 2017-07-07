@@ -3,17 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>Recherche</title>
+
+        <!-- Bootstrap + CSS + JQuery + JS -->
         <link rel="stylesheet" href="bootstrap/bootstrap-3.3.7/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/recherche.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+        <script src="bootstrap/bootstrap-3.3.7/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+        <!-- Bootstrap Select + JS Select -->
+        <link rel="stylesheet" href="bootstrap/bootstrap-select-1.12.2/dist/css/bootstrap-select.min.css">
+        <script src="bootstrap/bootstrap-select-1.12.2/dist/js/bootstrap-select.min.js"></script>
 
-        <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
 
     </head>
 
@@ -28,18 +28,71 @@
 
             }
 
+
+        function getval(sel){
+            var index = document.getElementById("sel").selectedIndex;
+            var options = document.getElementById("sel").options;
+            if(options[index].text == "Médias"){
+                $("#radioAdhe").hide();
+                $("#checkMedia").fadeIn();
+                $("#tabAdherent").hide();
+                $("#tabMedia").fadeIn();
+
+
+            }else{
+                console.log("adherent");
+                $("#checkMedia").hide();
+                $("#radioAdhe").fadeIn();
+                $("#tabAdherent").fadeIn();
+                $("#tabMedia").hide();
+            }
+        }
+
+
+
+        $(document).ready(function () {
+            getval(sel);
+            $("#radioAdhe").hide();
+            $("#tabAdherent").hide();
+            $(".rowHidden").hide();
+
+
+            $('.rowTab').click(function(){
+                //console.log("test");
+                if($(".divHidden").is(":hidden")){
+                    $(".trHidden").fadeIn("slow")
+                    $( ".divHidden" ).slideDown("slow");
+                }else{
+                    $(".trHidden").hide("fast")
+                    $(".divHidden").slideUp("fast");
+                }
+
+            });
+
+            $('.rowTab').hover(function () {
+                $(this).css('cursor', 'pointer');
+            });
+
+        });
+
+
+
+
     </script>
 
     <div class="container">
         <div class="row">
+
+
+
             <div class="col-xs-8 col-xs-offset-2">
                 <div class="input-group">
                     <div class="input-group-btn search-panel">
 
                         <div class="form-group d-inline bg-success">
-                            <select class="selectpicker show-tick" id="sel1" data-width="fit" data-style="btn-primary">
-                                <option>Médias</option>
-                                <option>Adhérents</option>
+                            <select class="selectpicker show-tick" id="sel" onchange="getval(this);" data-width="fit" data-style="btn-primary">
+                                <option value="medias">Médias</option>
+                                <option value="adherents">Adhérents</option>
                             </select>
                         </div>
 
@@ -48,64 +101,218 @@
 
                     <input type="text" class="form-control" id="inputSearch" placeholder="Titre, auteur, adhérent...">
 
-                    <span class="input-group-btn d-inline bg-success">
+
+                    <span class="input-group-btn d-inline">
                         <button class="btn btn-default" type="button" onclick="search()">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
 
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-8 col-xs-offset-2">
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Filter by</span> <span class="caret"></span>
-                        </button>
-                        <div class="form-group">
-                            <select class="selectpicker show-tick" id="sel1" data-width="fit" data-style="btn-primary">
-                                <option>Médias</option>
-                                <option>Adhérents</option>
-                            </select>
-                        </div>
-
+                    <div class="col-xs-2">
+                        <a href="#" class="btn btn-md btn-primary" >
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span class="glyphicon glyphicon-user"></span>
+                        </a>
                     </div>
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Search term...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                </span>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+        <div class="col-xs-offset-3 col-xs-12" id="checkMedia">
+            <div class="col-xs-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"></span>
+                        Livre
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"></span>
+                        CD
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xs-2">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="">
+                        <span class="cr"></span>
+                        DVD
+                    </label>
                 </div>
             </div>
         </div>
-    </div>
 
-
-
-    <div class="col-xs-offset-3 col-xs-6">
-                <table class="table">
-                    <thead class="thead-inverse">
-                        <tr>
-                            <th>Type</th>
-                            <th>Titre</th>
-                            <th>Auteur</th>
-                            <th>Emprunté par</th>
-                            <th>Retour prévu</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="col-xs-offset-3 col-xs-12" id="radioAdhe">
+            <div class="col-xs-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="o3" value="" checked>
+                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                        Par nom
+                    </label>
+                </div>
             </div>
+
+            <div class="col-xs-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="o3" value="">
+                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                        Par identifiant
+                    </label>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div><br><br>
+
+
+
+
+        <div class="col-xs-offset-1 col-xs-10" id="tabMedia">
+            <table class="table table-hover">
+                <thead id="theadSearch">
+                    <tr>
+                        <th>Type</th>
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Emprunté par</th>
+                        <th>Retour prévu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rowTab">
+                        <td><span class="glyphicon glyphicon-book"></span></td>
+                        <td>Harry Potter</td>
+                        <td>J. K. Rowling</td>
+                        <td>Adhérent 1</td>
+                        <td>23/06/2017</td>
+                    </tr>
+
+                    <tr class="trHidden">
+                        <td colspan="5">
+                            <div  class="divHidden">
+                                <img src="http://www.dta-ingenierie.fr/img/logoDTA2.png" alt="DTA logo" height="150" width="150">
+                                <p>Test d'affichage de la div hidden lors de l'appuie d'un td sur le tableau !</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="rowTab">
+                        <td><span class="glyphicon glyphicon-film"></span></td>
+                        <td>Fast & Furious 7</td>
+                        <td>Un grand homme</td>
+                        <td>Adhérent 9</td>
+                        <td>10/12/2017</td>
+                    </tr >
+                    <tr class="rowTab">
+                        <td><span class="glyphicon glyphicon-music"></span></td>
+                        <td>Mr. Tambourineman</td>
+                        <td>Bob Dylan</td>
+                        <td>Adhérent 5</td>
+                        <td>01/02/2018</td>
+                    </tr>
+                    <tr class="rowTab">
+                        <td><span class="glyphicon glyphicon-book"></span></td>
+                        <td>50 nuances de gris</td>
+                        <td>Hedy</td>
+                        <td>Adhérent 4</td>
+                        <td>01/11/2017</td>
+                    </tr>
+                    <tr class="rowTab">
+                        <td><span class="glyphicon glyphicon-music"></span></span></td>
+                        <td>The Wall</td>
+                        <td>Pink Floyd</td>
+                        <td>Adhérent 6</td>
+                        <td>07/10/2017</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="col-xs-offset-1 col-xs-10" id="tabAdherent">
+            <table class="table table-hover">
+                <thead id="theadSearch">
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Nom Prénom</th>
+                    <th>Date de naissance</th>
+                    <th>A jour de cotisation ?</th>
+                    <th>Nombre médias</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;austinB45</strong>
+                    </td>
+                    <td>Bastien Austin</td>
+                    <td>15/11/1987</td>
+                    <td>Oui</td>
+                    <td>13 médias</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;julienH12</strong>
+                    </td>
+                    <td>Haudi Julien</td>
+                    <td>01/10/1980</td>
+                    <td>Non</td>
+                    <td>9 médias</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;hedyE</strong>
+                    </td>
+                    <td>El-Filali Hedy</td>
+                    <td>11/05/1979</td>
+                    <td>Oui</td>
+                    <td>1 médias</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;laurentS79</strong>
+                    </td>
+                    <td>Sion Laurent</td>
+                    <td>15/02/1995</td>
+                    <td>Non</td>
+                    <td>0 médias</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;husrefB69</strong>
+                    </td>
+                    <td>Baltic Husref</td>
+                    <td>11/05/1991</td>
+                    <td>Non</td>
+                    <td>5 médias</td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
 
         </div>
 

@@ -131,6 +131,14 @@
                 $(this).css('cursor', 'pointer');
             });
 
+            $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: "dd MM yyyy",
+                    autoclose: true,
+                    todayBtn: true,
+                    pickerPosition: "bottom-left"
+                });
+            });
 
 
         });
@@ -283,16 +291,32 @@
                                     </a>
                                     <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#emprunt">
                                         Ajout Emprunt
-                                    </button>
+                                    </button><br>
                                     <div id="emprunt" class="collapse">
-
+                                        <div class="row">
+                                            <br>
+                                            <div class="col-xs-6">
+                                                <label>Adhérent</label>
+                                                <select class="selectpicker">
+                                                    <option>Bastien Austin</option>
+                                                    <option>Haudi Julien</option>
+                                                    <option>Sion Laurent</option>
+                                                    <option>El-Filali Hedy</option>
+                                                    <option>Baltic Husref</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-4">
+                                                <label>Date d'emprunt</label>
+                                                <input type='date' class="form-control"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <br><div class="col-xs-2">
                                     <ul class="list-group">
                                         <li class="list-group-item active">Bastien Austin<span class="badge">12</span></li>
                                         <li class="list-group-item">Haudi Julien<span class="badge">10</span></li>
-                                        <li class="list-group-item">Sion Lauren<span class="badge">9</span></li>
+                                        <li class="list-group-item">Sion Laurent<span class="badge">9</span></li>
                                         <li class="list-group-item">El-Filali Hedy<span class="badge">6</span></li>
                                         <li class="list-group-item">Baltic Husref<span class="badge">1</span></li>
                                     </ul>

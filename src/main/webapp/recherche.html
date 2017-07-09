@@ -19,18 +19,17 @@
 
     <body>
 
-    <script>
-
-        //Fonction recherche
-        function search(){
-                var word = document.getElementById('inputSearch').value;
+    </body>
+        <!--Fonction recherche
+          function search(){
+              var word = document.getElementById('inputSearch').value;
                 //console.log(word);
 
-            }
+          }
 
 
-        // Dessine tableau pour page recherche en fonction d'un fichier JSON
-        function drawTab(){
+        //Dessine tableau pour page recherche en fonction d'un fichier JSON
+            function drawTab(){
 
             $.getJSON("donnees.json", function(data){
                 var tableau = '<div class="col-xs-offset-1 col-xs-10" id="tabMedia">' +
@@ -39,9 +38,9 @@
                                 '<th>Retour prévu</th></tr></thead><tbody>';
                 var i = 1;
                 $.each(data, function(x, val){
-                    //console.log(val);
+                    console.log(val);
                     for(var m in val){
-                       //console.log(val[m].titre);
+                       console.log(val[m].titre);
                         tableau += '<tr class="rowTab'+i+'" onmouseover="$(this).css(\'cursor\', \'pointer\');" onclick="clickableTr()"><td><span class="glyphicon glyphicon-';
                         if(val[m].type == "livre")
                             tableau += "book";
@@ -51,11 +50,11 @@
                             tableau += "film";
                         tableau += '"></span></td>';
 
-                        <!-- Ajout td json-->
+                        //Ajout td json
                         tableau += '<td>' + val[m].titre + '</td><td>'+val[m].auteur+'</td><td>'+val[m].emprunte+'</td><td>'+val[m].date+'</td></tr>';
 
 
-                        <!-- Ajout du détail-->
+                        //Ajout du détail
                         tableau += '<tr class="trHidden' + i + '" style="display: none"><td colspan="5"><div class="divHidden'+i+'" style="display: none">';
                         tableau += '<img src="http://www.dta-ingenierie.fr/img/logoDTA2.png" alt="DTA logo" height="150" width="150">';
                         tableau += '<p>Test d\'affichage de la div hidden lors de l\'appuie d\'un td sur le tableau !</p>';
@@ -73,8 +72,19 @@
 
         }
 
+        function clickableTr() {
+            if($(this).next('div').is(":hidden")){
+                console.log('ok');
 
-        // Fonction permettant l'affichage des radios/checkbox en fonction du choix médias ou adhérents
+            }else{
+                console.log('Pasok');
+            }
+
+
+        -->
+<script>
+
+        //Fonction permettant l'affichage des radios/checkbox en fonction du choix médias ou adhérents
         function getval(sel){
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
@@ -94,24 +104,15 @@
             }
         }
 
-        function clickableTr() {
-            if($(this).next('div').is(":hidden")){
-                console.log('ok');
-
-            }else{
-                console.log('Pasok');
-            }
-        }
-
 
         $(document).ready(function () {
             getval(sel);
-            drawTab();
+            //drawTab();
 
             $("#radioAdhe").hide();
             $("#tabAdherent").hide();
             //$(".rowHidden").hide();
-            $("div.divHidden1").hide();
+            //$("div.divHidden1").hide();
 
 
             $('.rowTab').click(function(){
@@ -124,6 +125,10 @@
                     $(".divHidden").slideUp("fast");
                 }
 
+            });
+
+            $('.rowTab').hover(function () {
+                $(this).css('cursor', 'pointer');
             });
 
 
@@ -160,7 +165,7 @@
                     </span>
 
                     <div class="col-xs-2">
-                        <a href="#" class="btn btn-md btn-primary" >
+                        <a href="creationAdherent.html" class="btn btn-md btn-primary" >
                             <span class="glyphicon glyphicon-plus"></span>
                             <span class="glyphicon glyphicon-user"></span>
                         </a>
@@ -233,79 +238,137 @@
 
     </div><br><br>
 
-
         <div class="col-xs-offset-1 col-xs-10" id="tabMedia">
-        </div>
-
-
-        <div class="col-xs-offset-1 col-xs-10" id="tabAdherent">
             <table class="table table-hover">
-                <thead id="theadSearch">
+                <thead class="theadSearch">
                 <tr>
-                    <th>Identifiant</th>
-                    <th>Nom Prénom</th>
-                    <th>Date de naissance</th>
-                    <th>A jour de cotisation ?</th>
-                    <th>Nombre médias</th>
+                    <th>Type</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th class="text-center">Emprunté par</th>
+                    <th class="text-center">Retour prévu</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="rowTab1">
-                    <td>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>&nbsp;&nbsp;austinB45</strong>
-                    </td>
-                    <td>Bastien Austin</td>
-                    <td>15/11/1987</td>
-                    <td>Oui</td>
-                    <td>13 médias</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>&nbsp;&nbsp;julienH12</strong>
-                    </td>
-                    <td>Haudi Julien</td>
-                    <td>01/10/1980</td>
-                    <td>Non</td>
-                    <td>9 médias</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>&nbsp;&nbsp;hedyE</strong>
-                    </td>
-                    <td>El-Filali Hedy</td>
-                    <td>11/05/1979</td>
-                    <td>Oui</td>
-                    <td>1 médias</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>&nbsp;&nbsp;laurentS79</strong>
-                    </td>
-                    <td>Sion Laurent</td>
-                    <td>15/02/1995</td>
-                    <td>Non</td>
-                    <td>0 médias</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="glyphicon glyphicon-user"></span>
-                        <strong>&nbsp;&nbsp;husrefB69</strong>
-                    </td>
-                    <td>Baltic Husref</td>
-                    <td>11/05/1991</td>
-                    <td>Non</td>
-                    <td>5 médias</td>
+                <tr class="rowTab">
+                    <td><span class="glyphicon glyphicon-book"></span></td>
+                    <td>Harry Potter</td>
+                    <td>J. K. Rowling</td>
+                    <td class="text-center">Adhérent 1</td>
+                    <td class="text-center">23/06/2017</td>
                 </tr>
 
+                <tr class="trHidden">
+                    <td colspan="5">
+                        <div  class="divHidden">
+                            <img src="http://www.dta-ingenierie.fr/img/logoDTA2.png" alt="DTA logo" height="150" width="150">
+                            <p>Test d'affichage de la div hidden lors de l'appuie d'un td sur le tableau !</p>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="rowTab">
+                    <td><span class="glyphicon glyphicon-film"></span></td>
+                    <td>Fast & Furious 7</td>
+                    <td>Un grand homme</td>
+                    <td class="text-center">Adhérent 9</td>
+                    <td class="text-center">10/12/2017</td>
+                </tr >
+                <tr class="rowTab">
+                    <td><span class="glyphicon glyphicon-music"></span></td>
+                    <td>Mr. Tambourineman</td>
+                    <td>Bob Dylan</td>
+                    <td class="text-center">Adhérent 5</td>
+                    <td class="text-center">01/02/2018</td>
+                </tr>
+                <tr class="rowTab">
+                    <td><span class="glyphicon glyphicon-book"></span></td>
+                    <td>50 nuances de gris</td>
+                    <td>Hedy</td>
+                    <td class="text-center">Adhérent 4</td>
+                    <td class="text-center">01/11/2017</td>
+                </tr>
+                <tr class="rowTab">
+                    <td><span class="glyphicon glyphicon-music"></span></span></td>
+                    <td>The Wall</td>
+                    <td>Pink Floyd</td>
+                    <td class="text-center">Adhérent 6</td>
+                    <td class="text-center">07/10/2017</td>
+                </tr>
                 </tbody>
             </table>
         </div>
 
-        </div>
+
+    <div class="col-xs-offset-1 col-xs-10" id="tabAdherent">
+        <table class="table table-hover text-center">
+            <thead class="theadSearch">
+            <tr>
+                <th>Identifiant</th>
+                <th class="text-center">Nom Prénom</th>
+                <th class="text-center">Date de naissance</th>
+                <th class="text-center">A jour de cotisation ?</th>
+                <th class="text-center">Nombre médias</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="rowTab">
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;austinB45</strong>
+                </td>
+                <td>Bastien Austin</td>
+                <td>15/11/1987</td>
+                <td>Oui</td>
+                <td>13 médias</td>
+            </tr>
+
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;julienH12</strong>
+                </td>
+                <td>Haudi Julien</td>
+                <td>01/10/1980</td>
+                <td>Non</td>
+                <td>9 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;hedyE</strong>
+                </td>
+                <td>El-Filali Hedy</td>
+                <td>11/05/1979</td>
+                <td>Oui</td>
+                <td>1 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;laurentS79</strong>
+                </td>
+                <td>Sion Laurent</td>
+                <td>15/02/1995</td>
+                <td>Non</td>
+                <td>0 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;husrefB69</strong>
+                </td>
+                <td>Baltic Husref</td>
+                <td>11/05/1991</td>
+                <td>Non</td>
+                <td>5 médias</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 
 
 

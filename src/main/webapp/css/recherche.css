@@ -8,7 +8,10 @@ table {
     border-radius: 10px;
 }
 
-.divHidden, .trHidden{
+.divHiddenMedia, .trHiddenMedia, .divHiddenUser, .trHiddenUser{
     display: none;
 }
 
+#labelUserSelect{
+    display: block;
+}

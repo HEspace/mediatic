@@ -117,12 +117,20 @@
 
             $('.rowTab').click(function(){
                 //console.log("test");
-                if($(".divHidden").is(":hidden")){
-                    $(".trHidden").fadeIn("slow")
-                    $( ".divHidden" ).slideDown("slow");
+                if($(".divHiddenMedia").is(":hidden")){
+                    $(".trHiddenMedia").fadeIn("slow")
+                    $( ".divHiddenMedia" ).slideDown("slow");
                 }else{
-                    $(".trHidden").hide("fast")
-                    $(".divHidden").slideUp("fast");
+                    $(".trHiddenMedia").hide("fast")
+                    $(".divHiddenMedia").slideUp("fast");
+                }
+
+                if($(".divHiddenUser").is(":hidden")){
+                    $(".trHiddenUser").fadeIn("slow")
+                    $( ".divHiddenUser" ).slideDown("slow");
+                }else{
+                    $(".trHiddenUser").hide("fast")
+                    $(".divHiddenUser").slideUp("fast");
                 }
 
             });
@@ -131,14 +139,6 @@
                 $(this).css('cursor', 'pointer');
             });
 
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    format: "dd MM yyyy",
-                    autoclose: true,
-                    todayBtn: true,
-                    pickerPosition: "bottom-left"
-                });
-            });
 
 
         });
@@ -275,9 +275,9 @@
                     <td class="text-center">23/06/2017</td>
                 </tr>
 
-                <tr class="trHidden" style="background-color: whitesmoke">
+                <tr class="trHiddenMedia" style="background-color: whitesmoke">
                     <td colspan="5">
-                        <div  class="divHidden">
+                        <div  class="divHiddenMedia">
                             <div class="row">
                                 <div class="col-xs-offset-1 col-xs-3">
                                     <img src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix" height="450" width="300">
@@ -289,14 +289,14 @@
                                     <a href="#" class="btn btn-md btn-primary" >
                                         Modifier Fiche
                                     </a>
-                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#emprunt">
+                                    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
                                         Ajout Emprunt
                                     </button><br>
-                                    <div id="emprunt" class="collapse">
+                                    <div id="empruntMedia" class="collapse">
                                         <div class="row">
                                             <br>
                                             <div class="col-xs-6">
-                                                <label>Adhérent</label>
+                                                <label id="labelUserSelect">Adhérent : </label>
                                                 <select class="selectpicker">
                                                     <option>Bastien Austin</option>
                                                     <option>Haudi Julien</option>
@@ -306,7 +306,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-xs-4">
-                                                <label>Date d'emprunt</label>
+                                                <label>Date de l'emprunt : </label>
                                                 <input type='date' class="form-control"/>
                                             </div>
                                         </div>
@@ -341,7 +341,7 @@
                 </tr >
                 <tr class="rowTab">
                     <td><span class="glyphicon glyphicon-music"></span></td>
-                    <td>Mr. Tambourineman</td>
+                    <td>Mr. Tambourin Man</td>
                     <td>Bob Dylan</td>
                     <td class="text-center">
                         <span class="glyphicon glyphicon-user"></span>
@@ -360,7 +360,7 @@
                     <td class="text-center">01/11/2017</td>
                 </tr>
                 <tr class="rowTab">
-                    <td><span class="glyphicon glyphicon-music"></span></span></td>
+                    <td><span class="glyphicon glyphicon-music"></span></td>
                     <td>The Wall</td>
                     <td>Pink Floyd</td>
                     <td class="text-center">
@@ -396,6 +396,62 @@
                 <td>15/11/1987</td>
                 <td>Oui</td>
                 <td>13 médias</td>
+            </tr>
+
+            <tr class="trHiddenUser" style="background-color: whitesmoke">
+                <td colspan="5">
+                    <div  class="divHiddenUser">
+                        <div class="row">
+                            <div class="col-xs-offset-2 col-xs-5">
+                                <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>  Austin Bastien</h3><br>
+                                <label><strong>Date de naissance : </strong></label><p>15/11/1987</p>
+                                <label><strong>Email : </strong></label><p>austin.bastien@gmail.com</p>
+                                <label><strong>Adresse : </strong></label><p>2400 avenue des moulins, 34080 Montpellier</p>
+                                <label><strong>Date de paiement de la cotisation : </strong></label><p>10/05/2017</p>
+                                <label><strong>Montant de la cotisation : </strong></label><p>50 &euro;</p>
+
+                                <a href="creationAdherent.html" class="btn btn-md btn-primary" >
+                                    Modifier Fiche
+                                </a>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
+                                    Ajout Emprunt
+                                </button><br>
+                                <div id="empruntUser" class="collapse">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-xs-offset-1 col-xs-6">
+                                            <label>Titre du média : </label>
+                                            <select class="selectpicker" data-width="fit">
+                                                <option data-icon="glyphicon-book">  Harry Potter et l'ordre du phoenix</option>
+                                                <option data-icon="glyphicon-film">  Fast & Furious 7</option>
+                                                <option data-icon="glyphicon-music">  Mr. Tambourin Man</option>
+                                                <option data-icon="glyphicon-book">  50 nuances de gris</option>
+                                                <option data-icon="glyphicon-music">  The Wall</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-xs-4">
+                                            <label>Date de l'emprunt  : </label>
+                                            <input type='date' class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-xs-3 text-left">
+                            <ul class="list-group">
+                                <li class="list-group-item"><span class="glyphicon glyphicon-book"></span> Harry Potter et l'ordre du phoenix</li>
+                                <li class="list-group-item"><span class="glyphicon glyphicon-film"></span> Fast & Furious 7</li>
+                                <li class="list-group-item"><span class="glyphicon glyphicon-music"></span> Mr. Tambourin Man</li>
+                                <li class="list-group-item"><span class="glyphicon glyphicon-book"></span> 50 nuances de gris</li>
+                                <li class="list-group-item"><span class="glyphicon glyphicon-music"></span> The Wall</li>
+                            </ul>
+
+                        </div>
+
+
+                        </div>
+                    </div>
+                </td>
             </tr>
 
             <tr>

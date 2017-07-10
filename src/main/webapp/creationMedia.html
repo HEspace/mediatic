@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF8">
+<link rel="stylesheet" href="styleAdherent.css" type="text/css" />
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <!--  -->   
+	<link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+   	<link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+   	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+   	
+   	<link rel="stylesheet" href="bootstrap/bootstrap-select-1.12.2/dist/css/bootstrap-select.min.css">
+        <script src="bootstrap/bootstrap-select-1.12.2/dist/js/bootstrap-select.min.js"></script>
+  
+<title>Création Média</title>
+
+
+
+
+</head>
+<body>
+
+<section id="contactMedia">
+			<div class="section-content">
+				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">Création d'un Média</span></h1>
+				
+			</div>
+			
+			<div class="contact-section-media">
+			<div class="container">
+				<form>
+					<div class="col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3 col-xs-6 col-xs-offset-3">
+			  			<div class="form-group-media">
+			  				<label for="nom">Titre *</label>
+					    	<input type="text" class="form-control" id="nom" placeholder="Titre">
+				  		</div>	
+				  			  	
+				  	
+		
+				  		<div class="form-group-media">
+					    	<label for="dateDeNaissance">Auteur *</label>
+					    	<input type="text" class="form-control" id="dateNaissance" placeholder="Auteur">
+					  	</div>	
+					  	
+					  	
+					  		<div class="form-group-media">
+					  			<label for="menu_destination_liste">Type *</label> 
+									<select name="menu_destination" id="menu_destination_liste" class="text-muted"> 
+						    		 <option value="http://www.monsite.net/accueil.html">Livre</option> 
+						    		 <option value="http://www.monsite.net/apropos.html">CD</option> 
+						    		 <option value="http://www.monsite.net/contact.html">DVD</option> 
+									</select>
+							</div>
+					  	
+					  				  		  
+
+			  				<button type="button" class="btn btn-default submit"><i class="fa fa-file-image-o" aria-hidden="true"></i> Enregistrer</button>
+			  			
+			  			
+			  			
+					</div>
+				</form>
+			</div>
+			</div>
+		</section>
+
+
+</body>
+
+
+<script>
+
+/*
+$(document).ready(function(){
+	if (document.getElementById("dateNaissance")== option.getAttribute("value")){
+		
+	f =	function jourDepuis(document.getElementById("dateNaissance"));
+	f.elements["age"].value = 'montexte';
+		
+		
+	}
+	else
+		return 0;
+	
+});
+*/
+function jourDepuis(date) {
+	var temps = (new Date()).getTime()-date.getTime();
+	return (temps/1000/60/60/24).toFixed(0);
+}
+
+console.log("Le Nombre de jour est de : "+jourDepuis(new Date("2016-06-24")));
+
+</script>
+
+
+</html>

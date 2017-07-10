@@ -25,6 +25,14 @@ table {
         text-align: center;
     }
 }
+@media (max-width: 1200px){
+    label#labelMedia{
+        display: block;
+        text-align: center;
+    }
+}
+
+
 
 .img-responsive {
     margin: 0 auto;

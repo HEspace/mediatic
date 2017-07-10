@@ -34,24 +34,24 @@
 			
 			<div class="contact-section-media">
 			<div class="container">
-				<form>
+				<form action="http://192.168.1.87:8082/recherche.html">
 					<div class="col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3 col-xs-6 col-xs-offset-3">
 			  			<div class="form-group-media">
 			  				<label for="nom">Titre *</label>
-					    	<input type="text" class="form-control" id="nom" placeholder="Titre">
+					    	<input type="text" required="required" class="form-control" id="nom" placeholder="Titre">
 				  		</div>	
 				  			  	
 				  	
 		
 				  		<div class="form-group-media">
 					    	<label for="dateDeNaissance">Auteur *</label>
-					    	<input type="text" class="form-control" id="dateNaissance" placeholder="Auteur">
+					    	<input type="text" required="required" class="form-control" id="dateNaissance" placeholder="Auteur">
 					  	</div>	
 					  	
 					  	
 					  		<div class="form-group-media">
 					  			<label for="menu_destination_liste">Type *</label> 
-									<select name="menu_destination" id="menu_destination_liste" class="text-muted"> 
+									<select required="required" name="menu_destination" id="menu_destination_liste" class="text-muted"> 
 						    		 <option value="http://www.monsite.net/accueil.html">Livre</option> 
 						    		 <option value="http://www.monsite.net/apropos.html">CD</option> 
 						    		 <option value="http://www.monsite.net/contact.html">DVD</option> 
@@ -60,7 +60,12 @@
 					  	
 					  				  		  
 
-			  				<button type="button" class="btn btn-default submit"><i class="fa fa-file-image-o" aria-hidden="true"></i> Enregistrer</button>
+			  			<!--  	<button type="button" class="btn btn-default submit"><i class="fa fa-file-image-o" aria-hidden="true"></i> Enregistrer</button>-->
+			  				 <input class="btn btn-default submit" type="submit" value="Enregistrer">
+			  				 
+			  				 
+
+			  				
 			  			
 			  			
 			  			

@@ -115,6 +115,7 @@
             //$("div.divHidden1").hide();
 
 
+
             $('.rowTab').click(function(){
                 //console.log("test");
                 if($(".divHiddenMedia").is(":hidden")){
@@ -279,10 +280,10 @@
                     <td colspan="5">
                         <div  class="divHiddenMedia">
                             <div class="row">
-                                <div class="col-xs-offset-1 col-xs-3">
-                                    <img src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix" height="450" width="300">
+                                <div class="col-md-offset-1 col-md-3 ">
+                                    <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix" height="450" width="300">
                                 </div>
-                                <div class="col-xs-5">
+                                <div class="col-md-5 col-xs-12">
                                     <h2 class="text-primary">Harry Potter et l'ordre du phoenix</h2><br>
                                     <p><strong>J. K. Rowling</strong></p>
                                     <p><span class="glyphicon glyphicon-book"></span> Livre</p>
@@ -297,22 +298,24 @@
                                             <br>
                                             <div class="col-xs-6">
                                                 <label id="labelUserSelect">Adhérent : </label>
-                                                <select class="selectpicker">
+                                                <select class="selectpicker" data-width="fit">
                                                     <option>Bastien Austin</option>
                                                     <option>Haudi Julien</option>
                                                     <option>Sion Laurent</option>
                                                     <option>El-Filali Hedy</option>
                                                     <option>Baltic Husref</option>
                                                 </select>
-                                            </div>
-                                            <div class="col-xs-4">
+                                             </div>
+
+                                            <div class="col-xs-5">
                                                 <label>Date de l'emprunt : </label>
                                                 <input type='date' class="form-control"/>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
-                                <br><div class="col-xs-2">
+                                <br><div class="col-md-3 col-xs-">
                                 <label>Déjà emprunté par : </label>
                                     <ul class="list-group">
                                         <li class="list-group-item active">Bastien Austin<span class="badge">12</span></li>
@@ -403,7 +406,7 @@
                 <td colspan="5">
                     <div  class="divHiddenUser">
                         <div class="row">
-                            <div class="col-xs-offset-2 col-xs-5">
+                            <div class="col-md-offset-2 col-md-5">
                                 <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>  Austin Bastien</h3><br>
                                 <label><strong>Date de naissance : </strong></label><p>15/11/1987</p>
                                 <label><strong>Email : </strong></label><p>austin.bastien@gmail.com</p>
@@ -420,7 +423,7 @@
                                 <div id="empruntUser" class="collapse">
                                     <div class="row">
                                         <br>
-                                        <div class="col-xs-offset-1 col-xs-6">
+                                        <div class="col-md-offset-1 col-md-6 col-xs-offset-0 col-xs-12">
                                             <label>Titre du média : </label>
                                             <select class="selectpicker" data-width="fit">
                                                 <option data-icon="glyphicon-book">  Harry Potter et l'ordre du phoenix</option>
@@ -430,7 +433,7 @@
                                                 <option data-icon="glyphicon-music">  The Wall</option>
                                             </select>
                                         </div>
-                                        <div class="col-xs-4">
+                                        <div class="col-md-4 col-xs-offset-3 col-xs-6">
                                             <label>Date de l'emprunt  : </label>
                                             <input type='date' class="form-control"/>
                                         </div>
@@ -438,7 +441,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="col-xs-3 text-left">
+                            <div class="col-md-3 col-xs-12 text-left">
                                 <label>Média(s) emprunté(s) : </label>
                                 <ul class="list-group">
                                     <li class="list-group-item"><span class="glyphicon glyphicon-book"></span> Harry Potter et l'ordre du phoenix</li>

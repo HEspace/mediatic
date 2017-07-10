@@ -15,3 +15,21 @@ table {
 #labelUserSelect{
     display: block;
 }
+
+@media (max-width: 992px) {
+    .col-xs-12{
+        text-align: center;
+    }
+    label{
+        display: block;
+        text-align: center;
+    }
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+#labelUserSelect{
+    margin: 0 auto;
+}

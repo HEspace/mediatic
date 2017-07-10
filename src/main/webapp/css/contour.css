@@ -146,9 +146,7 @@ html {
   opacity: 0.5;
 }
 
-input{
-  float: left;
-}
+
 #login{
   background-color: transparent;
   border: none;

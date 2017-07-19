@@ -55,8 +55,8 @@ public class Adherent {
 	}
 
 	
-	public Adherent(@NotBlank String nom, @NotBlank String prenom, @NotBlank LocalDate dateNaissance,
-			@NotBlank String email, String adress, String cp, String ville) {
+	public Adherent(@NotBlank String nom, @NotBlank String prenom,
+			@NotBlank String email, @NotBlank LocalDate dateNaissance , String adress, String cp, String ville) {
 		
 			this.nom = nom;
 			this.prenom = prenom;

@@ -1,5 +1,7 @@
 package mediatic;
 
+import java.time.LocalDate;
+
 import adherent.dao.AdherentDAO;
 import adherent.model.Adherent;
 import adherent.service.AdherentService;
@@ -31,10 +33,10 @@ public class Main {
 		/**Création adhérents*/
 		AdherentService as = new AdherentService();
 		
-		Adherent a1 = new Adherent("BALTIC", "Husref", "husref.baltic@gmail.com", "11/05/1991");
-		Adherent a2 = new Adherent("EL FILALI", "Hedy", "elfilali.hedy@gmail.com", "20/14/1877");
-		Adherent a3 = new Adherent("SION", "Laurent", "lau.sion@gmail.com", "18/07/1900");
-		Adherent a4 = new Adherent("BENGHAL", "Ayoub", "youbizz@gmail.com", "02/12/1515");
+		Adherent a1 = new Adherent("BALTIC", "Husref", "husref.baltic@gmail.com",LocalDate.now(), "", "", "");
+		Adherent a2 = new Adherent("EL FILALI", "Hedy", "elfilali.hedy@gmail.com", LocalDate.now(), "", "", "");
+		Adherent a3 = new Adherent("SION", "Laurent", "lau.sion@gmail.com", LocalDate.now(), "", "", "");
+		Adherent a4 = new Adherent("BENGHAL", "Ayoub", "youbizz@gmail.com", LocalDate.now(), "", "", "");
 
 		as.creer(a1);
 		as.creer(a2);

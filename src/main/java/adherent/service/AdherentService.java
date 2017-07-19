@@ -20,6 +20,11 @@ public class AdherentService {
 		AdherentDAO adherentDao = AdherentDAO.instance();
 		return adherentDao.listEmpruntParAdherent(adherent);
 	}
+	
+	public List<Adherent> find(String chaine){
+		AdherentDAO adherentDao = AdherentDAO.instance();
+		return adherentDao.find(chaine);
+	}
 
 
 }

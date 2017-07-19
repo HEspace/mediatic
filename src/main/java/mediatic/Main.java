@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import adherent.dao.AdherentDAO;
 import adherent.model.Adherent;
 import adherent.service.AdherentService;
-import emprunt.model.Emprunt;
 import emprunt.service.EmpruntService;
 import media.dao.MediaDAO;
 import media.model.Media;
@@ -53,6 +52,6 @@ public class Main {
 		
 		//System.out.println(as.listEmpruntParAdherent(a2));
 		System.out.println(ms.listEmprunteur(m2));
-		
+		System.out.println(as.find("e"));
 	}
 }

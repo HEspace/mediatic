@@ -30,8 +30,8 @@ public class MediaDAO extends GenericDAO<Media>{
 		TypedQuery<Adherent> query = em.createQuery(
 				"select a " +
 				"from Media m " +
-				"inner join m.listEmprunt as le " +
-				"inner join le.adherent a" +
+				"inner join m.listeEmprunt as le " +
+				"inner join le.adherent a " +
 				"where m.id=:id ", Adherent.class);
 		query.setParameter("id", m.getId());
 		List<Adherent> l = query.getResultList();

@@ -13,7 +13,7 @@ public class MediaService {
 		mdao.creer(m);
 	}
 	
-	public List<Adherent> listEmprunteur(Media m){
+	public Media listEmprunteur(Media m){
 		MediaDAO mdao = MediaDAO.instance();
 		return mdao.listEmprunteur(m);
 	}

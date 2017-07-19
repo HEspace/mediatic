@@ -25,16 +25,17 @@ public class MediaDAO extends GenericDAO<Media>{
 		return dao;
 	}	
 	
-	public Media listEmprunteur(Media m){
+	public List<Adherent> listEmprunteur(Media m){
 		EntityManager em = DatabaseHelper.createEntityManager();
-		TypedQuery<Media> query = em.createQuery(
-				"select m " +
+		TypedQuery<Adherent> query = em.createQuery(
+				"select a " +
 				"from Media m " +
-				"inner join fetch m.listEmprunt" +
-				"where m.id=:id ", Media.class);
+				"inner join m.listEmprunt as le " +
+				"inner join le.adherent a" +
+				"where m.id=:id ", Adherent.class);
 		query.setParameter("id", m.getId());
-		Media media = query.getSingleResult();
-		return media;
+		List<Adherent> l = query.getResultList();
+		return l;
 	}
 	
 

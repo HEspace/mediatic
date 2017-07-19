@@ -50,7 +50,8 @@ public class Main {
 		emp.creer(a1, m2);
 		emp.creer(a2, m2);
 		
-		//System.out.println(as.listEmpruntParAdherent(a2));
-		System.out.println(ms.listEmprunteur(m3));
+//		System.out.println(as.listEmpruntParAdherent(a2));
+//		System.out.println(ms.listEmprunteur(m3));
+		System.out.println(as.find("e"));
 	}
 }

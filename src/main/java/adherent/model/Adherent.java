@@ -1,6 +1,6 @@
 package adherent.model;
 
-
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,13 +30,10 @@ public class Adherent {
 	private String prenom;
 	
 	@NotBlank
-	private String dateNaissance; 
+	private LocalDate dateNaissance; 
 	
 	@NotBlank
 	private String email;
-	
-	@OneToMany(mappedBy = "adherent")
-	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
 	
 	private String adress;
 	
@@ -47,6 +44,37 @@ public class Adherent {
 	@OneToOne
 	private Cotisation cotisation;
 	
+	
+	@OneToMany(mappedBy = "adherent")
+	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
+	
+
+	
+	public Adherent(){
+		
+	}
+
+	
+	public Adherent(@NotBlank String nom, @NotBlank String prenom,
+			@NotBlank String email, @NotBlank LocalDate dateNaissance , String adress, String cp, String ville) {
+		
+			this.nom = nom;
+			this.prenom = prenom;
+			this.dateNaissance = dateNaissance;
+			this.email = email;
+				if(adress != ""){
+					this.adress = adress;
+				}
+				if(cp != ""){
+				this.cp = cp;
+				}
+				if(ville != ""){
+				this.ville = ville;
+				}
+		
+			
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -71,11 +99,11 @@ public class Adherent {
 		this.prenom = prenom;
 	}
 
-	public String getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(String dateNaissance) {
+	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 
@@ -126,7 +154,7 @@ public class Adherent {
 	public void setCotisation(Cotisation cotisation) {
 		this.cotisation = cotisation;
 	}
-	
+
 	
 
 }

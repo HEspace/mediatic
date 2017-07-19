@@ -2,7 +2,7 @@ package mediatic;
 
 import javax.persistence.EntityManager;
 
-import databaseHelper.DatabaseHelper;
+import dao.DatabaseHelper;
 
 public class Main {
 	public static void main(String args[]){

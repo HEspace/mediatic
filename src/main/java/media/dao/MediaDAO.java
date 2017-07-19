@@ -12,7 +12,7 @@ public class MediaDAO extends GenericDAO<Media>{
 		
 	}
 	
-	public static MediaDAO instaceof(){
+	public static MediaDAO instance(){
 		if(dao == null)
 			dao = new MediaDAO();
 		return dao;

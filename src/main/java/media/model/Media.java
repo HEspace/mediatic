@@ -38,6 +38,14 @@ public class Media {
 		return id;
 	}
 
+	public Media(String titre, String auteur, Type type) {
+		this.titre = titre;
+		this.auteur = auteur;
+		this.type = type;
+	}
+	
+	public Media(){}
+
 	public void setId(long id) {
 		this.id = id;
 	}

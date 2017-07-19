@@ -7,6 +7,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import cotisation.model.Cotisation;
+
 @Entity
 @Table(name = "adherent")
 public class Adherent {

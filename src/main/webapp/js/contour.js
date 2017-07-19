@@ -54,19 +54,15 @@ $(document).ready(function(){
 		$('#boutonside').css('display','block');
 });
 
-function fib(a){
-	console.log(a);
-	if(a==0){
-		return 0;
+function foo(x){
+	function bar(x){
+		console.log("J :",i)
 	}
-	else if(a==1){
-		return 1;
-	}
-	else
-		return fib(a-1)+fib(a-2);
+	var i = 2;
+	bar(5);
 }
 
-console.log(fib(3));
+console.log(foo(3));
 /**
  * Import du code
  */

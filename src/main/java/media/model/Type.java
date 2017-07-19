@@ -1,3 +1,3 @@
 package media.model;
 
-public enum Type {dvd, cd, livre}
+public enum Type {DVD, CD, LIVRE}

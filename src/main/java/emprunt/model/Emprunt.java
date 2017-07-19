@@ -3,20 +3,27 @@ package emprunt.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+
+import adherent.model.Adherent;
+import media.model.Media;
 
 @Entity
 public class Emprunt {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@NotBlank
-	private long id_adherent;
+	@ManyToOne
+	private Adherent adherent;
 	
 	@NotBlank
-	private long id_media;
+	@ManyToOne
+	private Media media;
 	
 	@NotBlank
 	private String date_emprunt;

@@ -12,7 +12,7 @@ public class Cotisation {
 	
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@OneToOne(mappedBy = "cotisation")
 	private Adherent adherent;
@@ -21,5 +21,5 @@ public class Cotisation {
 	private String date_paiement;
 	
 	
-	private float montant;
+	private Float montant;
 }

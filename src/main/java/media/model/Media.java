@@ -1,9 +1,14 @@
 package media.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+
+import emprunt.model.Emprunt;
 
 
 
@@ -12,7 +17,7 @@ public class Media {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 	
 	@NotBlank
 	private String titre;
@@ -22,6 +27,9 @@ public class Media {
 	
 	@NotBlank
 	private Type type;
+	
+	@OneToMany(mappedBy = "media")
+	private List<Emprunt> listeEmprunt;
 
 	
 	

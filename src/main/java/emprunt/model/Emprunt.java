@@ -34,8 +34,57 @@ public class Emprunt {
 	private String date_retour_effective;
 	
 	
+
 	public Emprunt(){
 		
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Adherent getAdherent() {
+		return adherent;
+	}
+
+	public void setAdherent(Adherent adherent) {
+		this.adherent = adherent;
+	}
+
+	public Media getMedia() {
+		return media;
+	}
+
+	public void setMedia(Media media) {
+		this.media = media;
+	}
+
+	public String getDate_emprunt() {
+		return date_emprunt;
+	}
+
+	public void setDate_emprunt(String date_emprunt) {
+		this.date_emprunt = date_emprunt;
+	}
+
+	public String getDate_retour_prevu() {
+		return date_retour_prevu;
+	}
+
+	public void setDate_retour_prevu(String date_retour_prevu) {
+		this.date_retour_prevu = date_retour_prevu;
+	}
+
+	public String getDate_retour_effective() {
+		return date_retour_effective;
+	}
+
+	public void setDate_retour_effective(String date_retour_effective) {
+		this.date_retour_effective = date_retour_effective;
 	}
 	
 }

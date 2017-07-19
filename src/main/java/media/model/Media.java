@@ -1,5 +1,6 @@
 package media.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Media {
 	private Type type;
 	
 	@OneToMany(mappedBy = "media")
-	private List<Emprunt> listeEmprunt;
+	private List<Emprunt> listeEmprunt = new ArrayList<Emprunt>();
 
 	
 	

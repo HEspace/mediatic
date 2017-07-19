@@ -34,4 +34,8 @@ public class Emprunt {
 	private String date_retour_effective;
 	
 	
+	public Emprunt(){
+		
+	}
+	
 }

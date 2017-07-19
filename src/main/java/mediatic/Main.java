@@ -1,9 +1,8 @@
 package mediatic;
 
-import javax.persistence.EntityManager;
-
+import adherent.dao.AdherentDAO;
 import adherent.model.Adherent;
-import dao.DatabaseHelper;
+import adherent.service.AdherentService;
 import media.dao.MediaDAO;
 import media.model.Media;
 import media.model.Type;
@@ -12,43 +11,34 @@ import media.service.MediaService;
 public class Main {
 	public static void main(String args[]){
 		
-		MediaDAO mediadao = MediaDAO.instaceof();
-		
-		
 		/**Création Médias*/
 		MediaService ms = new MediaService();
 		
-		mediadao.creer(ms.creer("Livre1", "Husref BALTIC",Type.LIVRE));
-		mediadao.creer(ms.creer("CD1", "Laurent SION", Type.CD));
-		mediadao.creer(ms.creer("DVD1", "Hedy EL FILALI", Type.DVD));
-		mediadao.creer(ms.creer("Livre2", "Hedy EL FILALI", Type.LIVRE));
-		mediadao.creer(ms.creer("CD2", "Laurent SION", Type.CD));
-		mediadao.creer(ms.creer("DVD2", "Husref BALTIC", Type.DVD));
+		Media m1 = new Media("Livre1", "Husref BALTIC",Type.LIVRE);
+		Media m2 = new Media("CD1", "Laurent SION", Type.CD);
+		Media m3 = new Media("DVD1", "Hedy EL FILALI", Type.DVD);
+		Media m4 = new Media("Livre2", "Hedy EL FILALI", Type.LIVRE);
+		Media m5 = new Media("CD2", "Laurent SION", Type.CD);
+		Media m6 = new Media("DVD2", "Husref BALTIC", Type.DVD);
 
+		ms.creer(m1);
+		ms.creer(m2);
+		ms.creer(m3);
+		ms.creer(m4);
+		ms.creer(m5);
+		ms.creer(m6);
+		
 		/**Création adhérents*/
-		Adherent a1 = new Adherent();
-		a1.setNom("BALTIC");
-		a1.setPrenom("Husref");
-		a1.setDateNaissance("11/05/1991");
-		a1.setEmail("husref.baltic@gmail.com");
+		AdherentService as = new AdherentService();
 		
-		Adherent a2 = new Adherent();
-		a2.setNom("EL FILALI");
-		a2.setPrenom("Hedy");
-		a2.setDateNaissance("20/14/1877");
-		a2.setEmail("elfilali.hedy@gmail.com");
-		
-		Adherent a3 = new Adherent();
-		a3.setNom("SION");
-		a3.setPrenom("Laurent");
-		a3.setDateNaissance("18/07/1900");
-		a3.setEmail("lau.sion@gmail.com");
-		
-		Adherent a4 = new Adherent();
-		a4.setNom("BENGHAL");
-		a4.setPrenom("Ayoub");
-		a4.setDateNaissance("02/12/1515");
-		a4.setEmail("youbizz@gmail.com");
-		
+		Adherent a1 = new Adherent("BALTIC", "Husref", "husref.baltic@gmail.com", "11/05/1991");
+		Adherent a2 = new Adherent("EL FILALI", "Hedy", "elfilali.hedy@gmail.com", "20/14/1877");
+		Adherent a3 = new Adherent("SION", "Laurent", "lau.sion@gmail.com", "18/07/1900");
+		Adherent a4 = new Adherent("BENGHAL", "Ayoub", "youbizz@gmail.com", "02/12/1515");
+
+		as.creer(a1);
+		as.creer(a2);
+		as.creer(a3);
+		as.creer(a4);
 	}
 }

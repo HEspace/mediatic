@@ -34,6 +34,18 @@ public class Media {
 
 	
 	
+	public List<Emprunt> getListeEmprunt() {
+		return listeEmprunt;
+	}
+
+	public void setListeEmprunt(List<Emprunt> listeEmprunt) {
+		this.listeEmprunt = listeEmprunt;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public long getId() {
 		return id;
 	}

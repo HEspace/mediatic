@@ -37,6 +37,15 @@ public class Adherent {
 	@OneToMany(mappedBy = "adherent")
 	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
 	
+	private String adress;
+	
+	private String cp;
+	
+	private String ville;
+	
+	@OneToOne
+	private Cotisation cotisation;
+	
 	public Long getId() {
 		return id;
 	}
@@ -116,15 +125,6 @@ public class Adherent {
 	public void setCotisation(Cotisation cotisation) {
 		this.cotisation = cotisation;
 	}
-
-	private String adress;
-	
-	private String cp;
-	
-	private String ville;
-	
-	@OneToOne
-	private Cotisation cotisation;
 	
 	
 

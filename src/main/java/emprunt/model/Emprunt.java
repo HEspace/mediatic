@@ -1,5 +1,8 @@
 package emprunt.model;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,12 +29,12 @@ public class Emprunt {
 	private Media media;
 	
 	@NotBlank
-	private String date_emprunt;
+	private LocalDate dateEmprunt;
 	
 	@NotBlank
-	private String date_retour_prevu;
+	private LocalDate dateRetourPrevu;
 	
-	private String date_retour_effective;
+	private LocalDate dateRetourEffective;
 	
 	
 
@@ -63,28 +66,28 @@ public class Emprunt {
 		this.media = media;
 	}
 
-	public String getDate_emprunt() {
-		return date_emprunt;
+	public LocalDate getDateEmprunt() {
+		return dateEmprunt;
 	}
 
-	public void setDate_emprunt(String date_emprunt) {
-		this.date_emprunt = date_emprunt;
+	public void setDateEmprunt(LocalDate dateEmprunt) {
+		this.dateEmprunt = dateEmprunt;
 	}
 
-	public String getDate_retour_prevu() {
-		return date_retour_prevu;
+	public LocalDate getDateRetourPrevu() {
+		return dateRetourPrevu;
 	}
 
-	public void setDate_retour_prevu(String date_retour_prevu) {
-		this.date_retour_prevu = date_retour_prevu;
+	public void setDateRetourPrevu(LocalDate dateRetourPrevu) {
+		this.dateRetourPrevu = dateRetourPrevu;
 	}
 
-	public String getDate_retour_effective() {
-		return date_retour_effective;
+	public LocalDate getDateRetourEffective() {
+		return dateRetourEffective;
 	}
 
-	public void setDate_retour_effective(String date_retour_effective) {
-		this.date_retour_effective = date_retour_effective;
+	public void setDateRetourEffective(LocalDate dateRetourEffective) {
+		this.dateRetourEffective = dateRetourEffective;
 	}
 	
 }

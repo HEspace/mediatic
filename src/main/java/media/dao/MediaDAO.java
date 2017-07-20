@@ -37,6 +37,24 @@ public class MediaDAO extends GenericDAO<Media>{
 		List<Adherent> l = query.getResultList();
 		return l;
 	}
+
+	public List<Media> find(String chaine) {
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Media> query = em.createQuery("select m "
+				+ "from Media m "
+				+ "where lower(m.auteur) LIKE :chaine "
+				+ "or lower(m.titre) LIKE :chaine "
+				+ "or m.id=:id",Media.class);
+		query.setParameter("chaine", "%"+chaine.toLowerCase()+"%");
+		try{
+			query.setParameter("id", Long.parseLong(chaine));
+			return query.getResultList();
+		}
+		catch(Exception e){
+			query.setParameter("id",Long.parseLong("0"));
+			return query.getResultList();
+		}
+	}
 	
 
 }

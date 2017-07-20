@@ -52,6 +52,13 @@ public class Main {
 		
 		//System.out.println(as.listEmpruntParAdherent(a2));
 		System.out.println(ms.listEmprunteur(m2));
-		System.out.println(as.find("e"));
+		for(Adherent adhAff : as.find("Laurent SION 7")){
+			System.out.println(adhAff.getPrenom()+" "+adhAff.getNom());
+			
+		}
+		for(Media meAff : ms.find("Laurent Livre 3")){
+			System.out.println(meAff.getAuteur()+" "+meAff.getTitre());
+			
+		}
 	}
 }

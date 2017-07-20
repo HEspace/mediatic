@@ -1,5 +1,6 @@
 package adherent.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import adherent.dao.AdherentDAO;
@@ -23,7 +24,29 @@ public class AdherentService {
 	
 	public List<Adherent> find(String chaine){
 		AdherentDAO adherentDao = AdherentDAO.instance();
-		return adherentDao.find(chaine);
+		List<Adherent> listA = new ArrayList<Adherent>();
+		List<Adherent> listTmp = new ArrayList<Adherent>();
+		boolean test = false;
+		String[] chaineSplit = chaine.split(" ");
+		for(String s : chaineSplit){
+			listTmp = new ArrayList<Adherent>();
+			listTmp.addAll(adherentDao.find(s));
+			for(Adherent a1 : listTmp){
+				test = false;
+				for(Adherent a2 : listA){
+					if(egalites(a1, a2)){
+						test=true;
+						break;
+					}
+				}
+				if(!test) listA.add(a1);
+			}
+		}
+		return listA;
+	}
+	
+	public boolean egalites(Adherent a1, Adherent a2){
+		return a1.getNom().equals(a2.getNom()) && a1.getPrenom().equals(a2.getPrenom());
 	}
 
 

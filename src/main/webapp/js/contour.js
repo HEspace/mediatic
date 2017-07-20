@@ -34,6 +34,8 @@ function inverserCollectionMenu(){
 
 $(document).ready(function() {
 	$('#menuCollection').hide();
+	$('#divlogin').slideUp();
+    $('#sideMenu').slideUp();
 });
 
 window.onresize = function() {
@@ -114,7 +116,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-	  $('.btn').click(function() {
+	  $('#boutonlogin').click(function() {
 	    $('.wrap').slideToggle(400);
 	  });
 	});

@@ -44,8 +44,36 @@ public class MediaService {
 		}
 		return listA;
 	}
+
+	
+	public Media findID(String chaine){
+		MediaDAO mdao = MediaDAO.instance();
+		Long id ;
+		try{
+			id = Long.parseLong(chaine);
+			return mdao.findId(id);
+		}
+		catch(Exception e){
+			return mdao.findId(Long.parseLong("0"));
+		}
+	}
 	
 	public boolean egalites(Media m1, Media m2){
 		return m1.getAuteur().equals(m2.getAuteur()) && m1.getTitre().equals(m2.getTitre()) && m1.getType().equals(m2.getType());
+	}
+	
+	public List<Media> listeMediaDVD(){
+		MediaDAO mdao = MediaDAO.instance();
+		return mdao.listeMediaDVD();
+	}
+	
+	public List<Media> listeMediaCD(){
+		MediaDAO mdao = MediaDAO.instance();
+		return mdao.listeMediaCD();
+	}
+	
+	public List<Media> listeMediaLivre(){
+		MediaDAO mdao = MediaDAO.instance();
+		return mdao.listeMediaLivre();
 	}
 }

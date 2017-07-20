@@ -40,17 +40,18 @@ public class AdherentDAO extends GenericDAO<Adherent>  {
 		TypedQuery<Adherent> query = em.createQuery("select a "
 				+ "from Adherent a "
 				+ "where lower(a.prenom) LIKE :chaine "
-				+ "or lower(a.nom) LIKE :chaine "
-				+ "or a.id=:id",Adherent.class);
+				+ "or lower(a.nom) LIKE :chaine ",Adherent.class);
 		query.setParameter("chaine", "%"+chaine.toLowerCase()+"%");
-		try{
-			query.setParameter("id", Long.parseLong(chaine));
-			return query.getResultList();
-		}
-		catch(Exception e){
-			query.setParameter("id",Long.parseLong("0"));
-			return query.getResultList();
-		}
+		return query.getResultList();
+	}
+
+	public Adherent findId(Long id) {
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Adherent> query = em.createQuery("select a "
+				+ "from Adherent a "
+				+ "where a.id = :id",Adherent.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
 	}
 	
 }

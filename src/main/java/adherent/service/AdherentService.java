@@ -45,6 +45,18 @@ public class AdherentService {
 		return listA;
 	}
 	
+	public Adherent findID(String chaine){
+		AdherentDAO adherentDao = AdherentDAO.instance();
+		Long id ;
+		try{
+			id = Long.parseLong(chaine);
+			return adherentDao.findId(id);
+		}
+		catch(Exception e){
+			return adherentDao.findId(Long.parseLong("0"));
+		}
+	}
+	
 	public boolean egalites(Adherent a1, Adherent a2){
 		return a1.getNom().equals(a2.getNom()) && a1.getPrenom().equals(a2.getPrenom());
 	}

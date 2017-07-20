@@ -43,17 +43,42 @@ public class MediaDAO extends GenericDAO<Media>{
 		TypedQuery<Media> query = em.createQuery("select m "
 				+ "from Media m "
 				+ "where lower(m.auteur) LIKE :chaine "
-				+ "or lower(m.titre) LIKE :chaine "
-				+ "or m.id=:id",Media.class);
+				+ "or lower(m.titre) LIKE :chaine ",Media.class);
 		query.setParameter("chaine", "%"+chaine.toLowerCase()+"%");
-		try{
-			query.setParameter("id", Long.parseLong(chaine));
-			return query.getResultList();
-		}
-		catch(Exception e){
-			query.setParameter("id",Long.parseLong("0"));
-			return query.getResultList();
-		}
+		return query.getResultList();
+	}
+
+	public Media findId(Long id) {
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Media> query = em.createQuery("select m "
+				+ "from Media m "
+				+ "where m.id = :id ",Media.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
+	}
+	
+	public List<Media> listeMediaDVD(){
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Media> query = em.createQuery("select m "
+				+ "from Media m "
+				+ "where m.type = 0 ",Media.class);
+		return query.getResultList();
+	}
+	
+	public List<Media> listeMediaLivre(){
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Media> query = em.createQuery("select m "
+				+ "from Media m "
+				+ "where m.type = 2 ",Media.class);
+		return query.getResultList();
+	}
+	
+	public List<Media> listeMediaCD(){
+		EntityManager em = DatabaseHelper.createEntityManager();
+		TypedQuery<Media> query = em.createQuery("select m "
+				+ "from Media m "
+				+ "where m.type = 1 ",Media.class);
+		return query.getResultList();
 	}
 	
 

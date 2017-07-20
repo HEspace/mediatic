@@ -60,5 +60,15 @@ public class Main {
 			System.out.println(meAff.getAuteur()+" "+meAff.getTitre());
 			
 		}
+		
+		for(Media meAff : ms.listeMediaCD()){
+			System.out.println(meAff.getAuteur()+" "+meAff.getTitre());
+			
+		}
+		
+		
+		
+//		System.out.println(as.findID("7").getPrenom() +" " +as.findID("7").getNom());
+//		System.out.println(ms.findID("2").getAuteur() +" " +ms.findID("2").getTitre());
 	}
 }

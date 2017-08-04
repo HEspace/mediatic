@@ -67,11 +67,17 @@ textarea.form-control {
 
 }
 
+form input.ng-invalid.ng-touched
+{
+  
+   border-style:solid;
+   border-color: red;
+}
 
 
-/////////////////////////// Media/////////////////////////////
 
 
+/*////////////////////////////////////  Media /////////////////////////////////////////*/
 #contactMedia{
 
 }

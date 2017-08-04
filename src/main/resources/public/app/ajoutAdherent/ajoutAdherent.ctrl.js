@@ -3,7 +3,18 @@
 angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
 
-.controller('AjoutAdherentCtrl', [function() {
+.controller('AjoutAdherentCtrl', ['$scope', '$location',function($scope, $location) {
+
+  console.log($location.path());
+
+   $scope.submit = function(){
+    $location.path('../accueil/accueil.html');
+    }
+
+  
+
+
+
   
 function jourDepuis(date) {
 	var temps = (new Date()).getTime()-date.getTime();

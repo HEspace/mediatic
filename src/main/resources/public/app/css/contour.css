@@ -3,7 +3,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 2;
+    z-index: 99999;
     top: 0;
     left: 0;
     background-color: #1a1a1a;
@@ -37,7 +37,7 @@
 
 @media(max-width : 768px) {
 	#header {
-		display : none;
+		display : block;
 	}
 }
 
@@ -156,4 +156,8 @@ html {
   cursor: pointer;
   color: #000;
   margin-left: 10px;
+}
+
+.btn-default{
+    color: #333;
 }

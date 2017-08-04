@@ -16,22 +16,26 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   
   $routeProvider.when('/accueil', {
 	    templateUrl: 'accueil/accueil.html',
-	    controller: 'AccueilCtrl'
+		controller: 'AccueilCtrl',
+		controllerAs: 'ctrl'
 	  });
   
   $routeProvider.when('/recherche', {
 	    templateUrl: 'recherche/recherche.html',
-	    controller: 'RechercheCtrl'
+	    controller: 'RechercheCtrl',
+		controllerAs: 'ctrl'
 	  });
   
   $routeProvider.when('/ajoutMedia', {
 	    templateUrl: 'ajoutMedia/ajoutMedia.html',
-	    controller: 'AjoutMediaCtrl'
+	    controller: 'AjoutMediaCtrl',
+		controllerAs: 'ctrl'
 	  });
   
   $routeProvider.when('/ajoutAdherent', {
 	    templateUrl: 'ajoutAdherent/ajoutAdherent.html',
-	    controller: 'AjoutAdherentCtrl'
+	    controller: 'AjoutAdherentCtrl',
+		controllerAs: 'ctrl'
 	  });
 }])
 .controller('MediaticCtrl', ['$scope', function($scope){

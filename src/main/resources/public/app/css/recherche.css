@@ -41,3 +41,7 @@ table {
 #labelUserSelect{
     margin: 0 auto;
 }
+
+.tbodyTab{
+    cursor: pointer;
+}

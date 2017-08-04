@@ -9,6 +9,7 @@ import adherent.model.Adherent;
 import dao.DatabaseHelper;
 import dao.GenericDAO;
 import media.model.Media;
+import media.model.Type;
 
 public class MediaDAO extends GenericDAO<Media>{
 
@@ -79,6 +80,27 @@ public class MediaDAO extends GenericDAO<Media>{
 				+ "from Media m "
 				+ "where m.type = 1 ",Media.class);
 		return query.getResultList();
+	}
+
+	public List<Media> findMediaType(String chaine, Type[] tab) {
+		EntityManager em = DatabaseHelper.createEntityManager();
+		String req ="select m ";
+		req += "from Media m ";
+		req += "where (m.titre LIKE :chaine or m.auteur LIKE :chaine) and (m.type = :type1 ";
+		if(tab.length > 1){
+			req += "or m.type = :type2) ";
+			TypedQuery<Media> query = em.createQuery(req,Media.class);
+			query.setParameter("type1", tab[0]);
+			query.setParameter("type2", tab[1]);
+			query.setParameter("chaine", "%"+chaine+"%");
+			return query.getResultList();
+		}
+		req += ")";
+		TypedQuery<Media> query = em.createQuery(req,Media.class);
+		query.setParameter("type1", tab[0]);
+		query.setParameter("chaine", "%"+chaine+"%");
+		return query.getResultList();
+		
 	}
 	
 

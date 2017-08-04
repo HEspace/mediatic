@@ -44,7 +44,7 @@ public class Main {
 		as.creer(a3);
 		as.creer(a4);
 		
-		/*Création Emprunt*/
+		/* Création Emprunt */
 		EmpruntService emp = new EmpruntService();
 		emp.creer(a1, m1);
 		emp.creer(a1, m2);
@@ -52,11 +52,16 @@ public class Main {
 		
 		//System.out.println(as.listEmpruntParAdherent(a2));
 		System.out.println(ms.listEmprunteur(m2));
-		for(Adherent adhAff : as.find("Laurent SION 7")){
+		for(Adherent adhAff : as.find("Baltic El FILALI")){
 			System.out.println(adhAff.getPrenom()+" "+adhAff.getNom());
 			
 		}
-		for(Media meAff : ms.find("Laurent Livre 3")){
+		for(Media meAff : ms.find("Laurent Livre 1")){
+			System.out.println(meAff.getAuteur()+" "+meAff.getTitre());
+			
+		}
+		Type i[] = {Type.CD, Type.LIVRE} ;
+		for(Media meAff : ms.findMediaType("Husref Laurent EL",i)){
 			System.out.println(meAff.getAuteur()+" "+meAff.getTitre());
 			
 		}

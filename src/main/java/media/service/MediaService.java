@@ -7,6 +7,7 @@ import adherent.dao.AdherentDAO;
 import adherent.model.Adherent;
 import media.dao.MediaDAO;
 import media.model.Media;
+import media.model.Type;
 
 public class MediaService {
 
@@ -60,6 +61,33 @@ public class MediaService {
 	
 	public boolean egalites(Media m1, Media m2){
 		return m1.getAuteur().equals(m2.getAuteur()) && m1.getTitre().equals(m2.getTitre()) && m1.getType().equals(m2.getType());
+	}
+	
+	public List<Media> findMediaType(String chaine, Type[] tab){
+		if(tab.length == 0 || tab.length == 3)
+			return find(chaine);
+		MediaDAO mdao = MediaDAO.instance();
+		List<Media> listA = new ArrayList<Media>();
+		List<Media> listTmp = new ArrayList<Media>();
+		boolean test = false;
+		String[] chaineSplit = chaine.split(" ");
+		for(String s : chaineSplit){
+			listTmp = new ArrayList<Media>();
+			listTmp.addAll(mdao.findMediaType(s,tab));
+			for(Media a1 : listTmp){
+				test = false;
+				for(Media a2 : listA){
+					if(egalites(a1, a2)){
+						test=true;
+						break;
+					}
+				}
+				if(!test) listA.add(a1);
+			}
+		}
+		return listA;
+			
+			
 	}
 	
 	public List<Media> listeMediaDVD(){

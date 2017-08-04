@@ -1,37 +1,30 @@
-<script>
-    
-</script>
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
             <div class="input-group">
                 <div class="input-group-btn search-panel">
-                    <select class="selectpicker show-tick" id="sel" onchange="getval(this)" data-width="fit" data-style="btn-primary btn-lg">
-                                <option value="medias">Médias</option>
-                                <option value="adherents">Adhérents</option>
-                            </select>
+                    <select class="selectpicker show-tick" id="sel" ng-model="selectedOptions">
+                    <option value="m" >Médias</option>
+                    <option value="a">Adhérents</option>
+                </select>
                 </div>
 
-                <input type="text" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
+                <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
 
                 <span class="input-group-btn d-inline">
-							<button class="btn btn-default btn-lg" type="button" onclick="search()">
+							<button class="btn btn-default btn-lg" type="button" ng-click="search()">
 								<span class="glyphicon glyphicon-search"></span>
                 </button>
                 </span>
-            </div>  
+            </div>
         </div>
     </div>
 
-    <div class="col-xs-offset-3 col-xs-12" id="checkMedia">
+    <div class="col-xs-offset-3 col-xs-12" ng-if="show(media)">
         <div class="col-xs-2">
             <div class="checkbox">
                 <label>
-	                        <input type="checkbox" value="">
+	                        <input type="checkbox" ng-model="livre" >
 	                        <span class="cr"></span>
 	                        Livre
 	                    </label>
@@ -41,7 +34,7 @@
         <div class="col-xs-2">
             <div class="checkbox">
                 <label>
-	                        <input type="checkbox" value="">
+	                        <input type="checkbox" ng-model="cd">
 	                        <span class="cr"></span>
 	                        CD
 	                    </label>
@@ -51,7 +44,7 @@
         <div class="col-xs-2">
             <div class="checkbox">
                 <label>
-	                        <input type="checkbox" value="">
+	                        <input type="checkbox" ng-model="dvd">
 	                        <span class="cr"></span>
 	                        DVD
 	                    </label>
@@ -59,11 +52,11 @@
         </div>
     </div>
 
-    <div class="col-xs-offset-3 col-xs-12" id="radioAdhe">
+    <div class="col-xs-offset-3 col-xs-12" ng-if="show(adh)">
         <div class="col-xs-3">
             <div class="radio">
                 <label>
-	                        <input type="radio" name="o3" value="" checked>
+	                        <input type="radio" ng-model="nom">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par nom
 	                    </label>
@@ -73,27 +66,27 @@
         <div class="col-xs-3">
             <div class="radio">
                 <label>
-	                        <input type="radio" name="o3" value="">
+	                        <input type="radio" ng-model="identifiant">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par identifiant
 	                    </label>
             </div>
         </div>
     </div>
-    <a href="creationAdherent.html" class="btn btn-md btn-primary">
+    <button ng-click="changePage(pageU)" class="btn btn-md btn-primary">
 	            <span class="glyphicon glyphicon-plus"></span>
 	            <span class="glyphicon glyphicon-user"></span>
-	        </a>
+	        </button>
 
 
-    <a href="creationMedia.html" class="btn btn-md btn-primary">
+    <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
 	            <span class="glyphicon glyphicon-plus"></span>
 	            <span class="glyphicon glyphicon-file"></span>
-	        </a>
+	        </button>
 </div><br><br>
 
 
-<div class="col-xs-offset-1 col-xs-10" id="tabMedia">
+<div class="col-xs-offset-1 col-xs-10" ng-if="show(media)">
     <table class="table table-hover">
         <thead class="theadSearch">
             <tr>
@@ -104,8 +97,8 @@
                 <th class="text-center">Retour prévu</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="rowTab">
+        <tbody class="tbodyTab">
+            <tr ng-click="showTr()">
                 <td><span class="glyphicon glyphicon-book"></span></td>
                 <td>Harry Potter et l'ordre du phoenix</td>
                 <td>J. K. Rowling</td>
@@ -172,7 +165,7 @@
                 </td>
             </tr>
 
-            <tr class="rowTab">
+            <tr>
                 <td><span class="glyphicon glyphicon-film"></span></td>
                 <td>Fast & Furious 7</td>
                 <td>Un grand homme</td>
@@ -182,7 +175,7 @@
                 </td>
                 <td class="text-center">10/12/2017</td>
             </tr>
-            <tr class="rowTab">
+            <tr>
                 <td><span class="glyphicon glyphicon-music"></span></td>
                 <td>Mr. Tambourin Man</td>
                 <td>Bob Dylan</td>
@@ -192,7 +185,7 @@
                 </td>
                 <td class="text-center">01/02/2018</td>
             </tr>
-            <tr class="rowTab">
+            <tr>
                 <td><span class="glyphicon glyphicon-book"></span></td>
                 <td>50 nuances de gris</td>
                 <td>Hedy</td>
@@ -202,7 +195,7 @@
                 </td>
                 <td class="text-center">01/11/2017</td>
             </tr>
-            <tr class="rowTab">
+            <tr>
                 <td><span class="glyphicon glyphicon-music"></span></td>
                 <td>The Wall</td>
                 <td>Pink Floyd</td>
@@ -218,7 +211,7 @@
 
 
 
-<div class="col-xs-offset-1 col-xs-10" id="tabAdherent">
+<div class="col-xs-offset-1 col-xs-10" ng-if="show(adh)">
     <table class="table table-hover text-center">
         <thead class="theadSearch">
             <tr>
@@ -229,8 +222,8 @@
                 <th class="text-center">Nombre médias</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="rowTab">
+        <tbody class="tbodyTab">
+            <tr>
                 <td class="text-left">
                     <span class="glyphicon glyphicon-user"></span>
                     <strong>&nbsp;&nbsp;austinB45</strong>

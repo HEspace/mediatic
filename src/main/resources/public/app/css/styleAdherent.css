@@ -10,7 +10,6 @@
 
 
 
-
 #contact{
     
     font-family: 'Teko', sans-serif;
@@ -63,13 +62,12 @@ textarea.form-control {
   float: right;
   width: 150px;
   background-color: transparent;
-  color: #fff;
+  color: black;
 
 }
 
 form input.ng-invalid.ng-touched
 {
-  
    border-style:solid;
    border-color: red;
 }
@@ -78,9 +76,6 @@ form input.ng-invalid.ng-touched
 
 
 /*////////////////////////////////////  Media /////////////////////////////////////////*/
-#contactMedia{
-
-}
 
 .form-group-media{
   margin-top: 10px;
@@ -96,8 +91,5 @@ form input.ng-invalid.ng-touched
 
 }
 
-.contact-section-media .col-xs-6{
- 
-  
-}
+
 

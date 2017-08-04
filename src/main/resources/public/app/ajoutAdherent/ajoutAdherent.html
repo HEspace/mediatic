@@ -1,50 +1,76 @@
-		<section id="contact">
+<!doctype html>
+<html ng-app="mediatic">	
+	
+
+
+
+<section id="contact">
 			<div class="section-content">
 				<h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s" data-wow-duration="2s">Création d'un nouvel Adhérent</span></h1>
 				
 			</div>
 			
 			<div class="contact-section">
-			<div class="container">
-				<form action="http://192.168.1.87:8082/recherche.html">
+			<div class="container"><pre>{{ajoutAherentForm | json}}</pre>
+				<form name="ajoutAherentForm" ng-submit="submit()" >
 					<div class="col-md-6">
+
+						   <ul class="text-primary">
+            					<ng-messages for="ajoutAherentForm.nom.$error">
+              						<ng-message when="required">
+               				 <li>Le Nom est requis</li>
+               				 </ng-message>
+						   </ul>
+
 			  			<div class="form-group">
 			  				<label for="nom">Nom *</label>
-					    	<input type="text" required="required" class="form-control" id="nom" placeholder="Nom">
-				  		</div>
+					    	<input type="text" name = "nom"  class="form-control" id="nom" placeholder="Nom" ng-minlength="3" ng-model="nom" required>
+						</div>
+
 				  		<div class="form-group">
 			  				<label for="Prenom">Prenom *</label>
-					    	<input type="text" required="required" class="form-control" id="prenom" placeholder="Prénom">
-				  		</div>
+					    	<input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom" ng-minlength="3" ng-model="prenom" required>
+						</div>
+								  
 				  		<div class="form-group">
 					    	<label for="dateDeNaissance">Date de Naissance *</label>
-					    	<input type="date" required="required" class="form-control" id="dateNaissance" placeholder=" Date de Naissance">
-					  	</div>	
-					  		<div class="form-group">
+					    	<input type="date" name="dateNaissance" class="form-control" id="dateNaissance" placeholder=" Date de Naissance" ng-model="dateNaissance" required>
+						</div>	
+							  
+					  	<div class="form-group">
 					    	<label for="age">Age</label>
-					    	<input disabled="disabled" type="number" class="form-control" id="age" placeholder="Age">
-					  	</div>	
+					    	<input type="number" name="age" class="form-control" id="age" placeholder="Age" ng-model="age"  disabled="disabled" required>
+						</div>	
+							  
 				  		<div class="form-group">
 					    	<label for="exampleInputEmail">Email</label>
-					    	<input type="email" class="form-control" id="exampleInputEmail" placeholder="Email ">
+					    	<input type="email" name="email" class="form-control" id="email" placeholder="Email " ng-model="email" required>
 					  	</div>	
 					  	
-					  <div class="form-group">
+					  	<div class="form-group">
 					    	<label for="datePaiement">Date de paiement de la cotisation</label>
-					    	<input type="date" class="form-control" id="dateCotisation" placeholder=" Date de paiement de la cotisation">
+					    	<input type="date" name="age" class="form-control" id="dateCotisation" placeholder=" Date de paiement de la cotisation" ng-model="dateCotisation" required>
 					  	</div>	
-			  		</div>
-			  		<div class="col-md-6 ">
+						  </div>
+								  
+						  	</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+			  			<div class="col-md-6">
 			  		
 					  	
 			  			<div class="form-group">
 					    	<label for="montantCostisation">Montant de la cotisation</label>
-					    	<input type="number" class="form-control" id="montantCotisation" placeholder=" Montant de la cotisation">
+					    	<input type="number" name="montantCotisation" class="form-control" id="montantCotisation" placeholder=" Montant de la cotisation" ng-model="montantCotisation" required>
 					  	</div>	
 					  	
 					  	 <div class="form-group">
 					    	<label for="dateFinAbonnement">Date de fin d'abonnment</label>
-					    	<input disabled="disabled" type="date" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation">
+					    	<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation" ng-model="dateFinCotisation" required disabled="disabled">
 					  	</div>	
 			  			
 			  			<div class="form-group">
@@ -53,11 +79,9 @@
 					
 								<div class="form-group">
 		
-										<label for="rue"></label> <input type="text"
-										class="form-control" id="rue" placeholder="Rue"> <label for="codePostale">
-										</label> <input type="text" class="form-control" id="codePostale" placeholder="Code Postale">
-										<label for="ville"></label> <input type="text"
-										class="form-control" id="ville" placeholder="Ville">
+										<label for="rue"></label> <input type="text" name="rue"class="form-control" id="rue" placeholder="Rue" ng-model="rue" required> 
+										<label for="codePostale"></label> <input type="text" name="codePostale" class="form-control" id="codePostale" placeholder="Code Postale" ng-model="codePostale" required>
+										<label for="ville"></label> <input type="text" name="ville" class="form-control" id="ville" placeholder="Ville" ng-model="ville" required>
 								</div>
 					
 							</fieldset>
@@ -69,11 +93,20 @@
 
 			  			<!--  	<button type="button" class="btn btn-default submit"><i class="fa fa-user-circle" aria-hidden="true"></i> Création</button> -->
 			  			
-			  			 <input class="btn btn-default submit" type="submit" value="Enregistrer">
+			  			 <input class="btn btn-primary dropdown-toggle" type="submit" value="Enregistrer" ng-disabled="ajoutAherentForm.$invalid">
 			  			
 					</div>
 				</form>
 			</div>
 			</div>
 		</section>
+		
+	
 	</div>
+
+
+
+
+
+
+	

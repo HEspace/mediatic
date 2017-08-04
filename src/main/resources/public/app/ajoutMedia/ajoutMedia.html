@@ -6,27 +6,28 @@
 			
 			<div class="contact-section-media">
 			<div class="container">
-				<form action="http://192.168.1.87:8082/recherche.html">
+				<form action="http://192.168.1.87:8082/recherche.html" ng-submit="submit()" name="form">
 					<div class="col-lg-6 col-lg-offset-3 col-xl-6 col-xl-offset-3 col-xs-6 col-xs-offset-3">
 			  			<div class="form-group-media">
 			  				<label for="nom">Titre *</label>
-					    	<input type="text" required="required" class="form-control" id="nom" placeholder="Titre">
+					    	<input type="text" required class="form-control" name="titre" id="nom" placeholder="Titre" ng-model ="titre" ng-minlength="2">
 				  		</div>	
 				  			  	
 				  	
 		
 				  		<div class="form-group-media">
 					    	<label for="dateDeNaissance">Auteur *</label>
-					    	<input type="text" required="required" class="form-control" id="dateNaissance" placeholder="Auteur">
+					    	<input type="text" required class="form-control" name="auteur" ng-model ="auteur" id="auteur" placeholder="Auteur">
 					  	</div>	
 					  	
 					  	
 					  		<div class="form-group-media">
 					  			<label for="menu_destination_liste">Type *</label> 
-									<select required="required" name="menu_destination" id="menu_destination_liste" class="text-muted"> 
-						    		 <option value="http://www.monsite.net/accueil.html">Livre</option> 
-						    		 <option value="http://www.monsite.net/apropos.html">CD</option> 
-						    		 <option value="http://www.monsite.net/contact.html">DVD</option> 
+									<select ng-model="selectType" required name="menu_destination" id="menu_destination_liste" class="text-muted"> 
+										<option></option>
+										<option value="livre">Livre</option> 
+										<option value="cd">CD</option> 
+										<option value="dvd">DVD</option>
 									</select>
 							</div>
 					  	
@@ -37,7 +38,7 @@
 			  				 
 			  				 
 
-			  				
+			  				<br /><br /><br /><br /><br /><br /><br /><br />
 			  			
 			  			
 			  			

@@ -1,7 +1,7 @@
 'use strict';
 
-describe('myApp.version module', function() {
-  beforeEach(module('myApp.version'));
+describe('mediatic.version module', function() {
+  beforeEach(module('mediatic.version'));
 
   describe('version service', function() {
     it('should return current version', inject(function(version) {

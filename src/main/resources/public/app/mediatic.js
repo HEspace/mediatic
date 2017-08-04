@@ -5,32 +5,32 @@ angular.module('mediatic', [
   'ngRoute',
   'mediatic.recherche',
   'mediatic.accueil',
-  'mediatic.ajoutMedia',
-  'mediatic.ajoutAdherent',
+  //'mediatic.ajoutMedia',
+  //'mediatic.ajoutAdherent',
   'mediatic.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/accueil'});
   
   $routeProvider.when('/accueil', {
 	    templateUrl: 'accueil/accueil.html',
-	    controller: 'accueilCtrl'
+	    controller: 'AccueilCtrl'
 	  });
   
   $routeProvider.when('/recherche', {
 	    templateUrl: 'recherche/recherche.html',
-	    controller: 'rechercheCtrl'
+	    controller: 'RechercheCtrl'
 	  });
   
   $routeProvider.when('/ajoutMedia', {
 	    templateUrl: 'ajoutMedia/ajoutMedia.html',
-	    controller: 'ajoutMediaCtrl'
+	    controller: 'AjoutMediaCtrl'
 	  });
   
   $routeProvider.when('/ajoutAdherent', {
 	    templateUrl: 'ajoutAdherent/ajoutAdherent.html',
-	    controller: 'ajoutAdherentCtrl'
+	    controller: 'AjoutAdherentCtrl'
 	  });
 }]);

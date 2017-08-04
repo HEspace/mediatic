@@ -67,9 +67,11 @@ textarea.form-control {
 
 }
 
-form input.ng-valid
+form input.ng-invalid.ng-touched
 {
-  background-color : CornflowerBlue ;
+  
+   border-style:solid;
+   border-color: red;
 }
 
 

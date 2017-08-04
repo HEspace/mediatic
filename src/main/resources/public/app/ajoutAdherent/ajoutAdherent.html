@@ -11,7 +11,7 @@
 			</div>
 			
 			<div class="contact-section">
-			<div class="container"><pre>{{ajoutAherentForm | json}}</pre>
+			<div class="container"><!-- <pre>{{ajoutAherentForm | json}}</pre> -->
 				<form name="ajoutAherentForm" ng-submit="submit()" >
 					<div class="col-md-6">
 
@@ -39,7 +39,7 @@
 							  
 					  	<div class="form-group">
 					    	<label for="age">Age</label>
-					    	<input type="number" name="age" class="form-control" id="age" placeholder="Age" ng-model="age"  disabled="disabled" required>
+					    	<input type="number" name="age" class="form-control" id="age" placeholder="Age" ng-model="age"  disabled="disabled" >
 						</div>	
 							  
 				  		<div class="form-group">
@@ -70,7 +70,7 @@
 					  	
 					  	 <div class="form-group">
 					    	<label for="dateFinAbonnement">Date de fin d'abonnment</label>
-					    	<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation" ng-model="dateFinCotisation" required disabled="disabled">
+					    	<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation" ng-model="dateFinCotisation" disabled="disabled">
 					  	</div>	
 			  			
 			  			<div class="form-group">
@@ -93,7 +93,7 @@
 
 			  			<!--  	<button type="button" class="btn btn-default submit"><i class="fa fa-user-circle" aria-hidden="true"></i> Création</button> -->
 			  			
-			  			 <input class="btn btn-primary dropdown-toggle" type="submit" value="Enregistrer" ng-disabled="ajoutAherentForm.$invalid">
+			  			 <input class="text-right dropdown-toggle" type="submit" value="Enregistrer" ng-disabled="ajoutAherentForm.$invalid">
 			  			
 					</div>
 				</form>

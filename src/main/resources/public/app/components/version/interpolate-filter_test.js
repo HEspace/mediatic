@@ -1,7 +1,7 @@
 'use strict';
 
-describe('myApp.version module', function() {
-  beforeEach(module('myApp.version'));
+describe('mediatic.version module', function() {
+  beforeEach(module('mediatic.version'));
 
   describe('interpolate filter', function() {
     beforeEach(module(function($provide) {

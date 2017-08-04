@@ -34,78 +34,77 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	    controller: 'AjoutAdherentCtrl'
 	  });
 }])
-.controller('MediaticCtrl', [function(){
-  /**
- * 
+.controller('MediaticCtrl', ['$scope', function($scope){
+
+	/* 
+	  
+
+	function foo(x){
+		function bar(x){
+			console.log("J :",i)
+		}
+		var i = 2;
+		bar(5);
+	}
+
+	console.log(foo(3));
+	//import code
+	
  */
 
-
-function openNav() {
-    document.getElementById("idsidenav").style.width = "250px";
-    document.getElementById("boutonside").style.marginLeft = "250px";
-    $('#boutonside').css('display','none');
-    setTimeout(function(){
-    	$('#divlogin').slideDown();
-    	$('#sideMenu').slideDown();
-    }, 400)
-}
-
-function closeNav() {
-    $('#divlogin').slideUp();
-    $('#sideMenu').slideUp();
-    setTimeout(function(){
-    	document.getElementById("idsidenav").style.width = "0";
-    	document.getElementById("boutonside").style.marginLeft= "0";
-    	$('#boutonside').css('display','block');
-    }, 400)
-}
-
-function inverserCollectionMenu(){
-	if ($("#menuCollection").is(":visible")){
-		$('#menuCollection').slideUp();
-		
-	}
-	else
-		$('#menuCollection').slideDown();
-}
-
-$(document).ready(function() {
 	$('#menuCollection').hide();
 	$('#divlogin').slideUp();
-    $('#sideMenu').slideUp();
-});
+	$('#sideMenu').slideUp();
 
-window.onresize = function() {
-}
-
-window.addEventListener('resize', function(event){
-	if (window.innerWidth > 768)
-		//console.log(window.innerWidth);
-		$('#boutonside').css('display','none');
-	else
-		$('#boutonside').css('display','block');
-});
-	  
-$(document).ready(function(){
 	if (window.innerWidth > 768)
 		$('#boutonside').css('display','none');
 	else
 		$('#boutonside').css('display','block');
-});
 
-function foo(x){
-	function bar(x){
-		console.log("J :",i)
+	$scope.toggleWrap = function(){
+		$('.wrap').slideToggle(400);
 	}
-	var i = 2;
-	bar(5);
-}
 
-console.log(foo(3));
-/**
- * Import du code
- */
-$(document).ready(function(){
+	$scope.openNav = function() {
+		console.log("test");
+		document.getElementById("idsidenav").style.width = "250px";
+		document.getElementById("boutonside").style.marginLeft = "250px";
+		$('#boutonside').css('display','none');
+		setTimeout(function(){
+			$('#divlogin').slideDown();
+			$('#sideMenu').slideDown();
+		}, 400)
+	}
+
+	$scope.closeNav = function() {
+		$('#divlogin').slideUp();
+		$('#sideMenu').slideUp();
+		setTimeout(function(){
+			document.getElementById("idsidenav").style.width = "0";
+			document.getElementById("boutonside").style.marginLeft= "0";
+			$('#boutonside').css('display','block');
+		}, 400)
+	}
+
+
+
+	$scope.inverserCollectionMenu = function(){
+		if ($("#menuCollection").is(":visible")){
+			$('#menuCollection').slideUp();
+			
+		}
+		else
+			$('#menuCollection').slideDown();
+	}
+
+
+	window.addEventListener('resize', function(event){
+		if (window.innerWidth > 768)
+			$('#boutonside').css('display','none');
+		else
+			$('#boutonside').css('display','block');
+	});
+
 	var myNavBar = {
 	    flagAdd: true,
 	    elements: [],
@@ -150,11 +149,4 @@ $(document).ready(function(){
 	    offSetManager();
 	}
 	offSetManager();
-});
-
-$(document).ready(function() {
-	  $('#boutonlogin').click(function() {
-	    $('.wrap').slideToggle(400);
-	  });
-	});
 }]);

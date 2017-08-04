@@ -1,0 +1,343 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <select class="selectpicker show-tick" id="sel" onchange="getval(this);" data-width="fit" data-style="btn-primary btn-lg">
+                                <option value="medias">Médias</option>
+                                <option value="adherents">Adhérents</option>
+                            </select>
+                </div>
+
+                <input type="text" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
+
+                <span class="input-group-btn d-inline">
+							<button class="btn btn-default btn-lg" type="button" onclick="search()">
+								<span class="glyphicon glyphicon-search"></span>
+                </button>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-offset-3 col-xs-12" id="checkMedia">
+        <div class="col-xs-2">
+            <div class="checkbox">
+                <label>
+	                        <input type="checkbox" value="">
+	                        <span class="cr"></span>
+	                        Livre
+	                    </label>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="checkbox">
+                <label>
+	                        <input type="checkbox" value="">
+	                        <span class="cr"></span>
+	                        CD
+	                    </label>
+            </div>
+        </div>
+
+        <div class="col-xs-2">
+            <div class="checkbox">
+                <label>
+	                        <input type="checkbox" value="">
+	                        <span class="cr"></span>
+	                        DVD
+	                    </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-offset-3 col-xs-12" id="radioAdhe">
+        <div class="col-xs-3">
+            <div class="radio">
+                <label>
+	                        <input type="radio" name="o3" value="" checked>
+	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+	                        Par nom
+	                    </label>
+            </div>
+        </div>
+
+        <div class="col-xs-3">
+            <div class="radio">
+                <label>
+	                        <input type="radio" name="o3" value="">
+	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+	                        Par identifiant
+	                    </label>
+            </div>
+        </div>
+    </div>
+    <a href="creationAdherent.html" class="btn btn-md btn-primary">
+	            <span class="glyphicon glyphicon-plus"></span>
+	            <span class="glyphicon glyphicon-user"></span>
+	        </a>
+
+
+    <a href="creationMedia.html" class="btn btn-md btn-primary">
+	            <span class="glyphicon glyphicon-plus"></span>
+	            <span class="glyphicon glyphicon-file"></span>
+	        </a>
+</div><br><br>
+
+
+<div class="col-xs-offset-1 col-xs-10" id="tabMedia">
+    <table class="table table-hover">
+        <thead class="theadSearch">
+            <tr>
+                <th>Type</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th class="text-center">Emprunté par</th>
+                <th class="text-center">Retour prévu</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="rowTab">
+                <td><span class="glyphicon glyphicon-book"></span></td>
+                <td>Harry Potter et l'ordre du phoenix</td>
+                <td>J. K. Rowling</td>
+                <td class="text-center">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;austinB45</strong>
+                </td>
+                <td class="text-center">23/06/2017</td>
+            </tr>
+
+            <tr class="trHiddenMedia" style="background-color: whitesmoke">
+                <td colspan="5">
+                    <div class="divHiddenMedia">
+                        <div class="row">
+                            <div class="col-md-offset-1 col-md-3 ">
+                                <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
+                                    height="450" width="300">
+                            </div>
+                            <div class="col-md-5 col-xs-12">
+                                <h2 class="text-primary">Harry Potter et l'ordre du phoenix</h2><br>
+                                <p><strong>J. K. Rowling</strong></p>
+                                <p><span class="glyphicon glyphicon-book"></span> Livre</p>
+                                <a href="#" class="btn btn-md btn-primary">
+	                                        Modifier Fiche
+	                                    </a>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
+	                                        Ajout Emprunt
+	                                    </button><br>
+                                <div id="empruntMedia" class="collapse">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-xs-6">
+                                            <label id="labelUserSelect">Adhérent : </label>
+                                            <select class="selectpicker" data-width="fit">
+	                                                    <option>Bastien Austin</option>
+	                                                    <option>Haudi Julien</option>
+	                                                    <option>Sion Laurent</option>
+	                                                    <option>El-Filali Hedy</option>
+	                                                    <option>Baltic Husref</option>
+	                                                </select>
+                                        </div>
+
+                                        <div class="col-xs-5">
+                                            <label>Date de l'emprunt : </label>
+                                            <input type='date' class="form-control" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-md-3 col-xs-">
+                                <label>Déjà emprunté par : </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item active">Bastien Austin<span class="badge">12</span></li>
+                                    <li class="list-group-item">Haudi Julien<span class="badge">10</span></li>
+                                    <li class="list-group-item">Sion Laurent<span class="badge">9</span></li>
+                                    <li class="list-group-item">El-Filali Hedy<span class="badge">6</span></li>
+                                    <li class="list-group-item">Baltic Husref<span class="badge">1</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr class="rowTab">
+                <td><span class="glyphicon glyphicon-film"></span></td>
+                <td>Fast & Furious 7</td>
+                <td>Un grand homme</td>
+                <td class="text-center">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;julienH12</strong>
+                </td>
+                <td class="text-center">10/12/2017</td>
+            </tr>
+            <tr class="rowTab">
+                <td><span class="glyphicon glyphicon-music"></span></td>
+                <td>Mr. Tambourin Man</td>
+                <td>Bob Dylan</td>
+                <td class="text-center">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;julienH12</strong>
+                </td>
+                <td class="text-center">01/02/2018</td>
+            </tr>
+            <tr class="rowTab">
+                <td><span class="glyphicon glyphicon-book"></span></td>
+                <td>50 nuances de gris</td>
+                <td>Hedy</td>
+                <td class="text-center">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;hedyE</strong>
+                </td>
+                <td class="text-center">01/11/2017</td>
+            </tr>
+            <tr class="rowTab">
+                <td><span class="glyphicon glyphicon-music"></span></td>
+                <td>The Wall</td>
+                <td>Pink Floyd</td>
+                <td class="text-center">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;laurentS79</strong>
+                </td>
+                <td class="text-center">07/10/2017</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<div class="col-xs-offset-1 col-xs-10" id="tabAdherent">
+    <table class="table table-hover text-center">
+        <thead class="theadSearch">
+            <tr>
+                <th>Identifiant</th>
+                <th class="text-center">Nom Prénom</th>
+                <th class="text-center">Date de naissance</th>
+                <th class="text-center">A jour de cotisation ?</th>
+                <th class="text-center">Nombre médias</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="rowTab">
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;austinB45</strong>
+                </td>
+                <td>Bastien Austin</td>
+                <td>15/11/1987</td>
+                <td>Oui</td>
+                <td>13 médias</td>
+            </tr>
+
+            <tr class="trHiddenUser" style="background-color: whitesmoke">
+                <td colspan="5">
+                    <div class="divHiddenUser">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-5">
+                                <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span> Austin Bastien</h3><br>
+                                <label><strong>Date de naissance : </strong></label>
+                                <p>15/11/1987</p>
+                                <label><strong>Email : </strong></label>
+                                <p>austin.bastien@gmail.com</p>
+                                <label><strong>Adresse : </strong></label>
+                                <p>2400 avenue des moulins, 34080 Montpellier</p>
+                                <label><strong>Date de paiement de la cotisation : </strong></label>
+                                <p>10/05/2017</p>
+                                <label><strong>Montant de la cotisation : </strong></label>
+                                <p>50 &euro;</p>
+
+                                <a href="creationAdherent.html" class="btn btn-md btn-primary">
+		                                    Modifier Fiche
+		                                </a>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
+		                                    Ajout Emprunt
+		                                </button><br>
+                                <div id="empruntUser" class="collapse">
+                                    <div class="row">
+                                        <br>
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-6 col-xs-offset-0 col-xs-12">
+                                                <label class="col-lg-offset-0 col-md-offset-1">Titre du média : </label>
+                                                <select class="selectpicker" data-width="fit">
+		                                                <option data-icon="glyphicon-book">  Harry Potter et l'ordre du phoenix</option>
+		                                                <option data-icon="glyphicon-film">  Fast & Furious 7</option>
+		                                                <option data-icon="glyphicon-music">  Mr. Tambourin Man</option>
+		                                                <option data-icon="glyphicon-book">  50 nuances de gris</option>
+		                                                <option data-icon="glyphicon-music">  The Wall</option>
+		                                            </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-offset-4 col-lg-4 col-md-6 col-xs-offset-3 col-xs-6">
+                                            <label>Date de l'emprunt  : </label>
+                                            <input type='date' class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-md-3 col-xs-12 text-left">
+                                <label>Média(s) emprunté(s) : </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-book"></span> Harry Potter et l'ordre du phoenix</li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-film"></span> Fast & Furious 7</li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-music"></span> Mr. Tambourin Man</li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-book"></span> 50 nuances de gris</li>
+                                    <li class="list-group-item"><span class="glyphicon glyphicon-music"></span> The Wall</li>
+                                </ul>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;julienH12</strong>
+                </td>
+                <td>Haudi Julien</td>
+                <td>01/10/1980</td>
+                <td>Non</td>
+                <td>9 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;hedyE</strong>
+                </td>
+                <td>El-Filali Hedy</td>
+                <td>11/05/1979</td>
+                <td>Oui</td>
+                <td>1 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;laurentS79</strong>
+                </td>
+                <td>Sion Laurent</td>
+                <td>15/02/1995</td>
+                <td>Non</td>
+                <td>0 médias</td>
+            </tr>
+            <tr>
+                <td class="text-left">
+                    <span class="glyphicon glyphicon-user"></span>
+                    <strong>&nbsp;&nbsp;husrefB69</strong>
+                </td>
+                <td>Baltic Husref</td>
+                <td>11/05/1991</td>
+                <td>Non</td>
+                <td>5 médias</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

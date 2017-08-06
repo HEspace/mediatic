@@ -34,18 +34,17 @@
 
 					<div class="form-group">
 						<label for="age">Age</label>
-						<input type="number" name="age" class="form-control" id="age" placeholder="Age" ng-model="age" disabled="disabled">
+						<input type="number" name="age" class="form-control" id="age" placeholder="Age" ng-model="age" disabled="disabled" required>
 					</div>
 
 					<div class="form-group">
 						<label for="exampleInputEmail">Email</label>
-						<input type="email" name="email" class="form-control" id="email" placeholder="Email " ng-model="email" required>
+						<input type="email" name="email" class="form-control" id="email" placeholder="Email " ng-model="email">
 					</div>
 
 					<div class="form-group">
 						<label for="datePaiement">Date de paiement de la cotisation</label>
-						<input type="date" name="age" class="form-control" id="dateCotisation" placeholder=" Date de paiement de la cotisation" ng-model="dateCotisation"
-						 required>
+						<input type="date" name="age" class="form-control" id="dateCotisation" placeholder=" Date de paiement de la cotisation" ng-model="dateCotisation">
 					</div>
 				</div>
 
@@ -54,13 +53,12 @@
 					<div class="form-group">
 						<label for="montantCostisation">Montant de la cotisation</label>
 						<input type="number" name="montantCotisation" class="form-control" id="montantCotisation" placeholder=" Montant de la cotisation"
-						 ng-model="montantCotisation" required>
+						 ng-model="montantCotisation">
 					</div>
 
 					<div class="form-group">
 						<label for="dateFinAbonnement">Date de fin d'abonnment</label>
-						<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" placeholder=" Date de paiement de la cotisation"
-						 ng-model="dateFinCotisation" disabled="disabled">
+						<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" ng-model="dateFinCotisation" disabled="disabled" required>
 					</div>
 
 					<div class="form-group">
@@ -69,12 +67,10 @@
 
 							<div class="form-group">
 
-								<label for="rue"></label> <input type="text" name="rue" class="form-control" id="rue" placeholder="Rue" ng-model="rue"
-								 required>
+								<label for="rue"></label> <input type="text" name="rue" class="form-control" id="rue" placeholder="Rue" ng-model="rue">
 								<label for="codePostale"></label> <input type="text" name="codePostale" class="form-control" id="codePostale" placeholder="Code Postale"
-								 ng-model="codePostale" required>
-								<label for="ville"></label> <input type="text" name="ville" class="form-control" id="ville" placeholder="Ville" ng-model="ville"
-								 required>
+								 ng-model="codePostale">
+								<label for="ville"></label> <input type="text" name="ville" class="form-control" id="ville" placeholder="Ville" ng-model="ville">
 							</div>
 
 						</fieldset>
@@ -86,7 +82,7 @@
 
 					<!--  	<button type="button" class="btn btn-default submit"><i class="fa fa-user-circle" aria-hidden="true"></i> Création</button> -->
 
-					<input class="text-right dropdown-toggle" type="submit" value="Enregistrer" ng-disabled="ajoutAherentForm.$invalid">
+					 <p class="text-right"><input class="btn dropdown-toggle" type="submit" value="Enregistrer" ng-disabled="ajoutAherentForm.$invalid"></p>
 
 				</div>
 			</form>

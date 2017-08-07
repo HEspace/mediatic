@@ -27,7 +27,7 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         }
     
 	ctrl.envoi = function(){
-        console.log("test");
+        console.log("L'adhérent a bien été enregistré");
         var dateDeNaissanceJson = $filter('date')($scope.dateNaissance, 'dd/MM/yyyy');
         $scope.form.dateNaissance = dateDeNaissanceJson;
 
@@ -37,7 +37,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'dd/MM/yyyy');
         $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
         
-
         AdherentService.ajoutAdh($scope.form);
         $location.path('../accueil/recherche.html');
 	}
@@ -46,16 +45,14 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         $location.path('../accueil/accueil.html');
     }
 
-    /* $scope.dateNaissance = new Date("01/01/2000"); */
-    /* $scope.age = 0; */
-    
-    
+    $scope.dateNaissance = new Date("1990-01-01");
 
+    
 // Retourne l'age qui est envoyé dans le input Age
     $scope.$watch('dateNaissance',function(newValue, oldvalue){
       var date = new Date(newValue);
       $scope.form.age = calculate_age(date.getMonth(),date.getDay(),date.getFullYear());
-      console.log(date);
+      
     });
    
 
@@ -85,20 +82,7 @@ $scope.$watch('dateCotisation',function(newValue, oldvalue){
       var month = date.getMonth();
       var day = date.getDate();
       var datePlusUnAn = new Date(year + 1, month, day)
-     
-      /* var datePlusUnAnJson = $filter('date')(datePlusUnAn, 'dd/MM/yyyy'); */
-       console.log ("la bonne date :"+datePlusUnAn );
       $scope.dateFinCotisation = datePlusUnAn;
-      console.log("La date + 1 an est : "+parseInt(datePlusUnAn));
     });
 
-
-
-
-  
-/* 
-    var temps = (new Date()).getTime()-date.getTime();
-    console.log(typeof(temps), temps);
-    var temps2 = (temps/3600/24/365).toFixed(0);
-    console.log(typeof(temps2), temps2); */
 }]);

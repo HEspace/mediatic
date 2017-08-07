@@ -20,7 +20,6 @@ angular.module('mediatic.recherche')
                 // or server returns response with an error status.
             });
         }
-    
-        
+
 }]);
 

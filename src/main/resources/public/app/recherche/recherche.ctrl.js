@@ -2,7 +2,8 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function ($scope, $location, RechercheService, $rootScope, $filter) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function 
+    ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
         $scope.pageU = "user";
@@ -137,8 +138,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
 
             }
-            $('.container').css()
-         .addClass('noscroll');
+          /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */
 
         }
 
@@ -149,6 +149,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 
         }
+
 
         $("#tabAdherent").hide();
 

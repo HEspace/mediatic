@@ -5,6 +5,7 @@ angular.module('mediatic', [
   'ngRoute',
   'ngMessages',
   'ngResource',
+  'ui.grid',
   'ngStorage',
   'mediatic.recherche',
   'mediatic.accueil',

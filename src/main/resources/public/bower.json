@@ -16,7 +16,6 @@
     "angular-sanitize": "~1.5.0",
     "ngstorage": "^0.3.11",
     "bootstrap": "^3.3.7",
-    "bootstrap-select": "latest",
-    "angular-ui-grid":"latest"
+    "bootstrap-select": "latest"
   }
 }

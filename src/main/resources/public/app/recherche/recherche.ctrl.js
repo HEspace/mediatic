@@ -93,8 +93,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.getData().then(function (res) {
             $scope.donnees = res.data;
-
-
         })
 
         $scope.hideTr = function () {

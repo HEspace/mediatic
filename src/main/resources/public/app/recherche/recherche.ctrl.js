@@ -14,8 +14,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $('#sel').on('changed.bs.select', function () {
-            $(".divHiddenMedia").hide();
-            $(".divHiddenUser").hide();
+            $("#divHiddenMedia").hide();
+            $("#divHiddenUser").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
             if (options[index].text == "Médias") {
@@ -98,9 +98,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         $scope.hideTr = function () {
             if ($('#sel').selectpicker().val() == "m")
-                $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
+                $("#divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
             else
-                $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
+                $("#divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
         }
 
 
@@ -123,7 +123,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     
                 })
 
-                $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
+                $("#divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
             } else {
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
@@ -135,7 +135,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                 })
 
-                $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
+                $("#divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
 
             }
           /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */

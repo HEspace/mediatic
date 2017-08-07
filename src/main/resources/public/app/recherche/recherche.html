@@ -19,230 +19,241 @@
             </div>
         </div>
     </div>
-
-    <div class="col-xs-offset-3 col-xs-12" ng-if="show(m)">
-        <div class="col-xs-2">
-            <div class="checkbox">
-                <label>
+    <div class="row">
+        <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="livre" >
 	                        <span class="cr"></span>
 	                        Livre
 	                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="col-xs-2">
-            <div class="checkbox">
-                <label>
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="cd">
 	                        <span class="cr"></span>
 	                        CD
 	                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="col-xs-2">
-            <div class="checkbox">
-                <label>
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="dvd">
 	                        <span class="cr"></span>
 	                        DVD
 	                    </label>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="col-xs-offset-3 col-xs-12" ng-if="show(a)">
-        <div class="col-xs-3">
-            <div class="radio">
-                <label>
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-12" ng-if="show(a)">
+            <div class="col-xs-3">
+                <div class="radio">
+                    <label>
 	                        <input type="radio" ng-model="nom">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par nom
 	                    </label>
+                </div>
             </div>
-        </div>
 
-        <div class="col-xs-3">
-            <div class="radio">
-                <label>
+            <div class="col-xs-3">
+                <div class="radio">
+                    <label>
 	                        <input type="radio" ng-model="identifiant">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par identifiant
 	                    </label>
+                </div>
             </div>
         </div>
+
+
     </div>
-    <button ng-click="changePage(pageU)" class="btn btn-md btn-primary">
+
+    <div class="row">
+
+        <div class="col-xs-2 col-sm-1">
+            <button ng-click="changePage(pageU)" class="btn btn-md btn-primary">
 	            <span class="glyphicon glyphicon-plus"></span>
 	            <span class="glyphicon glyphicon-user"></span>
 	        </button>
 
-
-    <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
+        </div>
+        <div class="col-xs-2 col-sm-1">
+            <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
 	            <span class="glyphicon glyphicon-plus"></span>
 	            <span class="glyphicon glyphicon-file"></span>
 	        </button>
-</div><br><br>
-
-<div class="col-xs-offset-1 col-xs-10" ng-if="show(m)">
-    <table class="table table-hover" id="tab">
-        <thead class="theadSearch">
-            <tr>
-                <th>Type</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th class="text-center">Emprunté par</th>
-                <th class="text-center">Retour prévu</th>
-            </tr>
-        </thead>
-        <tbody class="tbodyTab">
-            <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees.media">
-                <td><span class="glyphicon glyphicon-{{d.type}} "></span></td>
-                <td>{{d.titre}}</td>
-                <td>{{d.auteur}}</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;</strong>
-                </td>
-                <td class="text-center">23/06/2017</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-
-<div class="col-xs-offset-1 col-xs-10" ng-if="show(a)">
-    <table class="table table-hover text-center">
-        <thead class="theadSearch">
-            <tr>
-                <th>Identifiant</th>
-                <th class="text-center">Nom Prénom</th>
-                <th class="text-center">Date de naissance</th>
-                <th class="text-center">A jour de cotisation ?</th>
-                <th class="text-center">Nombre médias</th>
-            </tr>
-        </thead>
-        <tbody class="tbodyTab">
-            <tr ng-click="showTr(d.id)" ng-repeat="d in donnees.adherent">
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-user"></span>
-                </td>
-                <td>{{d.nom}} {{d.prenom}}</td>
-                <td>{{d.dateNaissance}}</td>
-                <td>Oui</td>
-                <td>13 médias</td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-
-<div class="divHiddenMedia">
-    <div class="col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
-        <button ng-click="hideTr()" class="btn btn-danger">X</button>
-    </div>
-    <div class="container">
-        <div class="col-md-offset-1 col-md-3 ">
-            <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
-                height="450" width="300">
         </div>
-        <div class="col-md-5 col-xs-12">
-            <h2 class="text-primary">{{media.titre}}</h2><br>
-            <p><strong>{{media.auteur}}</strong></p>
-            <p><span class="glyphicon glyphicon-{{media.type}}"></span> Livre</p>
-            <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
+
+    </div>
+    <br>
+    <div class="row" ng-if="show(m)">
+        <table class="table table-hover" id="tab">
+            <thead class="theadSearch">
+                <tr>
+                    <th>Type</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th class="text-center">Emprunté par</th>
+                    <th class="text-center">Retour prévu</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyTab">
+                <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees.media">
+                    <td><span class="glyphicon glyphicon-{{d.type}} "></span></td>
+                    <td>{{d.titre}}</td>
+                    <td>{{d.auteur}}</td>
+                    <td class="text-center">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <strong>&nbsp;&nbsp;</strong>
+                    </td>
+                    <td class="text-center">23/06/2017</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row" ng-if="show(a)">
+        <table class="table table-hover text-center">
+            <thead class="theadSearch">
+                <tr>
+                    <th>Identifiant</th>
+                    <th class="text-center">Nom Prénom</th>
+                    <th class="text-center">Date de naissance</th>
+                    <th class="text-center">A jour de cotisation ?</th>
+                    <th class="text-center">Nombre médias</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyTab">
+                <tr ng-click="showTr(d.id)" ng-repeat="d in donnees.adherent">
+                    <td class="text-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </td>
+                    <td>{{d.nom}} {{d.prenom}}</td>
+                    <td>{{d.dateNaissance}}</td>
+                    <td>Oui</td>
+                    <td>13 médias</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+    
+        <div id="divHiddenMedia" class=" col-xs-12">
+            <div class="col-xs-1">
+                <button ng-click="hideTr()" class="btn btn-danger">X</button>
+            </div>
+
+            <div class="col-sm-3 ">
+                <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
+                    height="450" width="300">
+            </div>
+            <div class="col-sm-5 ">
+                <h2 class="text-primary">{{media.titre}}</h2><br>
+                <p><strong>{{media.auteur}}</strong></p>
+                <p><span class="glyphicon glyphicon-{{media.type}}"></span> Livre</p>
+                <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button>
-            <button class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
+                <button class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
 	                                        Ajout Emprunt
 	                                    </button><br>
-            <div id="empruntMedia" class="collapse">
-                <div class="row">
-                    <br>
-                    <form name="formE" ng-submit="envoi()" class="form-group">
-                        <div class="col-xs-4">
-                            <select ng-model="formEmprunt.user" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required>
+                <div id="empruntMedia" class="collapse">
+                    <div class="row">
+                        <br>
+                        <form name="formE" ng-submit="envoi()" class="form-group">
+                            <div class="col-xs-4">
+                                <select ng-model="formEmprunt.user" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required>
                                 <option value="" hidden>Adhérents</option>
 	                        </select>
-                        </div>
-                        <input ng-model="formEmprunt.media" style="display:none">
-                        <div class="col-xs-5">
-                            <input type='date' ng-model="date" class="form-control" placeholder="Date d'emprunt" required>
-                        </div>
-                        <div class="col-xs-2">
-                            <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formE.$invalid">
-                        </div>
+                            </div>
+                            <input ng-model="formEmprunt.media" style="display:none">
+                            <div class="col-xs-5">
+                                <input type='date' ng-model="date" class="form-control" placeholder="Date d'emprunt" required>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formE.$invalid">
+                            </div>
 
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3 col-xs-12 text-left">
-            <ul class="list-group">
-                <li class="list-group-item active">Déjà emprunté par :</li>
-                <li class="list-group-item" ng-repeat="e in donnees.emprunt">{{e.user.nom}} {{e.user.prenom}}</li>
-            </ul>
+            <div class="col-sm-3 text-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">Déjà emprunté par</li>
+                    <li class="list-group-item" ng-repeat="e in donnees.emprunt">{{e.user.nom}} {{e.user.prenom}}</li>
+                </ul>
+            </div>
+
         </div>
     </div>
-</div>
 
+    <div id="divHiddenUser">
+        <div class="col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
+            <button ng-click="hideTr()" class="btn btn-danger">X</button>
+        </div>
+        <div class="container">
+            <div class="col-md-offset-2 col-md-5">
+                <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>{{user.nom}} {{user.prenom}}</h3><br>
+                <label><strong>Date de naissance : </strong></label>
+                <p class="center-block">{{user.dateNaissance}}</p>
+                <label><strong>Email : </strong></label>
+                <p>{{user.email}}</p>
+                <label><strong>Adresse : </strong></label>
+                <p>{{user.rue}}</p>
+                <label><strong>Date de paiement de la cotisation : </strong></label>
+                <p>{{user.dateCotisation}}</p>
+                <label><strong>Montant de la cotisation : </strong></label>
+                <p>{{user.montantCotisation}} &euro;</p>
 
-<div class="divHiddenUser">
-    <div class="col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
-        <button ng-click="hideTr()" class="btn btn-danger">X</button>
-    </div>
-    <div class="container">
-        <div class="col-md-offset-2 col-md-5">
-            <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>{{user.nom}} {{user.prenom}}</h3><br>
-            <label><strong>Date de naissance : </strong></label>
-            <p class="center-block">{{user.dateNaissance}}</p>
-            <label><strong>Email : </strong></label>
-            <p>{{user.email}}</p>
-            <label><strong>Adresse : </strong></label>
-            <p>{{user.rue}}</p>
-            <label><strong>Date de paiement de la cotisation : </strong></label>
-            <p>{{user.dateCotisation}}</p>
-            <label><strong>Montant de la cotisation : </strong></label>
-            <p>{{user.montantCotisation}} &euro;</p>
-
-            <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
+                <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button>
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
+                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
 		                                    Ajout Emprunt
 		                                </button><br>
-            <div id="empruntUser" class="collapse">
-                <div class="row">
-                    <br>
-                    <form name="formM" class="form-group" ng-submit="envoi()">
-                        <div class="col-xs-4">
-                            <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
+                <div id="empruntUser" class="collapse">
+                    <div class="row">
+                        <br>
+                        <form name="formM" class="form-group" ng-submit="envoi()">
+                            <div class="col-xs-4">
+                                <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
-                        </div>
-                        <div class="col-xs-5">
-                            <input type='date' class="form-control" ng-model="date" required/>
-                            <input ng-model="formEmprunt.user" style="display:none">
-                        </div>
-                        <div class="col-xs-2">
-                            <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
-                        </div>
-                    </form>
+                            </div>
+                            <div class="col-xs-5">
+                                <input type='date' class="form-control" ng-model="date" required/>
+                                <input ng-model="formEmprunt.user" style="display:none">
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <div class="col-md-3 col-xs-12 text-left">
-            <ul class="list-group">
-                <li class="list-group-item active">Média(s) emprunté(s) : </li>
-                <li class="list-group-item" ng-repeat="e in donnees.emprunt"><span class="glyphicon glyphicon-{{e.titre.type}}"></span> {{e.titre.titre}}</li>
-            </ul>
+            <br>
+            <div class="col-md-3 col-xs-12 text-left">
+                <ul class="list-group">
+                    <li class="list-group-item active">Média(s) emprunté(s) : </li>
+                    <li class="list-group-item" ng-repeat="e in donnees.emprunt"><span class="glyphicon glyphicon-{{e.titre.type}}"></span> {{e.titre.titre}}</li>
+                </ul>
+
+            </div>
+
 
         </div>
-
-
     </div>
-</div>
+</div><br><br>

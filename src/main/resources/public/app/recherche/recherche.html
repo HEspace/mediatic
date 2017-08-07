@@ -152,7 +152,7 @@
             <h2 class="text-primary">{{media.titre}}</h2><br>
             <p><strong>{{media.auteur}}</strong></p>
             <p><span class="glyphicon glyphicon-{{media.type}}"></span> Livre</p>
-            <button ng-click="modifFiche(media.id, pageF)" class="btn btn-md btn-primary">
+            <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button>
             <button class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
@@ -161,19 +161,17 @@
             <div id="empruntMedia" class="collapse">
                 <div class="row">
                     <br>
-                    <form name="formE" ng-submit="envoi()">
+                    <form name="formE" ng-submit="envoi()" class="form-group">
                         <div class="col-xs-4">
-
-                            <label id="labelUserSelect">Adhérents : </label>
-
-                            <select ng-model="formEmprunt.user" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required>
-                           
+                            <select ng-model="formEmprunt.user" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required >
+                                <option value="" hidden>Adhérents</option>
 	                        </select>
                         </div>
-
-                        <div class="col-xs-6">
-                            <label>Date de l'emprunt : </label>
-                            <input type='date' ng-model="formEmprunt.date" required>
+                        <input ng-model="formEmprunt.media" style="display:none">
+                        <div class="col-xs-5">
+                            <input type='date' ng-model="date" class="form-control" placeholder="Date d'emprunt" required>
+                        </div>
+                        <div class="col-xs-2">
                             <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formE.$invalid">
                         </div>
 
@@ -215,7 +213,7 @@
             <label><strong>Montant de la cotisation : </strong></label>
             <p>{{user.montantCotisation}} &euro;</p>
 
-            <button ng-click="modifFiche(user.id, pageU)" class="btn btn-md btn-primary">
+            <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button>
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
@@ -224,22 +222,20 @@
             <div id="empruntUser" class="collapse">
                 <div class="row">
                     <br>
-                    <div class="form-group">
-                        <div class="col-lg-offset-3 col-lg-6 col-md-offset-2 col-md-6 col-xs-offset-0 col-xs-12">
-                            <label class="col-lg-offset-0 col-md-offset-1">Titre du média : </label>
-                            <select class="selectpicker" data-width="fit">
-		                                                <option data-icon="glyphicon-book">  Harry Potter et l'ordre du phoenix</option>
-		                                                <option data-icon="glyphicon-film">  Fast & Furious 7</option>
-		                                                <option data-icon="glyphicon-music">  Mr. Tambourin Man</option>
-		                                                <option data-icon="glyphicon-book">  50 nuances de gris</option>
-		                                                <option data-icon="glyphicon-music">  The Wall</option>
-		                                            </select>
+                    <form name="formM" class="form-group"  ng-submit="envoi()">
+                        <div class="col-xs-5">
+                            <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required >
+                                <option value="" hidden>Médias</option>
+		                    </select>
                         </div>
-                    </div>
-                    <div class="col-lg-offset-4 col-lg-4 col-md-6 col-xs-offset-3 col-xs-6">
-                        <label>Date de l'emprunt  : </label>
-                        <input type='date' class="form-control" />
-                    </div>
+                        <div class="col-xs-6">
+                            <input type='date' class="form-control" ng-model="date" required/>
+                            <input ng-model="formEmprunt.user" style="display:none">
+                        </div>
+                        <div class="col-xs-1">
+                            <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

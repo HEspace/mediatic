@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', function ($scope, $location, RechercheService, $rootScope) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter' ,function ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
         $scope.pageU = "user";
@@ -48,30 +48,30 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.modifFiche = function (id, type) {
-            if(type == "m"){
-            RechercheService.getData().then(function (res) {
-                res.data.media.forEach(function (elem) {
-                    if (elem.id == id) {
-                        $rootScope.form.media.auteur = elem.auteur
-                        $rootScope.form.media.titre = elem.titre
-                        $rootScope.form.media.type = elem.type
-                    }
-                })
-                $location.path('/ajoutMedia');
+            if (type == "m") {
+                RechercheService.getData().then(function (res) {
+                    res.data.media.forEach(function (elem) {
+                        if (elem.id == id) {
+                            $rootScope.form.media.auteur = elem.auteur
+                            $rootScope.form.media.titre = elem.titre
+                            $rootScope.form.media.type = elem.type
+                        }
+                    })
+                    $location.path('/ajoutMedia');
 
-            })
-            }else{
-                  RechercheService.getData().then(function (res) {
-                res.data.adherent.forEach(function (elem) {
-                    if (elem.id == id) {
-                        $rootScope.form.media.auteur = elem.auteur
-                        $rootScope.form.media.titre = elem.titre
-                        $rootScope.form.media.type = elem.type
-                    }
                 })
-                $location.path('/ajoutAdherent');
+            } else {
+                RechercheService.getData().then(function (res) {
+                    res.data.adherent.forEach(function (elem) {
+                        if (elem.id == id) {
+                            $rootScope.form.media.auteur = elem.auteur
+                            $rootScope.form.media.titre = elem.titre
+                            $rootScope.form.media.type = elem.type
+                        }
+                    })
+                    $location.path('/ajoutAdherent');
 
-            })
+                })
             }
 
         }
@@ -103,7 +103,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                     res.data.media.forEach(function (element) {
                         if (element.id == id) {
-                            $scope.media = element
+                            $scope.media = element;
+                            $scope.formEmprunt.titre = element;
                             if ($scope.media.type == "book")
                                 $scope.type = "Livre"
                             else if ($scope.media.type == "music")
@@ -112,7 +113,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                         }
                     })
-                    $scope.formEmprunt.user = res.data.adherent[0].nom
+
+
 
                 })
 
@@ -120,8 +122,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
             } else {
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
-                        if (element.id == id)
+                        if (element.id == id) {
                             $scope.user = element
+                            $scope.formEmprunt.user = element
+                        }
                     })
 
                 })
@@ -133,11 +137,15 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.envoi = function () {
+            var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')     
+            $scope.formEmprunt.date = EDate;
+            console.log($scope.formEmprunt.date)
             RechercheService.ajoutEmprunt($scope.formEmprunt);
+            
         }
 
         $("#tabAdherent").hide();
 
 
 
-    }]);
+    }]);    

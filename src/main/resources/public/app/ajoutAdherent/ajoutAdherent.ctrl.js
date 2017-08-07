@@ -5,7 +5,7 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
 .controller('AjoutAdherentCtrl', ['$scope', '$location', 'AdherentService','$filter', '$rootScope', function($scope, $location, AdherentService, $filter, $rootScope) {
 
-  console.log($location.path());
+
 
   var ctrl = this;
     $scope.form={};
@@ -26,7 +26,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         }
     
 	ctrl.envoi = function(){
-        console.log("L'adhérent a bien été enregistré");
         var dateDeNaissanceJson = $filter('date')($scope.dateNaissance, 'dd/MM/yyyy');
         $scope.form.dateNaissance = dateDeNaissanceJson;
 

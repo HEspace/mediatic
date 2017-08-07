@@ -17,10 +17,11 @@ table {
 }
 
 @media (max-width: 992px) {
-    .col-xs-12{
+    .col-xs-12, .col-md-5 {
         text-align: center;
     }
-    label{
+ 
+    label p{
         display: block;
         text-align: center;
     }
@@ -50,9 +51,8 @@ table {
  
 
 
-.divHiddenMedia{
+.divHiddenMedia, .divHiddenUser{
     background-color: white;
-    z-index: 99000;
     position: absolute;
     width: 100%;
     z-index: 3;

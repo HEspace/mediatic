@@ -2,10 +2,19 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService',function ($scope, $location, RechercheService) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', function ($scope, $location, RechercheService) {
+
+        $scope.textSearch;
+        $scope.pageU = "user";
+        $scope.pageF = "file";
+        $scope.m = "m";
+        $scope.a = "a";
+        $scope.formEmprunt = {};
+
 
         $('#sel').on('changed.bs.select', function () {
-            console.log($('#sel').selectpicker().val())
+             $(".divHiddenMedia").hide();
+             $(".divHiddenUser").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
             if (options[index].text == "Médias") {
@@ -14,7 +23,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $("#tabAdherent").hide();
                 $("#tabMedia").fadeIn();
             } else {
-                console.log("adherent");
                 $("#checkMedia").hide();
                 $("#radioAdhe").fadeIn();
                 $("#tabAdherent").fadeIn();
@@ -28,12 +36,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
             width: 'fit'
         });
 
-        $scope.textSearch;
+
         $scope.search = function () { }
-        $scope.pageU = "user";
-        $scope.pageF = "file";
-        $scope.media = "m";
-        $scope.adh = "a";
+
         $scope.changePage = function (e) {
             if (e == $scope.pageU)
                 $location.path('/ajoutAdherent');
@@ -48,53 +53,61 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 return false;
         }
 
-        RechercheService.getData().then(function(res){
-            console.log(res.data)
+        RechercheService.getData().then(function (res) {
             $scope.donnees = res.data;
-          
-            console.log($scope.donnees)
+           
+            
         })
 
-        $scope.showTr = function(){
-        /*    $scope.donnees.forEach(function(element) {
-                if(element.data.media.id == id)
-                    $scope.media= element.data.media   
-           });
- */
-            /* console.log(id) */
-            if ($(".divHiddenMedia").is(":hidden")) {
-                $(".divHiddenMedia").fadeIn("slow")
-                /* $(".divHiddenMedia").slideDown("slow"); */
-            } else {
-                $(".divHiddenMedia").hide("slow")
-                /* $(".divHiddenMedia").slideUp("fast"); */
-            }
+        $scope.hideTr = function () {
+            if ($('#sel').selectpicker().val() == "m")
+                $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
+            else
+                $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
         }
 
-        //drawTab();
-        /* $("#radioAdhe").hide();*/
+
+        $scope.showTr = function (id) {
+            if ($('#sel').selectpicker().val() == "m") {
+                RechercheService.getData().then(function (res) {
+                     
+                    res.data.media.forEach(function (element) {
+                        if (element.id == id) {
+                            $scope.media = element
+                            if ($scope.media.type == "book")
+                                $scope.type = "Livre"
+                            else if ($scope.media.type == "music")
+                                $scope.type = "CD"
+                            else
+                                $scope.type = "DVD"
+                        }
+                    })
+                    console.log(res.data.adherent[0].nom)
+                    $scope.formEmprunt.user = res.data.adherent[0].nom
+
+                })
+
+                $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
+            } else {
+                RechercheService.getData().then(function (res) {
+                    res.data.adherent.forEach(function (element) {
+                        if (element.id == id)
+                            $scope.user = element
+                    })
+
+                })
+
+                $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
+
+            }
+
+        }
+
+        $scope.envoi = function(){
+		    RechercheService.ajoutEmprunt($scope.formEmprunt);
+	    }
+
         $("#tabAdherent").hide();
-        //$(".rowHidden").hide();
-        //$("div.divHidden1").hide();
-
-        $('.rowTab').click(function () {
-            //console.log("test");
-            if ($(".divHiddenMedia").is(":hidden")) {
-                $(".trHiddenMedia").fadeIn("slow")
-                $(".divHiddenMedia").slideDown("slow");
-            } else {
-                $(".trHiddenMedia").hide("fast")
-                $(".divHiddenMedia").slideUp("fast");
-            }
-
-            if ($(".divHiddenUser").is(":hidden")) {
-                $(".trHiddenUser").fadeIn("slow")
-                $(".divHiddenUser").slideDown("slow");
-            } else {
-                $(".trHiddenUser").hide("fast")
-                $(".divHiddenUser").slideUp("fast");
-            }
-        });
 
 
 

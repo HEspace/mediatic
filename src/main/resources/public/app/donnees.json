@@ -19,5 +19,41 @@
       "id": 3
     }
   ],
-  "adherent": []
+  "adherent": [
+    {
+      "age": 26,
+      "dateFinCotisation": "2018-05-10T22:00:00.000Z",
+      "nom": "baltic",
+      "prenom": "husref",
+      "dateNaissance": "1991-05-10T22:00:00.000Z",
+      "email": "husref.baltic@gmail.com",
+      "dateCotisation": "2017-05-10T22:00:00.000Z",
+      "montantCotisation": 600000,
+      "rue": "2400 avenue des moulins",
+      "codePostale": "34080",
+      "ville": "Montpellier",
+      "id": 1
+    },
+    {
+      "age": 26,
+      "dateFinCotisation": "2018-05-10T22:00:00.000Z",
+      "nom": "baltic",
+      "prenom": "husref",
+      "dateNaissance": "1991-05-10T22:00:00.000Z",
+      "email": "husref.baltic@gmail.com",
+      "dateCotisation": "2017-05-10T22:00:00.000Z",
+      "montantCotisation": 600000,
+      "rue": "2400 avenue des moulins",
+      "codePostale": "34080",
+      "ville": "Montpellier",
+      "id": 2
+    }
+  ],
+  "emprunt": [
+    {
+      "user": "? undefined:undefined ?",
+      "date": "2017-07-31T22:00:00.000Z",
+      "id": 1
+    }
+  ]
 }

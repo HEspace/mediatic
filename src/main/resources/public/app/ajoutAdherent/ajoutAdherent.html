@@ -20,15 +20,19 @@
 						<input type="text" name="nom" class="form-control" id="nom" placeholder="Nom" ng-minlength="3" ng-model="form.nom" required>
 					</div>
 
+					<p class="text-danger" ng-show="ajoutAherentForm.nom.$invalid && !ajoutAherentForm.nom.$pristine" class="help-block">Veuillez indiquer votre nom</p>
+
 					<div class="form-group">
 						<label for="Prenom">Prenom *</label>
 						<input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom" ng-minlength="3" ng-model="form.prenom"
 						 required>
 					</div>
 
+					<p class="text-danger" ng-show="ajoutAherentForm.prenom.$invalid && !ajoutAherentForm.prenom.$pristine" class="help-block">Veuillez indiquer votre prenom</p>
+
 					<div class="form-group">
 						<label for="dateDeNaissance">Date de Naissance *</label>
-						<input type="date" name="dateNaissance" class="form-control" id="dateNaissance" placeholder=" Date de Naissance" ng-model="dateNaissance"
+						<input type="date" name="dateNaissance" class="form-control" id="dateNaissance" value="1990-01-01" ng-model="dateNaissance"
 						 required>
 					</div>
 
@@ -52,13 +56,13 @@
 
 					<div class="form-group">
 						<label for="montantCostisation">Montant de la cotisation</label>
-						<input type="number" name="montantCotisation" class="form-control" id="montantCotisation" placeholder=" Montant de la cotisation"
+						<input type="number" name="montantCotisation" class="form-control" id="montantCotisation"  value="1" min="1" placeholder=" Montant de la cotisation"
 						 ng-model="form.montantCotisation">
 					</div>
 
 					<div class="form-group">
 						<label for="dateFinAbonnement">Date de fin d'abonnment</label>
-						<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" ng-model="dateFinCotisation" disabled="disabled" required>
+						<input type="date" name="dateFinAbonemment" class="form-control" id="dateFinAbonnement" ng-model="dateFinCotisation" disabled="disabled">
 					</div>
 
 					<div class="form-group">

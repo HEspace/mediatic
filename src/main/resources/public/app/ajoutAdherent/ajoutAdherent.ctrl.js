@@ -3,12 +3,28 @@
 angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
 
-.controller('AjoutAdherentCtrl', ['$scope', '$location', 'AdherentService','$filter', function($scope, $location, AdherentService, $filter) {
+.controller('AjoutAdherentCtrl', ['$scope', '$location', 'AdherentService','$filter', '$rootScope', function($scope, $location, AdherentService, $filter, $rootScope) {
 
   console.log($location.path());
 
   var ctrl = this;
     $scope.form={};
+
+    if ($rootScope.form.adherent != {} )
+        {
+            $scope.form.nom = $rootScope.form.adherent.nom;
+            $scope.form.prenom = $rootScope.form.adherent.prenom;
+            $scope.dateNaissance = $rootScope.form.adherent.dateNaissance;
+            $scope.form.age = $rootScope.form.adherent.age;
+            $scope.form.email = $rootScope.form.adherent.email;
+            $scope.dateCotisation = $rootScope.form.adherent.dateCotisation;
+            $scope.form.montantCotisation = $rootScope.form.adherent.montantCotisation;
+            $scope.dateFinCotisation = $rootScope.form.adherent.dateFinCotisation;
+            $scope.form.rue = $rootScope.form.adherent.rue;
+            $scope.form.codePostale = $rootScope.form.adherent.codePostale;
+            $scope.form.ville = $rootScope.form.adherent.ville;
+            $rootScope.form.adherent = {};
+        }
     
 	ctrl.envoi = function(){
         console.log("test");
@@ -23,10 +39,11 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         
 
         AdherentService.ajoutAdh($scope.form);
+        $location.path('../accueil/recherche.html');
 	}
 
     $scope.submit = function(){
-    $location.path('../accueil/accueil.html');
+        $location.path('../accueil/accueil.html');
     }
 
     /* $scope.dateNaissance = new Date("01/01/2000"); */

@@ -4,6 +4,7 @@
 angular.module('mediatic', [
   'ngRoute',
   'ngMessages',
+  'ngResource',
   'mediatic.recherche',
   'mediatic.accueil',
   'mediatic.ajoutMedia',

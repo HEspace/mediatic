@@ -2,70 +2,74 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="mediatic" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="mediatic" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="mediatic" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="mediatic" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="mediatic" class="no-js">
+<!--<![endif]-->
+
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Mediatic</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="mediatic.css">
-  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-  <script src="bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <!-- Bootstrap Select + JS Select -->
- 
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Mediatic</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+	<link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+	<link rel="stylesheet" href="mediatic.css">
+	<script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<!-- Bootstrap Select + JS Select -->
+
 	<link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
-  <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-  
+	<script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
- 
 
- 
-  <link rel="stylesheet" href="css/recherche.css">
-  <link rel="stylesheet" href="css/styleAdherent.css">
-   <link rel="stylesheet" href="css/contour.css">
+
+
+
+	<link rel="stylesheet" href="css/recherche.css">
+	<link rel="stylesheet" href="css/styleAdherent.css">
+	<link rel="stylesheet" href="css/contour.css">
 </head>
+
 <body ng-controller="MediaticCtrl">
-  <div class="wrap">
-  		<div id = "containerlogin" class="container">
+	<div class="wrap">
+		<div id="containerlogin" class="container">
 			<input id="formlogin" class="form" type="text" placeholder="User">
 			<input id="formlogin" class="form" type="password" placeholder="Password">
 			<input id="login" type="button" value="Login">
-  		</div>
+		</div>
 	</div>
 	<div class="row text-center">
 		<div class="col-lg-2 col-md-3 col-sm-3 text-left">
-			
-    </div>
-      <div id="boutonside">
-	  			  <span style="font-size:30px;cursor:pointer" ng-click="openNav()">&#9776; </span>
-		    	</div>
+
+		</div>
+		<div id="boutonside">
+			<span style="font-size:30px;cursor:pointer" ng-click="openNav()">&#9776; </span>
+		</div>
 		<div class="col-lg-8 col-md-6 col-sm-6 hidden-xs">
 			<nav id="header" class="navbar navbar-fixed-top">
-       
+
 				<div id="header-container" class="container navbar-container">
-         
+
 					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						 aria-controls="navbar">
 	                        <span class="sr-only">Toggle navigation</span>
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                        <span class="icon-bar"></span>
 	                    </button>
-	                    <a id="brand" class="navbar-brand" href="index.html">Mediatic</a>
-               		</div>
-               		<div id="navbar" class="collapse navbar-collapse">
+						<a id="brand" class="navbar-brand" href="index.html">Mediatic</a>
+					</div>
+					<div id="navbar" class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
 							<li><a href="#!/accueil">Accueil</a></li>
 							<li><a href="#!/recherche">Recherche</a></li>
 							<li><a href="#!/ajoutMedia">Media</a></li>
 							<li><a href="#!/ajoutAdherent">Adherent</a></li>
-							<li class="dropdown hidden-sm"><a class="dropdown-toggle"
-								data-toggle="dropdown" href="#">Collection<span class="caret"></span></a>
+							<li class="dropdown hidden-sm"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Collection<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li>Livre</li>
 									<li>CD</li>
@@ -75,13 +79,11 @@
 						</ul>
 						<form class="navbar-form navbar-right inline-form">
 							<div class="form-group">
-								<input type="search" class="input-sm form-control hidden-md hidden-sm hidden-xs"
-									placeholder="Recherche">
+								<input type="search" class="input-sm form-control hidden-md hidden-sm hidden-xs" placeholder="Recherche">
 								<button type="submit" class="btn btn-primary btn-sm hidden-md hidden-sm hidden-xs">
 									<span class="glyphicon glyphicon-eye-open"></span> Chercher
 								</button>
-								<label ng-click="toggleWrap()" id="boutonlogin" class="btn btn-warning btn-sm"
-									 > Login </label>
+								<label ng-click="toggleWrap()" id="boutonlogin" class="btn btn-warning btn-sm"> Login </label>
 							</div>
 						</form>
 					</div>
@@ -91,19 +93,19 @@
 		<div class="col-lg-2 col-md-3 col-sm-3 text-right"> </div>
 	</div>
 
-  <!--[if lt IE 7]>
+	<!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+	<div ng-view></div>
 
-  <div id="idsidenav" class="sidenav">
+	<div id="idsidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
 		<div id="sideMenu">
 			<ul class="hidden-lg hidden-sm hidden-md">
 				<li class="active"><a href="#!/accueil" ng-click="closeNav()">Accueil</a></li>
 				<li><a href="#!/recherche" ng-click="closeNav()">Recherche</a></li>
-				<li><a class="dropdown-toggle" href="" ng-click=inverserCollectionMenu() >Collection<span class="caret"></span></a>
+				<li><a class="dropdown-toggle" href="" ng-click=inverserCollectionMenu()>Collection<span class="caret"></span></a>
 					<ul class="menu collection" id="menuCollection">
 						<li>Livre</li>
 						<li>CD</li>
@@ -116,55 +118,58 @@
 			<div class="row">
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 				<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-				<form>
-					<div class="form-group">
-						<label for="identifiant">identifiant :</label>
-						<input type="identifiant" class="form-control" id="identifiant">
-					</div>
-		    		<div class="form-group">
-						<label for="password">password :</label>
-		    			<input type="password" type="password" class="form-control" id="password">
-		    		</div>
-					<button type="submit" class="btn btn-default pull-right">Connect</button>
-				</form>
-			</div>
-			<div class="col-lg-1 col-md-1 col-ms-1 col-xs-1"></div>
+					<form>
+						<div class="form-group">
+							<label for="identifiant">identifiant :</label>
+							<input type="identifiant" class="form-control" id="identifiant">
+						</div>
+						<div class="form-group">
+							<label for="password">password :</label>
+							<input type="password" type="password" class="form-control" id="password">
+						</div>
+						<button type="submit" class="btn btn-default pull-right">Connect</button>
+					</form>
+				</div>
+				<div class="col-lg-1 col-md-1 col-ms-1 col-xs-1"></div>
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<footer class="footer">
-	    <div class="container-fluid">
-	        <div class="row">
-	            <div class="col-md-12 text-center">
-	                <strong>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<strong>
 						<a class="lienAuteur" href="http://192.168.1.87:8082/accueil.html">Auteur : HLH </a>
 						<p>Tous droits réservés - HLH Production <br />
 						Publié le 06/07/2017</p>
 					</strong>
-	            </div>
-	        </div>
-	    </div>
+				</div>
+			</div>
+		</div>
 	</footer>
 
 
-  <!-- In production use:
+	<!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-messages/angular-messages.js"></script>
-  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-  <script src="mediatic.js"></script>
-  <script src="recherche/recherche.ctrl.js"></script>
-  <script src="accueil/accueil.ctrl.js"></script>
-  <script src="ajoutMedia/ajoutMedia.ctrl.js"></script>
-  <script src="ajoutMedia/ajoutMedia.service.js"></script>
-  <script src="ajoutAdherent/ajoutAdherent.ctrl.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="mediatic.js"></script>
+	<script src="recherche/recherche.ctrl.js"></script>
+	<script src="recherche/recherche.service.js"></script>
+	<script src="recherche/recherche.constant.js"></script>
+	<script src="accueil/accueil.ctrl.js"></script>
+	<script src="ajoutMedia/ajoutMedia.ctrl.js"></script>
+	<script src="ajoutMedia/ajoutMedia.service.js"></script>
+	<script src="ajoutAdherent/ajoutAdherent.ctrl.js"></script>
+	<script src="components/version/version.js"></script>
+	<script src="components/version/version-directive.js"></script>
+	<script src="components/version/interpolate-filter.js"></script>
 </body>
+
 </html>

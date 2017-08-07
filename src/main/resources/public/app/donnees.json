@@ -3,8 +3,20 @@
     {
       "titre": "Husref Presi6dent",
       "auteur": "la*ur*ent",
-      "selectType": "livre",
+      "type": "book",
       "id": 1
+    },
+    {
+      "titre": "efzef",
+      "auteur": "zefze",
+      "type": "music",
+      "id": 2
+    },
+    {
+      "titre": "Laurent vs Alexandre le borgne",
+      "auteur": "Hedy",
+      "type": "book",
+      "id": 3
     }
   ],
   "adherent": []

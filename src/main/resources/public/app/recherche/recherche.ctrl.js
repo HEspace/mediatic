@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', function ($scope, $location) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService',function ($scope, $location, RechercheService) {
 
         $('#sel').on('changed.bs.select', function () {
             console.log($('#sel').selectpicker().val())
@@ -47,7 +47,27 @@ angular.module('mediatic.recherche', ['ngRoute'])
             else
                 return false;
         }
-        
+
+        RechercheService.getData().then(function(res){
+            console.log(res.data)
+            $scope.donnees = res.data;
+          
+            console.log($scope.donnees)
+        })
+
+        $scope.showTr = function(id){
+            var d = document.getElementsById("tab").rows
+
+            console.log(d)
+            if ($(".divHiddenMedia"+id).is(":hidden")) {
+                $(".trHiddenMedia"+id).fadeIn("slow")
+                $(".divHiddenMedia"+id).slideDown("slow");
+            } else {
+                $(".trHiddenMedia"+id).hide("fast")
+                $(".divHiddenMedia"+id).slideUp("fast");
+            }
+        }
+
         //drawTab();
         /* $("#radioAdhe").hide();*/
         $("#tabAdherent").hide();

@@ -85,9 +85,9 @@
 	        </button>
 </div><br><br>
 
-
+<pre>{{donnees|json}}</pre>
 <div class="col-xs-offset-1 col-xs-10" ng-if="show(media)">
-    <table class="table table-hover">
+    <table class="table table-hover" id="tab">
         <thead class="theadSearch">
             <tr>
                 <th>Type</th>
@@ -98,18 +98,19 @@
             </tr>
         </thead>
         <tbody class="tbodyTab">
-            <tr ng-click="showTr()">
-                <td><span class="glyphicon glyphicon-book"></span></td>
-                <td>Harry Potter et l'ordre du phoenix</td>
-                <td>J. K. Rowling</td>
+            <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees.media">
+                <td><span class="glyphicon glyphicon-{{d.type}} "></span></td>
+                <td>{{d.titre}}</td>
+                <td>{{d.auteur}}</td>
                 <td class="text-center">
                     <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;austinB45</strong>
+                    <strong>&nbsp;&nbsp;</strong>
                 </td>
                 <td class="text-center">23/06/2017</td>
             </tr>
-
+<tr></tr>
             <tr class="trHiddenMedia" style="background-color: whitesmoke">
+
                 <td colspan="5">
                     <div class="divHiddenMedia">
                         <div class="row">

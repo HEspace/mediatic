@@ -49,18 +49,24 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$rootScope.form.media = {};
 	$rootScope.form.adherent = {};
 })
-.controller('MediaticCtrl', ['$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($scope, $rootScope, $location, $localStorage, LoginService){
+.controller('MediaticCtrl', ['$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($window, $scope, $rootScope, $location, $localStorage, LoginService){
 
 	var ctrl = this;
+	ctrl.user = {};
 
 	$('#menuCollection').hide();
 	$('#divlogin').slideUp();
 	$('#sideMenu').slideUp();
 
+	if($rootScope.login){
+		$location.path('/recherche');
+	}
+	else{
+		$location.path('/accueil');
+	}
+
 	$scope.rechercher = function(){
 		$rootScope.recherche = $scope.recherche ;
-		console.log("test");
-		console.log($rootScope.recherche);
 		$location.path('/recherche');
 	}
 
@@ -73,11 +79,37 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$('.wrap').slideToggle(400);
 	}
 
-	ctrl.login = function () {
-      //LoginService.storeUser(ctrl.user);
-      //$location.path('acc');
-    }
+	$scope.logout = function(){
+		$localStorage.$reset();
+		$rootScope.login ='';
+		$scope.changementContour();
+      	$window.location.reload();
+	}
 
+	$scope.login = function () {
+	  	LoginService.storeUser(ctrl.user);
+		$scope.changementContour();
+		$scope.toggleWrap();
+     	$window.location.reload();
+	}
+	
+	$scope.changementContour = function(){
+		if($rootScope.login){
+			$scope.bonjour="Bonjour "+ $rootScope.login+"." ;
+			$('#boutonlogin').css('display','none');
+			$('#formLogin').css('display','none');
+			$('#boutonlogout').css('display','inline');
+			$('.log').css('display','inline');
+		}
+		else{
+			$scope.bonjour='';
+			$('#boutonlogin').css('display','inline');
+			$('#formLogin').css('display','block');
+			$('#boutonlogout').css('display','none');
+			$('.log').css('display','none');
+		}
+	}
+	$scope.changementContour();
 
 	$scope.openNav = function() {
 		console.log("test");

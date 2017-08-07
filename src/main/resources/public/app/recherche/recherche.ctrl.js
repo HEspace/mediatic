@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter' ,function ($scope, $location, RechercheService, $rootScope, $filter) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
         $scope.pageU = "user";
@@ -64,9 +64,17 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (elem) {
                         if (elem.id == id) {
-                            $rootScope.form.media.auteur = elem.auteur
-                            $rootScope.form.media.titre = elem.titre
-                            $rootScope.form.media.type = elem.type
+                            $rootScope.form.adherent.nom = elem.nom;
+                            $rootScope.form.adherent.prenom = elem.prenom;
+                            $rootScope.form.adherent.dateNaissance = elem.dateNaissance;
+                            $rootScope.form.adherent.age = elem.age;
+                            $rootScope.form.adherent.email = elem.email;
+                            $rootScope.form.adherent.dateCotisation = elem.dateCotisation;
+                            $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
+                            $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
+                            $rootScope.form.adherent.rue = elem.rue;
+                            $rootScope.form.adherent.codePostale = elem.codePostale;
+                            $rootScope.form.adherent.ville = elem.ville;
                         }
                     })
                     $location.path('/ajoutAdherent');
@@ -137,11 +145,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.envoi = function () {
-            var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')     
+            var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')
             $scope.formEmprunt.date = EDate;
             console.log($scope.formEmprunt.date)
             RechercheService.ajoutEmprunt($scope.formEmprunt);
-            
+
         }
 
         $("#tabAdherent").hide();

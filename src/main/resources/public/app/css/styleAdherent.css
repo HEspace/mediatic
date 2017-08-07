@@ -6,13 +6,21 @@
 
 .section-content{
   text-align: center;
+  font-family: Jazz LET, fantasy;
+  color :black;
+  
 } 
+
+.bordure {
+  width: 700px;
+	height: 30px;
+}
 
 
 
 #contact{
     
-    font-family: 'Teko', sans-serif;
+  font-family: 'Teko', sans-serif;
   padding-top: 60px;
   width: 100%;
   width: 100vw;
@@ -25,6 +33,8 @@
 
 .contact-section{
   padding-top: 40px;
+  background-color : Linen;
+  background-size: 50%;
 }
 .contact-section .col-xs-6{
   width: 100%;
@@ -37,13 +47,15 @@
 
 .form-group{
   margin-top: 10px;
+  
 }
 
 label{
   font-size: 1.3em;
   line-height: 1em;
   font-weight: normal;
-  font-family: Georgia;
+  font-family: "Fenix", serif;
+
   font-style:italic;
   color :black;
   
@@ -51,6 +63,8 @@ label{
 .form-control{
   font-size: 1.3em;
   color: #080808;
+  
+
 }
 textarea.form-control {
     height: 135px;

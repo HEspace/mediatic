@@ -85,7 +85,6 @@
 	        </button>
 </div><br><br>
 
-<pre>{{donnees|json}}</pre>
 <div class="col-xs-offset-1 col-xs-10" ng-if="show(media)">
     <table class="table table-hover" id="tab">
         <thead class="theadSearch">
@@ -98,7 +97,7 @@
             </tr>
         </thead>
         <tbody class="tbodyTab">
-            <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees.media">
+            <tr ng-click="showTr()" ng-repeat=" d in donnees.media">
                 <td><span class="glyphicon glyphicon-{{d.type}} "></span></td>
                 <td>{{d.titre}}</td>
                 <td>{{d.auteur}}</td>
@@ -107,105 +106,7 @@
                     <strong>&nbsp;&nbsp;</strong>
                 </td>
                 <td class="text-center">23/06/2017</td>
-            </tr>
-<tr></tr>
-            <tr class="trHiddenMedia" style="background-color: whitesmoke">
-
-                <td colspan="5">
-                    <div class="divHiddenMedia">
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-3 ">
-                                <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
-                                    height="450" width="300">
-                            </div>
-                            <div class="col-md-5 col-xs-12">
-                                <h2 class="text-primary">Harry Potter et l'ordre du phoenix</h2><br>
-                                <p><strong>J. K. Rowling</strong></p>
-                                <p><span class="glyphicon glyphicon-book"></span> Livre</p>
-                                <a href="#" class="btn btn-md btn-primary">
-	                                        Modifier Fiche
-	                                    </a>
-                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
-	                                        Ajout Emprunt
-	                                    </button><br>
-                                <div id="empruntMedia" class="collapse">
-                                    <div class="row">
-                                        <br>
-                                        <div class="col-xs-6">
-                                            <label id="labelUserSelect">Adhérent : </label>
-                                            <select class="selectpicker" data-width="fit">
-	                                                    <option>Bastien Austin</option>
-	                                                    <option>Haudi Julien</option>
-	                                                    <option>Sion Laurent</option>
-	                                                    <option>El-Filali Hedy</option>
-	                                                    <option>Baltic Husref</option>
-	                                                </select>
-                                        </div>
-
-                                        <div class="col-xs-5">
-                                            <label>Date de l'emprunt : </label>
-                                            <input type='date' class="form-control" />
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <div class="col-md-3 col-xs-">
-                                <label>Déjà emprunté par : </label>
-                                <ul class="list-group">
-                                    <li class="list-group-item active">Bastien Austin<span class="badge">12</span></li>
-                                    <li class="list-group-item">Haudi Julien<span class="badge">10</span></li>
-                                    <li class="list-group-item">Sion Laurent<span class="badge">9</span></li>
-                                    <li class="list-group-item">El-Filali Hedy<span class="badge">6</span></li>
-                                    <li class="list-group-item">Baltic Husref<span class="badge">1</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td><span class="glyphicon glyphicon-film"></span></td>
-                <td>Fast & Furious 7</td>
-                <td>Un grand homme</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;julienH12</strong>
-                </td>
-                <td class="text-center">10/12/2017</td>
-            </tr>
-            <tr>
-                <td><span class="glyphicon glyphicon-music"></span></td>
-                <td>Mr. Tambourin Man</td>
-                <td>Bob Dylan</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;julienH12</strong>
-                </td>
-                <td class="text-center">01/02/2018</td>
-            </tr>
-            <tr>
-                <td><span class="glyphicon glyphicon-book"></span></td>
-                <td>50 nuances de gris</td>
-                <td>Hedy</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;hedyE</strong>
-                </td>
-                <td class="text-center">01/11/2017</td>
-            </tr>
-            <tr>
-                <td><span class="glyphicon glyphicon-music"></span></td>
-                <td>The Wall</td>
-                <td>Pink Floyd</td>
-                <td class="text-center">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;laurentS79</strong>
-                </td>
-                <td class="text-center">07/10/2017</td>
-            </tr>
+            </tr>                
         </tbody>
     </table>
 </div>
@@ -224,13 +125,13 @@
             </tr>
         </thead>
         <tbody class="tbodyTab">
-            <tr>
+            <tr ng-click="showTr(d.id)" ng-repeat="d in donnees.adherent">
                 <td class="text-left">
                     <span class="glyphicon glyphicon-user"></span>
                     <strong>&nbsp;&nbsp;austinB45</strong>
                 </td>
-                <td>Bastien Austin</td>
-                <td>15/11/1987</td>
+                <td>{{d.nom}} {{d.prenom}}</td>
+                <td>{{d.date_naissance}}</td>
                 <td>Oui</td>
                 <td>13 médias</td>
             </tr>
@@ -299,46 +200,61 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;julienH12</strong>
-                </td>
-                <td>Haudi Julien</td>
-                <td>01/10/1980</td>
-                <td>Non</td>
-                <td>9 médias</td>
-            </tr>
-            <tr>
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;hedyE</strong>
-                </td>
-                <td>El-Filali Hedy</td>
-                <td>11/05/1979</td>
-                <td>Oui</td>
-                <td>1 médias</td>
-            </tr>
-            <tr>
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;laurentS79</strong>
-                </td>
-                <td>Sion Laurent</td>
-                <td>15/02/1995</td>
-                <td>Non</td>
-                <td>0 médias</td>
-            </tr>
-            <tr>
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <strong>&nbsp;&nbsp;husrefB69</strong>
-                </td>
-                <td>Baltic Husref</td>
-                <td>11/05/1991</td>
-                <td>Non</td>
-                <td>5 médias</td>
-            </tr>
+        
         </tbody>
     </table>
 </div>
+
+
+                    <div class="divHiddenMedia">
+                        <button ng-click="showTr()" class="btn btn-danger">X</button>
+                        <div class="container">
+                            <div class="col-md-offset-1 col-md-3 ">
+                                <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
+                                    height="450" width="300">
+                            </div>
+                            <div class="col-md-5 col-xs-12">
+                                <h2 class="text-primary">Harry Potter et l'ordre du phoenix {{media.titre}}</h2><br>
+                                <p><strong>J. K. Rowling</strong></p>
+                                <p><span class="glyphicon glyphicon-book"></span> Livre</p>
+                                <a href="#" class="btn btn-md btn-primary">
+	                                        Modifier Fiche
+	                                    </a>
+                                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
+	                                        Ajout Emprunt
+	                                    </button><br>
+                                <div id="empruntMedia" class="collapse">
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-xs-6">
+                                            <label id="labelUserSelect">Adhérent : </label>
+                                            <select class="selectpicker" data-width="fit">
+	                                                    <option>Bastien Austin</option>
+	                                                    <option>Haudi Julien</option>
+	                                                    <option>Sion Laurent</option>
+	                                                    <option>El-Filali Hedy</option>
+	                                                    <option>Baltic Husref</option>
+	                                                </select>
+                                        </div>
+
+                                        <div class="col-xs-5">
+                                            <label>Date de l'emprunt : </label>
+                                            <input type='date' class="form-control" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-md-3 col-xs-">
+                                <label>Déjà emprunté par : </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item active">Bastien Austin<span class="badge">12</span></li>
+                                    <li class="list-group-item">Haudi Julien<span class="badge">10</span></li>
+                                    <li class="list-group-item">Sion Laurent<span class="badge">9</span></li>
+                                    <li class="list-group-item">El-Filali Hedy<span class="badge">6</span></li>
+                                    <li class="list-group-item">Baltic Husref<span class="badge">1</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>

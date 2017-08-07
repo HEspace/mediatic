@@ -55,16 +55,19 @@ angular.module('mediatic.recherche', ['ngRoute'])
             console.log($scope.donnees)
         })
 
-        $scope.showTr = function(id){
-            var d = document.getElementsById("tab").rows
-
-            console.log(d)
-            if ($(".divHiddenMedia"+id).is(":hidden")) {
-                $(".trHiddenMedia"+id).fadeIn("slow")
-                $(".divHiddenMedia"+id).slideDown("slow");
+        $scope.showTr = function(){
+        /*    $scope.donnees.forEach(function(element) {
+                if(element.data.media.id == id)
+                    $scope.media= element.data.media   
+           });
+ */
+            /* console.log(id) */
+            if ($(".divHiddenMedia").is(":hidden")) {
+                $(".divHiddenMedia").fadeIn("slow")
+                /* $(".divHiddenMedia").slideDown("slow"); */
             } else {
-                $(".trHiddenMedia"+id).hide("fast")
-                $(".divHiddenMedia"+id).slideUp("fast");
+                $(".divHiddenMedia").hide("slow")
+                /* $(".divHiddenMedia").slideUp("fast"); */
             }
         }
 

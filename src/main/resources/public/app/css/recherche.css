@@ -45,3 +45,16 @@ table {
 .tbodyTab{
     cursor: pointer;
 }
+
+
+ 
+
+
+.divHiddenMedia{
+    background-color: white;
+    z-index: 99000;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+
+}

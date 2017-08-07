@@ -119,9 +119,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                         }
                     })
-
-
-
+                    
                 })
 
                 $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
@@ -139,6 +137,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
 
             }
+            $('.container').css()
+         .addClass('noscroll');
 
         }
 

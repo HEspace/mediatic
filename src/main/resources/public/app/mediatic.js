@@ -42,7 +42,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 }])
 
 .run(function($rootScope) {
-    $rootScope.cherche = "";
+	$rootScope.cherche = "";
+	$rootScope.form = {};
+	$rootScope.form.media = {};
+	$rootScope.form.adherent = {};
 })
 .controller('MediaticCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location){
 

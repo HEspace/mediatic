@@ -9,6 +9,7 @@ angular.module('mediatic', [
   'mediatic.accueil',
   'mediatic.ajoutMedia',
   'mediatic.ajoutAdherent',
+  'LocalStorageModule',
   'mediatic.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

@@ -5,11 +5,11 @@ angular.module('mediatic', [
   'ngRoute',
   'ngMessages',
   'ngResource',
+  'ngStorage',
   'mediatic.recherche',
   'mediatic.accueil',
   'mediatic.ajoutMedia',
   'mediatic.ajoutAdherent',
-  'LocalStorageModule',
   'mediatic.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

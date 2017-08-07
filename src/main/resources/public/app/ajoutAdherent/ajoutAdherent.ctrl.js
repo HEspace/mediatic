@@ -9,7 +9,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
   var ctrl = this;
     $scope.form={};
-
     if ($rootScope.form.adherent != {} )
         {
             $scope.form.nom = $rootScope.form.adherent.nom;
@@ -45,7 +44,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         $location.path('../accueil/accueil.html');
     }
 
-    $scope.dateNaissance = new Date("1990-01-01");
 
     
 // Retourne l'age qui est envoyé dans le input Age

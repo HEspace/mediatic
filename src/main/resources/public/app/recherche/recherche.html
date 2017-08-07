@@ -152,7 +152,7 @@
             <h2 class="text-primary">{{media.titre}}</h2><br>
             <p><strong>{{media.auteur}}</strong></p>
             <p><span class="glyphicon glyphicon-{{media.type}}"></span> Livre</p>
-            <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
+            <button ng-click="modifFiche(media.id, pageF)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button>
             <button class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
@@ -215,9 +215,9 @@
             <label><strong>Montant de la cotisation : </strong></label>
             <p>{{user.montantCotisation}} &euro;</p>
 
-            <a href="creationAdherent.html" class="btn btn-md btn-primary">
+            <button ng-click="modifFiche(user.id, pageU)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
-		                                </a>
+		                                </button>
             <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
 		                                    Ajout Emprunt
 		                                </button><br>

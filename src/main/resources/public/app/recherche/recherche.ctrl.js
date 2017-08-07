@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', function ($scope, $location, RechercheService) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', function ($scope, $location, RechercheService, $rootScope) {
 
         $scope.textSearch;
         $scope.pageU = "user";
@@ -13,8 +13,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $('#sel').on('changed.bs.select', function () {
-             $(".divHiddenMedia").hide();
-             $(".divHiddenUser").hide();
+            $(".divHiddenMedia").hide();
+            $(".divHiddenUser").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
             if (options[index].text == "Médias") {
@@ -42,8 +42,38 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.changePage = function (e) {
             if (e == $scope.pageU)
                 $location.path('/ajoutAdherent');
-            else
+            else {
                 $location.path('/ajoutMedia');
+            }
+        }
+
+        $scope.modifFiche = function (id, type) {
+            if(type == "m"){
+            RechercheService.getData().then(function (res) {
+                res.data.media.forEach(function (elem) {
+                    if (elem.id == id) {
+                        $rootScope.form.media.auteur = elem.auteur
+                        $rootScope.form.media.titre = elem.titre
+                        $rootScope.form.media.type = elem.type
+                    }
+                })
+                $location.path('/ajoutMedia');
+
+            })
+            }else{
+                  RechercheService.getData().then(function (res) {
+                res.data.adherent.forEach(function (elem) {
+                    if (elem.id == id) {
+                        $rootScope.form.media.auteur = elem.auteur
+                        $rootScope.form.media.titre = elem.titre
+                        $rootScope.form.media.type = elem.type
+                    }
+                })
+                $location.path('/ajoutAdherent');
+
+            })
+            }
+
         }
 
         $scope.show = function (e) {
@@ -55,8 +85,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.getData().then(function (res) {
             $scope.donnees = res.data;
-           
-            
+
+
         })
 
         $scope.hideTr = function () {
@@ -70,7 +100,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.showTr = function (id) {
             if ($('#sel').selectpicker().val() == "m") {
                 RechercheService.getData().then(function (res) {
-                     
+
                     res.data.media.forEach(function (element) {
                         if (element.id == id) {
                             $scope.media = element
@@ -82,7 +112,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                         }
                     })
-                    console.log(res.data.adherent[0].nom)
                     $scope.formEmprunt.user = res.data.adherent[0].nom
 
                 })
@@ -103,9 +132,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         }
 
-        $scope.envoi = function(){
-		    RechercheService.ajoutEmprunt($scope.formEmprunt);
-	    }
+        $scope.envoi = function () {
+            RechercheService.ajoutEmprunt($scope.formEmprunt);
+        }
 
         $("#tabAdherent").hide();
 

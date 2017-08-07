@@ -53,8 +53,13 @@ table {
 
 .divHiddenMedia, .divHiddenUser{
     background-color: white;
-    position: absolute;
+    position: fixed;
     width: 100%;
+    height: 100%;
     z-index: 3;
 
+}
+
+.noscroll { 
+    position: fixed; overflow-y:scroll 
 }

@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', function ($scope, $location, RechercheService, $rootScope) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
         $scope.pageU = "user";
@@ -48,30 +48,38 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.modifFiche = function (id, type) {
-            if(type == "m"){
-            RechercheService.getData().then(function (res) {
-                res.data.media.forEach(function (elem) {
-                    if (elem.id == id) {
-                        $rootScope.form.media.auteur = elem.auteur
-                        $rootScope.form.media.titre = elem.titre
-                        $rootScope.form.media.type = elem.type
-                    }
-                })
-                $location.path('/ajoutMedia');
+            if (type == "m") {
+                RechercheService.getData().then(function (res) {
+                    res.data.media.forEach(function (elem) {
+                        if (elem.id == id) {
+                            $rootScope.form.media.auteur = elem.auteur
+                            $rootScope.form.media.titre = elem.titre
+                            $rootScope.form.media.type = elem.type
+                        }
+                    })
+                    $location.path('/ajoutMedia');
 
-            })
-            }else{
-                  RechercheService.getData().then(function (res) {
-                res.data.adherent.forEach(function (elem) {
-                    if (elem.id == id) {
-                        $rootScope.form.media.auteur = elem.auteur
-                        $rootScope.form.media.titre = elem.titre
-                        $rootScope.form.media.type = elem.type
-                    }
                 })
-                $location.path('/ajoutAdherent');
+            } else {
+                RechercheService.getData().then(function (res) {
+                    res.data.adherent.forEach(function (elem) {
+                        if (elem.id == id) {
+                            $rootScope.form.adherent.nom = elem.nom;
+                            $rootScope.form.adherent.prenom = elem.prenom;
+                            $rootScope.form.adherent.dateNaissance = elem.dateNaissance;
+                            $rootScope.form.adherent.age = elem.age;
+                            $rootScope.form.adherent.email = elem.email;
+                            $rootScope.form.adherent.dateCotisation = elem.dateCotisation;
+                            $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
+                            $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
+                            $rootScope.form.adherent.rue = elem.rue;
+                            $rootScope.form.adherent.codePostale = elem.codePostale;
+                            $rootScope.form.adherent.ville = elem.ville;
+                        }
+                    })
+                    $location.path('/ajoutAdherent');
 
-            })
+                })
             }
 
         }
@@ -85,8 +93,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.getData().then(function (res) {
             $scope.donnees = res.data;
-
-
         })
 
         $scope.hideTr = function () {
@@ -103,7 +109,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                     res.data.media.forEach(function (element) {
                         if (element.id == id) {
-                            $scope.media = element
+                            $scope.media = element;
+                            $scope.formEmprunt.titre = element;
                             if ($scope.media.type == "book")
                                 $scope.type = "Livre"
                             else if ($scope.media.type == "music")
@@ -112,16 +119,17 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                         }
                     })
-                    $scope.formEmprunt.user = res.data.adherent[0].nom
-
+                    
                 })
 
                 $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
             } else {
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
-                        if (element.id == id)
+                        if (element.id == id) {
                             $scope.user = element
+                            $scope.formEmprunt.user = element
+                        }
                     })
 
                 })
@@ -129,15 +137,21 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
 
             }
+            $('.container').css()
+         .addClass('noscroll');
 
         }
 
         $scope.envoi = function () {
+            var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')
+            $scope.formEmprunt.date = EDate;
+            console.log($scope.formEmprunt.date)
             RechercheService.ajoutEmprunt($scope.formEmprunt);
+
         }
 
         $("#tabAdherent").hide();
 
 
 
-    }]);
+    }]);    

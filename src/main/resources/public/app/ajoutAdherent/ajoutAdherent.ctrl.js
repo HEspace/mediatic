@@ -5,11 +5,10 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
 .controller('AjoutAdherentCtrl', ['$scope', '$location', 'AdherentService','$filter', '$rootScope', function($scope, $location, AdherentService, $filter, $rootScope) {
 
-  console.log($location.path());
+
 
   var ctrl = this;
     $scope.form={};
-
     if ($rootScope.form.adherent != {} )
         {
             $scope.form.nom = $rootScope.form.adherent.nom;
@@ -27,7 +26,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         }
     
 	ctrl.envoi = function(){
-        console.log("L'adhérent a bien été enregistré");
         var dateDeNaissanceJson = $filter('date')($scope.dateNaissance, 'dd/MM/yyyy');
         $scope.form.dateNaissance = dateDeNaissanceJson;
 
@@ -45,7 +43,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         $location.path('../accueil/accueil.html');
     }
 
-    $scope.dateNaissance = new Date("1990-01-01");
 
     
 // Retourne l'age qui est envoyé dans le input Age

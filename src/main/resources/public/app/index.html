@@ -37,9 +37,11 @@
 <body ng-controller="MediaticCtrl as ctrl">
 	<div class="wrap">
 		<div id="containerlogin" class="container">
+			<form>
 			<input id="formlogin" class="form" type="text" ng-model="ctrl.user.login" placeholder="User">
 			<input id="formlogin" class="form" type="password" ng-model="ctrl.user.password" placeholder="Password">
-			<input id="login" type="button" value="Login" ng-click="login()">
+			<button id="login" type="submit" ng-click="login()">Login</button>
+			</form>
 		</div>
 	</div>
 	<div class="row text-center">

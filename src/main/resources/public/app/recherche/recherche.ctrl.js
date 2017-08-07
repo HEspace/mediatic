@@ -67,10 +67,12 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         if (elem.id == id) {
                             $rootScope.form.adherent.nom = elem.nom;
                             $rootScope.form.adherent.prenom = elem.prenom;
-                            $rootScope.form.adherent.dateNaissance = elem.dateNaissance;
+                            var tmp = elem.dateNaissance.split("/");
+                            $rootScope.form.adherent.dateNaissance = new Date(tmp[2],tmp[1]-1,tmp[0]);
                             $rootScope.form.adherent.age = elem.age;
                             $rootScope.form.adherent.email = elem.email;
-                            $rootScope.form.adherent.dateCotisation = elem.dateCotisation;
+                            tmp = elem.dateCotisation.split("/");
+                            $rootScope.form.adherent.dateCotisation = new Date(tmp[2],tmp[1]-1,tmp[0]);
                             $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
                             $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
                             $rootScope.form.adherent.rue = elem.rue;

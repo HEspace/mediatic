@@ -112,7 +112,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$scope.changementContour();
 
 	$scope.openNav = function() {
-		console.log("test");
 		document.getElementById("idsidenav").style.width = "250px";
 		document.getElementById("boutonside").style.marginLeft = "250px";
 		$('#boutonside').css('display','none');

@@ -5,10 +5,12 @@ angular.module('mediatic', [
   'ngRoute',
   'ngMessages',
   'ngResource',
+  'ngStorage',
   'mediatic.recherche',
   'mediatic.accueil',
   'mediatic.ajoutMedia',
   'mediatic.ajoutAdherent',
+  'mediatic.login',
   'mediatic.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -47,9 +49,9 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$rootScope.form.media = {};
 	$rootScope.form.adherent = {};
 })
-.controller('MediaticCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location){
+.controller('MediaticCtrl', ['$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($scope, $rootScope, $location, $localStorage, LoginService){
 
-	
+	var ctrl = this;
 
 	$('#menuCollection').hide();
 	$('#divlogin').slideUp();
@@ -70,6 +72,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$scope.toggleWrap = function(){
 		$('.wrap').slideToggle(400);
 	}
+
+	ctrl.login = function () {
+      //LoginService.storeUser(ctrl.user);
+      //$location.path('acc');
+    }
+
 
 	$scope.openNav = function() {
 		console.log("test");

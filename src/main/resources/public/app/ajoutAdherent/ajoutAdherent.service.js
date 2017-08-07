@@ -9,10 +9,10 @@
     function AdherentService($http) {
         this.exposedFn = exposedFn;
         
-        this.ajoutAdherent = function(form){
+        this.ajoutAdh = function(form){
             $http({
                 method: 'POST',
-                url: 'http://localhost:3000/media',
+                url: 'http://localhost:3000/adherent',
                 data: form
             }).then(function successCallback(response) {
                 // this callback will be called asynchronously

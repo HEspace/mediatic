@@ -3,9 +3,17 @@
 angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
 
-.controller('AjoutAdherentCtrl', ['$scope', '$location',function($scope, $location) {
+.controller('AjoutAdherentCtrl', ['$scope', '$location', 'AdherentService', function($scope, $location, AdherentService) {
 
   console.log($location.path());
+
+  var ctrl = this;
+    $scope.form={};
+    
+	ctrl.envoi = function(){
+        console.log("test");
+        AdherentService.ajoutAdh($scope.form);
+	}
 
    $scope.submit = function(){
     $location.path('../accueil/accueil.html');
@@ -15,9 +23,9 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
     /* $scope.age = 0; */
 
 // Retourne l'age qui est envoyé dans le input Age
-    $scope.$watch('dateNaissance',function(newValue, oldvalue){
+    $scope.$watch('form.dateNaissance',function(newValue, oldvalue){
       var date = new Date(newValue);
-      $scope.age = calculate_age(date.getMonth(),date.getDay(),date.getFullYear());
+      $scope.form.age = calculate_age(date.getMonth(),date.getDay(),date.getFullYear());
       console.log(date);
     });
    
@@ -42,13 +50,13 @@ function calculate_age(birth_month,birth_day,birth_year)
 
 // Retourne la date de fin d'abonnement en fonction de la date de paiement de la cotisation
 
-$scope.$watch('dateCotisation',function(newValue, oldvalue){
+$scope.$watch('form.dateCotisation',function(newValue, oldvalue){
       var date = new Date(newValue);
       var year = date.getFullYear();
       var month = date.getMonth();
       var day = date.getDate();
       var datePlusUnAn = new Date(year + 1, month, day)
-      $scope.dateFinCotisation = datePlusUnAn;
+      $scope.form.dateFinCotisation = datePlusUnAn;
       console.log("La date + 1 an est : "+parseInt(datePlusUnAn));
     });
 

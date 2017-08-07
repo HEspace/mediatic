@@ -40,27 +40,27 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		controllerAs: 'ctrl'
 	  });
 }])
-.controller('MediaticCtrl', ['$scope', function($scope){
 
-	/* 
-	  
+.run(function($rootScope) {
+	$rootScope.cherche = "";
+	$rootScope.form = {};
+	$rootScope.form.media = {};
+	$rootScope.form.adherent = {};
+})
+.controller('MediaticCtrl', ['$scope', '$rootScope', '$location', function($scope, $rootScope, $location){
 
-	function foo(x){
-		function bar(x){
-			console.log("J :",i)
-		}
-		var i = 2;
-		bar(5);
-	}
-
-	console.log(foo(3));
-	//import code
 	
- */
 
 	$('#menuCollection').hide();
 	$('#divlogin').slideUp();
 	$('#sideMenu').slideUp();
+
+	$scope.rechercher = function(){
+		$rootScope.recherche = $scope.recherche ;
+		console.log("test");
+		console.log($rootScope.recherche);
+		$location.path('/recherche');
+	}
 
 	if (window.innerWidth > 768)
 		$('#boutonside').css('display','none');

@@ -11,6 +11,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.m = "m";
         $scope.a = "a";
         $scope.formEmprunt = {};
+        $scope.myOrder = 'titre';
+        $scope.reverse = false;
 
 
         $('#sel').on('changed.bs.select', function () {
@@ -163,7 +165,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $scope.orderByMe = function(order){
+            $scope.reverse = ($scope.myOrder === order) ? !$scope.reverse : true;
             $scope.myOrder = order;
         }
+
+        
 
     }]);    

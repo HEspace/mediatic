@@ -1,7 +1,7 @@
 'user strict';
 
 angular.module('mediatic.recherche')
-.service('RechercheService', ['$http',function($http){
+.service('RechercheService', ['$http','$window' ,function($http,$window){
     this.getData = function(){
         console.log($http.get('donnees.json'))
        return $http.get('donnees.json')
@@ -13,6 +13,7 @@ angular.module('mediatic.recherche')
                 url: 'http://localhost:3000/emprunt',
                 data: form
             }).then(function successCallback(response) {
+                $window.location.reload();
                 // this callback will be called asynchronously
                 // when the response is available
             }, function errorCallback(response) {

@@ -181,12 +181,22 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 	    var yOffset = 0;
 	    var currYOffSet = window.pageYOffset;
-
+		
+		if($rootScope.login)
+			$('.portable').css("display","run-in");
+		else
+			$('.portable').css("display","none");
 	    if(yOffset < currYOffSet) {
-	        myNavBar.add();
+			myNavBar.add();
+			$('#boutonside').css("color","white");
+			$('.portable').css("color","white");
+			$('.portable').css("padding-top","23px");
 	    }
 	    else if(currYOffSet == yOffset){
-	        myNavBar.remove();
+			myNavBar.remove();
+			$('#boutonside').css("color","black");
+			$('.portable').css("color","black");
+			$('.portable').css("padding-top","0px");
 	    }
 
 	}

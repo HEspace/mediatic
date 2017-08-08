@@ -32,13 +32,21 @@
 @media(min-width : 768px) {
 	#header {
 		display : block;
-	}
+    }
+    #boutonside {
+        font-size:30px;
+        color: black;
+    }
 }
 
 @media(max-width : 768px) {
 	#header {
 		display : block;
-	}
+    }
+    #boutonside {
+        font-size:20px;
+        color: black;
+    }
 }
 
 

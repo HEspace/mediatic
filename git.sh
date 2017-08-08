@@ -26,7 +26,8 @@ echo "======================================================"
 echo "====================== git add ======================="
 echo "======================================================"
 echo "=media/* - ajout*/ - accueil/* - recherche/* - css/* ="
-echo "========== mediatic* - js/* - index.html - ==========="
+echo "====== mediatic* - js/* - index.html - login/* ======="
+echo "======================================================"
 
 git add src/main/resources/public/app/ajoutMedia/*
 git add src/main/resources/public/app/ajoutAdherent/*

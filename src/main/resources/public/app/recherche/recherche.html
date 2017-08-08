@@ -104,11 +104,11 @@
     <table class="table table-hover" id="tab">
         <thead class="theadSearch">
             <tr>
-                <th style="text-align:center"><span  ng-click="orderByMe('type')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Type</th>
-                <th><span  ng-click="orderByMe('titre')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Titre</th>
-                <th><span  ng-click="orderByMe('auteur')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Auteur</th>
-                <th><span  ng-click="orderByMe('emprunt')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Emprunté par</th>
-                <th class="text-center"><span  ng-click="orderByMe('date')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Retour prévu</th>
+                <th style="text-align:center"><span  ng-click="orderByMe('type')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Type</th>
+                <th><span  ng-click="orderByMe('titre')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Titre</th>
+                <th><span  ng-click="orderByMe('auteur')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Auteur</th>
+                <th><span  ng-click="orderByMe('emprunt')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Emprunté par</th>
+                <th class="text-center"><span  ng-click="orderByMe('date')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Retour prévu</th>
             </tr>
         </thead>
         <tbody class="tbodyTab">
@@ -130,11 +130,11 @@
     <table class="table table-hover text-center">
         <thead class="theadSearch">
             <tr>
-                <th><span  ng-click="orderByMe('id')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Identifiant</th>
-                <th><span  ng-click="orderByMe('nom')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Nom Prénom</th>
-                <th><span  ng-click="orderByMe('dateNaissance')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Date de naissance</th>
-                <th class="text-center"><span  ng-click="orderByMe('dateCotisation')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;A jour de cotisation ?</th>
-                <th class="text-center"><span  ng-click="orderByMe('nbMedia')" class="glyphicon glyphicon-arrow-down"></span>&nbsp;Nombre médias</th>
+                <th><span  ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
+                <th><span  ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom</th>
+                <th><span  ng-click="orderByMe('dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date de naissance</th>
+                <th class="text-center"><span  ng-click="orderByMe('dateCotisation')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;A jour de cotisation ?</th>
+                <th class="text-center"><span  ng-click="orderByMe('nbMedia')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nombre médias</th>
             </tr>
         </thead>
         <tbody class="tbodyTab">

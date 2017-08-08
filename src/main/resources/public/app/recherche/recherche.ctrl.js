@@ -13,6 +13,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.formEmprunt = {};
         $scope.myOrder = 'titre';
         $scope.reverse = false;
+        
 
 
         $('#sel').on('changed.bs.select', function () {

@@ -96,9 +96,7 @@ table {
 
 }
  
-.glyphicon,.glyphicon-arrow-down{
-    cursor: pointer;
-} 
+
 
 .divHiddenMedia, .divHiddenUser{
     background-color: white;
@@ -111,4 +109,13 @@ table {
     padding: 15px;
     margin-top: 10%;
     top: 0;
+}
+
+.sortorder:after {
+  content: '\25b2';  
+  cursor: pointer;
+}
+.sortorder.reverse:after {
+  content: '\25bc';  
+  cursor: pointer;
 }

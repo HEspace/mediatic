@@ -20,14 +20,14 @@
 
 					<div class="form-group">
 						<label for="nom">Nom *</label>
-						<input type="text" name="nom" class="form-control" id="nom" placeholder="Nom" ng-minlength="3" ng-model="nom" required>
+						<input type="text" name="nom" class="form-control" id="nom" placeholder="Nom" ng-minlength="3" ng-model="form.nom" required>
 					</div>
 
 					<p class="text-danger" ng-show="ajoutAherentForm.nom.$invalid && !ajoutAherentForm.nom.$pristine" class="help-block">Veuillez indiquer votre nom</p>
 
 					<div class="form-group">
 						<label for="Prenom">Prenom *</label>
-						<input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom" ng-minlength="3" ng-model="prenom"
+						<input type="text" name="prenom" class="form-control" id="prenom" placeholder="Prénom" ng-minlength="3" ng-model="form.prenom"
 						 required>
 					</div>
 

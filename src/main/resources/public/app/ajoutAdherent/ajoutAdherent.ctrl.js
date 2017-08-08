@@ -34,9 +34,19 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
 
         var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'dd/MM/yyyy');
         $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
-        
+
+        var premiereLettreNom = capitalizeFirstLetter($scope.nom);
+        $scope.form.nom = premiereLettreNom;
+
+        var premiereLettrePrenom = capitalizeFirstLetter($scope.prenom);
+        $scope.form.prenom = premiereLettrePrenom;
+
         AdherentService.ajoutAdh($scope.form);
-	}
+    }
+    
+    function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
     

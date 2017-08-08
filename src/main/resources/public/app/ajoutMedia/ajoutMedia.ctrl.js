@@ -2,7 +2,7 @@
 
 angular.module('mediatic.ajoutMedia', ['ngRoute'])
 
-.controller('AjoutMediaCtrl', ['MediaService', '$rootScope','$location', function(MediaService, $rootScope, $location) {
+.controller('AjoutMediaCtrl', ['MediaService', '$rootScope','$location','$scope', function(MediaService, $rootScope, $location, $scope) {
 
   var ctrl = this;
   ctrl.form={};
@@ -16,8 +16,20 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
 	}
 
 	ctrl.envoi = function(){
+
+		var premiereLettreTitre = capitalizeFirstLetter($scope.titre);
+		ctrl.form.titre = premiereLettreTitre;
+
+		var premiereLettreAuteur = capitalizeFirstLetter($scope.auteur);
+        ctrl.form.auteur = premiereLettreAuteur;
+
 		MediaService.ajoutMedia(ctrl.form);
+
 	}
+
+	 function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
 
 }]);

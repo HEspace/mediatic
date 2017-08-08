@@ -96,7 +96,9 @@ table {
 
 }
  
-    
+.glyphicon,.glyphicon-arrow-down{
+    cursor: pointer;
+} 
 
 .divHiddenMedia, .divHiddenUser{
     background-color: white;

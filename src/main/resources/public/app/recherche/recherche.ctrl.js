@@ -162,5 +162,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $("#tabAdherent").hide();
 
 
+        $scope.orderByMe = function(order){
+            $scope.myOrder = order;
+        }
 
     }]);    

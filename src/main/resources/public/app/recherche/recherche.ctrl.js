@@ -2,7 +2,7 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function 
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function
     ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
@@ -14,8 +14,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $('#sel').on('changed.bs.select', function () {
-            $("#divHiddenMedia").hide();
-            $("#divHiddenUser").hide();
+            $(".divHiddenMedia").hide();
+            $(".divHiddenUser").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
             if (options[index].text == "Médias") {
@@ -68,11 +68,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             $rootScope.form.adherent.nom = elem.nom;
                             $rootScope.form.adherent.prenom = elem.prenom;
                             var tmp = elem.dateNaissance.split("/");
-                            $rootScope.form.adherent.dateNaissance = new Date(tmp[2],tmp[1]-1,tmp[0]);
+                            $rootScope.form.adherent.dateNaissance = new Date(tmp[2], tmp[1] - 1, tmp[0]);
                             $rootScope.form.adherent.age = elem.age;
                             $rootScope.form.adherent.email = elem.email;
                             tmp = elem.dateCotisation.split("/");
-                            $rootScope.form.adherent.dateCotisation = new Date(tmp[2],tmp[1]-1,tmp[0]);
+                            $rootScope.form.adherent.dateCotisation = new Date(tmp[2], tmp[1] - 1, tmp[0]);
                             $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
                             $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
                             $rootScope.form.adherent.rue = elem.rue;
@@ -99,10 +99,15 @@ angular.module('mediatic.recherche', ['ngRoute'])
         })
 
         $scope.hideTr = function () {
-            if ($('#sel').selectpicker().val() == "m")
-                $("#divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
-            else
-                $("#divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
+            if ($('#sel').selectpicker().val() == "m") {
+                 /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */ 
+                 $(".divHiddenMedia").animate({height: "toggle"}, 100);
+               
+            } else {
+                /* $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenUser").animate({height: "toggle"}, 100);
+            }
+            $("div#globalDiv").removeClass("blur");
         }
 
 
@@ -122,10 +127,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                         }
                     })
-                    
+
                 })
 
-                $("#divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" });
+                /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
+                 $(".divHiddenMedia").animate({height: "toggle"}, 300);
             } else {
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
@@ -137,17 +143,17 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                 })
 
-                $("#divHiddenUser").toggle({ effect: "scale", direction: "horizontal" });
+               /*  $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenUser").animate({height: "toggle"}, 300);
 
             }
-          /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */
-
+            /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */
+            $("div#globalDiv").addClass("blur");
         }
 
         $scope.envoi = function () {
             var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')
             $scope.formEmprunt.date = EDate;
-            console.log($scope.formEmprunt.date)
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 
         }

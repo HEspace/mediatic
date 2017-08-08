@@ -8,12 +8,38 @@ table {
     border-radius: 10px;
 }
 
-#divHiddenMedia, #divHiddenUser{
+.divHiddenMedia, .divHiddenUser{
     display: none;
 }
 
 #labelUserSelect{
     display: block;
+}
+#buttonUser{
+    margin-left: 15px;
+}
+ #buttonUser, #buttonFile{
+        display: inline-block;
+        margin-bottom: 2px;
+    } 
+    #empruntButton, #empruntDate, #empruntSelect{
+        display: inline-block;
+        vertical-align:middle;
+    }
+    #empruntSelect{
+        margin-left: 15px;
+    }
+
+@media (max-width: 400px){
+
+    #radioButton{
+        display: block;
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    #radioButtonRow{
+                text-align: center;
+    }
 }
 
 @media (max-width: 992px) {
@@ -48,15 +74,21 @@ table {
     cursor: pointer;
 }
 
+.blur {
 
+  filter: blur(13px);
+
+}
  
 
 
 .divHiddenMedia, .divHiddenUser{
     background-color: white;
-    position: fixed;
-
-    z-index: 3;
-
+    position: absolute;
+    z-index: 4;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: gray;
+    border-width: 1px; 
+    padding: 15px;
 }
-

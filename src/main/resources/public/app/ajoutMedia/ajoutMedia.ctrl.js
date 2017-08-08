@@ -2,7 +2,7 @@
 
 angular.module('mediatic.ajoutMedia', ['ngRoute'])
 
-.controller('AjoutMediaCtrl', ['MediaService', '$rootScope', function(MediaService, $rootScope) {
+.controller('AjoutMediaCtrl', ['MediaService', '$rootScope','$location', function(MediaService, $rootScope, $location) {
 
   var ctrl = this;
   ctrl.form={};
@@ -17,6 +17,7 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
 
 	ctrl.envoi = function(){
 		MediaService.ajoutMedia(ctrl.form);
+		$location.path('/recherche');
 	}
 
 

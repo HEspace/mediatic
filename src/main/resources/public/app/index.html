@@ -82,9 +82,9 @@
 							<button style="display:none" class="btn btn-primary btn-sm hidden-md hidden-sm hidden-xs log" ng-click="rechercher()">
 								<span class="glyphicon glyphicon-eye-open"></span> Chercher
 							</button>
-							<label style="display:none" ng-click="toggleWrap()" id="boutonlogin" class="btn btn-warning btn-sm"> Login </label>
-							<label style="display:none" ng-click="logout()" id="boutonlogout" class="btn btn-warning btn-sm"> Logout </label>
-							<span style="color:white" ng-bind="bonjour" />
+							<button style="display:none" ng-click="toggleWrap()" id="boutonlogin" class="btn btn-warning btn-sm"> Login </button>
+							<button style="display:none" ng-click="logout()" id="boutonlogout" class="btn btn-warning btn-sm"> Logout </button>
+							<span style="color:white; padding-left:15px" class="portable" ng-bind="bonjour" />
 						</form>
 						
 					</div>
@@ -97,7 +97,6 @@
 	</div>
 
 	<div ng-view></div>
-	<br /><br /><br /><br /><br /><br /><br /><br />
 
 	<div id="idsidenav" class="sidenav">
 		<a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
@@ -135,20 +134,12 @@
 		</div>
 	</div>
 
-
 	<footer class="footer">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 text-center">
-					<strong>
-						<a class="lienAuteur" href="http://192.168.1.87:8082/accueil.html">Auteur : HLH </a>
-						<p>Tous droits réservés - HLH Production <br />
-						Publié le 06/07/2017</p>
-					</strong>
-				</div>
-			</div>
-		</div>
-	</footer>
+      <div class="container">
+        <span class="text-muted">Projet Mediatic, Design by HLH, copyright 2017</span>
+      </div>
+    </footer>
+</div>
 
 
 	<!-- In production use:

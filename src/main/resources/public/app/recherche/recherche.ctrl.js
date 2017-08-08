@@ -115,6 +115,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                  
                
             } else {
+                $scope.emprunte = [];
                 /* $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
                 $(".divHiddenUser").animate({height: "toggle"}, 100);
             }
@@ -129,7 +130,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     res.data.media.forEach(function (element) {
                         if (element.id == id) {
                             $scope.media = element;
-                            $scope.formEmprunt.titre = element;
+                            $scope.formEmprunt.media = element;
                             if ($scope.media.type == "book")
                                 $scope.type = "Livre"
                             else if ($scope.media.type == "music")
@@ -138,7 +139,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "DVD"
                             
                             res.data.emprunt.forEach(function (e) {
-                                if(e.titre.id == element.id){
+                                if(e.media.id == element.id){
                                     $scope.emprunte.push(e.user);
                                 }
                                                                   
@@ -157,6 +158,13 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         if (element.id == id) {
                             $scope.user = element
                             $scope.formEmprunt.user = element
+
+                            res.data.emprunt.forEach(function (e) {
+                                if(e.user.id == element.id){
+                                    $scope.emprunte.push(e.media);
+                                }
+                                                                  
+                            })
                         }
                     })
 

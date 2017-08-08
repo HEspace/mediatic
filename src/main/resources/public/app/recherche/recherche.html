@@ -157,13 +157,15 @@
 <div class="divHiddenMedia col-xs-offset-2 col-xs-8 col-xs-offset-2">
     <div class="col-xs-1">
         <button ng-click="hideTr()" class="btn btn-danger">X</button>
-    </div><br><br>
+    </div>
 
-    <div class="col-md-2 ">
+    <div class="col-md-3">
         <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
             height="450" width="300">
     </div>
-    <div class="col-md-5 ">
+
+    <div class="col-md-5 col-xs-12">
+
         <h2 class="text-primary">{{media.titre}}</h2><br>
         <p><strong>{{media.auteur}}</strong></p>
         <p><span class="glyphicon glyphicon-{{media.type}}"></span> Livre</p>
@@ -194,72 +196,70 @@
                 </form>
             </div>
         </div>
-    </div>
-    <div class="col-sm-3 text-left">
+    </div><br>
+    <div class="col-md-3 col-xs-12 text-left" style="margin-top:5px">
         <ul class="list-group">
             <li class="list-group-item active">Déjà emprunté par</li>
             <li class="list-group-item" ng-repeat="e in donnees.emprunt">{{e.user.nom}} {{e.user.prenom}}</li>
         </ul>
     </div>
 
+
 </div>
 
+<div class="divHiddenUser col-xs-offset-2 col-xs-8 col-xs-offset-2">
+    <div class="col-xs-1">
+        <button ng-click="hideTr()" class="btn btn-danger">X</button>
+    </div>
 
-<div class="divHiddenUser">
-    <div class="row">
-        <div class="col-xs-offset-1 col-md-offset-1 col-lg-offset-2">
-            <button ng-click="hideTr()" class="btn btn-danger">X</button>
-        </div>
-        <div class="container">
-            <div class="col-md-offset-2 col-md-5">
-                <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>{{user.nom}} {{user.prenom}}</h3><br>
-                <label><strong>Date de naissance : </strong></label>
-                <p class="center-block">{{user.dateNaissance}}</p>
-                <label><strong>Email : </strong></label>
-                <p>{{user.email}}</p>
-                <label><strong>Adresse : </strong></label>
-                <p>{{user.rue}}</p>
-                <label><strong>Date de paiement de la cotisation : </strong></label>
-                <p>{{user.dateCotisation}}</p>
-                <label><strong>Montant de la cotisation : </strong></label>
-                <p>{{user.montantCotisation}} &euro;</p>
-
-                <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
-		                                    Modifier Fiche
-		                                </button>
-                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
+    <div class="col-md-offset-1 col-md-5 col-xs-12">
+        <h3 class="text-primary"><span class="glyphicon glyphicon-user"></span>{{user.nom}} {{user.prenom}}</h3><br>
+        <label><strong>Date de naissance : </strong></label>
+        <p class="center-block">{{user.dateNaissance}}</p>
+        <label><strong>Email : </strong></label>
+        <p>{{user.email}}</p>
+        <label><strong>Adresse : </strong></label>
+        <p>{{user.rue}}</p>
+        <label><strong>Date de paiement de la cotisation : </strong></label>
+        <p>{{user.dateCotisation}}</p>
+        <label><strong>Montant de la cotisation : </strong></label>
+        <p>{{user.montantCotisation}} &euro;</p>
+        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntUser">
 		                                    Ajout Emprunt
+		                                </button>
+        <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
+		                                    Modifier Fiche
 		                                </button><br>
-                <div id="empruntUser" class="collapse">
-                    <div class="row">
-                        <br>
-                        <form name="formM" class="form-group" ng-submit="envoi()">
-                            <div class="col-xs-4">
-                                <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
+        <div id="empruntUser" class="collapse">
+            <div class="row">
+                <br>
+                <form name="formM" class="form-group" ng-submit="envoi()">
+                    <div class="col-xs-4">
+                        <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
-                            </div>
-                            <div class="col-xs-5">
-                                <input type='date' class="form-control" ng-model="date" required/>
-                                <input ng-model="formEmprunt.user" style="display:none">
-                            </div>
-                            <div class="col-xs-2">
-                                <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
-                            </div>
-                        </form>
                     </div>
-                </div>
+                    <div class="col-xs-5">
+                        <input type='date' class="form-control" ng-model="date" required/>
+                        <input ng-model="formEmprunt.user" style="display:none">
+                    </div>
+                    <div class="col-xs-2">
+                        <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
+                    </div>
+                </form>
             </div>
-            <br>
-            <div class="col-md-3 col-xs-12 text-left">
-                <ul class="list-group">
-                    <li class="list-group-item active">Média(s) emprunté(s) : </li>
-                    <li class="list-group-item" ng-repeat="e in donnees.emprunt"><span class="glyphicon glyphicon-{{e.titre.type}}"></span> {{e.titre.titre}}</li>
-                </ul>
-
-            </div>
-
-
         </div>
     </div>
+
+
+    <div class=" col-md-5 col-xs-12 text-left" style="margin-top:5px">
+        <ul class="list-group">
+            <li class="list-group-item active">Média(s) emprunté(s) : </li>
+            <li class="list-group-item" ng-repeat="e in donnees.emprunt"><span class="glyphicon glyphicon-{{e.titre.type}}"></span> {{e.titre.titre}}</li>
+        </ul>
+
+    </div>
+
+
+
 </div>

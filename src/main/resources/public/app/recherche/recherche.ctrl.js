@@ -13,7 +13,12 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.formEmprunt = {};
         $scope.myOrder = 'titre';
         $scope.reverse = false;
-        
+        $scope.radioBox = {'selected': "nom" };
+        $scope.checkBox = {
+            'book': false,
+            'music': false,
+            'film': false
+        }
 
 
         $('#sel').on('changed.bs.select', function () {

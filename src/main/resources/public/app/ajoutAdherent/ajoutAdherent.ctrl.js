@@ -36,12 +36,8 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
         
         AdherentService.ajoutAdh($scope.form);
-        $location.path('../accueil/recherche.html');
+        $location.path('/recherche');
 	}
-
-    $scope.submit = function(){
-        $location.path('../accueil/accueil.html');
-    }
 
 
     

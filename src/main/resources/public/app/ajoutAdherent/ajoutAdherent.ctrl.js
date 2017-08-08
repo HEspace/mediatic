@@ -35,20 +35,22 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'dd/MM/yyyy');
         $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
 
-        var premiereLettreNom = capitalizeFirstLetter($scope.nom);
-        $scope.form.nom = premiereLettreNom;
-
-        var premiereLettrePrenom = capitalizeFirstLetter($scope.prenom);
-        $scope.form.prenom = premiereLettrePrenom;
-
         AdherentService.ajoutAdh($scope.form);
     }
+
+    $scope.$watch('form',function(){
+        console.log("slkdjg");
+        if($scope.form.prenom)
+            $scope.form.prenom = capitalizeFirstLetter($scope.form.prenom);
+        if($scope.form.nom)
+            $scope.form.nom = capitalizeFirstLetter($scope.form.nom);
+        if($scope.form.ville)
+            $scope.form.ville = capitalizeFirstLetter($scope.form.ville);
+    },true);
     
     function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
     
 // Retourne l'age qui est envoyé dans le input Age
     $scope.$watch('dateNaissance',function(newValue, oldvalue){

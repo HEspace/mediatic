@@ -86,9 +86,7 @@ form input.ng-invalid.ng-touched
    border-color: red;
 }
 
-#nom, #prenom, #auteur {
-  text-transform: capitalize;
-}
+
 
 
 

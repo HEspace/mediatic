@@ -16,19 +16,18 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
 	}
 
 	ctrl.envoi = function(){
-
-		var premiereLettreTitre = capitalizeFirstLetter($scope.titre);
-		ctrl.form.titre = premiereLettreTitre;
-
-		var premiereLettreAuteur = capitalizeFirstLetter($scope.auteur);
-        ctrl.form.auteur = premiereLettreAuteur;
-
 		MediaService.ajoutMedia(ctrl.form);
-
 	}
 
-	 function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+	$scope.$watch('ctrl.form',function(){
+		if(ctrl.form.titre)
+			ctrl.form.titre = capitalizeFirstLetter(ctrl.form.titre);
+		if(ctrl.form.auteur)
+			ctrl.form.auteur = capitalizeFirstLetter(ctrl.form.auteur);
+	},true);
+
+	function capitalizeFirstLetter(string) {
+    	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 

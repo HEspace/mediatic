@@ -37,15 +37,6 @@
 </head>
 
 <body ng-controller="MediaticCtrl as ctrl">
-	<div class="wrap">
-		<div id="containerlogin" class="container">
-			<form>
-			<input id="formlogin" class="form" type="text" ng-model="ctrl.user.login" placeholder="User">
-			<input id="formlogin" class="form" type="password" ng-model="ctrl.user.password" placeholder="Password">
-			<button id="login" type="submit" ng-click="login()">Login</button>
-			</form>
-		</div>
-	</div>
 	<div class="row text-center">
 		<div class="col-lg-2 col-md-3 col-sm-3 text-left">
 
@@ -79,19 +70,43 @@
 								</ul>
 							</li>
 						</ul>
-						<form class="navbar-form navbar-right inline-form">
-							<input style="display:none" type="search" class="input-sm form-control hidden-md hidden-sm hidden-xs log" placeholder="Recherche" ng-model="recherche">
-							<button style="display:none" class="btn btn-primary btn-sm hidden-md hidden-sm hidden-xs log" ng-click="rechercher()">
-								<span class="glyphicon glyphicon-eye-open"></span> Chercher
-							</button>
-							<button style="display:none" ng-click="toggleWrap()" id="boutonlogin" class="btn btn-warning btn-sm"> Login </button>
-							<button style="display:none" ng-click="logout()" id="boutonlogout" class="btn btn-warning btn-sm"> Logout </button>
-							<span style="color:white; padding-left:15px" class="portable" ng-bind="bonjour" />
-						</form>
+						<ul class="nav navbar-nav navbar-right">
+							<li><form class="navbar-form inline-form">
+									<input style="display:none" type="search" class="input-sm form-control hidden-md hidden-sm hidden-xs log" placeholder="Recherche" ng-model="recherche">
+									<button style="display:none" class="btn btn-primary btn-sm hidden-md hidden-sm hidden-xs log" ng-click="rechercher()">
+										<span class="glyphicon glyphicon-eye-open"></span> Chercher
+									</button>
+									<button style="display:none" ng-click="logout()" id="boutonlogout" class="btn btn-warning btn-sm"> Logout </button>
+									<span style="color:white; padding-left:15px" class="portable" ng-bind="bonjour"></span>
+								</form>
+							</li>
+        					<li style="display: none" class="dropdown nonlog">
+          						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+								<ul id="login-dp" class="dropdown-menu">
+									<li>
+										<div class="row">
+											<div class="col-md-12">
+												<form class="form" id="login-nav">
+														<div class="form-group">
+															<input id="formlogin" class="form" type="text" ng-model="ctrl.user.login" placeholder="User">
+														</div>
+														<div class="form-group">
+															<input id="formlogin" class="form" type="password" ng-model="ctrl.user.password" placeholder="Password">
+														</div>
+														<div class="form-group pull-right">
+															<button ng-click="login()" class="btn btn-primary btn-block">Login</button>
+														</div>
+												</form>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
 						
 					</div>
 					<span class="col-xs-offset-2 col-xs-8 hidden-lg hidden-md hidden-sm portable text-center"  ng-bind="bonjour"> </span>
-					<span style="cursor:pointer" class="col-xs-offset-1 col-xs-1 hidden-lg hidden-md hidden-sm glyphicon glyphicon-log-out portable" ng-click="logout()" aria-hidden="true"></span>
+					<span style="cursor:pointer" class=" col-xs-2 hidden-lg hidden-md hidden-sm glyphicon glyphicon-log-out portable" ng-click="logout()" aria-hidden="true"></span>
 				</div>
 			</nav>
 		</div>
@@ -103,24 +118,28 @@
 	<div id="idsidenav" class="sidenav">
 		<img src="image/sideNavIcon.jpg" alt="HTML5 Icon" style="width:100%;">
 		<a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>
+
 		<div id="sideMenu">
-			<ul class="hidden-lg hidden-sm hidden-md">
-				<li class="active"><a href="#!/accueil" ng-click="closeNav()">Accueil</a></li>
-				<li style="display:none" class="log" ><a href="#!/recherche" ng-click="closeNav()">Recherche</a></li>
+			<ul class="hidden-lg hidden-sm hidden-md menuUl">
+				<br /><br />
+				<span class="message" ng-bind="bonjour"></span><br /><br />
+				<li class="active"><a href="#!/accueil" ng-click="closeNav()"><span class="glyphicon glyphicon-home"></span>   Accueil</a></li>
+				<li style="display:none" class="log" ><a href="#!/recherche" ng-click="closeNav()"><span class="glyphicon glyphicon-search"></span>   Recherche</a></li>
 				<li style="display:none" class="log"><a class="dropdown-toggle" href="" ng-click=inverserCollectionMenu()>Collection<span class="caret"></span></a>
 					<ul class="menu collection" id="menuCollection">
-						<li><a href="#!/accueil">Livre</a></li>
-						<li><a href="#!/accueil">CD</a></li>
-						<li><a href="#!/accueil">DVD</a></li>
+						<ul><a>Livre</a></ul>
+						<ul><a>CD</a></ul>
+						<ul><a>DVD</a></ul>
 					</ul>
 				</li>
+				<li class="log"><a ng-click="logout()"><span class="glyphicon glyphicon-off"></span>   Deconnection</a></li>
 			</ul>
 		</div>
 		<div id="divlogin">
 			<div class="row">
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 				<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-					<form id="formLogin">
+					<form style="padding-left:25px" id="formLogin">
 						<div class="form-group">
 							<label for="identifiant">identifiant :</label>
 							<input type="identifiant" class="form-control" id="identifiant" ng-model="ctrl.user.login">

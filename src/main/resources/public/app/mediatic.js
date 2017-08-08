@@ -48,13 +48,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$rootScope.form.media = {};
 	$rootScope.form.adherent = {};
 })
-.controller('MediaticCtrl', ['$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($window, $scope, $rootScope, $location, $localStorage, LoginService){
+.controller('MediaticCtrl', ['$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService){
 
 	var ctrl = this;
 	ctrl.user = {};
 
 	$('#menuCollection').hide();
-	$('#divlogin').slideUp();
 	$('#sideMenu').slideUp();
 
 	if($rootScope.login){
@@ -74,31 +73,27 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	else
 		$('#boutonside').css('display','block');
 
-	$scope.toggleWrap = function(){
-		$('.wrap').slideToggle(400);
-	}
-
 	$scope.logout = function(){
 		$localStorage.$reset();
 		$rootScope.login ='';
-		$scope.changementContour();
       	$window.location.reload();
 	}
 
 	$scope.login = function () {
-	  	LoginService.storeUser(ctrl.user);
-		$scope.changementContour();
-		$scope.toggleWrap();
-     	$window.location.reload();
+		LoginService.storeUser(ctrl.user);
+		$timeout(function(){
+			$window.location.reload();
+		},300);
 	}
 	
 	$scope.changementContour = function(){
 		if($rootScope.login){
-			$scope.bonjour="Bonjour "+ $rootScope.login+"." ;
+			$scope.bonjour="Bonjour "+ $rootScope.login+" !" ;
 			$('#boutonlogin').css('display','none');
 			$('#formLogin').css('display','none');
 			$('#boutonlogout').css('display','inline');
 			$('.log').css('display','inline');
+			$('.nonlog').css('display','none');
 		}
 		else{
 			$scope.bonjour='';
@@ -106,6 +101,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 			$('#formLogin').css('display','block');
 			$('#boutonlogout').css('display','none');
 			$('.log').css('display','none');
+			$('.nonlog').css('display','inline');
 		}
 	}
 	$scope.changementContour();

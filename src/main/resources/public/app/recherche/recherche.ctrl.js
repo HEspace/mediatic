@@ -179,7 +179,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.envoi = function () {
-            var EDate = $filter('date')($scope.date, 'dd/MM/yyyy')
+            var EDate = $filter('date')($scope.date, 'dd-MM-yyyy')
             $scope.formEmprunt.date = EDate;
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 
@@ -190,6 +190,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $scope.orderByMe = function(order){
+            
             $scope.reverse = ($scope.myOrder === order) ? !$scope.reverse : true;
             $scope.myOrder = order;
         }

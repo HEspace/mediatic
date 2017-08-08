@@ -42,7 +42,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		controllerAs: 'ctrl'
 	  });
 }])
-
 .run(function($rootScope) {
 	$rootScope.cherche = "";
 	$rootScope.form = {};

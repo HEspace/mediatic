@@ -204,8 +204,9 @@
     <div class="col-md-3 col-xs-12 text-left" style="margin-top:5px">
         <ul class="list-group">
             <li class="list-group-item active">Déjà emprunté par</li>
-            <li class="list-group-item" ng-repeat="e in donnees.emprunt">{{e.user.nom}} {{e.user.prenom}}</li>
+            <li class="list-group-item" ng-repeat="e in emprunte">{{e.nom}} {{e.prenom}}</li>
         </ul>
+        <pre>{{emprunte | json}}</pre>
     </div>
 
 

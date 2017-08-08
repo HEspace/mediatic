@@ -19,6 +19,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
             'music': false,
             'film': false
         }
+        $scope.emprunte = [];
 
 
         $('#sel').on('changed.bs.select', function () {
@@ -108,8 +109,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         $scope.hideTr = function () {
             if ($('#sel').selectpicker().val() == "m") {
+                $scope.emprunte = [];
                  /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */ 
                  $(".divHiddenMedia").animate({height: "toggle"}, 100);
+                 
                
             } else {
                 /* $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
@@ -133,6 +136,14 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.type = "CD"
                             else
                                 $scope.type = "DVD"
+                            
+                            res.data.emprunt.forEach(function (e) {
+                                if(e.titre.id == element.id){
+                                    $scope.emprunte.push(e.user);
+                                }
+                                                                  
+                            })
+                            
                         }
                     })
 

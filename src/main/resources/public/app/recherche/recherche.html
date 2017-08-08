@@ -180,19 +180,19 @@
         <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button><br>
-        <div id="empruntMedia" class="collapse">
+        <div id="empruntMedia" class="collapse col-md-6 col-xs-12">
             <div class="row">
                 <form name="formE" ng-submit="envoi()" class="form-group">
-                    <div id="empruntSelect">
+                    <div >
                         <select ng-model="formEmprunt.user" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required>
                                 <option value="" hidden>Adhérents</option>
 	                        </select>
                     </div>
                     <input ng-model="formEmprunt.media" style="display:none">
-                    <div id="empruntDate">
+                    <div >
                         <input type='date' ng-model="date" class="form-control" placeholder="Date d'emprunt" required>
                     </div>
-                    <div id="empruntButton">
+                    <div >
                         <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formE.$invalid">
                     </div>
 
@@ -234,20 +234,20 @@
         <button ng-click="modifFiche(user.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button><br>
-        <div id="empruntUser" class="collapse">
+        <div id="empruntUser" class="collapse col-md-6 col-xs-12">
             <div class="row">
 
                 <form name="formM" class="form-group" ng-submit="envoi()">
-                    <div id="empruntSelectUser">
+                    <div>
                         <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
                     </div>
-                    <div id="empruntDateUser">
-                        <input type='date' class="form-control" ng-model="date" required/>
+                    <div>
+                        <input type='date' class="form-control " ng-model="date" required/>
                         <input ng-model="formEmprunt.user" style="display:none">
                     </div>
-                    <div id="empruntButtonUser">
+                    <div>
                         <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
                     </div>
                 </form>

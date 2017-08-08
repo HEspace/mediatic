@@ -22,28 +22,8 @@ table {
         display: inline-block;
         margin-bottom: 2px;
     } 
-    #empruntButton, #empruntDate, #empruntSelect{
-        display: inline-block;
-        vertical-align:middle;
-    }
-    #empruntSelectUser, #empruntDateUser, #empruntButtonUser{
-        margin-left: 15px;
-    }
-@media(max-width: 1470px){
-    #empruntButton{
-        margin-left: 15px;
-    }
-}
-@media(max-width: 1290px){
-    #empruntDate{
-        margin-left: 15px;
-    }
-}
- @media(max-width: 695px){
-    .for#empruntSelect, #empruntDate, #empruntButton{
-        display: block;
-    }
-}   
+
+ 
 @media (max-width: 400px){
 
     #radioButton{
@@ -107,7 +87,7 @@ table {
     border-color: gray;
     border-width: 1px; 
     padding: 15px;
-    margin-top: 10%;
+    margin-top: 15%;
     top: 0;
 }
 

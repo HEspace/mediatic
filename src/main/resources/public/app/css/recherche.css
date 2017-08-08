@@ -26,7 +26,7 @@ table {
         display: inline-block;
         vertical-align:middle;
     }
-    #empruntSelect{
+    #empruntSelectUser, #empruntDateUser, #empruntButtonUser{
         margin-left: 15px;
     }
 @media(max-width: 1470px){

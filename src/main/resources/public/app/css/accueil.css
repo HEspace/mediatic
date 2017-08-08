@@ -1,0 +1,25 @@
+#titre{
+        font-size: 12px;
+        text-align :center;
+        font-family: "Jazz LET", fantasy;
+        }
+
+        #contenu{
+             background-color: FloralWhite;
+
+        }
+
+        .boldTeam{
+                Font-Weight: Bold;
+            
+
+
+        }
+        .lau{
+             border-radius: 50%;
+              margin-left: auto; 
+              margin-right: auto
+             
+         }
+           
+      

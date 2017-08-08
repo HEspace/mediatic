@@ -17,7 +17,6 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
 
 	ctrl.envoi = function(){
 		MediaService.ajoutMedia(ctrl.form);
-		$location.path('/recherche');
 	}
 
 

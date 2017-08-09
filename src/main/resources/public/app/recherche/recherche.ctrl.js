@@ -21,6 +21,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
         $scope.emprunte = [];
 
+        if(!$rootScope.login)
+            $location.path("/accueil")
+
 
         $('#sel').on('changed.bs.select', function () {
             $(".divHiddenMedia").hide();

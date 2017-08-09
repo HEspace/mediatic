@@ -17,7 +17,7 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
             $scope.form.age = $rootScope.form.adherent.age;
             $scope.form.email = $rootScope.form.adherent.email;
             $scope.dateCotisation = $rootScope.form.adherent.dateCotisation;
-            $scope.form.montantCotisation = $rootScope.form.adherent.montantCotisation;
+            $scope.form.montant = $rootScope.form.adherent.montant;
             $scope.dateFinCotisation = $rootScope.form.adherent.dateFinCotisation;
             $scope.form.rue = $rootScope.form.adherent.rue;
             $scope.form.codePostale = $rootScope.form.adherent.codePostale;

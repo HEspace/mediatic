@@ -196,6 +196,5 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $scope.myOrder = order;
         }
 
-        
 
     }]);    

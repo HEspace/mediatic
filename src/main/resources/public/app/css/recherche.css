@@ -6,6 +6,7 @@
 table {
     overflow:hidden;
     border-radius: 10px;
+    background-color : Linen;
 }
 
 .divHiddenMedia, .divHiddenUser{
@@ -79,7 +80,7 @@ table {
 
 
 .divHiddenMedia, .divHiddenUser{
-    background-color: white;
+    background-color: linen;
     position: absolute;
     z-index: 4;
     border-radius: 5px;

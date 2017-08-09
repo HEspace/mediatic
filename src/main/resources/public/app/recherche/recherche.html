@@ -133,7 +133,7 @@
             <tr>
                 <th><span ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
                 <th><span ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom</th>
-                <th><span ng-click="orderByMe('-dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date
+                <th class="text-center"><span ng-click="orderByMe('-dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date
                     de naissance</th>
                 <th class="text-center"><span ng-click="orderByMe('dateCotisation')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;A
                     jour de cotisation ?</th>
@@ -146,8 +146,8 @@
                 <td class="text-left">
                     <span class="glyphicon glyphicon-user"></span> {{d.id}}
                 </td>
-                <td align="left">{{d.nom}} {{d.prenom}}</td>
-                <td align="left">{{d.dateNaissance}}</td>
+                <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
+                <td align="center">{{d.dateNaissance}}</td>
                 <td>Oui</td>
                 <td>13 médias</td>
             </tr>
@@ -164,7 +164,7 @@
     </div>
 
     <div class="col-md-3">
-        <img class="img-responsive" src="https://ewedit.files.wordpress.com/2016/09/ootp-uk-kids-cover-art.jpg?w=395" alt="harry potter et l'ordre du phoenix"
+        <img class="img-responsive" src="../Image/{{media.titre}}.jpeg" alt="harry potter et l'ordre du phoenix"
             height="450" width="300">
     </div>
 
@@ -206,7 +206,6 @@
             <li class="list-group-item active">Déjà emprunté par</li>
             <li class="list-group-item" ng-repeat="e in emprunte">{{e.nom}} {{e.prenom}}</li>
         </ul>
-        <pre>{{emprunte | json}}</pre>
     </div>
 
 
@@ -262,7 +261,6 @@
             <li class="list-group-item active">Média(s) emprunté(s) : </li>
             <li class="list-group-item" ng-repeat="e in emprunte track by e.id"><span class="glyphicon glyphicon-{{e.titre.type}}"></span> {{e.titre}}</li>
         </ul>
-        <pre>{{emprunte | json}}</pre>
     </div>
 
 

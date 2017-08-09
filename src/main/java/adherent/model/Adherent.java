@@ -35,9 +35,9 @@ public class Adherent {
 	@NotBlank
 	private String email;
 	
-	private String adress;
+	private String rue;
 	
-	private String cp;
+	private String codePostale;
 	
 	private String ville;
 	

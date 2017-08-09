@@ -18,7 +18,7 @@ public class Cotisation {
 	private Adherent adherent;
 	
 	
-	private String date_paiement;
+	private String dateCotisation;
 	
 	
 	private Float montant;

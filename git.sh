@@ -25,11 +25,16 @@ sleep 2
 echo "======================================================"
 echo "====================== git add ======================="
 echo "======================================================"
-echo "=media/* - ajout*/ - accueil/* - recherche/* - css/* ="
-echo "====== mediatic* - js/* - index.html - login/* ======="
+echo "========== Tout les fichier pour Angularjs ==========="
+echo "=============== Toute les classes JAVA ==============="
 echo "======================================================"
 
 git add src/main/resources/public/app/ajoutMedia/*
+git add src/main/java/adherent/*
+git add src/main/java/cotisation/*
+git add src/main/java/dao/*
+git add src/main/java/emprunt/*
+git add src/main/java/media/*
 git add src/main/resources/public/app/ajoutAdherent/*
 git add src/main/resources/public/app/accueil/*
 git add src/main/resources/public/app/recherche/*

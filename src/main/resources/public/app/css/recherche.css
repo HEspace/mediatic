@@ -9,17 +9,17 @@ table {
     background-color : Linen;
 }
 
-.divHiddenMedia, .divHiddenUser{
+.divHiddenMedia, .divHiddenadherent{
     display: none;
 }
 
-#labelUserSelect{
+#labeladherentSelect{
     display: block;
 }
-#buttonUser{
+#buttonadherent{
     margin-left: 15px;
 }
- #buttonUser, #buttonFile{
+ #buttonadherent, #buttonFile{
         display: inline-block;
         margin-bottom: 2px;
     } 
@@ -63,7 +63,7 @@ table {
     margin: 0 auto;
 }
 
-#labelUserSelect{
+#labeladherentSelect{
     margin: 0 auto;
 }
 
@@ -79,7 +79,7 @@ table {
  
 
 
-.divHiddenMedia, .divHiddenUser{
+.divHiddenMedia, .divHiddenadherent{
     background-color: linen;
     position: absolute;
     z-index: 4;

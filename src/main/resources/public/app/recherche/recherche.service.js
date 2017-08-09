@@ -1,4 +1,4 @@
-'user strict';
+'adherent strict';
 
 angular.module('mediatic.recherche')
 .service('RechercheService', ['$http','$window', '$timeout',function($http,$window,$timeout){
@@ -17,7 +17,9 @@ angular.module('mediatic.recherche')
          scope  = scopeS;
     }
 
+
     this.ajoutEmprunt = function(form){
+      
             $http({
                 method: 'POST',
                 url: 'http://localhost:3000/emprunt',

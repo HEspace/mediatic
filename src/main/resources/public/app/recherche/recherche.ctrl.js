@@ -6,7 +6,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
     ($scope, $location, RechercheService, $rootScope, $filter) {
 
         $scope.textSearch;
-        $scope.pageU = "user";
+        $scope.pageU = "adherent";
         $scope.pageF = "file";
         $scope.m = "m";
         $scope.a = "a";
@@ -29,7 +29,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         $('#sel').on('changed.bs.select', function () {
             $(".divHiddenMedia").hide();
-            $(".divHiddenUser").hide();
+            $(".divHiddenadherent").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
             if (options[index].text == "Médias") {
@@ -122,8 +122,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                
             } else {
                 $scope.emprunte = [];
-                /* $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenUser").animate({height: "toggle"}, 100);
+                /* $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenadherent").animate({height: "toggle"}, 100);
             }
             $("div#globalDiv").removeClass("blur");
         }
@@ -146,7 +146,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             
                             res.data.emprunt.forEach(function (e) {
                                 if(e.media.id == element.id){
-                                    $scope.emprunte.push(e.user);
+                                    $scope.emprunte.push(e.adherent);
                                 }
                                                                   
                             })
@@ -162,11 +162,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
                         if (element.id == id) {
-                            $scope.user = element
-                            $scope.formEmprunt.user = element
+                            $scope.adherent = element
+                            $scope.formEmprunt.adherent = element
 
                             res.data.emprunt.forEach(function (e) {
-                                if(e.user.id == element.id){
+                                if(e.adherent.id == element.id){
                                     $scope.emprunte.push(e.media);
                                 }
                                                                   
@@ -176,8 +176,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                 })
 
-               /*  $(".divHiddenUser").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenUser").animate({height: "toggle"}, 300);
+               /*  $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenadherent").animate({height: "toggle"}, 300);
 
             }
             /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */

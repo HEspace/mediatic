@@ -5,8 +5,8 @@
         .module('mediatic')
         .service('AdherentService', AdherentService);
 
-    AdherentService.$inject = ['$http','$window'];
-    function AdherentService($http, $window) {
+    AdherentService.$inject = ['$http','$location'];
+    function AdherentService($http, $location) {
         this.exposedFn = exposedFn;
         
         this.ajoutAdh = function(form){
@@ -15,7 +15,7 @@
                 url: 'http://localhost:3000/adherent',
                 data: form
             }).then(function successCallback(response) {
-                $window.location.reload();
+                $location.path("/recherche");
                 // this callback will be called asynchronously
                 // when the response is available
             }, function errorCallback(response) {

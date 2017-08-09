@@ -5,8 +5,8 @@
         .module('mediatic')
         .service('MediaService', MediaService);
 
-    MediaService.$inject = ['$http','$window'];
-    function MediaService($http, $window) {
+    MediaService.$inject = ['$http','$window', '$location'];
+    function MediaService($http, $window, $location) {
         this.exposedFn = exposedFn;
         
         this.ajoutMedia = function(form){
@@ -15,7 +15,7 @@
                 url: 'http://localhost:3000/media',
                 data: form
             }).then(function successCallback(response) {
-                $window.location.reload();
+                $location.path("/recherche");
                 // this callback will be called asynchronously
                 // when the response is available
             }, function errorCallback(response) {

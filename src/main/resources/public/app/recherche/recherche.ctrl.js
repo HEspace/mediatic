@@ -21,6 +21,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
         $scope.emprunte = [];
 
+        RechercheService.prendMonCtrl($scope);
+
         if(!$rootScope.login)
             $location.path("/accueil")
 

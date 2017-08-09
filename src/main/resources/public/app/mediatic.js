@@ -48,7 +48,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$rootScope.form.media = {};
 	$rootScope.form.adherent = {};
 })
-.controller('MediaticCtrl', ['$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService', function($timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService){
+.controller('MediaticCtrl', ['$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService','RechercheService' , function($timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService, RechercheService){
 
 	var ctrl = this;
 	ctrl.user = {};
@@ -64,8 +64,9 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	}
 
 	$scope.rechercher = function(){
-		$rootScope.recherche = $scope.recherche ;
 		$location.path('/recherche');
+		RechercheService.recherche($scope.recherche) ;
+		$scope.recherche = '';
 	}
 
 	if (window.innerWidth > 768)

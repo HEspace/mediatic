@@ -3,8 +3,11 @@
 angular.module('mediatic.recherche')
 .service('RechercheService', ['$http','$window' ,function($http,$window){
     this.getData = function(){
-        console.log($http.get('donnees.json'))
        return $http.get('donnees.json')
+    }
+
+    this.recherche= function(chaine){
+        console.log(chaine);
     }
 
     this.ajoutEmprunt = function(form){

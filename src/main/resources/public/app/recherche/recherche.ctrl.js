@@ -77,11 +77,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             $rootScope.form.adherent.nom = elem.nom;
                             $rootScope.form.adherent.prenom = elem.prenom;
                             var tmp = elem.dateNaissance.split("/");
-                            $rootScope.form.adherent.dateNaissance = new Date(tmp[2], tmp[1] - 1, tmp[0]);
+                            $rootScope.form.adherent.dateNaissance = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                             $rootScope.form.adherent.age = elem.age;
                             $rootScope.form.adherent.email = elem.email;
                             tmp = elem.dateCotisation.split("/");
-                            $rootScope.form.adherent.dateCotisation = new Date(tmp[2], tmp[1] - 1, tmp[0]);
+                            $rootScope.form.adherent.dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                             $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
                             $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
                             $rootScope.form.adherent.rue = elem.rue;
@@ -108,6 +108,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         })
 
         $scope.hideTr = function () {
+            $('.collapse').collapse("hide");
             if ($('#sel').selectpicker().val() == "m") {
                 $scope.emprunte = [];
                  /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */ 

@@ -39,7 +39,6 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
     }
 
     $scope.$watch('form',function(){
-        console.log("slkdjg");
         if($scope.form.prenom)
             $scope.form.prenom = capitalizeFirstLetter($scope.form.prenom);
         if($scope.form.nom)
@@ -88,5 +87,9 @@ $scope.$watch('dateCotisation',function(newValue, oldvalue){
       var datePlusUnAn = new Date(year + 1, month, day)
       $scope.dateFinCotisation = datePlusUnAn;
     });
+
+    if(!$rootScope.login){
+        $location.path("/accueil");
+    }
 
 }]);

@@ -3,17 +3,24 @@ package fr.dta.media.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.model.Adherent;
 import fr.dta.media.dao.MediaDAO;
 import fr.dta.media.model.Media;
 import fr.dta.media.model.Type;
+import fr.dta.media.repository.MediaRepository;
 
+@Service
 public class MediaService {
 
+	@Autowired
+	MediaRepository mr;
+
 	public void creer(Media m){
-		MediaDAO mdao = MediaDAO.instance();
-		mdao.creer(m);
+		mr.save(m);
 	}
 	
 	public List<Adherent> listEmprunteur(Media m){
@@ -47,16 +54,8 @@ public class MediaService {
 	}
 
 	
-	public Media findID(String chaine){
-		MediaDAO mdao = MediaDAO.instance();
-		Long id ;
-		try{
-			id = Long.parseLong(chaine);
-			return mdao.findId(id);
-		}
-		catch(Exception e){
-			return mdao.findId(Long.parseLong("0"));
-		}
+	public Media findID(Long id){
+		return mr.findOne(id);
 	}
 	
 	public boolean egalites(Media m1, Media m2){

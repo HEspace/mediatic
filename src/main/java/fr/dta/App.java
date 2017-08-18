@@ -3,6 +3,10 @@ package fr.dta;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.WebApplicationContext;
@@ -16,11 +20,21 @@ import fr.dta.media.service.MediaService;
 
 @Configuration
 @ComponentScan
-public class App {
+@EnableAutoConfiguration
+public class App extends SpringBootServletInitializer {
+
+	private static Class appClass = App.class;
+
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(appClass);
+    }
+
+
 	public static void main(String args[]){
+		SpringApplication.run(App.class, args);
 		
-		
-		/*Crï¿½ation Mï¿½dias*/
+		/*
 		MediaService ms = new MediaService();
 		
 		Media m1 = new Media("Livre1", "Husref BALTIC",Type.LIVRE);
@@ -37,7 +51,7 @@ public class App {
 		ms.creer(m5);
 		ms.creer(m6);
 		
-		/*Crï¿½ation adhï¿½rents*/
+		
 		AdherentService as = new AdherentService();
 		
 		Adherent a1 = new Adherent("BALTIC", "Husref", "husref.baltic@gmail.com",LocalDate.of(2000,11,24), "", "", "");
@@ -50,7 +64,7 @@ public class App {
 		as.creer(a3);
 		as.creer(a4);
 		
-		/* Crï¿½ation Emprunt */
+		
 		EmpruntService emp = new EmpruntService();
 		emp.creer(a1, m1);
 		emp.creer(a1, m2);
@@ -80,6 +94,6 @@ public class App {
 		
 		
 //		System.out.println(as.findID("7").getPrenom() +" " +as.findID("7").getNom());
-//		System.out.println(ms.findID("2").getAuteur() +" " +ms.findID("2").getTitre());
+//		System.out.println(ms.findID("2").getAuteur() +" " +ms.findID("2").getTitre());*/
 	}
 }

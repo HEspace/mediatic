@@ -7,17 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 
 import fr.dta.emprunt.model.Emprunt;
+import fr.dta.persistence.IoEntity;
 
 
 
 @Entity
-public class Media {
+@SequenceGenerator(name = "seq_by1", sequenceName="seq_by1", initialValue = 1, allocationSize = 1)
+public class Media implements IoEntity {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "seq_by1")
 	private Long id;
 	
 	@NotBlank
@@ -46,7 +49,7 @@ public class Media {
 		this.id = id;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -58,9 +61,6 @@ public class Media {
 	
 	public Media(){}
 
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getTitre() {
 		return titre;

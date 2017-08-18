@@ -14,15 +14,16 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
-        WebApplicationContext context = getContext();
+        WebApplicationContext context = getContext(servletContext);
         servletContext.addListener(new ContextLoaderListener(context));
         ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
     }
-    private AnnotationConfigWebApplicationContext getContext() {
+    private AnnotationConfigWebApplicationContext getContext(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
         context.setConfigLocation("fr.dta");
+        context.setServletContext(servletContext);
         return context;
     }
 }

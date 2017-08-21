@@ -15,7 +15,7 @@ public class WebAppMvcConfigurer extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
+        registry.addResourceHandler("/public/**").addResourceLocations("/public/app/");
     }
 
 

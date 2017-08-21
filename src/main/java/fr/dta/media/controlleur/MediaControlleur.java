@@ -18,7 +18,7 @@ import fr.dta.media.service.MediaService;
 
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/media")
 public class MediaControlleur {
 
     @Autowired
@@ -29,9 +29,10 @@ public class MediaControlleur {
         return ms.findID(id);
     }
 
+    
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void Create(@RequestBody Media m, BindingResult br) {
+    public void Create(@RequestBody @Valid Media m, BindingResult br) {
         ms.creer(m);
     }
 

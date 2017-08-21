@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import fr.dta.emprunt.model.Emprunt;
 import fr.dta.persistence.IoEntity;
@@ -29,7 +31,7 @@ public class Media implements IoEntity {
 	@NotBlank
 	private String auteur;
 	
-	@NotBlank
+	@NotNull
 	private Type type;
 	
 	@OneToMany(mappedBy = "media")

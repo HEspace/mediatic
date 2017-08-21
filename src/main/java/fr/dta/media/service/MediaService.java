@@ -23,6 +23,7 @@ public class MediaService {
 		mr.save(m);
 	}
 	
+	
 	public List<Adherent> listEmprunteur(Media m){
 		MediaDAO mdao = MediaDAO.instance();
 		return mdao.listEmprunteur(m);
@@ -31,14 +32,13 @@ public class MediaService {
 
 	
 	public List<Media> find(String chaine){
-		MediaDAO mdao = MediaDAO.instance();
 		List<Media> listA = new ArrayList<Media>();
 		List<Media> listTmp = new ArrayList<Media>();
 		boolean test = false;
 		String[] chaineSplit = chaine.split(" ");
 		for(String s : chaineSplit){
 			listTmp = new ArrayList<Media>();
-			listTmp.addAll(mdao.find(s));
+			listTmp.addAll(mr.find(s));
 			for(Media a1 : listTmp){
 				test = false;
 				for(Media a2 : listA){
@@ -65,14 +65,13 @@ public class MediaService {
 	public List<Media> findMediaType(String chaine, Type[] tab){
 		if(tab.length == 0 || tab.length == 3)
 			return find(chaine);
-		MediaDAO mdao = MediaDAO.instance();
 		List<Media> listA = new ArrayList<Media>();
 		List<Media> listTmp = new ArrayList<Media>();
 		boolean test = false;
 		String[] chaineSplit = chaine.split(" ");
 		for(String s : chaineSplit){
 			listTmp = new ArrayList<Media>();
-			listTmp.addAll(mdao.findMediaType(s,tab));
+			listTmp.addAll(mr.findMediaType(s,tab));
 			for(Media a1 : listTmp){
 				test = false;
 				for(Media a2 : listA){
@@ -90,17 +89,14 @@ public class MediaService {
 	}
 	
 	public List<Media> listeMediaDVD(){
-		MediaDAO mdao = MediaDAO.instance();
-		return mdao.listeMediaDVD();
+		return mr.listeMediaDVD();
 	}
 	
 	public List<Media> listeMediaCD(){
-		MediaDAO mdao = MediaDAO.instance();
-		return mdao.listeMediaCD();
+		return mr.listeMediaCD();
 	}
 	
 	public List<Media> listeMediaLivre(){
-		MediaDAO mdao = MediaDAO.instance();
-		return mdao.listeMediaLivre();
+		return mr.listeMediaLivre();
 	}
 }

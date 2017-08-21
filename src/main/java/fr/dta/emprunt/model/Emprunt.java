@@ -1,14 +1,12 @@
 package fr.dta.emprunt.model;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import fr.dta.adherent.model.Adherent;
 import fr.dta.media.model.Media;
@@ -20,18 +18,18 @@ public class Emprunt {
 	@GeneratedValue
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	private Adherent adherent;
 	
-	@NotBlank
+	@NotNull
 	@ManyToOne
 	private Media media;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate dateEmprunt;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate dateRetourPrevu;
 	
 	private LocalDate dateRetourEffective;

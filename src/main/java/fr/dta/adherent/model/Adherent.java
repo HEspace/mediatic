@@ -10,7 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import fr.dta.cotisation.model.Cotisation;
 import fr.dta.emprunt.model.Emprunt;
@@ -29,7 +30,7 @@ public class Adherent {
 	@NotBlank
 	private String prenom;
 	
-	@NotBlank
+	@NotNull
 	private LocalDate dateNaissance; 
 	
 	@NotBlank

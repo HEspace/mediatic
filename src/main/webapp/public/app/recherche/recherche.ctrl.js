@@ -13,7 +13,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.formEmprunt = {};
         $scope.myOrder = 'titre';
         $scope.reverse = false;
-        $scope.radioBox = {'selected': "nom" };
+        $scope.radioBox = { 'selected': "nom" };
         $scope.checkBox = {
             'book': false,
             'music': false,
@@ -23,7 +23,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.prendMonCtrl($scope);
 
-        if(!$rootScope.login)
+        if (!$rootScope.login)
             $location.path("/accueil")
 
 
@@ -65,7 +65,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.modifFiche = function (id, type) {
             if (type == "m") {
                 RechercheService.getData().then(function (res) {
-                    res.data.media.forEach(function (elem) {
+                    res.data.forEach(function (elem) {
                         if (elem.id == id) {
                             $rootScope.form.media.auteur = elem.auteur
                             $rootScope.form.media.titre = elem.titre
@@ -110,20 +110,29 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.getData().then(function (res) {
             $scope.donnees = res.data;
+            $scope.donnees.forEach(function (element) {
+                if (element.type == "LIVRE")
+                    element.type = "book"
+                else if (element.type == "CD")
+                    element.type = "music"
+                else
+                    element.type = "film"
+            })
+
         })
 
         $scope.hideTr = function () {
             $('.collapse').collapse("hide");
             if ($('#sel').selectpicker().val() == "m") {
                 $scope.emprunte = [];
-                 /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */ 
-                 $(".divHiddenMedia").animate({height: "toggle"}, 100);
-                 
-               
+                /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenMedia").animate({ height: "toggle" }, 100);
+
+
             } else {
                 $scope.emprunte = [];
                 /* $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenadherent").animate({height: "toggle"}, 100);
+                $(".divHiddenadherent").animate({ height: "toggle" }, 100);
             }
             $("div#globalDiv").removeClass("blur");
         }
@@ -133,31 +142,31 @@ angular.module('mediatic.recherche', ['ngRoute'])
             if ($('#sel').selectpicker().val() == "m") {
                 RechercheService.getData().then(function (res) {
 
-                    res.data.media.forEach(function (element) {
+                    res.data.forEach(function (element) {
                         if (element.id == id) {
                             $scope.media = element;
-                            $scope.formEmprunt.media = element;
-                            if ($scope.media.type == "book")
-                                $scope.type = "Livre"
-                            else if ($scope.media.type == "music")
-                                $scope.type = "CD"
+                            /* $scope.formEmprunt.media = element; */
+                            if ($scope.media.type == "Livre")
+                                $scope.media.type = "book"
+                            else if ($scope.media.type == "CD")
+                                $scope.media.type = "music"
                             else
-                                $scope.type = "DVD"
-                            
-                            res.data.emprunt.forEach(function (e) {
-                                if(e.media.id == element.id){
-                                    $scope.emprunte.push(e.adherent);
-                                }
-                                                                  
-                            })
-                            
+                                $scope.media.type = "film"
+
+                            /*                             res.data.emprunt.forEach(function (e) {
+                                                            if(e.media.id == element.id){
+                                                                $scope.emprunte.push(e.adherent);
+                                                            }
+                                                                                              
+                                                        }) */
+
                         }
                     })
 
                 })
 
                 /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
-                 $(".divHiddenMedia").animate({height: "toggle"}, 300);
+                $(".divHiddenMedia").animate({ height: "toggle" }, 300);
             } else {
                 RechercheService.getData().then(function (res) {
                     res.data.adherent.forEach(function (element) {
@@ -166,18 +175,18 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             $scope.formEmprunt.adherent = element
 
                             res.data.emprunt.forEach(function (e) {
-                                if(e.adherent.id == element.id){
+                                if (e.adherent.id == element.id) {
                                     $scope.emprunte.push(e.media);
                                 }
-                                                                  
+
                             })
                         }
                     })
 
                 })
 
-               /*  $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenadherent").animate({height: "toggle"}, 300);
+                /*  $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
+                $(".divHiddenadherent").animate({ height: "toggle" }, 300);
 
             }
             /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */
@@ -195,8 +204,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $("#tabAdherent").hide();
 
 
-        $scope.orderByMe = function(order){
-            
+        $scope.orderByMe = function (order) {
+
             $scope.reverse = ($scope.myOrder === order) ? !$scope.reverse : true;
             $scope.myOrder = order;
         }

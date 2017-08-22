@@ -20,14 +20,33 @@
         return service;
 
         function storeUser(user) {
+            var form = {};
+            form.username = user.login;
+            form.password = user.password;
+            var message = $http({
+                method: 'POST',
+                url: 'http://localhost:8080/login/',
+                data: form
+            }).then(function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+
+
+
             var message = $http({
                 method: 'GET',
                 url: 'http://localhost:8080/private/login/'+user.login+'/'+user.password,
             }).then(function successCallback(response) {
                 if(response.data==""){
-                    $window.location.reload();
+                    $localStorage.$reset();
                 }
                 else{
+                    delete user.password;
+                    user.droit = response.data.droit;
                     $localStorage.$reset();
                     $localStorage.$default(user);
                     $rootScope.login = $localStorage.$default().login;

@@ -43,6 +43,7 @@ git add src/main/webapp/public/app/mediatic.js
 git add src/main/java/*
 git add src/main/resources/application.properties
 git add git.sh
+git add pom.xml
 sleep 2
 
 echo "======================================================"

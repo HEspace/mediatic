@@ -3,17 +3,25 @@ package fr.dta.adherent.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.model.Adherent;
+import fr.dta.adherent.repository.AdherentRepository;
 import fr.dta.media.model.Media;
 
-
+@Service
 public class AdherentService {
+
+	@Autowired
+	AdherentRepository ar;
 	
 	
 	public void creer(Adherent adh){
-		AdherentDAO adao = AdherentDAO.instance(); 
-		adao.creer(adh);
+		ar.save(adh);
+		/* AdherentDAO adao = AdherentDAO.instance(); 
+		adao.creer(adh); */
 		
 	}
 	
@@ -45,16 +53,8 @@ public class AdherentService {
 		return listA;
 	}
 	
-	public Adherent findID(String chaine){
-		AdherentDAO adherentDao = AdherentDAO.instance();
-		Long id ;
-		try{
-			id = Long.parseLong(chaine);
-			return adherentDao.findId(id);
-		}
-		catch(Exception e){
-			return adherentDao.findId(Long.parseLong("0"));
-		}
+	public Adherent findID(Long id){
+		return ar.findOne(id);
 	}
 	
 	public boolean egalites(Adherent a1, Adherent a2){

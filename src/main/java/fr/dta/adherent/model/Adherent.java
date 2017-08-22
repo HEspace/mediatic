@@ -15,10 +15,11 @@ import javax.validation.constraints.NotNull;
 
 import fr.dta.cotisation.model.Cotisation;
 import fr.dta.emprunt.model.Emprunt;
+import fr.dta.persistence.IoEntity;
 
 @Entity
 @Table(name = "adherent")
-public class Adherent {
+public class Adherent implements IoEntity {
 	
 	@Id
 	@GeneratedValue

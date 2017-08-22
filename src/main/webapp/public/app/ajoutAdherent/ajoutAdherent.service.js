@@ -5,14 +5,14 @@
         .module('mediatic')
         .service('AdherentService', AdherentService);
 
-    AdherentService.$inject = ['$http','$location'];
-    function AdherentService($http, $location) {
+    AdherentService.$inject = ['$http','$window','$location'];
+    function AdherentService($http, $window, $location) {
         this.exposedFn = exposedFn;
         
         this.ajoutAdh = function(form){
             $http({
                 method: 'POST',
-                url: 'http://localhost:3000/adherent',
+                url: 'http://localhost:8080/api/adherent',
                 data: form
             }).then(function successCallback(response) {
                 $location.path("/recherche");

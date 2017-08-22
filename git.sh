@@ -29,7 +29,17 @@ echo "========== Tout les fichier pour Angularjs ==========="
 echo "=============== Toute les classes JAVA ==============="
 echo "======================================================"
 
-git add src/main/webapp/*
+git add src/main/webapp/public/app/accueil/*
+git add src/main/webapp/public/app/ajoutAdherent/*
+git add src/main/webapp/public/app/ajoutMedia/*
+git add src/main/webapp/public/app/css/*
+git add src/main/webapp/public/app/Image/*
+git add src/main/webapp/public/app/js/*
+git add src/main/webapp/public/app/login/*
+git add src/main/webapp/public/app/recherche/*
+git add src/main/webapp/public/app/index.html
+git add src/main/webapp/public/app/mediatic.css
+git add src/main/webapp/public/app/mediatic.js
 git add src/main/java/*
 git add src/main/resources/*
 git add git.sh

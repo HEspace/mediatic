@@ -29,6 +29,10 @@ public class MediaService {
 		return mdao.listEmprunteur(m);
 	}
 	
+	public List<Media> getAll(){
+		return mr.findAll();
+	}
+	
 
 	
 	public List<Media> find(String chaine){

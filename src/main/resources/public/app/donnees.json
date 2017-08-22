@@ -1,0 +1,154 @@
+{
+  "media": [
+    {
+      "auteur": "Tolkien",
+      "titre": "The lord of the ring",
+      "type": "book",
+      "id": 1
+    },
+    {
+      "auteur": "J.K. Rowling",
+      "titre": "Harry Potter et l'école des sorciers",
+      "type": "book",
+      "id": 2
+    },
+    {
+      "auteur": "Pink Floyd",
+      "titre": "The Wall",
+      "type": "music",
+      "id": 3
+    },
+    {
+      "auteur": "James Cameron",
+      "titre": "Titanic",
+      "type": "film",
+      "id": 4
+    },
+    {
+      "auteur": "Georges Lautner",
+      "titre": "les tontons flingueurs",
+      "type": "film",
+      "id": 5
+    },
+    {
+      "auteur": "Britney Spears",
+      "titre": "Baby one more time",
+      "type": "music",
+      "id": 6
+    }
+  ],
+  "adherent": [
+    {
+      "nom": "Baltic",
+      "prenom": "Husref",
+      "age": 26,
+      "montantCotisation": 60,
+      "dateNaissance": "1991/05/11",
+      "dateCotisation": "11/05/2017",
+      "dateFinCotisation": "11/05/2018",
+      "id": 1
+    },
+    {
+      "nom": "Sion",
+      "prenom": "Laurent",
+      "age": 28,
+      "montantCotisation": 60,
+      "dateNaissance": "1989/05/12",
+      "dateCotisation": "15/05/2017",
+      "dateFinCotisation": "15/05/2018",
+      "id": 2
+    },
+    {
+      "nom": "El filali",
+      "prenom": "Hedy",
+      "age": 27,
+      "montantCotisation": 60,
+      "dateNaissance": "1990/05/30",
+      "dateCotisation": "30/05/2017",
+      "dateFinCotisation": "30/05/2018",
+      "id": 3
+    },
+    {
+      "nom": "User1",
+      "prenom": "UserFirstName",
+      "age": 26,
+      "montantCotisation": 60,
+      "dateNaissance": "1991/05/30",
+      "dateCotisation": "30/05/2017",
+      "dateFinCotisation": "30/05/2018",
+      "id": 4
+    },
+    {
+      "nom": "User2",
+      "prenom": "User2Firstname",
+      "age": 27,
+      "montantCotisation": 60,
+      "dateNaissance": "1990/06/27",
+      "dateCotisation": "11/06/2017",
+      "dateFinCotisation": "11/06/2018",
+      "id": 5
+    }
+  ],
+  "emprunt": [
+    {
+      "media": {
+        "auteur": "Britney Spears",
+        "titre": "Baby one more time",
+        "type": "music",
+        "id": 6
+      },
+      "adherent": {
+        "nom": "Sion",
+        "prenom": "Laurent",
+        "age": 28,
+        "montantCotisation": 60,
+        "dateNaissance": "1989/05/12",
+        "dateCotisation": "15/05/2017",
+        "dateFinCotisation": "15/05/2018",
+        "id": 2
+      },
+      "date": "04-08-2017",
+      "id": 1
+    },
+    {
+      "media": {
+        "auteur": "Pink Floyd",
+        "titre": "The Wall",
+        "type": "music",
+        "id": 3
+      },
+      "adherent": {
+        "nom": "Baltic",
+        "prenom": "Husref",
+        "age": 26,
+        "montantCotisation": 60,
+        "dateNaissance": "1991/05/11",
+        "dateCotisation": "11/05/2017",
+        "dateFinCotisation": "11/05/2018",
+        "id": 1
+      },
+      "date": "05-08-2017",
+      "id": 2
+    },
+    {
+      "media": {
+        "auteur": "Tolkien",
+        "titre": "The lord of the ring",
+        "type": "book",
+        "id": 1
+      },
+      "adherent": {
+        "nom": "El filali",
+        "prenom": "Hedy",
+        "age": 27,
+        "montantCotisation": 60,
+        "dateNaissance": "1990/05/30",
+        "dateCotisation": "30/05/2017",
+        "dateFinCotisation": "30/05/2018",
+        "id": 3
+      },
+      "date": "09-08-2017",
+      "id": 3
+    }
+  ]
+}

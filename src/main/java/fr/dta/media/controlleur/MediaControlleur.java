@@ -31,6 +31,11 @@ public class MediaControlleur {
     public Media findById(@PathVariable Long id){
         return ms.findID(id);
     }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public List<Media> getAll(){
+    	return ms.getAll();
+    }
 
     
 

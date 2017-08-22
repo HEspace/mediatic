@@ -4,6 +4,7 @@ package fr.dta.emprunt.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import fr.dta.adherent.model.Adherent;
 import fr.dta.emprunt.dao.EmpruntDAO;
 import fr.dta.emprunt.model.Emprunt;
 import fr.dta.emprunt.repository.EmpruntRepository;
+import fr.dta.media.dao.MediaDAO;
 import fr.dta.media.model.Media;
 import fr.dta.media.model.Type;
 
@@ -22,16 +24,24 @@ public class EmpruntService {
 	@Autowired
 	private EmpruntRepository er;
 	
-	public Emprunt creer(Adherent adherent, Media media ){
-		EmpruntDAO emprundDao = EmpruntDAO.instance();
-		Emprunt emp = new Emprunt();
-		emp.setAdherent(adherent);
-		emp.setMedia(media);
-		emp.setDateEmprunt(LocalDate.now());
-		emp.setDateRetourPrevu(calculDateRetour(media));
-		emprundDao.creer(emp);
-		return emp;
+	
+	public void creer(Emprunt e){
+		er.save(e);
 	}
+	
+	public List<Emprunt> getAllEmprunt(){
+		return er.findAll();
+	}
+	
+	public List<Emprunt> listEmpruntByAdherent(int id_adh){
+		return er.getEmpruntByAdherent(id_adh);
+	}
+	
+	
+	public List<Emprunt> listEmprunteurByMedia(int id_media){
+		return er.getEmpruntByMedia(id_media);
+	}
+	
 	
 	public LocalDate calculDateRetour(Media media){
 		LocalDate today = LocalDate.now();
@@ -41,8 +51,4 @@ public class EmpruntService {
 			return today.plus(30, ChronoUnit.DAYS);
 	}
 	
-	public List<Media> listEmpruntParAdherent(Adherent adherent){
-		EmpruntDAO emprundDao = EmpruntDAO.instance();
-		return emprundDao.listEmpruntParAdherent(adherent);
-	}
 }

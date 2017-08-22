@@ -81,9 +81,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	}
 
 	$scope.login = function () {
+		$scope.invalid = '';
 		LoginService.storeUser(ctrl.user);
 		$timeout(function(){
-			$window.location.reload();
+			$scope.invalid = "Utilisateur non Valide"
 		},300);
 	}
 	

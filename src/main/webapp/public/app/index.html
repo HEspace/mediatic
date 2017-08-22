@@ -86,15 +86,15 @@
 									<li>
 										<div class="row">
 											<div class="col-md-12">
-												<form class="form" id="login-nav">
+												<form name='f' action='/login' method='POST' class="form" id="login-nav">
 														<div class="form-group">
-															<input id="formlogin" class="form" type="text" ng-model="ctrl.user.login" placeholder="User">
+															<input id="formlogin" class="form" name='username' type="text" ng-model="ctrl.user.login" placeholder="User">
 														</div>
 														<div class="form-group">
-															<input id="formlogin" class="form" type="password" ng-model="ctrl.user.password" placeholder="Password">
+															<input id="formlogin" class="form" type="password" name='password' ng-model="ctrl.user.password" placeholder="Password">
 														</div>
 														<div class="form-group pull-right">
-															<button ng-click="login()" class="btn btn-primary btn-block">Login</button>
+															<button ng-click="login()" name="submit" type="submit" class="btn btn-primary btn-block">Login</button>
 														</div>
 												</form>
 												<span class="text-right"  ng-bind="invalid"> </span>
@@ -115,7 +115,6 @@
 	</div>
 
 	<div ng-view></div>
-
 	<div id="idsidenav" class="sidenav">
 		<img src="image/sideNavIcon.jpg" alt="HTML5 Icon" style="width:100%;">
 		<a href="javascript:void(0)" class="closebtn" ng-click="closeNav()">&times;</a>

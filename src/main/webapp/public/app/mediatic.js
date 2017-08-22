@@ -48,20 +48,36 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	$rootScope.form.media = {};
 	$rootScope.form.adherent = {};
 })
-.controller('MediaticCtrl', ['$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService','RechercheService' , function($timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService, RechercheService){
+.controller('MediaticCtrl', ['$http', '$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService','RechercheService' , function($http, $timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService, RechercheService){
+	var message = $http({
+		method: 'GET',
+		url: 'http://localhost:8080/api/login/user'
+	}).then(function successCallback(response) {
+		$rootScope.login = response.data.name;
+		console.log($rootScope.login);
+		$('#menuCollection').hide();
+		$('#sideMenu').slideUp();
+	
+		if($rootScope.login){
+			$location.path('/recherche');
+		}
+		else{
+			$location.path('/accueil');
+		}
+
+		$scope.changementContour();
+
+		// this callback will be called asynchronously
+		// when the response is available
+	}, function errorCallback(response) {
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+	});
 
 	var ctrl = this;
 	ctrl.user = {};
 
-	$('#menuCollection').hide();
-	$('#sideMenu').slideUp();
-
-	if($rootScope.login){
-		$location.path('/recherche');
-	}
-	else{
-		$location.path('/accueil');
-	}
+	
 
 	$scope.rechercher = function(){
 		$location.path('/recherche');
@@ -75,8 +91,8 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$('#boutonside').css('display','block');
 
 	$scope.logout = function(){
-		$localStorage.$reset();
 		$rootScope.login ='';
+		$http.get('http://localhost:8080/logout')
       	$window.location.reload();
 	}
 
@@ -106,7 +122,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 			$('.nonlog').css('display','inline');
 		}
 	}
-	$scope.changementContour();
 
 	$scope.openNav = function() {
 		document.getElementById("idsidenav").style.width = "250px";

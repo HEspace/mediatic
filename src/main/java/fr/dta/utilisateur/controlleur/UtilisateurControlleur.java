@@ -1,25 +1,24 @@
 package fr.dta.utilisateur.controlleur;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import java.security.Principal;
+
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.dta.utilisateur.model.Utilisateur;
-import fr.dta.utilisateur.service.UtilisateurService;
-
 @RestController
-@RequestMapping("/private/login")
+@RequestMapping("/api/login")
 public class UtilisateurControlleur{
 
 
-    @Autowired
-    UtilisateurService us;
+    
 
-    @RequestMapping(value ="/{utilisateur}/{password}",  method = RequestMethod.GET)
-    public Utilisateur getAuthen(@PathVariable String utilisateur, @PathVariable String password){
-        return us.getAuthen(utilisateur, password);
+
+    @RequestMapping("/user")
+    @ResponseBody
+    public Principal user(Principal user) {
+        System.out.println(user.getName());
+      return user;
     }
 
 }

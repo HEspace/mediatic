@@ -4,6 +4,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.encoding.PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,6 +13,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+	RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
+	@Autowired
+	RestAuthenticationFailureHandler restAuthenticationFailureHandler;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -29,13 +35,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authorizeRequests()
         .antMatchers("/app/**").permitAll()
         .antMatchers("/private/**").permitAll()
+        .antMatchers("/login").permitAll()
         .antMatchers("/api/adherent/**").hasRole("ADMIN")
         .antMatchers("/api/media/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_MEDIA')")
-        .antMatchers("/api/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_MEDIA') and hasRole('ROLE_USER')")
+        .antMatchers("/api/emprunt/**").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_MEDIA') and hasRole('ROLE_USER')")
+        //.antMatchers("/api/login").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_MEDIA') and hasRole('ROLE_USER')")
         .anyRequest().authenticated()
         .and()
         .formLogin()
         .loginPage("/app/index.html")
-        .permitAll();
+        .loginProcessingUrl("/login")
+        .defaultSuccessUrl("/app/index.html")
+        .and()
+        .logout()
+        .permitAll()
+        .and()
+        .csrf().disable();
     }
 }

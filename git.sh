@@ -41,7 +41,7 @@ git add src/main/webapp/public/app/index.html
 git add src/main/webapp/public/app/mediatic.css
 git add src/main/webapp/public/app/mediatic.js
 git add src/main/java/*
-git add src/main/resources/*
+git add src/main/resources/application.properties
 git add git.sh
 sleep 2
 

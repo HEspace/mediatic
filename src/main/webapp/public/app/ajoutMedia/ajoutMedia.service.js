@@ -10,12 +10,6 @@
         this.exposedFn = exposedFn;
         
         this.ajoutMedia = function(form){
-            if (form.type == "book")
-                form.type = "LIVRE";
-            if (form.type == "media")
-                form.type = "CD";
-            if (form.type == "film")
-                form.type = "DVD";
             $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/media',

@@ -9,6 +9,7 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
   
 
 	if($rootScope.form.media != {}){
+		ctrl.form.id = $rootScope.form.media.id;
 		ctrl.form.auteur = $rootScope.form.media.auteur;
 		ctrl.form.titre = $rootScope.form.media.titre;
 		ctrl.form.type = $rootScope.form.media.type;

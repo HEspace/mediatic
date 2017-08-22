@@ -67,6 +67,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 RechercheService.getData().then(function (res) {
                     res.data.forEach(function (elem) {
                         if (elem.id == id) {
+                       
+                            $rootScope.form.media.id = elem.id
                             $rootScope.form.media.auteur = elem.auteur
                             $rootScope.form.media.titre = elem.titre
                             $rootScope.form.media.type = elem.type
@@ -146,12 +148,12 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         if (element.id == id) {
                             $scope.media = element;
                             /* $scope.formEmprunt.media = element; */
-                            if ($scope.media.type == "Livre")
-                                $scope.media.type = "book"
+                            if ($scope.media.type == "LIVRE")
+                                $scope.typeMedia = "book"
                             else if ($scope.media.type == "CD")
-                                $scope.media.type = "music"
+                                $scope.typeMedia = "music"
                             else
-                                $scope.media.type = "film"
+                                $scope.typeMedia = "film"
 
                             /*                             res.data.emprunt.forEach(function (e) {
                                                             if(e.media.id == element.id){

@@ -6,13 +6,21 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import fr.dta.adherent.model.Adherent;
 import fr.dta.emprunt.dao.EmpruntDAO;
 import fr.dta.emprunt.model.Emprunt;
+import fr.dta.emprunt.repository.EmpruntRepository;
 import fr.dta.media.model.Media;
 import fr.dta.media.model.Type;
 
+@Service
 public class EmpruntService {
+
+	@Autowired
+	private EmpruntRepository er;
 	
 	public Emprunt creer(Adherent adherent, Media media ){
 		EmpruntDAO emprundDao = EmpruntDAO.instance();

@@ -10,9 +10,10 @@ import javax.validation.constraints.NotNull;
 
 import fr.dta.adherent.model.Adherent;
 import fr.dta.media.model.Media;
+import fr.dta.persistence.IoEntity;
 
 @Entity
-public class Emprunt {
+public class Emprunt implements IoEntity{
 	
 	@Id
 	@GeneratedValue

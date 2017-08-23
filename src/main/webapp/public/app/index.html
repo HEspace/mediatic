@@ -139,16 +139,16 @@
 			<div class="row">
 				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
 				<div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
-					<form style="padding-left:25px" id="formLogin">
+					<form style="padding-left:25px" id="formLogin" name='f' action='/login' method='POST'>
 						<div class="form-group">
 							<label for="identifiant">identifiant :</label>
-							<input type="identifiant" class="form-control" id="identifiant" ng-model="ctrl.user.login">
+							<input type="identifiant" class="form-control" id="identifiant" name='username' ng-model="ctrl.user.login">
 						</div>
 						<div class="form-group">
 							<label for="password">password :</label>
-							<input type="password" type="password" class="form-control" id="password" ng-model="ctrl.user.password">
+							<input type="password" type="password" class="form-control" name="password" id="password" ng-model="ctrl.user.password">
 						</div>
-						<button ng-click="login()" class="btn btn-default pull-right">Connect</button>
+						<button ng-click="login()" name="submit" type="submit" class="btn btn-default pull-right">Connect</button>
 					</form>
 				</div>
 				<div class="col-lg-1 col-md-1 col-ms-1 col-xs-1"></div>

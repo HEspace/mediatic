@@ -66,6 +66,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		}
 
 		$scope.changementContour();
+		offSetManager();
 
 		// this callback will be called asynchronously
 		// when the response is available
@@ -215,5 +216,5 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	window.onscroll = function(e) {
 	    offSetManager();
 	}
-	offSetManager();
+	
 }]);

@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/api/emprunt/create/**").permitAll()
         .antMatchers("/api/media/create/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MEDIA')")
         .antMatchers("/api/adherent/create/**").access("hasRole('ROLE_ADMIN')")
-
         .anyRequest().authenticated()
         .and()
         .formLogin()

@@ -14,10 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-	RestAuthenticationSuccessHandler restAuthenticationSuccessHandler;
-	@Autowired
-	RestAuthenticationFailureHandler restAuthenticationFailureHandler;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

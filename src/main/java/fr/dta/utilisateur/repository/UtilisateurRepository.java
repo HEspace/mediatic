@@ -38,33 +38,6 @@ public class UtilisateurRepository extends AbstractJpaRepository<Utilisateur>{
 
     @Transactional
     public void lancementApp(){
-        this.deleteAll();
-        Utilisateur u1 = new Utilisateur();
-        u1.setDroit(100);
-        u1.setMotDePasse("password");
-        u1.setUtilisateur("Hedy");
-        Utilisateur u2 = new Utilisateur();
-        u2.setDroit(100);
-        u2.setMotDePasse("password");
-        u2.setUtilisateur("Laurent");
-        Utilisateur u3 = new Utilisateur();
-        u3.setDroit(100);
-        u3.setMotDePasse("password");
-        u3.setUtilisateur("Husref");
-        Utilisateur u4 = new Utilisateur();
-        u4.setDroit(50);
-        u4.setMotDePasse("password");
-        u4.setUtilisateur("demi");
-        Utilisateur u5 = new Utilisateur();
-        u5.setDroit(0);
-        u5.setMotDePasse("password");
-        u5.setUtilisateur("zero");
-
-        this.save(u1);
-        this.save(u2);
-        this.save(u3);
-        this.save(u4);
-        this.save(u5);
 
     }
 

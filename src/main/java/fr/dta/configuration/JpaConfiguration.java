@@ -25,7 +25,7 @@ public class JpaConfiguration {
 	@Autowired
 	private Environment environment;
 
-	@Bean(name = "dataSource")
+	/* @Bean(name = "dataSource")
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
@@ -34,17 +34,17 @@ public class JpaConfiguration {
 		dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
 
 		return dataSource;
-	}
+	} */
 
-	@Bean
+	/* @Bean
 	public PlatformTransactionManager txManager(EntityManagerFactory emf) {
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
 		transactionManager.setEntityManagerFactory(emf);
 
 		return transactionManager;
-	}
+	} */
 	
-	@Bean
+	/* @Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 	  LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 	  emf.setDataSource(dataSource());
@@ -55,19 +55,19 @@ public class JpaConfiguration {
 	  emf.setJpaProperties(additionalProperties());
 
 	  return emf;
-	}
+	} */
 	
-	Properties additionalProperties() {
+	/* Properties additionalProperties() {
 	  Properties properties = new Properties();
 	  properties.setProperty("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
 	  properties.setProperty("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
 	  properties.setProperty("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
 	  properties.setProperty("hibernate.use_second_level_cache", environment.getRequiredProperty("hibernate.use_second_level_cache"));
 	  return properties;
-	}
+	} */
 	
-	@Bean
+	/* @Bean
 	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
 		return new PersistenceExceptionTranslationPostProcessor();
-	}
+	} */
 }

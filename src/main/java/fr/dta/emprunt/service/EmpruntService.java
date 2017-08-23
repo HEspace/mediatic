@@ -30,7 +30,7 @@ public class EmpruntService {
 			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(30));
 		else
 			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
-		e.getAdherent().setCompteur(e.getAdherent().getCompteur()++);
+		e.getAdherent().setCompteur(e.getAdherent().getCompteur()+1);
 		er.save(e);
 	}
 	

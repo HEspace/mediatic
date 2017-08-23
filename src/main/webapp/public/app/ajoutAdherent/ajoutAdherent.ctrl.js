@@ -26,13 +26,13 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         }
     
 	ctrl.envoi = function(){
-        var dateDeNaissanceJson = $filter('date')($scope.dateNaissance, 'yyyy/MM/dd');
+        var dateDeNaissanceJson = $filter('date')($scope.dateNaissance, 'yyyy-MM-dd');
         $scope.form.dateNaissance = dateDeNaissanceJson;
 
-        var dateDePaiementJson = $filter('date')($scope.dateCotisation, 'yyyy/MM/dd');
+        var dateDePaiementJson = $filter('date')($scope.dateCotisation, 'yyyy-MM-dd');
         $scope.form.dateCotisation = dateDePaiementJson;
 
-        var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'yyyy/MM/dd');
+        var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'yyyy-MM-dd');
         $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
 
         AdherentService.ajoutAdh($scope.form);

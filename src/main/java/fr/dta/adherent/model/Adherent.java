@@ -60,6 +60,10 @@ public class Adherent implements IoEntity {
 	
 	private Float montant;
 
+	private Integer compteur;
+
+
+
 	
 
 	
@@ -87,6 +91,15 @@ public class Adherent implements IoEntity {
 		
 			
 	}
+
+	public Integer getCompteur(){
+		return this.compteur;
+	}
+
+	public void setCompteur(Integer compteur){
+		this.compteur = compteur;
+	}
+
 
 	public Long getId() {
 		return id;

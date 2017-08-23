@@ -26,6 +26,10 @@ public class EmpruntService {
 	
 	
 	public void creer(Emprunt e){
+		if(e.getMedia().getType() == Type.LIVRE)
+			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(30));
+		else
+			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
 		er.save(e);
 	}
 	

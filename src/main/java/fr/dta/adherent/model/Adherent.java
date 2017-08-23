@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -59,6 +60,7 @@ public class Adherent implements IoEntity {
 	
 	private Float montant;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "adherent")
 	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
 	

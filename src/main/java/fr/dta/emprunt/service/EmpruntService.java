@@ -33,7 +33,7 @@ public class EmpruntService {
 		return er.findAll();
 	}
 	
-	public List<Emprunt> listEmpruntByAdherent(int id_adh){
+	public List<Emprunt> listEmpruntByAdherent(Long id_adh){
 		return er.getEmpruntByAdherent(id_adh);
 	}
 	

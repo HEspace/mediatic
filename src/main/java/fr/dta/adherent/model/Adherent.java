@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -58,9 +59,11 @@ public class Adherent implements IoEntity {
 	
 	
 	private Float montant;
-	
-	@OneToMany(mappedBy = "adherent")
-	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
+
+	private Integer compteur;
+
+
+
 	
 
 	
@@ -88,6 +91,15 @@ public class Adherent implements IoEntity {
 		
 			
 	}
+
+	public Integer getCompteur(){
+		return this.compteur;
+	}
+
+	public void setCompteur(Integer compteur){
+		this.compteur = compteur;
+	}
+
 
 	public Long getId() {
 		return id;
@@ -129,13 +141,6 @@ public class Adherent implements IoEntity {
 		this.email = email;
 	}
 
-	public List<Emprunt> getListEmprunt() {
-		return listEmprunt;
-	}
-
-	public void setListEmprunt(List<Emprunt> listEmprunt) {
-		this.listEmprunt = listEmprunt;
-	}
 
 	public String getAdress() {
 		return rue;

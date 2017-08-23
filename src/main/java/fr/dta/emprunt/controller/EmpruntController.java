@@ -27,17 +27,17 @@ public class EmpruntController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Emprunt> getAll(){
-		System.out.println(es.getAllEmprunt());
 		return es.getAllEmprunt();
 	}
 	
-	@RequestMapping(value = "{idMedia}",method = RequestMethod.GET)
+	@RequestMapping(value = "media/{idMedia}",method = RequestMethod.GET)
 	public List<Emprunt> getEmpruntByMedia(@PathVariable int idMedia){
 		return es.listEmprunteurByMedia(idMedia);
 	}
 	
-	@RequestMapping(value = "{idAdh}",method = RequestMethod.GET)
-	public List<Emprunt> getEmpruntByAdherent(@PathVariable int idAdh){
+	@RequestMapping(value = "adherent/{idAdh}",method = RequestMethod.GET)
+	public List<Emprunt> getEmpruntByAdherent(@PathVariable Long idAdh){
+		System.out.println(es.listEmpruntByAdherent(idAdh));
 		return es.listEmpruntByAdherent(idAdh);
 	}
 

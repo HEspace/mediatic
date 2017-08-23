@@ -95,6 +95,18 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         if (m==null){
             ms.creer(new Media("Les tomates violettes", "Suzanne", Type.LIVRE));
         }
+        m = ms.findID(8l);
+        if (m==null){
+            ms.creer(new Media("Comment découvrir les plaisirs solitaire", "Husref", Type.CD));
+        }
+        m = ms.findID(9l);
+        if (m==null){
+            ms.creer(new Media("H - la série", "Hedy", Type.DVD));
+        }
+        m = ms.findID(10l);
+        if (m==null){
+            ms.creer(new Media("Games of Thrones", "Laurent", Type.LIVRE));
+        }
 
 
     }

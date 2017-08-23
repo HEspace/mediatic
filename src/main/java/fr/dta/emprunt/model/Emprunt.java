@@ -35,6 +35,8 @@ public class Emprunt implements IoEntity{
 	@ManyToOne
 	private Adherent adherent;
 	
+	
+	
 	@NotNull
 	@ManyToOne
 	private Media media;
@@ -106,5 +108,7 @@ public class Emprunt implements IoEntity{
 	public void setDateRetourEffective(LocalDate dateRetourEffective) {
 		this.dateRetourEffective = dateRetourEffective;
 	}
+
+
 	
 }

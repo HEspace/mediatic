@@ -26,6 +26,11 @@ public class EmpruntService {
 	
 	
 	public void creer(Emprunt e){
+		if(e.getMedia().getType() == Type.LIVRE)
+			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(30));
+		else
+			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
+		e.getAdherent().setCompteur(e.getAdherent().getCompteur()+1);
 		er.save(e);
 	}
 	
@@ -33,7 +38,7 @@ public class EmpruntService {
 		return er.findAll();
 	}
 	
-	public List<Emprunt> listEmpruntByAdherent(int id_adh){
+	public List<Emprunt> listEmpruntByAdherent(Long id_adh){
 		return er.getEmpruntByAdherent(id_adh);
 	}
 	

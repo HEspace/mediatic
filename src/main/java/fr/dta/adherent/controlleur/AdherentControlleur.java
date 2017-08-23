@@ -29,15 +29,15 @@ AdherentService adherentService;
 
 @RequestMapping(value = "/find", method = RequestMethod.GET)
 public List<Adherent> getAll(){
-    System.out.println(adherentService.getAllAdherent());
 	return adherentService.getAllAdherent();
    
 }
 
 
 // par Id
-    @RequestMapping(value="/find/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/find/id/{id}", method = RequestMethod.GET)
     public Adherent findById(@PathVariable Long id){
+    	System.out.println(adherentService.findID(id));
 		return adherentService.findID(id);
        
     }

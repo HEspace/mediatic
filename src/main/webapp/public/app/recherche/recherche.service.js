@@ -10,8 +10,18 @@ angular.module('mediatic.recherche')
             return $http.get('http://localhost:8080/api/adherent/find')
 
         }
+
+        this.getAdhById = function (id) {
+            return $http.get('http://localhost:8080/api/adherent/find/id/' +id)
+
+        }
+
+        this.getEmpruntByAdh = function(id){
+            return $http.get('http://localhost:8080/api/emprunt/adherent/'+id)
+        }
+
         this.getEmprunt = function () {
-            return $http.get('http://localhost:8080/api/emprunt/find')
+            return $http.get('http://localhost:8080/api/emprunt')
         }
 
         this.recherche = function (chaine) {

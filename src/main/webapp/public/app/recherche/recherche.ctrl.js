@@ -13,13 +13,13 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.formEmprunt = {};
         $scope.myOrder = 'titre';
         $scope.reverse = false;
+        $scope.emprunte = [];
         $scope.radioBox = { 'selected': "nom" };
         $scope.checkBox = {
             'book': false,
             'music': false,
             'film': false
         }
-        $scope.emprunte = [];
 
         RechercheService.prendMonCtrl($scope);
 
@@ -81,24 +81,25 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                 })
             } else {
-                RechercheService.getData().then(function (res) {
-                    res.data.adherent.forEach(function (elem) {
-                        if (elem.id == id) {
-                            $rootScope.form.adherent.nom = elem.nom;
-                            $rootScope.form.adherent.prenom = elem.prenom;
-                            var tmp = elem.dateNaissance.split("/");
-                            $rootScope.form.adherent.dateNaissance = new Date(tmp[0], tmp[1] - 1, tmp[2]);
-                            $rootScope.form.adherent.age = elem.age;
-                            $rootScope.form.adherent.email = elem.email;
-                            tmp = elem.dateCotisation.split("/");
-                            $rootScope.form.adherent.dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
-                            $rootScope.form.adherent.montantCotisation = elem.montantCotisation;
-                            $rootScope.form.adherent.dateFinCotisation = elem.dateFinCotisation;
-                            $rootScope.form.adherent.rue = elem.rue;
-                            $rootScope.form.adherent.codePostale = elem.codePostale;
-                            $rootScope.form.adherent.ville = elem.ville;
-                        }
-                    })
+                RechercheService.getAdhById(id).then(function (res) {
+                    $rootScope.form.adherent.nom = res.data.nom;
+                    $rootScope.form.adherent.prenom = res.data.prenom;
+                    var tmp = res.data.dateNaissance.split("-");
+                    $rootScope.form.adherent.dateNaissance = new Date(tmp[0], tmp[1] - 1, tmp[2]);
+                    $rootScope.form.adherent.age = res.data.age;
+                    $rootScope.form.adherent.email = res.data.email;
+                    if(res.data.dateCotisation != null){
+                        tmp = res.data.dateCotisation.split("/");
+                        $rootScope.form.adherent.dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
+                    }else{
+                        $rootScope.form.adherent.dateCotisation = undefined
+                    }
+                    $rootScope.form.adherent.montantCotisation = res.data.montantCotisation;
+                    $rootScope.form.adherent.dateFinCotisation = res.data.dateFinCotisation;
+                    $rootScope.form.adherent.rue = res.data.rue;
+                    $rootScope.form.adherent.codePostale = res.data.codePostale;
+                    $rootScope.form.adherent.ville = res.data.ville;
+
                     $location.path('/ajoutAdherent');
 
                 })
@@ -126,10 +127,13 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         })
 
-        RechercheService.getAdh().then(function (res){
-            console.log("res.data")
+        RechercheService.getAdh().then(function (res) {
             $scope.adh = res.data
+            res.data.forEach(function(elem){
+                
+            })
         })
+
         $scope.hideTr = function () {
             $('.collapse').collapse("hide");
             if ($('#sel').selectpicker().val() == "m") {
@@ -147,9 +151,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
 
-     /*    RechercheService.getEmprunt().then(function (res) {
-            $scope.emp = res.data
-        }) */
+        /*    RechercheService.getEmprunt().then(function (res) {
+               $scope.emp = res.data
+           }) */
 
 
         $scope.showTr = function (id) {
@@ -189,18 +193,20 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
                 $(".divHiddenMedia").animate({ height: "toggle" }, 300);
             } else {
-                RechercheService.getData().then(function (res) {
-                    res.data.adherent.forEach(function (element) {
-                        if (element.id == id) {
-                            $scope.adherent = element
-                            $scope.formEmprunt.adherent = element
+                RechercheService.getAdh().then(function (res) {
+                    res.data.forEach(function (adhe) {
+                        if (adhe.id == id) {
+                            $scope.adherent = adhe
+                            /* $scope.formEmprunt.adherent = element */
+                            RechercheService.getEmpruntByAdh(adhe.id).then(function (result) {
+                                console.log(result.data)
+                                result.data.forEach(function (elem) {
+                                    $scope.emprunte.push(elem.media);
+                                })
 
-                            res.data.emprunt.forEach(function (e) {
-                                if (e.adherent.id == element.id) {
-                                    $scope.emprunte.push(e.media);
-                                }
 
                             })
+
                         }
                     })
 
@@ -214,9 +220,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $("div#globalDiv").addClass("blur");
         }
 
-        $scope.envoi = function () {
+        $scope.envoi = function (ad) {
             var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
             $scope.formEmprunt.date = EDate;
+            $scope.formEmprunt.adherent = ad;
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 
         }

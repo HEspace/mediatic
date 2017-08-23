@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import fr.dta.media.model.Media;
 import fr.dta.media.model.Type;
@@ -27,29 +28,29 @@ public class MediaControlleur {
     @Autowired
     MediaService ms;
 
-    @RequestMapping(value ="{id}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/{id}",  method = RequestMethod.GET)
     public Media findById(@PathVariable Long id){
         return ms.findID(id);
     }
     
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/find", method = RequestMethod.GET)
     public List<Media> getAll(){
     	return ms.getAll();
     }
 
     
 
-    @RequestMapping(value ="/dvd",  method = RequestMethod.GET)
+    @RequestMapping(value ="/type/dvd",  method = RequestMethod.GET)
     public List<Media> findByDVD(){
         return ms.listeMediaDVD();
     }
 
-    @RequestMapping(value ="/livre",  method = RequestMethod.GET)
+    @RequestMapping(value ="/type/livre",  method = RequestMethod.GET)
     public List<Media> findByLIVRE(){
         return ms.listeMediaLivre();
     }
 
-    @RequestMapping(value ="/cd",  method = RequestMethod.GET)
+    @RequestMapping(value ="/type/cd",  method = RequestMethod.GET)
     public List<Media> findByCD(){
         return ms.listeMediaCD();
     }
@@ -75,7 +76,7 @@ public class MediaControlleur {
     }
 
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void Create(@RequestBody @Valid Media m, BindingResult br) {
         ms.creer(m);

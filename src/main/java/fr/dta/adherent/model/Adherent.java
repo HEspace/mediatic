@@ -52,9 +52,12 @@ public class Adherent implements IoEntity {
 	
 	private String ville;
 	
-	@OneToOne
-	private Cotisation cotisation;
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate dateCotisation;
 	
+	
+	private Float montant;
 	
 	@OneToMany(mappedBy = "adherent")
 	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
@@ -158,12 +161,20 @@ public class Adherent implements IoEntity {
 		this.ville = ville;
 	}
 
-	public Cotisation getCotisation() {
-		return cotisation;
+	public Float getMontant(){
+		return this.montant;
 	}
 
-	public void setCotisation(Cotisation cotisation) {
-		this.cotisation = cotisation;
+	public void setMontant(Float montant){
+		this.montant = montant;
+	}
+
+	public void setDateCotisation(LocalDate date){
+		this.dateCotisation = date;
+	}
+
+	public LocalDate getDateCotisation(){
+		return this.dateCotisation;
 	}
 
 	

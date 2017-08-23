@@ -2,6 +2,7 @@ package fr.dta.adherent.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -28,7 +29,6 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
         List<Adherent> results = query.list();
         return results;
     }
-
     	
     
 }

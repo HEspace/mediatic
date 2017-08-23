@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
 import fr.dta.adherent.model.Adherent;
@@ -18,7 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 
 
-@Controller
+@RestController
 @RequestMapping("/api/adherent")
 public class AdherentControlleur {
 
@@ -26,15 +27,16 @@ public class AdherentControlleur {
 AdherentService adherentService;
 
 
-@RequestMapping(method = RequestMethod.GET)
+@RequestMapping(value = "/find", method = RequestMethod.GET)
 public List<Adherent> getAll(){
+    System.out.println(adherentService.getAllAdherent());
 	return adherentService.getAllAdherent();
    
 }
 
 
 // par Id
-    @RequestMapping(value="{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/find/{id}", method = RequestMethod.GET)
     public Adherent findById(@PathVariable Long id){
 		return adherentService.findID(id);
        
@@ -46,7 +48,7 @@ public List<Adherent> getAll(){
         return adherentService.find(chaine);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
     public void Create(@RequestBody @Valid Adherent adherent, BindingResult br) {
         adherentService.creer(adherent);

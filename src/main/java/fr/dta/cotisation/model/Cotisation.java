@@ -14,9 +14,6 @@ public class Cotisation {
 	@GeneratedValue
 	private Long id;
 	
-	@OneToOne(mappedBy = "cotisation")
-	private Adherent adherent;
-	
 	
 	private String dateCotisation;
 	

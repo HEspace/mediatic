@@ -13,11 +13,15 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.validation.constraints.NotNull;
 
 import fr.dta.cotisation.model.Cotisation;
 import fr.dta.emprunt.model.Emprunt;
+import fr.dta.localDateJson.LocalDateDeserializer;
+import fr.dta.localDateJson.LocalDateSerializer;
 import fr.dta.persistence.IoEntity;
 
 @Entity
@@ -34,6 +38,8 @@ public class Adherent implements IoEntity {
 	@NotBlank
 	private String prenom;
 	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	@NotNull
 	private LocalDate dateNaissance; 
 	

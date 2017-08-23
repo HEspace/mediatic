@@ -43,7 +43,7 @@ public List<Adherent> getAll(){
     }
 
 // par Nom et Prenom
-    @RequestMapping(value ="/find/{chaine}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/chaine/{chaine}",  method = RequestMethod.GET)
     public List<Adherent> findAdherentNomPrenom(@PathVariable String chaine){
         return adherentService.find(chaine);
     }

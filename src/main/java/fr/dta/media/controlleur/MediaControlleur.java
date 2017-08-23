@@ -28,7 +28,7 @@ public class MediaControlleur {
     @Autowired
     MediaService ms;
 
-    @RequestMapping(value ="/find/{id}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/id/{id}",  method = RequestMethod.GET)
     public Media findById(@PathVariable Long id){
         return ms.findID(id);
     }
@@ -57,19 +57,19 @@ public class MediaControlleur {
 
     
 
-    @RequestMapping(value ="/find/{chaine}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/chaine/{chaine}",  method = RequestMethod.GET)
     public List<Media> findByCD(@PathVariable String chaine){
         return ms.find(chaine);
     }
 
-    @RequestMapping(value ="/find/{chaine}/{tab}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/chaine/{chaine}/{tab}",  method = RequestMethod.GET)
     public List<Media> findByCD(@PathVariable String chaine, @PathVariable Type tab){
         System.out.println(tab);
         Type t[] = {tab};
         return ms.findMediaType(chaine, t);
     }
 
-    @RequestMapping(value ="/find/{chaine}/{tab}/{tab2}",  method = RequestMethod.GET)
+    @RequestMapping(value ="/find/chaine/{chaine}/{tab}/{tab2}",  method = RequestMethod.GET)
     public List<Media> findByCD(@PathVariable String chaine, @PathVariable Type tab,  @PathVariable Type tab2){
         Type t[] = {tab,tab2};
         return ms.findMediaType(chaine, t);

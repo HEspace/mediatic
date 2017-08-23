@@ -13,6 +13,7 @@ import fr.dta.repository.AbstractJpaRepository;
 @Repository
 public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 
+@Transactional
 @Override
 	protected Class<Adherent> getEntityClass() {
 		return Adherent.class;
@@ -20,6 +21,7 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 
 
 // Recherche un Adhérent par Nom et Prenom
+    @Transactional
     public List<Adherent> findAdherentNomPrenom(String chaine){
         String req ="select a";
         req += "from Adherent a";

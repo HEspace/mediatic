@@ -18,18 +18,21 @@ import fr.dta.repository.AbstractJpaRepository;
 public class MediaRepository extends AbstractJpaRepository<Media> {
 
 
+	@Transactional
 	@Override
 	protected Class<Media> getEntityClass() {
 		// TODO Auto-generated method stub
 		return Media.class;
 	}
 
+	@Transactional
 	public List<Media> listeMediaDVD(){
 		Criteria c = getSession().createCriteria(Media.class);
 		c.add(Restrictions.eq("type",Type.DVD));
 		return (List<Media>) c.list();
 	}
 
+	@Transactional
 	public List<Media> listeMediaCD(){
 		Criteria c = getSession().createCriteria(Media.class);
 		c.add(Restrictions.eq("type",Type.CD));
@@ -42,6 +45,7 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		return (List<Media>) c.list();
 	}
 	
+	@Transactional
 	public List<Media> findMediaType(String chaine, Type[] tab) {
 		String req ="select m ";
 		req += "from Media m ";
@@ -63,6 +67,7 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		return results;
 	}
 
+	@Transactional
 	public List<Media> find(String chaine) {
 		String hql = "select m "
 		+ "from Media m "

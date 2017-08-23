@@ -59,10 +59,7 @@ public class Adherent implements IoEntity {
 	
 	
 	private Float montant;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy = "adherent")
-	private List<Emprunt> listEmprunt = new ArrayList<Emprunt>();
+
 	
 
 	
@@ -131,13 +128,6 @@ public class Adherent implements IoEntity {
 		this.email = email;
 	}
 
-	public List<Emprunt> getListEmprunt() {
-		return listEmprunt;
-	}
-
-	public void setListEmprunt(List<Emprunt> listEmprunt) {
-		this.listEmprunt = listEmprunt;
-	}
 
 	public String getAdress() {
 		return rue;

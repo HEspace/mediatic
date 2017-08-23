@@ -29,6 +29,19 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
         List<Adherent> results = query.list();
         return results;
     }
-    	
+        
+    
+    @Transactional
+    public Adherent findByNom(String prenom,String nom){
+        String hql = "select a "
+		+ "from Adherent a "
+		+ "where a.prenom = :prenom "
+		+ "or a.nom = :nom ";
+		Query query = getSession().createQuery(hql);
+		query.setString("prenom", prenom);
+		query.setString("nom", nom);
+		Adherent results = (Adherent) query.getSingleResult();
+		return results;
+    }
     
 }

@@ -19,10 +19,7 @@ public class AdherentService {
 	
 	
 	public void creer(Adherent adh){
-		ar.save(adh);
-		/* AdherentDAO adao = AdherentDAO.instance(); 
-		adao.creer(adh); */
-		
+		ar.save(adh);		
 	}
 	
 	public List<Adherent> getAllAdherent(){
@@ -59,6 +56,10 @@ public class AdherentService {
 	
 	public Adherent findID(Long id){
 		return ar.findOne(id);
+	}
+	
+	public Adherent findByNom(String prenom,String nom){
+		return ar.findByNom(prenom,nom);
 	}
 	
 	public boolean egalites(Adherent a1, Adherent a2){

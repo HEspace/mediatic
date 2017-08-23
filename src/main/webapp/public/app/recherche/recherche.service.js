@@ -7,7 +7,6 @@ angular.module('mediatic.recherche')
         }
 
         this.getAdh = function () {
-            console.log("test")
             return $http.get('http://localhost:8080/api/adherent/find')
 
         }
@@ -28,10 +27,17 @@ angular.module('mediatic.recherche')
 
 
         this.ajoutEmprunt = function (form) {
-
+            if(form.media.type == 'book')
+                form.media.type = 'LIVRE';
+            if(form.media.type == 'film')
+                form.media.type = 'DVD';
+            if(form.media.type == 'music')
+                form.media.type = 'CD';
+            form.dateEmprunt = form.date;
+            delete form.date;
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/emprunt',
+                url: 'http://localhost:8080/api/emprunt/create',
                 data: form
             }).then(function successCallback(response) {
                 $window.location.reload();

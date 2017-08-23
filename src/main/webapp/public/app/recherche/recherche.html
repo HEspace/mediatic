@@ -187,7 +187,7 @@
             <div class="row">
                 <form name="formE" ng-submit="envoi()" class="form-group">
                     <div >
-                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nom for d in donnees" required>
+                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nom for d in adh" required>
                                 <option value="" hidden>Adhérents</option>
 	                        </select>
                     </div>
@@ -242,7 +242,7 @@
 
                 <form name="formM" class="form-group" ng-submit="envoi()">
                     <div>
-                        <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees.media" required>
+                        <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
                     </div>

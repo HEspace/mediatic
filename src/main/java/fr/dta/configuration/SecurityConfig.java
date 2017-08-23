@@ -23,11 +23,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
         .inMemoryAuthentication()
-        .withUser("User").password("password").roles("USER").and()
-        .withUser("Media").password("password").roles("USER", "MEDIA").and()
-        .withUser("Husref").password("password").roles("USER", "MEDIA", "ADMIN").and()
-        .withUser("Laurent").password("password").roles("USER", "MEDIA", "ADMIN").and()
-        .withUser("Hedy").password("password").roles("USER", "MEDIA", "ADMIN");
+        .withUser("User").password("").roles("USER").and()
+        .withUser("Media").password("").roles("USER", "MEDIA").and()
+        .withUser("Husref").password("").roles("USER", "MEDIA", "ADMIN").and()
+        .withUser("Laurent").password("").roles("USER", "MEDIA", "ADMIN").and()
+        .withUser("Hedy").password("").roles("USER", "MEDIA", "ADMIN");
     }
 
     protected void configure(HttpSecurity http) throws Exception {
@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .antMatchers("/api/media/find/**").permitAll()
         .antMatchers("/api/media/type/**").permitAll()
         .antMatchers("/api/emprunt/find/**").permitAll()
+        .antMatchers("/api/emprunt/create/**").permitAll()
         .antMatchers("/api/media/create/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MEDIA')")
         .antMatchers("/api/adherent/create/**").access("hasRole('ROLE_ADMIN')")
 

@@ -9,7 +9,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import fr.dta.adherent.model.Adherent;
+import fr.dta.localDateJson.LocalDateDeserializer;
+import fr.dta.localDateJson.LocalDateSerializer;
 import fr.dta.media.model.Media;
 import fr.dta.persistence.IoEntity;
 
@@ -35,11 +40,17 @@ public class Emprunt implements IoEntity{
 	private Media media;
 	
 	@NotNull
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate dateEmprunt;
 	
-	@NotNull
+	//@NotNull
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate dateRetourPrevu;
 	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate dateRetourEffective;
 	
 	

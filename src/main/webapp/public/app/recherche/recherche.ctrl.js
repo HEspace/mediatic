@@ -127,7 +127,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         })
 
         RechercheService.getAdh().then(function (res){
-            console.log("test2")
+            console.log("res.data")
             $scope.adh = res.data
         })
         $scope.hideTr = function () {
@@ -215,7 +215,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.envoi = function () {
-            var EDate = $filter('date')($scope.date, 'dd-MM-yyyy')
+            var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
             $scope.formEmprunt.date = EDate;
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 

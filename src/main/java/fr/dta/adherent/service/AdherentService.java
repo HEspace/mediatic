@@ -54,8 +54,8 @@ public class AdherentService {
 		return listA;
 	}
 	
-	public Adherent findID(Long id){
-		return ar.findOne(id);
+	public List<Adherent> findID(Long id){
+		return ar.findById(id);
 	}
 	
 	public Adherent findByNom(String prenom,String nom){

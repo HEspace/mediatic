@@ -82,6 +82,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 })
             } else {
                 RechercheService.getAdhById(id).then(function (res) {
+                    console.log(res);
+                    $rootScope.form.adherent.id = id;
                     $rootScope.form.adherent.nom = res.data.nom;
                     $rootScope.form.adherent.prenom = res.data.prenom;
                     var tmp = res.data.dateNaissance.split("-");
@@ -89,7 +91,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     $rootScope.form.adherent.age = res.data.age;
                     $rootScope.form.adherent.email = res.data.email;
                     if(res.data.dateCotisation != null){
-                        tmp = res.data.dateCotisation.split("/");
+                        tmp = res.data.dateCotisation.split("-");
                         $rootScope.form.adherent.dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                     }else{
                         $rootScope.form.adherent.dateCotisation = undefined

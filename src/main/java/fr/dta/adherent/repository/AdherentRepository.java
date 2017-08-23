@@ -50,5 +50,16 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
             return null;
         }
     }
+
+    @Transactional
+    public List<Adherent> findById(Long id){
+        String hql = "select a "
+		+ "from Adherent a "
+		+ "where str(a.id) like :id ";
+		Query query = getSession().createQuery(hql);
+        query.setString("id", id.toString()+"%");
+        List<Adherent> results = query.list();
+        return results;
+    }
     
 }

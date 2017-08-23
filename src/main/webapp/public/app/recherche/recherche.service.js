@@ -12,7 +12,7 @@ angular.module('mediatic.recherche')
         }
 
         this.getAdhById = function (id) {
-            return $http.get('http://localhost:8080/api/adherent/find/id/' +id)
+            return $http.get('http://localhost:8080/api/adherent/find/id/id/' +id)
 
         }
 
@@ -44,6 +44,7 @@ angular.module('mediatic.recherche')
             if(form.media.type == 'music')
                 form.media.type = 'CD';
             form.dateEmprunt = form.date;
+            console.log("ici");
             delete form.date;
             $http({
                 method: 'POST',

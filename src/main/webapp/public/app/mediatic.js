@@ -54,7 +54,11 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		url: 'http://localhost:8080/api/login/user'
 	}).then(function successCallback(response) {
 		$rootScope.login = response.data.name;
-		console.log($rootScope.login);
+		if(response.data.authorities)
+			$rootScope.droit = response.data.authorities.length;
+		else
+			$rootScope.droit = 0;
+		console.log($rootScope.droit);
 		$('#menuCollection').hide();
 		$('#sideMenu').slideUp();
 	

@@ -35,7 +35,7 @@ public class Emprunt implements IoEntity{
 	@ManyToOne
 	private Adherent adherent;
 	
-	private int compteur;
+	
 	
 	@NotNull
 	@ManyToOne
@@ -109,12 +109,6 @@ public class Emprunt implements IoEntity{
 		this.dateRetourEffective = dateRetourEffective;
 	}
 
-	public int getCompteur() {
-		return compteur;
-	}
 
-	public void setCompteur(int compteur) {
-		this.compteur = compteur;
-	}
 	
 }

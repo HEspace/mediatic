@@ -39,9 +39,14 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 		+ "or a.nom = :nom ";
 		Query query = getSession().createQuery(hql);
 		query.setString("prenom", prenom);
-		query.setString("nom", nom);
-		Adherent results = (Adherent) query.getSingleResult();
-		return results;
+        query.setString("nom", nom);
+        try {
+            Adherent results = (Adherent) query.getSingleResult();
+            return results;
+        } catch (Exception e) {
+            //TODO: handle exception
+            return null;
+        }
     }
     
 }

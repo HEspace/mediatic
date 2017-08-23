@@ -1,25 +1,34 @@
 'adherent strict';
 
 angular.module('mediatic.recherche')
-.service('RechercheService', ['$http','$window', '$timeout',function($http,$window,$timeout){
-    this.getData = function(){
-       return $http.get('http://localhost:8080/api/media')
-    }
+    .service('RechercheService', ['$http', '$window', '$timeout', function ($http, $window, $timeout) {
+        this.getData = function () {
+            return $http.get('http://localhost:8080/api/media')
+        }
 
-    this.recherche = function(chaine){
-        $timeout(function(){
-             scope.textSearch = chaine;
-		},0);
-    }
-    var scope={};
+        this.getAdh = function () {
+            console.log("test")
+            return $http.get('http://localhost:8080/api/adherent')
 
-    this.prendMonCtrl = function(scopeS){
-         scope  = scopeS;
-    }
+        }
+        this.getEmprunt = function () {
+            return $http.get('http://localhost:8080/api/emprunt')
+        }
+
+        this.recherche = function (chaine) {
+            $timeout(function () {
+                scope.textSearch = chaine;
+            }, 0);
+        }
+        var scope = {};
+
+        this.prendMonCtrl = function (scopeS) {
+            scope = scopeS;
+        }
 
 
-    this.ajoutEmprunt = function(form){
-      
+        this.ajoutEmprunt = function (form) {
+
             $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/emprunt',
@@ -34,5 +43,5 @@ angular.module('mediatic.recherche')
             });
         }
 
-}]);
+    }]);
 

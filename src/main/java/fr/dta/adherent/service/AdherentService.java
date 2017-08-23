@@ -25,6 +25,10 @@ public class AdherentService {
 		
 	}
 	
+	public List<Adherent> getAllAdherent(){
+		return ar.findAll();
+	}
+	
 	public List<Media> listEmpruntParAdherent(Adherent adherent){
 		AdherentDAO adherentDao = AdherentDAO.instance();
 		return adherentDao.listEmpruntParAdherent(adherent);

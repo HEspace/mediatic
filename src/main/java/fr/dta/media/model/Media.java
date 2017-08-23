@@ -9,8 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import org.hibernate.validator.constraints.NotBlank;
 
 import fr.dta.emprunt.model.Emprunt;
 import fr.dta.persistence.IoEntity;
@@ -25,15 +25,16 @@ public class Media implements IoEntity {
 	@GeneratedValue(generator = "seq_by1")
 	private Long id;
 	
-	@NotBlank
+	@NotNull
 	private String titre;
 	
-	@NotBlank
+	@NotNull
 	private String auteur;
 	
 	@NotNull
 	private Type type;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "media")
 	private List<Emprunt> listeEmprunt = new ArrayList<Emprunt>();
 

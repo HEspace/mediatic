@@ -26,6 +26,12 @@ public class AdherentControlleur {
 AdherentService adherentService;
 
 
+@RequestMapping(method = RequestMethod.GET)
+public List<Adherent> getAll(){
+	return adherentService.getAllAdherent();
+   
+}
+
 
 // par Id
     @RequestMapping(value="{id}", method = RequestMethod.GET)

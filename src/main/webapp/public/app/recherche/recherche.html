@@ -125,7 +125,9 @@
             </tr>
         </tbody>
     </table>
+    <pre>{{adh}}</pre>
 </div>
+
 
 <div id="globalDiv" class="col-sm-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" ng-if="show(a)">
     <table class="table table-hover text-center">
@@ -142,7 +144,7 @@
             </tr>
         </thead>
         <tbody class="tbodyTab">
-            <tr ng-click="showTr(d.id)" ng-repeat="d in donnees.adherent |orderBy:myOrder:reverse   ">
+            <tr ng-click="showTr(d.id)" ng-repeat="d in adh |orderBy:myOrder:reverse   ">
                 <td class="text-left">
                     <span class="glyphicon glyphicon-adherent"></span> {{d.id}}
                 </td>
@@ -153,6 +155,7 @@
             </tr>
         </tbody>
     </table>
+    
 </div>
 
 
@@ -184,7 +187,7 @@
             <div class="row">
                 <form name="formE" ng-submit="envoi()" class="form-group">
                     <div >
-                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nom for d in donnees.adherent" required>
+                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nom for d in donnees" required>
                                 <option value="" hidden>Adhérents</option>
 	                        </select>
                     </div>

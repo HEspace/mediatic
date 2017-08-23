@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 import fr.dta.adherent.model.Adherent;
@@ -13,10 +14,16 @@ import fr.dta.media.model.Media;
 import fr.dta.persistence.IoEntity;
 
 @Entity
+@SequenceGenerator(name = "seqBy2", sequenceName="seqBy2", initialValue = 1, allocationSize = 1)
 public class Emprunt implements IoEntity{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "seqBy2")
 	private Long id;
 	
 	@NotNull

@@ -32,12 +32,15 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $(".divHiddenadherent").hide();
             var index = document.getElementById("sel").selectedIndex;
             var options = document.getElementById("sel").options;
+
             if (options[index].text == "Médias") {
+                console.log($('#sel').selectpicker().val())
                 $("#radioAdhe").hide();
                 $("#checkMedia").fadeIn();
                 $("#tabAdherent").hide();
                 $("#tabMedia").fadeIn();
             } else {
+                console.log($('#sel').selectpicker().val())
                 $("#checkMedia").hide();
                 $("#radioAdhe").fadeIn();
                 $("#tabAdherent").fadeIn();
@@ -67,7 +70,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 RechercheService.getData().then(function (res) {
                     res.data.forEach(function (elem) {
                         if (elem.id == id) {
-                       
+
                             $rootScope.form.media.id = elem.id
                             $rootScope.form.media.auteur = elem.auteur
                             $rootScope.form.media.titre = elem.titre
@@ -123,6 +126,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         })
 
+        RechercheService.getAdh().then(function (res){
+            console.log("test2")
+            $scope.adh = res.data
+        })
         $scope.hideTr = function () {
             $('.collapse').collapse("hide");
             if ($('#sel').selectpicker().val() == "m") {
@@ -140,8 +147,14 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
 
+     /*    RechercheService.getEmprunt().then(function (res) {
+            $scope.emp = res.data
+        }) */
+
+
         $scope.showTr = function (id) {
             if ($('#sel').selectpicker().val() == "m") {
+
                 RechercheService.getData().then(function (res) {
 
                     res.data.forEach(function (element) {
@@ -155,12 +168,18 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             else
                                 $scope.typeMedia = "film"
 
-                            /*                             res.data.emprunt.forEach(function (e) {
-                                                            if(e.media.id == element.id){
-                                                                $scope.emprunte.push(e.adherent);
-                                                            }
-                                                                                              
-                                                        }) */
+                            RechercheService.getEmprunt().then(function (res) {
+                                res.data.forEach(function (e) {
+                                    if (e.media_id == element.id) {
+                                        RechercheService.getData().forEach(function (elem) {
+                                            if (elem.id == e.adherent_id)
+                                                $scope.emprunte.push(elem);
+                                        })
+
+                                    }
+
+                                })
+                            })
 
                         }
                     })

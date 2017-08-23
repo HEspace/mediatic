@@ -20,6 +20,8 @@ public class EmpruntController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Emprunt> getAll(){
+		System.out.println("Je suis là !");
+		System.out.println(es.getAllEmprunt());
 		return es.getAllEmprunt();
 	}
 	

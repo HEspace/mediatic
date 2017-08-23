@@ -96,8 +96,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     }
                     $rootScope.form.adherent.montantCotisation = res.data.montantCotisation;
                     $rootScope.form.adherent.dateFinCotisation = res.data.dateFinCotisation;
-                    $rootScope.form.adherent.rue = res.data.rue;
-                    $rootScope.form.adherent.codePostale = res.data.codePostale;
+                    $rootScope.form.adherent.rue = res.data.adress;
+                    $rootScope.form.adherent.codePostale = res.data.cp;
                     $rootScope.form.adherent.ville = res.data.ville;
 
                     $location.path('/ajoutAdherent');
@@ -129,8 +129,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         RechercheService.getAdh().then(function (res) {
             $scope.adh = res.data
+            console.log($scope.adh)
             res.data.forEach(function(elem){
-                
+                console.log(elem.dateCotisation)
             })
         })
 
@@ -173,16 +174,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.typeMedia = "film"
 
                             RechercheService.getEmprunt().then(function (res) {
-                                res.data.forEach(function (e) {
-                                    if (e.media_id == element.id) {
-                                        RechercheService.getData().forEach(function (elem) {
-                                            if (elem.id == e.adherent_id)
-                                                $scope.emprunte.push(elem);
-                                        })
-
-                                    }
-
-                                })
+                                
                             })
 
                         }

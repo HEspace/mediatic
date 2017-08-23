@@ -28,78 +28,70 @@ import fr.dta.persistence.IoEntity;
 @Entity
 @Table(name = "adherent")
 public class Adherent implements IoEntity {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
-	
+
 	@NotBlank
 	private String nom;
-	
+
 	@NotBlank
 	private String prenom;
-	
+
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	@NotNull
-	private LocalDate dateNaissance; 
-	
+	private LocalDate dateNaissance;
+
 	@NotBlank
 	private String email;
-	
+
 	private String rue;
-	
+
 	private String codePostale;
-	
+
 	private String ville;
-	
+
 	@JsonDeserialize(using = LocalDateDeserializer.class)
 	@JsonSerialize(using = LocalDateSerializer.class)
 	private LocalDate dateCotisation;
-	
-	
+
 	private Float montant;
 
 	private Integer compteur;
 
+	public Adherent() {
 
-
-	
-
-	
-	public Adherent(){
-		
 	}
 
-	
-	public Adherent(@NotBlank String nom, @NotBlank String prenom,
-			@NotBlank String email, @NotBlank LocalDate dateNaissance , String rue, String codePostale, String ville) {
-		
-			this.nom = nom;
-			this.prenom = prenom;
-			this.dateNaissance = dateNaissance;
-			this.email = email;
-				if(rue != ""){
-					this.rue = rue;
-				}
-				if(codePostale != ""){
-				this.codePostale = codePostale;
-				}
-				if(ville != ""){
-				this.ville = ville;
-				}
-		
-			
+	public Adherent(@NotBlank String nom, @NotBlank String prenom, @NotBlank String email,
+			@NotBlank LocalDate dateNaissance, String rue, String codePostale, String ville) {
+
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.email = email;
+		if (rue != "") {
+			this.rue = rue;
+		}
+		if (codePostale != "") {
+			this.codePostale = codePostale;
+		}
+		if (ville != "") {
+			this.ville = ville;
+		}
+		this.compteur = 0;
+
 	}
 
-	public Integer getCompteur(){
+	public Integer getCompteur() {
 		return this.compteur;
 	}
 
-	public void setCompteur(Integer compteur){
+	public void setCompteur(Integer compteur) {
 		this.compteur = compteur;
 	}
-
 
 	public Long getId() {
 		return id;
@@ -141,7 +133,6 @@ public class Adherent implements IoEntity {
 		this.email = email;
 	}
 
-
 	public String getAdress() {
 		return rue;
 	}
@@ -166,23 +157,20 @@ public class Adherent implements IoEntity {
 		this.ville = ville;
 	}
 
-	public Float getMontant(){
+	public Float getMontant() {
 		return this.montant;
 	}
 
-	public void setMontant(Float montant){
+	public void setMontant(Float montant) {
 		this.montant = montant;
 	}
 
-	public void setDateCotisation(LocalDate date){
+	public void setDateCotisation(LocalDate date) {
 		this.dateCotisation = date;
 	}
 
-	public LocalDate getDateCotisation(){
+	public LocalDate getDateCotisation() {
 		return this.dateCotisation;
 	}
 
-	
-
 }
-

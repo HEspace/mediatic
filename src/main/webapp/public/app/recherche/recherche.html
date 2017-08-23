@@ -152,8 +152,8 @@
                 </td>
                 <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
                 <td align="center">{{d.dateNaissance}}</td>
-                <td>Oui</td>
-                <td>13 médias</td>
+                <td>{{}}</td>
+                <td>{{d.compteur}} média(s)</td>
             </tr>
         </tbody>
     </table>
@@ -239,7 +239,6 @@
 		                                </button><br>
         <div id="empruntadherent" class="collapse col-md-6 col-xs-12">
             <div class="row">
-                <pre>{{adherent}}</pre>
                 <form name="formM" class="form-group" ng-submit="envoi(adherent)">
                     <div>
                         <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>

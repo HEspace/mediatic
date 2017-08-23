@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.dta.adherent.model.Adherent;
+import fr.dta.adherent.service.AdherentService;
 import fr.dta.emprunt.dao.EmpruntDAO;
 import fr.dta.emprunt.model.Emprunt;
 import fr.dta.emprunt.repository.EmpruntRepository;
@@ -24,6 +25,9 @@ public class EmpruntService {
 	@Autowired
 	private EmpruntRepository er;
 	
+	@Autowired
+	private AdherentService as;
+	
 	
 	public void creer(Emprunt e){
 		if(e.getMedia().getType() == Type.LIVRE)
@@ -31,6 +35,7 @@ public class EmpruntService {
 		else
 			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
 		e.getAdherent().setCompteur(e.getAdherent().getCompteur()+1);
+		as.creer(e.getAdherent() );
 		er.save(e);
 	}
 	

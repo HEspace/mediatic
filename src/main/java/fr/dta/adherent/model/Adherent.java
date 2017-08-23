@@ -1,5 +1,6 @@
 package fr.dta.adherent.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,7 @@ import fr.dta.persistence.IoEntity;
 @Table(name = "adherent")
 public class Adherent implements IoEntity {
 	
+
 	@Id
 	@GeneratedValue
 	private Long id;

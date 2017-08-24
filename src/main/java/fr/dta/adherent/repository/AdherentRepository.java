@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import fr.dta.adherent.model.Adherent;
 import fr.dta.repository.AbstractJpaRepository;
 
+@Transactional
 @Repository
 public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 
@@ -19,9 +20,7 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 		return Adherent.class;
 	}
 
-
 // Recherche un Adhérent par Nom et Prenom
-    @Transactional
     public List<Adherent> findAdherentNomPrenom(String chaine){
         String req ="select a";
         req += "from Adherent a";
@@ -31,9 +30,7 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
         List<Adherent> results = query.list();
         return results;
     }
-        
-    
-    @Transactional
+         
     public Adherent findByNom(String prenom,String nom){
         String hql = "select a "
 		+ "from Adherent a "
@@ -51,7 +48,6 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
         }
     }
 
-    @Transactional
     public List<Adherent> findById(Long id){
         String hql = "select a "
 		+ "from Adherent a "

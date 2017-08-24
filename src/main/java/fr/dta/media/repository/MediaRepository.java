@@ -13,7 +13,7 @@ import fr.dta.media.model.Media;
 import fr.dta.media.model.Type;
 import fr.dta.repository.AbstractJpaRepository;
 
-
+@Transactional
 @Repository
 public class MediaRepository extends AbstractJpaRepository<Media> {
 
@@ -25,14 +25,12 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		return Media.class;
 	}
 
-	@Transactional
 	public List<Media> listeMediaDVD(){
 		Criteria c = getSession().createCriteria(Media.class);
 		c.add(Restrictions.eq("type",Type.DVD));
 		return (List<Media>) c.list();
 	}
 
-	@Transactional
 	public List<Media> listeMediaCD(){
 		Criteria c = getSession().createCriteria(Media.class);
 		c.add(Restrictions.eq("type",Type.CD));
@@ -45,7 +43,6 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		return (List<Media>) c.list();
 	}
 	
-	@Transactional
 	public List<Media> findMediaType(String chaine, Type[] tab) {
 		String req ="select m ";
 		req += "from Media m ";
@@ -67,7 +64,6 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		return results;
 	}
 
-	@Transactional
 	public List<Media> find(String chaine) {
 		String hql = "select m "
 		+ "from Media m "

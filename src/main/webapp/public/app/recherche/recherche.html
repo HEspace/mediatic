@@ -1,106 +1,108 @@
 <div id="globalDiv" class="container">
     <div class="row">
-            <div id="buttonadherent">
-                <button ng-click="changePage(pageU)" class="btn btn-md btn-primary">
+        <div id="buttonadherent">
+            <button ng-click="changePage(pageU)" class="btn btn-md btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
                     <span class="glyphicon glyphicon-user"></span>
                 </button>
-            </div>
-            <div id="buttonFile">
-                <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
+        </div>
+        <div id="buttonFile">
+            <button ng-click="changePage(pageF)" class="btn btn-md btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>
                     <span class="glyphicon glyphicon-file"></span>
                 </button>
-            </div>
+        </div>
 
     </div>
 
 
-    <div id="globalDiv" class="row">
-        <div class="col-xs-12">
-            <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <select class="selectpicker show-tick" id="sel" ng-model="selectedOptions">
+
+        <div id="globalDiv" class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <select class="selectpicker show-tick" id="sel" ng-model="selectedOptions">
                     <option value="m" >Médias</option>
                     <option value="a">Adhérents</option>
                 </select>
-                </div>
+                    </div>
 
-                <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
-                
-                <span class="input-group-btn d-inline">
+                    <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
+
+                    <span class="input-group-btn d-inline">
 							<button class="btn btn-default btn-lg" type="submit" ng-click="search()">
 								<span class="glyphicon glyphicon-search"></span>
-                </button>
-                </span>
+                    </button>
+                    </span>
+                </div>
             </div>
         </div>
-    </div>
-    <pre>{{textSearch}}</pre>
-    <div id="globalDiv" class="row">
-        <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
-            <div class="col-xs-0 col-sm-2">
-                <div class="checkbox">
-                    <label>
+        <pre>{{textSearch}}</pre>
+        <div id="globalDiv" class="row">
+            <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
+                <div class="col-xs-0 col-sm-2">
+                    <div class="checkbox">
+                        <label>
 	                        <input type="checkbox" ng-model="checkBox.book" >
 	                        <span class="cr"></span>
 	                        Livre
 	                    </label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-xs-0 col-sm-2">
-                <div class="checkbox">
-                    <label>
+                <div class="col-xs-0 col-sm-2">
+                    <div class="checkbox">
+                        <label>
 	                        <input type="checkbox" ng-model="checkBox.music">
 	                        <span class="cr"></span>
 	                        CD
 	                    </label>
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-xs-0 col-sm-2">
-                <div class="checkbox">
-                    <label>
+                <div class="col-xs-0 col-sm-2">
+                    <div class="checkbox">
+                        <label>
 	                        <input type="checkbox" ng-model="checkBox.film">
 	                        <span class="cr"></span>
 	                        DVD
 	                    </label>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="radioButtonRow" class="row">
-        <div class="col-sm-offset-3 col-xs-12" ng-if="show(a)">
-            <div id="radioButton" class="col-sm-3">
-                <div class="radio">
-                    <label>
+        <div id="radioButtonRow" class="row">
+            <div class="col-sm-offset-3 col-xs-12" ng-if="show(a)">
+                <div id="radioButton" class="col-sm-3">
+                    <div class="radio">
+                        <label>
 	                        <input type="radio" value="nom" ng-model="radioBox.selected">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par nom
 	                    </label>
+                    </div>
                 </div>
-            </div>
 
-            <div id="radioButton" class="col-sm-3">
-                <div class="radio">
-                    <label>
+                <div id="radioButton" class="col-sm-3">
+                    <div class="radio">
+                        <label>
 	                        <input type="radio" value="identifiant" ng-model="radioBox.selected">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par identifiant
 	                    </label>
+                    </div>
                 </div>
             </div>
+
+
         </div>
+        <br>
 
-
-    </div>
-    <br>
 </div>
 
 
 <div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(m)">
-    <table class="table table-hover" id="tab"height="20">
+    <table class="table table-hover" id="tab" height="20">
         <thead class="theadSearch">
             <tr>
                 <th style="text-align:center"><span ng-click="orderByMe('type')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Type</th>
@@ -129,7 +131,7 @@
 </div>
 
 
-<div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(a)" >
+<div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(a)">
     <table class="table table-hover text-center" height="20">
         <thead class="theadSearch">
             <tr>
@@ -151,9 +153,11 @@
                 </td>
                 <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
                 <td align="center">{{d.dateNaissance}}</td>
-                <td class="nonCotisation" ng-class="{cotisation : cotisation}"><pre>{{cotisation}}</pre></td>
+                <td class="nonCotisation" ng-class="{cotisation : cotisation}">
+                    <pre>{{cotisation}}</pre>
+                </td>
                 <td>{{d.compteur}} média(s)</td>
-              
+
             </tr>
         </tbody>
     </table>

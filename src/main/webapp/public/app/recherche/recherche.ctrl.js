@@ -140,15 +140,23 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         })
 
+        $scope.$watch('textSearch', function(){
+            $scope.search();
+        })
+
+
         $scope.search = function () {
-            var type = null;
+            var typeCheck = "";
             if($scope.checkBox['book'] == true)
-                livre = "LIVRE"
+                typeCheck += "/LIVRE"
             if($scope.checkBox['music'] == true)
-                cd = "CD"
+                typeCheck += "/CD"
             if($scope.checkBox['film'] == true)
-                dvd = "DVD"
-            RechercheService.getDataByWordAndType($scope.textSearch, livre, cd, dvd).then(function (res) {
+                typeCheck += "/DVD"
+            if($scope.checkBox['book'] == true && $scope.checkBox['music'] == true && $scope.checkBox['film'] == true)
+                typeCheck = "";
+                
+            RechercheService.getDataByWordAndType($scope.textSearch, typeCheck).then(function (res) {
                 $scope.donnees = res.data
                 $scope.donnees.forEach(function (element) {
                     if (element.type == "LIVRE")

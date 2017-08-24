@@ -2,18 +2,16 @@
 
 angular.module('mediatic.recherche')
     .service('RechercheService', ['$http', '$window', '$timeout', function ($http, $window, $timeout) {
-        
+
         this.getData = function () {
             return $http.get('http://localhost:8080/api/media/find')
         }
 
-         this.getDataByWordAndType = function (chaine, type, type2, type3) {
-             if(type != null && type2 != null && type3 != null)
-                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine)
-             types = type 
-                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine +'/'+type)
-             
-                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine +'/'+type+'/'+type2)
+        this.getDataByWordAndType = function (chaine, type) {
+            if (type == "")
+                return $http.get('http://localhost:8080/api/media//find/chaine/' + chaine)
+            else
+                return $http.get('http://localhost:8080/api/media//find/chaine/' + chaine + type)
         }
 
         this.getAdh = function () {
@@ -22,14 +20,14 @@ angular.module('mediatic.recherche')
         }
 
         this.getAdhById = function (id) {
-            return $http.get('http://localhost:8080/api/adherent/findOne/id/' +id)
+            return $http.get('http://localhost:8080/api/adherent/findOne/id/' + id)
 
         }
 
-        
 
-        this.getEmpruntByAdh = function(id){
-            return $http.get('http://localhost:8080/api/emprunt/adherent/'+id)
+
+        this.getEmpruntByAdh = function (id) {
+            return $http.get('http://localhost:8080/api/emprunt/adherent/' + id)
         }
 
         this.getEmprunt = function () {
@@ -49,11 +47,11 @@ angular.module('mediatic.recherche')
 
 
         this.ajoutEmprunt = function (form) {
-            if(form.media.type == 'book')
+            if (form.media.type == 'book')
                 form.media.type = 'LIVRE';
-            if(form.media.type == 'film')
+            if (form.media.type == 'film')
                 form.media.type = 'DVD';
-            if(form.media.type == 'music')
+            if (form.media.type == 'music')
                 form.media.type = 'CD';
             form.dateEmprunt = form.date;
             console.log("ici");

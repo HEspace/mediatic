@@ -2,8 +2,18 @@
 
 angular.module('mediatic.recherche')
     .service('RechercheService', ['$http', '$window', '$timeout', function ($http, $window, $timeout) {
+        
         this.getData = function () {
             return $http.get('http://localhost:8080/api/media/find')
+        }
+
+         this.getDataByWordAndType = function (chaine, type, type2, type3) {
+             if(type != null && type2 != null && type3 != null)
+                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine)
+             types = type 
+                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine +'/'+type)
+             
+                return $http.get('http://localhost:8080/api/media//find/chaine/'+chaine +'/'+type+'/'+type2)
         }
 
         this.getAdh = function () {
@@ -12,9 +22,11 @@ angular.module('mediatic.recherche')
         }
 
         this.getAdhById = function (id) {
-            return $http.get('http://localhost:8080/api/adherent/find/id/id/' +id)
+            return $http.get('http://localhost:8080/api/adherent/findOne/id/' +id)
 
         }
+
+        
 
         this.getEmpruntByAdh = function(id){
             return $http.get('http://localhost:8080/api/emprunt/adherent/'+id)

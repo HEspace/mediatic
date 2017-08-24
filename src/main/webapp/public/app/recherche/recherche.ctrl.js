@@ -14,6 +14,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.formEmprunt = {};
         $scope.myOrder = 'titre';
         $scope.reverse = false;
+        $scope.cotisation = false;
         $scope.emprunte = [];
         $scope.radioBox = { 'selected': "nom" };
         $scope.checkBox = {
@@ -22,14 +23,15 @@ angular.module('mediatic.recherche', ['ngRoute'])
             'film': false
         }
 
+
         RechercheService.prendMonCtrl($scope);
 
         if (!$rootScope.login)
             $location.path("/accueil")
 
-        if($rootScope.droit > 1)
+        if ($rootScope.droit > 1)
             $("#buttonFile").fadeIn();
-        if($rootScope.droit > 2)
+        if ($rootScope.droit > 2)
             $("#buttonadherent").fadeIn();
 
 
@@ -61,7 +63,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
         });
 
 
-        $scope.search = function () { }
+
 
         $scope.changePage = function (e) {
             if (e == $scope.pageU)
@@ -88,7 +90,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 })
             } else {
                 RechercheService.getAdhById(id).then(function (res) {
-                    console.log(res);
+
                     $rootScope.form.adherent.id = id;
                     $rootScope.form.adherent.nom = res.data.nom;
                     $rootScope.form.adherent.prenom = res.data.prenom;
@@ -96,10 +98,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     $rootScope.form.adherent.dateNaissance = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                     $rootScope.form.adherent.age = res.data.age;
                     $rootScope.form.adherent.email = res.data.email;
-                    if(res.data.dateCotisation != null){
+                    if (res.data.dateCotisation != null) {
                         tmp = res.data.dateCotisation.split("-");
                         $rootScope.form.adherent.dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
-                    }else{
+                    } else {
                         $rootScope.form.adherent.dateCotisation = undefined
                     }
                     $rootScope.form.adherent.montantCotisation = res.data.montantCotisation;
@@ -107,6 +109,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     $rootScope.form.adherent.rue = res.data.adress;
                     $rootScope.form.adherent.codePostale = res.data.cp;
                     $rootScope.form.adherent.ville = res.data.ville;
+                    $rootScope.form.adherent.compteur = res.data.compteur;
 
                     $location.path('/ajoutAdherent');
 
@@ -114,6 +117,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
             }
 
         }
+
+
 
         $scope.show = function (e) {
             if ($('#sel').selectpicker().val() == e)
@@ -135,11 +140,39 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         })
 
+        $scope.search = function () {
+            var type = null;
+            if($scope.checkBox['book'] == true)
+                livre = "LIVRE"
+            if($scope.checkBox['music'] == true)
+                cd = "CD"
+            if($scope.checkBox['film'] == true)
+                dvd = "DVD"
+            RechercheService.getDataByWordAndType($scope.textSearch, livre, cd, dvd).then(function (res) {
+                $scope.donnees = res.data
+                $scope.donnees.forEach(function (element) {
+                    if (element.type == "LIVRE")
+                        element.type = "book"
+                    else if (element.type == "CD")
+                        element.type = "music"
+                    else
+                        element.type = "film"
+                })
+            })
+        }
+
         RechercheService.getAdh().then(function (res) {
             $scope.adh = res.data
-            console.log($scope.adh)
-            res.data.forEach(function(elem){
-                console.log(elem.dateCotisation)
+            $scope.adh.forEach(function (elem) {
+                if (elem.dateCotisation !== null) {
+                    var d2 = new Date(elem.dateCotisation);
+                    d2.setFullYear(d2.getFullYear() + 1)
+                    if (d2.getTime() > Date.now())
+                        $scope.cotisation = true;
+                } else {
+                    $scope.cotisation = false;
+                }
+
             })
         })
 
@@ -182,7 +215,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 $scope.typeMedia = "film"
 
                             RechercheService.getEmprunt().then(function (res) {
-                                
+
                             })
 
                         }

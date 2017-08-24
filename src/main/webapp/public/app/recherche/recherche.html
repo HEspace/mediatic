@@ -27,15 +27,16 @@
                 </div>
 
                 <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
-
+                
                 <span class="input-group-btn d-inline">
-							<button class="btn btn-default btn-lg" type="button" ng-click="search()">
+							<button class="btn btn-default btn-lg" type="submit" ng-click="search()">
 								<span class="glyphicon glyphicon-search"></span>
                 </button>
                 </span>
             </div>
         </div>
     </div>
+    <pre>{{textSearch}}</pre>
     <div id="globalDiv" class="row">
         <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
             <div class="col-xs-0 col-sm-2">
@@ -98,8 +99,8 @@
 </div>
 
 
-<div id="globalDiv" class="col-sm-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" ng-if="show(m)">
-    <table class="table table-hover" id="tab">
+<div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(m)">
+    <table class="table table-hover" id="tab"height="20">
         <thead class="theadSearch">
             <tr>
                 <th style="text-align:center"><span ng-click="orderByMe('type')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Type</th>
@@ -128,8 +129,8 @@
 </div>
 
 
-<div id="globalDiv" class="col-sm-offset-2 col-sm-8 col-sm-offset-2 col-xs-12" ng-if="show(a)">
-    <table class="table table-hover text-center">
+<div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(a)" >
+    <table class="table table-hover text-center" height="20">
         <thead class="theadSearch">
             <tr>
                 <th><span ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
@@ -150,11 +151,13 @@
                 </td>
                 <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
                 <td align="center">{{d.dateNaissance}}</td>
-                <td>{{}}</td>
+                <td class="nonCotisation" ng-class="{cotisation : cotisation}"><pre>{{cotisation}}</pre></td>
                 <td>{{d.compteur}} média(s)</td>
+              
             </tr>
         </tbody>
     </table>
+
 </div>
 
 

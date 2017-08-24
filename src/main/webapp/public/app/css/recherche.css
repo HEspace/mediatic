@@ -100,3 +100,11 @@ table {
   content: '\25bc';  
   cursor: pointer;
 }
+
+.nonCotisation::after{
+    content: "Non"
+}
+
+.cotisation::after{
+    content: "Oui"
+}

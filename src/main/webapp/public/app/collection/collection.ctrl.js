@@ -22,8 +22,6 @@
             ctrl.titre = 'Collection de DVD';
             url = 'http://localhost:8080/api/media/type/dvd';
         }
-
-        
         
         CollectionService.recup(url).then(function successCallback(res){
             $scope.tab = res.data;

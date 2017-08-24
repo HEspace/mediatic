@@ -27,9 +27,6 @@ public class AdherentControlleur {
 @Autowired
 AdherentService adherentService;
 
-@Autowired 
-AdherentRepository ar;
-
 
 @RequestMapping(value = "/find", method = RequestMethod.GET)
 public List<Adherent> getAll(){
@@ -41,14 +38,13 @@ public List<Adherent> getAll(){
 // par Id
     @RequestMapping(value="/find/id/{id}", method = RequestMethod.GET)
     public List<Adherent> findById(@PathVariable Long id){
-    	System.out.println(adherentService.findID(id));
 		return adherentService.findID(id);
        
     }
 
-    @RequestMapping(value="/find/id/id/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/findOne/id/{id}", method = RequestMethod.GET)
     public Adherent findByOneId(@PathVariable Long id){
-		return ar.findOne(id);
+		return adherentService.findOne(id);
        
     }
 

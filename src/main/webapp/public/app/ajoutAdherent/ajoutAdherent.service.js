@@ -10,7 +10,6 @@
         this.exposedFn = exposedFn;
         
         this.ajoutAdh = function(form){
-
             $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/adherent/create',

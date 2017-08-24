@@ -22,6 +22,8 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
             $scope.form.rue = $rootScope.form.adherent.rue;
             $scope.form.codePostale = $rootScope.form.adherent.codePostale;
             $scope.form.ville = $rootScope.form.adherent.ville;
+            $scope.form.id = $rootScope.form.adherent.id;
+            $scope.form.compteur = $rootScope.form.adherent.compteur;
             $rootScope.form.adherent = {};
         }
     
@@ -33,8 +35,8 @@ angular.module('mediatic.ajoutAdherent', ['ngRoute'])
         $scope.form.dateCotisation = dateDePaiementJson;
 
         var dateDeFinAbonnementJson = $filter('date')($scope.dateFinCotisation, 'yyyy-MM-dd');
-        $scope.form.dateFinCotisation = dateDeFinAbonnementJson;
-        $scope.form.id = 
+        $scope.form.dateFinCotisation =  dateDeFinAbonnementJson;
+   
 
         AdherentService.ajoutAdh($scope.form);
     }

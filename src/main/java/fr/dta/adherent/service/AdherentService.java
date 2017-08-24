@@ -58,6 +58,11 @@ public class AdherentService {
 		return ar.findById(id);
 	}
 	
+	
+	public Adherent findOne(Long id){
+		return ar.findOne(id);
+	}
+	
 	public Adherent findByNom(String prenom,String nom){
 		return ar.findByNom(prenom,nom);
 	}

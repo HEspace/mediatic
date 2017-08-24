@@ -102,7 +102,7 @@
 
 
 <div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(m)">
-    <div id="divTab">
+    <div class="divTab">
         <table class="table table-hover" id="tab" height="20">
             <thead class="theadSearch">
                 <tr>
@@ -134,35 +134,37 @@
 
 
 <div id="globalDiv" class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12" ng-if="show(a)">
-    <table class="table table-hover text-center" height="20">
-        <thead class="theadSearch">
-            <tr>
-                <th><span ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
-                <th><span ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom</th>
-                <th class="text-center"><span ng-click="orderByMe('-dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date
-                    de naissance</th>
-                <th class="text-center"><span ng-click="orderByMe('dateCotisation')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;A
-                    jour de cotisation ?</th>
-                <th class="text-center"><span ng-click="orderByMe('nbMedia')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nombre
-                    médias
-                </th>
-            </tr>
-        </thead>
-        <tbody class="tbodyTab">
-            <tr ng-click="showTr(d.id)" ng-repeat="d in adh |orderBy:myOrder:reverse   ">
-                <td class="text-left">
-                    <span class="glyphicon glyphicon-adherent"></span> {{d.id}}
-                </td>
-                <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
-                <td align="center">{{d.dateNaissance}}</td>
-                <td class="nonCotisation" ng-class="{cotisation : cotisation}">
-                    <pre>{{cotisation}}</pre>
-                </td>
-                <td>{{d.compteur}} média(s)</td>
+    <div class="divTab">
+        <table class="table table-hover text-center" height="20">
+            <thead class="theadSearch">
+                <tr>
+                    <th><span ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
+                    <th><span ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom</th>
+                    <th class="text-center"><span ng-click="orderByMe('-dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date
+                        de naissance</th>
+                    <th class="text-center"><span ng-click="orderByMe('dateCotisation')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;A
+                        jour de cotisation ?</th>
+                    <th class="text-center"><span ng-click="orderByMe('nbMedia')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nombre
+                        médias
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbodyTab">
+                <tr ng-click="showTr(d.id)" ng-repeat="d in adh |orderBy:myOrder:reverse   ">
+                    <td class="text-left">
+                        <span class="glyphicon glyphicon-adherent"></span> {{d.id}}
+                    </td>
+                    <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
+                    <td align="center">{{d.dateNaissance}}</td>
+                    <td class="nonCotisation" ng-class="{cotisation : cotisation}">
+                        <pre>{{cotisation}}</pre>
+                    </td>
+                    <td>{{d.compteur}} média(s)</td>
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 

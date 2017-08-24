@@ -109,9 +109,6 @@ table {
     content: "Oui"
 }
 
-#divTab{
-    min-height:60px;
-    min-width:60px;
-    max-height: 100px;
-    overflow:auto;/*pour activer les scrollbarres*/
+.divTab{
+    margin-bottom: 100px;
 }

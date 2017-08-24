@@ -36,6 +36,7 @@ git add src/main/webapp/public/app/css/*
 git add src/main/webapp/public/app/Image/*
 git add src/main/webapp/public/app/js/*
 git add src/main/webapp/public/app/login/*
+git add src/main/webapp/public/app/collection/*
 git add src/main/webapp/public/app/recherche/*
 git add src/main/webapp/public/app/index.html
 git add src/main/webapp/public/app/mediatic.css

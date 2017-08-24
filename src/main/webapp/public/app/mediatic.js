@@ -6,8 +6,10 @@ angular.module('mediatic', [
   'ngMessages',
  'ngResource',
   'ngStorage',
+  'ui.grid',
   'mediatic.recherche',
   'mediatic.accueil',
+  'mediatic.collection',
   'mediatic.ajoutMedia',
   'mediatic.ajoutAdherent',
   'mediatic.login',
@@ -41,6 +43,11 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 	    controller: 'AjoutAdherentCtrl',
 		controllerAs: 'ctrl'
 	  });
+	$routeProvider.when('/collection', {
+	    templateUrl: 'collection/collection.html',
+	    controller: 'CollectionCtrl',
+		controllerAs: 'ctrl'
+	});
 }])
 .run(function($rootScope) {
 	$rootScope.cherche = "";
@@ -126,6 +133,31 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 			$('.log').css('display','none');
 			$('.nonlog').css('display','inline');
 		}
+	}
+
+	$scope.collectLivre = function(){
+		$rootScope.type = 0;
+		$location.path('/recherche');
+		$timeout(function(){
+			$location.path('/collection');
+		}, 0);
+	}
+
+	$scope.collectCd = function(){
+		$rootScope.type = 1;
+		$location.path('/recherche');
+		$timeout(function(){
+			$location.path('/collection');
+		}, 0);
+	}
+
+
+	$scope.collectDvd = function(){
+		$rootScope.type = 2;
+		$location.path('/recherche');
+		$timeout(function(){
+			$location.path('/collection');
+		}, 0);
 	}
 
 	$scope.openNav = function() {

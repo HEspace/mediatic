@@ -19,6 +19,7 @@
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.min.css" />
 	
 	<!-- Bootstrap Select + JS Select -->
 
@@ -33,6 +34,7 @@
 	<link rel="stylesheet" href="css/styleAdherent.css">
 	<link rel="stylesheet" href="css/contour.css">
 	<link rel="stylesheet" href="css/accueil.css"/>
+	<link rel="stylesheet" href="css/collection.css"/>
 
 </head>
 
@@ -64,9 +66,9 @@
 							<li class="log" style="display:none"><a href="#!/recherche">Recherche</a></li>
 							<li class="dropdown hidden-sm log" style="display:none"><a class="dropdown-toggle" data-toggle="dropdown">Collection<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#!/accueil">Livre</a></li>
-									<li><a href="#!/accueil">CD</a></li>
-									<li><a href="#!/accueil">DVD</a></li>
+									<li><a ng-click="collectLivre()">Livre</a></li>
+									<li><a ng-click="collectCd()">CD</a></li>
+									<li><a ng-click="collectDvd()">DVD</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -127,9 +129,9 @@
 				<li style="display:none" class="log" ><a href="#!/recherche" ng-click="closeNav()"><span class="glyphicon glyphicon-search"></span>   Recherche</a></li>
 				<li style="display:none" class="log"><a class="dropdown-toggle" href="" ng-click=inverserCollectionMenu()>Collection<span class="caret"></span></a>
 					<ul class="menu collection" id="menuCollection">
-						<ul style="cursor:pointer"><a>Livre</a></ul>
-						<ul style="cursor:pointer"><a>CD</a></ul>
-						<ul style="cursor:pointer"><a>DVD</a></ul>
+						<ul style="cursor:pointer"><a href="#!/collection">Livre</a></ul>
+						<ul style="cursor:pointer"><a href="#!/collection">CD</a></ul>
+						<ul style="cursor:pointer"><a href="#!/collection">DVD</a></ul>
 					</ul>
 				</li>
 				<li style="cursor:pointer" class="log"><a ng-click="logout()"><span class="glyphicon glyphicon-off"></span>   Deconnection</a></li>
@@ -173,6 +175,7 @@
 	<script src="bower_components/angular-messages/angular-messages.js"></script>
 	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 	<script src="bower_components/ngstorage/ngStorage.js"></script>
+	<script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
 	<script src="mediatic.js"></script>
 	<script src="recherche/recherche.ctrl.js"></script>
 	<script src="recherche/recherche.service.js"></script>
@@ -182,6 +185,8 @@
 	<script src="ajoutMedia/ajoutMedia.service.js"></script>
 	<script src="ajoutAdherent/ajoutAdherent.ctrl.js"></script>
 	<script src="ajoutAdherent/ajoutAdherent.service.js"></script>
+	<script src="collection/collection.ctrl.js"></script>
+	<script src="collection/collection.service.js"></script>
 	<script src="login/login.ctrl.js"></script>
 	<script src="login/login.service.js"></script>
 	<script src="components/version/version.js"></script>

@@ -66,6 +66,10 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
         if (a == null){
             as.creer(new Adherent("Chépu", "David", "formation.dta@gmail.com", LocalDate.of(2017, 6, 7), "69 Villa Rouge", "34000", "Montpellier"));
         }
+        a = as.findByNom("plus", "abo");
+        if (a == null){
+            as.creer(new Adherent("plus", "Abo", "formation.dta@gmail.com", LocalDate.of(2005, 6, 7), "69 Villa Rouge", "34000", "Montpellier"));
+        }
 
         Media m = ms.findID(1l);
         if (m==null){

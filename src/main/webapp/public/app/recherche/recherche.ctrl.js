@@ -127,35 +127,22 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 return false;
         }
 
-        RechercheService.getData().then(function (res) {
-            $scope.donnees = res.data;
-            $scope.donnees.forEach(function (element) {
-                if (element.type == "LIVRE")
-                    element.type = "book"
-                else if (element.type == "CD")
-                    element.type = "music"
-                else
-                    element.type = "film"
-            })
-
-        })
-
-        $scope.$watch('textSearch', function(){
+        $scope.$watch('textSearch', function () {
             $scope.search();
         })
 
 
         $scope.search = function () {
             var typeCheck = "";
-            if($scope.checkBox['book'] == true)
+            if ($scope.checkBox['book'] == true)
                 typeCheck += "/LIVRE"
-            if($scope.checkBox['music'] == true)
+            if ($scope.checkBox['music'] == true)
                 typeCheck += "/CD"
-            if($scope.checkBox['film'] == true)
+            if ($scope.checkBox['film'] == true)
                 typeCheck += "/DVD"
-            if($scope.checkBox['book'] == true && $scope.checkBox['music'] == true && $scope.checkBox['film'] == true)
+            if ($scope.checkBox['book'] == true && $scope.checkBox['music'] == true && $scope.checkBox['film'] == true)
                 typeCheck = "";
-                
+
             RechercheService.getDataByWordAndType($scope.textSearch, typeCheck).then(function (res) {
                 $scope.donnees = res.data
                 $scope.donnees.forEach(function (element) {
@@ -279,5 +266,5 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $scope.myOrder = order;
         }
 
-
+        $scope.search();
     }]);    

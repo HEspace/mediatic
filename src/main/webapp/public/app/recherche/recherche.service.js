@@ -8,6 +8,8 @@ angular.module('mediatic.recherche')
         }
 
         this.getDataByWordAndType = function (chaine, type) {
+            if(chaine == undefined || chaine == "")
+                 return $http.get('http://localhost:8080/api/media//find')
             if (type == "")
                 return $http.get('http://localhost:8080/api/media//find/chaine/' + chaine)
             else

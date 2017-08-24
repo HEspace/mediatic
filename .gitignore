@@ -2,3 +2,7 @@
 .classpath
 .project
 .settings/
+bdmediatic.log
+bdmediatic.properties
+bdmediatic.lck
+bdmediatic.script

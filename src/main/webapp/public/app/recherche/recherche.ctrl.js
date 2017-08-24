@@ -209,8 +209,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
                             else
                                 $scope.typeMedia = "film"
 
-                            RechercheService.getEmprunt().then(function (res) {
-
+                            RechercheService.getEmpruntByMedia(element.id).then(function (res) {
+                                console.log(element)
+                                $scope.emprunte.push(element)
                             })
 
                         }

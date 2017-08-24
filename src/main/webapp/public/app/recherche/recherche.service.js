@@ -9,7 +9,7 @@ angular.module('mediatic.recherche')
 
         this.getDataByWordAndType = function (chaine, type) {
             if(chaine == undefined || chaine == "")
-                 return $http.get('http://localhost:8080/api/media//find')
+                 return $http.get('http://localhost:8080/api/media/find')
             if (type == "")
                 return $http.get('http://localhost:8080/api/media//find/chaine/' + chaine)
             else
@@ -30,6 +30,10 @@ angular.module('mediatic.recherche')
 
         this.getEmpruntByAdh = function (id) {
             return $http.get('http://localhost:8080/api/emprunt/adherent/' + id)
+        }
+
+        this.getEmpruntByMedia = function (id) {
+            return $http.get('http://localhost:8080/api/emprunt/media/' + id)
         }
 
         this.getEmprunt = function () {

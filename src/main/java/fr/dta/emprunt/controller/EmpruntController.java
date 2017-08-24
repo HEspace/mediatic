@@ -31,7 +31,7 @@ public class EmpruntController {
 	}
 	
 	@RequestMapping(value = "media/{idMedia}",method = RequestMethod.GET)
-	public List<Emprunt> getEmpruntByMedia(@PathVariable int idMedia){
+	public List<Emprunt> getEmpruntByMedia(@PathVariable Long idMedia){
 		return es.listEmprunteurByMedia(idMedia);
 	}
 	

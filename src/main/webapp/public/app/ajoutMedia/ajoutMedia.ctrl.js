@@ -13,6 +13,7 @@ angular.module('mediatic.ajoutMedia', ['ngRoute'])
 		ctrl.form.auteur = $rootScope.form.media.auteur;
 		ctrl.form.titre = $rootScope.form.media.titre;
 		ctrl.form.type = $rootScope.form.media.type;
+
 		$rootScope.form.media = {};
 	}
 

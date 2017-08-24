@@ -42,13 +42,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
             var options = document.getElementById("sel").options;
 
             if (options[index].text == "Médias") {
-                console.log($('#sel').selectpicker().val())
                 $("#radioAdhe").hide();
                 $("#checkMedia").fadeIn();
                 $("#tabAdherent").hide();
                 $("#tabMedia").fadeIn();
             } else {
-                console.log($('#sel').selectpicker().val())
                 $("#checkMedia").hide();
                 $("#radioAdhe").fadeIn();
                 $("#tabAdherent").fadeIn();
@@ -127,7 +125,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 return false;
         }
 
-        $scope.$watch('textSearch', function () {
+
+
+        $scope.$watchGroup(['checkBox.book', 'checkBox.music', 'checkBox.film', 'textSearch'], function () {
             $scope.search();
         })
 
@@ -143,29 +143,81 @@ angular.module('mediatic.recherche', ['ngRoute'])
             if ($scope.checkBox['book'] == true && $scope.checkBox['music'] == true && $scope.checkBox['film'] == true)
                 typeCheck = "";
 
-            RechercheService.getDataByWordAndType($scope.textSearch, typeCheck).then(function (res) {
-                $scope.donnees = res.data
-                $scope.donnees.forEach(function (element) {
-                    if (element.type == "LIVRE")
-                        element.type = "book"
-                    else if (element.type == "CD")
-                        element.type = "music"
-                    else
-                        element.type = "film"
+            if ($('#sel').selectpicker().val() == "m") {
+                RechercheService.getDataByWordAndType($scope.textSearch, typeCheck).then(function (res) {
+                    $scope.donnees = res.data
+                    $scope.donnees.forEach(function (element) {
+                        if (element.type == "LIVRE")
+                            element.type = "book"
+                        else if (element.type == "CD")
+                            element.type = "music"
+                        else
+                            element.type = "film"
+
+                        RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+
+                        })
+                    })
                 })
-            })
+
+            } else {
+                if ($scope.radioBox.selected == "nom") {
+                    RechercheService.getAdhByNom($scope.textSearch).then(function (res) {
+                        $scope.adh = res.data
+                        $scope.adh.forEach(function (element) {
+                            if (elem.dateCotisation != null) {
+                                var d2 = new Date(elem.dateCotisation);
+                                d2.setFullYear(d2.getFullYear() + 1)
+                                if (d2.getTime() > Date.now())
+                                    elem.cotisation = true;
+                            } else {
+                                elem.cotisation = false;
+                            }
+
+                            RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+
+                            })
+                        })
+                    })
+
+                }else{
+                    RechercheService.getResultAdhById($scope.textSearch).then(function (res) {
+                        $scope.adh = res.data
+                        $scope.adh.forEach(function (element) {
+                            if (elem.dateCotisation != null) {
+                                var d2 = new Date(elem.dateCotisation);
+                                d2.setFullYear(d2.getFullYear() + 1)
+                                if (d2.getTime() > Date.now())
+                                    elem.cotisation = true;
+                            } else {
+                                elem.cotisation = false;
+                            }
+
+                            RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+
+                            })
+                        })
+                    })
+
+
+                    
+                }
+
+            }
+
+
         }
 
         RechercheService.getAdh().then(function (res) {
             $scope.adh = res.data
             $scope.adh.forEach(function (elem) {
-                if (elem.dateCotisation !== null) {
+                if (elem.dateCotisation != null) {
                     var d2 = new Date(elem.dateCotisation);
                     d2.setFullYear(d2.getFullYear() + 1)
                     if (d2.getTime() > Date.now())
-                        $scope.cotisation = true;
+                        elem.cotisation = true;
                 } else {
-                    $scope.cotisation = false;
+                    elem.cotisation = false;
                 }
 
             })
@@ -196,47 +248,43 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.showTr = function (id) {
             if ($('#sel').selectpicker().val() == "m") {
 
-                RechercheService.getData().then(function (res) {
+                RechercheService.getDataById(id).then(function (res) {
 
-                    res.data.forEach(function (element) {
-                        if (element.id == id) {
-                            $scope.media = element;
-                            /* $scope.formEmprunt.media = element; */
-                            if ($scope.media.type == "LIVRE")
-                                $scope.typeMedia = "book"
-                            else if ($scope.media.type == "CD")
-                                $scope.typeMedia = "music"
-                            else
-                                $scope.typeMedia = "film"
+                    $scope.media = res.data;
+                    $scope.formEmprunt.media = res.data;
+                    if ($scope.media.type == "LIVRE")
+                        $scope.typeMedia = "book"
+                    else if ($scope.media.type == "CD")
+                        $scope.typeMedia = "music"
+                    else
+                        $scope.typeMedia = "film"
 
-                            RechercheService.getEmpruntByMedia(element.id).then(function (res) {
-                                console.log(element)
-                                $scope.emprunte.push(element)
-                            })
+                    RechercheService.getEmpruntByMedia(res.data.id).then(function (res) {
+                        res.data.forEach(function (e) {
 
-                        }
+                            $scope.emprunte.push(e.adherent)
+                        })
                     })
+
+
 
                 })
 
                 /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
                 $(".divHiddenMedia").animate({ height: "toggle" }, 300);
             } else {
-                RechercheService.getAdh().then(function (res) {
-                    res.data.forEach(function (adhe) {
-                        if (adhe.id == id) {
-                            $scope.adherent = adhe
-                            /* $scope.formEmprunt.adherent = element */
-                            RechercheService.getEmpruntByAdh(adhe.id).then(function (result) {
-                                console.log(result.data)
-                                result.data.forEach(function (elem) {
-                                    $scope.emprunte.push(elem.media);
-                                })
+                RechercheService.getAdhById(id).then(function (res) {
 
+                    $scope.adherent = res.data;
+                    $scope.formEmprunt.adherent = res.data;
 
-                            })
+                    RechercheService.getEmpruntByAdh(res.data.id).then(function (result) {
 
-                        }
+                        result.data.forEach(function (e) {
+
+                            $scope.emprunte.push(e.media);
+                        })
+
                     })
 
                 })
@@ -249,10 +297,9 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $("div#globalDiv").addClass("blur");
         }
 
-        $scope.envoi = function (ad) {
+        $scope.envoi = function () {
             var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
             $scope.formEmprunt.date = EDate;
-            $scope.formEmprunt.adherent = ad;
             RechercheService.ajoutEmprunt($scope.formEmprunt);
 
         }

@@ -156,8 +156,7 @@
                     </td>
                     <td align="left"><strong>{{d.nom}} {{d.prenom}}</strong></td>
                     <td align="center">{{d.dateNaissance}}</td>
-                    <td class="nonCotisation" ng-class="{cotisation : cotisation}">
-                        <pre>{{cotisation}}</pre>
+                    <td class="nonCotisation" ng-class="{cotisation : d.cotisation}">
                     </td>
                     <td>{{d.compteur}} média(s)</td>
 
@@ -227,7 +226,6 @@
     <div class="col-xs-1">
         <button ng-click="hideTr()" class="btn btn-danger">X</button>
     </div>
-
     <div class="col-md-offset-1 col-md-5 col-xs-12">
         <h3 class="text-primary"><span class="glyphicon glyphicon-adherent"></span><strong>&nbsp; {{adherent.nom}} {{adherent.prenom}}</strong></h3><br>
         <label><strong>Date de naissance : </strong></label>
@@ -239,7 +237,7 @@
         <label><strong>Date de paiement de la cotisation : </strong></label>
         <p>{{adherent.dateCotisation}}</p>
         <label><strong>Montant de la cotisation : </strong></label>
-        <p>{{adherent.montantCotisation}} &euro;</p>
+        <p>{{adherent.montant}} &euro;</p>
         <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
 		                                    Ajout Emprunt
 		                                </button>
@@ -248,7 +246,7 @@
 		                                </button><br>
         <div id="empruntadherent" class="collapse col-md-6 col-xs-12">
             <div class="row">
-                <form name="formM" class="form-group" ng-submit="envoi(adherent)">
+                <form name="formM" class="form-group" ng-submit="envoi()">
                     <div>
                         <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>
                                 <option value="" hidden>Médias</option>

@@ -22,11 +22,11 @@ public class AdherentRepository extends AbstractJpaRepository<Adherent> {
 
 // Recherche un Adhérent par Nom et Prenom
     public List<Adherent> findAdherentNomPrenom(String chaine){
-        String req ="select a";
-        req += "from Adherent a";
+        String req ="select a ";
+        req += "from Adherent a ";
         req += "where lower(a.nom) LIKE :chaine or lower(a.prenom) LIKE :chaine";
         Query query = getSession().createQuery(req);
-        query.setString("chaine", "%"+chaine+"%");
+        query.setString("chaine", "%"+chaine.toLowerCase()+"%");
         List<Adherent> results = query.list();
         return results;
     }

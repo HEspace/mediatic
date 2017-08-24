@@ -24,9 +24,9 @@ public class EmpruntRepository extends AbstractJpaRepository<Emprunt> {
 	}
 
 	
-	public List<Emprunt> getEmpruntByMedia(int id_media){
+	public List<Emprunt> getEmpruntByMedia(Long id_media){
 		Criteria c = getSession().createCriteria(Emprunt.class)
-		.add(Restrictions.eq("media_id",id_media));
+		.add(Restrictions.eq("media.id",id_media));
 		return (List<Emprunt>) c.list();
 	}
 

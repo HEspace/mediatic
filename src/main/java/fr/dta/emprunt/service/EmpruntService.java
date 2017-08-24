@@ -48,7 +48,7 @@ public class EmpruntService {
 	}
 	
 	
-	public List<Emprunt> listEmprunteurByMedia(int id_media){
+	public List<Emprunt> listEmprunteurByMedia(Long id_media){
 		return er.getEmpruntByMedia(id_media);
 	}
 	

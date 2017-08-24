@@ -16,6 +16,9 @@ import org.springframework.http.HttpStatus;
 import fr.dta.adherent.model.Adherent;
 import fr.dta.adherent.repository.AdherentRepository;
 import fr.dta.adherent.service.AdherentService;
+import fr.dta.media.model.Media;
+import fr.dta.media.model.Type;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 
@@ -53,6 +56,12 @@ public List<Adherent> getAll(){
     public List<Adherent> findAdherentNomPrenom(@PathVariable String chaine){
         return adherentService.find(chaine);
     }
+    
+//    @RequestMapping(value ="/find/chaine/{chaine}/{tab}",  method = RequestMethod.GET)
+//    public List<Media> findByCD(@PathVariable String chaine, @PathVariable Type tab){
+//        Type t[] = {tab};
+//        return adherentService.findAdhType(chaine, t);
+//    }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)

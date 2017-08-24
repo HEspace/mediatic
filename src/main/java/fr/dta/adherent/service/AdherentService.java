@@ -10,6 +10,7 @@ import fr.dta.adherent.dao.AdherentDAO;
 import fr.dta.adherent.model.Adherent;
 import fr.dta.adherent.repository.AdherentRepository;
 import fr.dta.media.model.Media;
+import fr.dta.media.model.Type;
 
 @Service
 public class AdherentService {
@@ -26,32 +27,33 @@ public class AdherentService {
 		return ar.findAll();
 	}
 	
-	public List<Media> listEmpruntParAdherent(Adherent adherent){
-		AdherentDAO adherentDao = AdherentDAO.instance();
-		return adherentDao.listEmpruntParAdherent(adherent);
-	}
+
+	
+//	public List<Adherent> find(String chaine){
+//		AdherentDAO adherentDao = AdherentDAO.instance();
+//		List<Adherent> listA = new ArrayList<Adherent>();
+//		List<Adherent> listTmp = new ArrayList<Adherent>();
+//		boolean test = false;
+//		String[] chaineSplit = chaine.split(" ");
+//		for(String s : chaineSplit){
+//			listTmp = new ArrayList<Adherent>();
+//			listTmp.addAll(adherentDao.find(s));
+//			for(Adherent a1 : listTmp){
+//				test = false;
+//				for(Adherent a2 : listA){
+//					if(egalites(a1, a2)){
+//						test=true;
+//						break;
+//					}
+//				}
+//				if(!test) listA.add(a1);
+//			}
+//		}
+//		return listA;
+//	}
 	
 	public List<Adherent> find(String chaine){
-		AdherentDAO adherentDao = AdherentDAO.instance();
-		List<Adherent> listA = new ArrayList<Adherent>();
-		List<Adherent> listTmp = new ArrayList<Adherent>();
-		boolean test = false;
-		String[] chaineSplit = chaine.split(" ");
-		for(String s : chaineSplit){
-			listTmp = new ArrayList<Adherent>();
-			listTmp.addAll(adherentDao.find(s));
-			for(Adherent a1 : listTmp){
-				test = false;
-				for(Adherent a2 : listA){
-					if(egalites(a1, a2)){
-						test=true;
-						break;
-					}
-				}
-				if(!test) listA.add(a1);
-			}
-		}
-		return listA;
+		return ar.findAdherentNomPrenom(chaine);
 	}
 	
 	public List<Adherent> findID(Long id){

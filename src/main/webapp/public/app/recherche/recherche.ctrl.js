@@ -4,7 +4,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
     .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function
     ($scope, $location, RechercheService, $rootScope, $filter) {
-
+        $("#buttonFile").hide();
+        $("#buttonadherent").hide();
         $scope.textSearch;
         $scope.pageU = "adherent";
         $scope.pageF = "file";
@@ -25,6 +26,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         if (!$rootScope.login)
             $location.path("/accueil")
+
+        if($rootScope.droit > 1)
+            $("#buttonFile").fadeIn();
+        if($rootScope.droit > 2)
+            $("#buttonadherent").fadeIn();
 
 
         $('#sel').on('changed.bs.select', function () {

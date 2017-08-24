@@ -70,7 +70,7 @@ public class MediaRepository extends AbstractJpaRepository<Media> {
 		+ "where lower(m.auteur) LIKE :chaine "
 		+ "or lower(m.titre) LIKE :chaine ";
 		Query query = getSession().createQuery(hql);
-		query.setString("chaine", "%"+chaine+"%");
+		query.setString("chaine", "%"+chaine.toLowerCase()+"%");
 		List<Media> results = query.list();
 		return results;
 	}

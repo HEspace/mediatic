@@ -17,7 +17,7 @@ angular.module('mediatic.recherche')
             if (type == "")
                 return $http.get('/api/media//find/chaine/' + chaine)
             else
-                return $http.get('../api/media/find/chaine/' + chaine + type)
+                return $http.get('/api/media/find/chaine/' + chaine + type)
         }
 
         this.getAdh = function () {
@@ -72,17 +72,15 @@ angular.module('mediatic.recherche')
 
 
         this.ajoutEmprunt = function (form) {
-               if (form.media.type == 'book')
-                  form.media.type = 'LIVRE';
-              if (form.media.type == 'film')
-                  form.media.type = 'DVD';
-              if (form.media.type == 'music')
-                  form.media.type = 'CD'; 
-            form.dateEmprunt = form.date;
-            delete form.date;
+            if (form.media.type == 'book')
+                form.media.type = 'LIVRE';
+            if (form.media.type == 'film')
+                form.media.type = 'DVD';
+            if (form.media.type == 'music')
+                form.media.type = 'CD'; 
             $http({
                 method: 'POST',
-                url: '/emprunt/create',
+                url: '/api/emprunt/create',
                 data: form
             }).then(function successCallback(response) {
                 $window.location.reload();

@@ -30,13 +30,19 @@ public class EmpruntService {
 	
 	
 	public void creer(Emprunt e){
-		if(e.getMedia().getType() == Type.LIVRE)
-			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(30));
-		else
-			e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
-		e.getAdherent().setCompteur(e.getAdherent().getCompteur()+1);
-		as.creer(e.getAdherent());
-		er.save(e);
+		if(e.getDateRetourEffective() == null){
+			if(e.getMedia().getType() == Type.LIVRE)
+				e.setDateRetourPrevu(e.getDateEmprunt().plusDays(30));
+			else
+				e.setDateRetourPrevu(e.getDateEmprunt().plusDays(15));
+			e.getAdherent().setCompteur(e.getAdherent().getCompteur()+1);
+			as.creer(e.getAdherent());
+			er.save(e);
+		}
+		else{
+			System.out.println(e.getId());
+			er.save(e);
+		}
 	}
 	
 	public List<Emprunt> getAllEmprunt(){

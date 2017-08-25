@@ -6,6 +6,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
     ($scope, $location, RechercheService, $rootScope, $filter) {
         $("#buttonFile").hide();
         $("#buttonadherent").hide();
+        $scope.empruntBtn = 'Ajout Emprunt';
         $scope.textSearch;
         $scope.pageU = "adherent";
         $scope.pageF = "file";
@@ -224,7 +225,33 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
         $scope.showTr = function (id) {
+
             if ($('#sel').selectpicker().val() == "m") {
+
+                RechercheService.getEmpruntByMedia(id).then(function(res){
+                    if(res.data.length != 0){
+                        res.data.forEach(function(element) {
+                            if(element.dateRetourEffective == null)
+                                $scope.empruntBtn = 'Media Restitué';
+                            else
+                                $scope.empruntBtn = 'Ajout Emprunt';
+                        }, this);
+                    }
+                    else
+                        $scope.empruntBtn = 'Ajout Emprunt';
+
+                    if($scope.empruntBtn == 'Ajout Emprunt'){
+                        $('#restiOr').css('display','none');
+                        $('#empruntOr').css('display','inline');
+                    }
+                    else{
+                        console.log("YO");
+                        $('#restiOr').css('display','inline');
+                        $('#empruntOr').css('display','none');
+                    }
+                });
+
+                
 
                 RechercheService.getDataById(id).then(function (res) {
 
@@ -276,9 +303,23 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
         $scope.envoi = function () {
-            var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
-            $scope.formEmprunt.date = EDate;
-            RechercheService.ajoutEmprunt($scope.formEmprunt);
+            if($scope.empruntBtn == 'Ajout Emprunt'){
+                var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
+                $scope.formEmprunt.dateEmprunt = EDate;
+                RechercheService.ajoutEmprunt($scope.formEmprunt);
+            }
+            else{
+                RechercheService.getEmpruntByMedia($scope.formEmprunt.media.id).then(function(res){
+                    res.data.forEach(function(element) {
+                        console.log(element)
+                        if(element.dateRetourEffective == null){
+                            element.dateRetourEffective = $filter('date')(new Date, 'yyyy-MM-dd');
+                            console.log(element);
+                            RechercheService.ajoutEmprunt(element);
+                        }
+                    });
+                });
+            }
 
         }
 

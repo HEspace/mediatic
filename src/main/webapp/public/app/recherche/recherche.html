@@ -184,9 +184,12 @@
         <p><strong>{{media.auteur}}</strong></p>
         <p><span class="glyphicon glyphicon-{{typeMedia}}"></span> {{media.type}}</p>
 
-        <button class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
-	                                        Ajout Emprunt
-                                        </button>
+        <button id="empruntOr" class="btn btn-primary" data-toggle="collapse" data-target="#empruntMedia">
+	        <span ng-bind="empruntBtn"> </span>
+        </button>
+        <button id="restiOr" type="button" class="btn btn-primary" ng-click="envoi()">
+            <span ng-bind="empruntBtn"> </span>
+        </button>
         <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button><br>
@@ -237,9 +240,9 @@
         <p>{{adherent.dateCotisation}}</p>
         <label><strong>Montant de la cotisation : </strong></label>
         <p>{{adherent.montant}} &euro;</p>
-        <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
-		                                    Ajout Emprunt
-		                                </button>
+        <button id="empruntOr" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
+                                            <span ng-bind="empruntBtn"> </span>
+                                        </button>
         <button ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button><br>

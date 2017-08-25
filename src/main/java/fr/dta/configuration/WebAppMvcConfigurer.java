@@ -18,18 +18,5 @@ public class WebAppMvcConfigurer extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/app/**").addResourceLocations("/public/app/");
     }
 
-
-@Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
-    }
-
-    @Bean
-    public InternalResourceViewResolver viewResolver() {
-        final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/jsp/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+    
 }

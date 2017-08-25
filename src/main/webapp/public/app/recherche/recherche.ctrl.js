@@ -175,7 +175,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                                 elem.cotisation = false;
                             }
 
-                            RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+                            RechercheService.getEmpruntByMedia(elem.id).then(function (result) {
 
                             })
                         })
@@ -250,7 +250,31 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         $('#empruntOr').css('display','none');
                     }
                 });
+                var cpt = 0;
+                var tabCpt = [];
+                
+                $scope.adh.forEach(function (elem) {
+                    if(elem.dateCotisation != null){
+                        var tmp = elem.dateCotisation.split("-");
+                        var dateCotisation = new Date(tmp[0], tmp[1], tmp[2]);
+                        dateCotisation.setDate(dateCotisation.getDate() + 365);
+                        var mnt = new Date();
+                        console.log(dateCotisation);
+                        if (mnt >= dateCotisation){
+                            tabCpt.push(cpt);
+                        }
+                    }
+                    else{
+                        tabCpt.push(cpt)
+                    }
+                    cpt++;
+                });
 
+                tabCpt.reverse();
+
+                tabCpt.forEach(function(e) {
+                    $scope.adh.splice(e,1);
+                });
                 
 
                 RechercheService.getDataById(id).then(function (res) {

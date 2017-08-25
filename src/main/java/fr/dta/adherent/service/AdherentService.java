@@ -20,37 +20,14 @@ public class AdherentService {
 	
 	
 	public void creer(Adherent adh){
+		if(adh.getCompteur() == null)
+			adh.setCompteur(0);
 		ar.save(adh);		
 	}
 	
 	public List<Adherent> getAllAdherent(){
 		return ar.findAll();
 	}
-	
-
-	
-//	public List<Adherent> find(String chaine){
-//		AdherentDAO adherentDao = AdherentDAO.instance();
-//		List<Adherent> listA = new ArrayList<Adherent>();
-//		List<Adherent> listTmp = new ArrayList<Adherent>();
-//		boolean test = false;
-//		String[] chaineSplit = chaine.split(" ");
-//		for(String s : chaineSplit){
-//			listTmp = new ArrayList<Adherent>();
-//			listTmp.addAll(adherentDao.find(s));
-//			for(Adherent a1 : listTmp){
-//				test = false;
-//				for(Adherent a2 : listA){
-//					if(egalites(a1, a2)){
-//						test=true;
-//						break;
-//					}
-//				}
-//				if(!test) listA.add(a1);
-//			}
-//		}
-//		return listA;
-//	}
 	
 	public List<Adherent> find(String chaine){
 		return ar.findAdherentNomPrenom(chaine);

@@ -15,7 +15,7 @@ angular.module('mediatic.recherche')
             if (chaine == undefined || chaine == "")
                 return $http.get('/api/media/find')
             if (type == "")
-                return $http.get('/api/media//find/chaine/' + chaine)
+                return $http.get('/api/media/find/chaine/' + chaine)
             else
                 return $http.get('/api/media/find/chaine/' + chaine + type)
         }

@@ -48,6 +48,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $("#tabAdherent").hide();
                 $("#tabMedia").fadeIn();
             } else {
+                $scope.majAdh();
                 $("#checkMedia").hide();
                 $("#radioAdhe").fadeIn();
                 $("#tabAdherent").fadeIn();
@@ -187,20 +188,24 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         }
 
-        RechercheService.getAdh().then(function (res) {
-            $scope.adh = res.data
-            $scope.adh.forEach(function (elem) {
-                if (elem.dateCotisation != null) {
-                    var d2 = new Date(elem.dateCotisation);
-                    d2.setFullYear(d2.getFullYear() + 1)
-                    if (d2.getTime() > Date.now())
-                        elem.cotisation = true;
-                } else {
-                    elem.cotisation = false;
-                }
-
+        $scope.majAdh = function(){
+            RechercheService.getAdh().then(function (res) {
+                $scope.adh = res.data
+                $scope.adh.forEach(function (elem) {
+                    if (elem.dateCotisation != null) {
+                        var d2 = new Date(elem.dateCotisation);
+                        d2.setFullYear(d2.getFullYear() + 1)
+                        if (d2.getTime() > Date.now())
+                            elem.cotisation = true;
+                    } else {
+                        elem.cotisation = false;
+                    }
+    
+                })
             })
-        })
+        }
+
+        $scope.majAdh();
 
         $scope.hideTr = function () {
             $('.collapse').collapse("hide");
@@ -245,7 +250,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         $('#empruntOr').css('display','inline');
                     }
                     else{
-                        console.log("YO");
                         $('#restiOr').css('display','inline');
                         $('#empruntOr').css('display','none');
                     }
@@ -259,7 +263,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         var dateCotisation = new Date(tmp[0], tmp[1], tmp[2]);
                         dateCotisation.setDate(dateCotisation.getDate() + 365);
                         var mnt = new Date();
-                        console.log(dateCotisation);
                         if (mnt >= dateCotisation){
                             tabCpt.push(cpt);
                         }
@@ -346,10 +349,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
             else{
                 RechercheService.getEmpruntByMedia($scope.formEmprunt.media.id).then(function(res){
                     res.data.forEach(function(element) {
-                        console.log(element)
                         if(element.dateRetourEffective == null){
                             element.dateRetourEffective = $filter('date')(new Date, 'yyyy-MM-dd');
-                            console.log(element);
                             RechercheService.ajoutEmprunt(element);
                         }
                     });

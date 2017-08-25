@@ -6,6 +6,8 @@ angular.module('mediatic.recherche', ['ngRoute'])
     ($scope, $location, RechercheService, $rootScope, $filter,$timeout) {
         $("#buttonFile").hide();
         $("#buttonadherent").hide();
+        $("#media").hide();
+        $("#admin").hide();
         $scope.empruntBtn = 'Ajout Emprunt';
         $scope.textSearch;
         $scope.pageU = "adherent";
@@ -30,10 +32,14 @@ angular.module('mediatic.recherche', ['ngRoute'])
         if (!$rootScope.login)
             $location.path("/accueil")
 
-        if ($rootScope.droit > 1)
+        if ($rootScope.droit > 1){
+            $("#media").fadeIn();
             $("#buttonFile").fadeIn();
-        if ($rootScope.droit > 2)
+        }
+        if ($rootScope.droit > 2){
+            $("#admin").fadeIn();
             $("#buttonadherent").fadeIn();
+        }
 
 
         $('#sel').on('changed.bs.select', function () {

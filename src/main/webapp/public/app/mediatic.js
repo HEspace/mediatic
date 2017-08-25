@@ -65,7 +65,6 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 			$rootScope.droit = response.data.authorities.length;
 		else
 			$rootScope.droit = 0;
-		console.log($rootScope.droit);
 		$('#menuCollection').hide();
 		$('#sideMenu').slideUp();
 	

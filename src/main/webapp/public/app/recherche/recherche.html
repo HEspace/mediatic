@@ -191,7 +191,7 @@
         <button id="restiOr" type="button" class="btn btn-primary" ng-click="envoi()">
             <span ng-bind="empruntBtn"> </span>
         </button>
-        <button ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
+        <button id="media" ng-click="modifFiche(media.id, m)" class="btn btn-md btn-primary">
 	                                        Modifier Fiche
 	                                    </button><br>
         <div id="empruntMedia" class="collapse col-md-6 col-xs-12">
@@ -244,7 +244,7 @@
         <button id="empruntOr" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
                                             Ajout Emprunt ! </span>
                                         </button>
-        <button ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
+        <button id ="admin" ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button><br>
         <div id="empruntadherent" class="collapse col-md-6 col-xs-12">

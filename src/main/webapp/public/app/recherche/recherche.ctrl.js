@@ -161,10 +161,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 })
 
             } else {
-                if ($scope.radioBox.selected == "nom") {
-                    RechercheService.getAdhByNom($scope.textSearch).then(function (res) {
+                
+                    RechercheService.getResultAdh($scope.textSearch, $scope.radioBox.selected).then(function (res) {
                         $scope.adh = res.data
-                        $scope.adh.forEach(function (element) {
+                        $scope.adh.forEach(function (elem) {
                             if (elem.dateCotisation != null) {
                                 var d2 = new Date(elem.dateCotisation);
                                 d2.setFullYear(d2.getFullYear() + 1)
@@ -180,28 +180,6 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         })
                     })
 
-                }else{
-                    RechercheService.getResultAdhById($scope.textSearch).then(function (res) {
-                        $scope.adh = res.data
-                        $scope.adh.forEach(function (element) {
-                            if (elem.dateCotisation != null) {
-                                var d2 = new Date(elem.dateCotisation);
-                                d2.setFullYear(d2.getFullYear() + 1)
-                                if (d2.getTime() > Date.now())
-                                    elem.cotisation = true;
-                            } else {
-                                elem.cotisation = false;
-                            }
-
-                            RechercheService.getEmpruntByMedia(element.id).then(function (result) {
-
-                            })
-                        })
-                    })
-
-
-                    
-                }
 
             }
 

@@ -25,9 +25,13 @@ angular.module('mediatic.recherche')
 
         }
 
-         this.getResultAdhById = function (id) {
-             console.log($http.get('http://localhost:8080/api/adherent/find/id/' + id))
-            return $http.get('http://localhost:8080/api/adherent/find/id/' + id)
+         this.getResultAdh = function (chaine, type) {
+             if(chaine == "" || chaine == undefined)
+                return $http.get('http://localhost:8080/api/adherent/find')
+            if(type == "nom" && chaine != "")
+                return $http.get('http://localhost:8080/api/adherent/find/chaine/' + chaine)
+            else
+                return $http.get('http://localhost:8080/api/adherent/find/id/' + chaine)
 
         }
 
@@ -37,8 +41,7 @@ angular.module('mediatic.recherche')
         }
 
         this.getAdhByNom = function (chaine) {
-            console.log($http.get('http://localhost:8080/api/adherent/find/chaine/' + chaine))
-              return $http.get('http://localhost:8080/api/adherent/find/chaine/' + chaine)
+              
         }
 
 

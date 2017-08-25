@@ -279,7 +279,18 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $(".divHiddenMedia").animate({ height: "toggle" }, 300);
             } else {
                 RechercheService.getAdhById(id).then(function (res) {
-
+                    if(res.data.dateCotisation==null){
+                        $('#pasValid').css('display','none');
+                    }
+                    else{
+                        var tmp = res.data.dateCotisation.split("-");
+                        var dateCotisation = new Date(tmp[0], tmp[1], tmp[2]);
+                        var mnt = new Date();
+                        if (mnt >= dateCotisation)
+                            $('#pasValid').css('display','none');
+                        else
+                            $('#pasValid').css('display','inline');
+                    }
                     $scope.adherent = res.data;
                     $scope.formEmprunt.adherent = res.data;
 

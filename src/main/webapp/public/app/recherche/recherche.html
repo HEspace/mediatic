@@ -241,7 +241,7 @@
         <label><strong>Montant de la cotisation : </strong></label>
         <p>{{adherent.montant}} &euro;</p>
         <button id="empruntOr" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
-                                            <span ng-bind="empruntBtn"> </span>
+                                            Ajout Emprunt ! </span>
                                         </button>
         <button ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
@@ -258,7 +258,7 @@
                         <input type='date' class="form-control " ng-model="date" required/>
                         <input ng-model="formEmprunt.adherent" style="display:none">
                     </div>
-                    <div>
+                    <div id="pasValid">
                         <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
                     </div>
                 </form>

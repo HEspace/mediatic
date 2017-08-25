@@ -2,8 +2,8 @@
 
 angular.module('mediatic.recherche', ['ngRoute'])
 
-    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', function
-    ($scope, $location, RechercheService, $rootScope, $filter) {
+    .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', '$timeout', function
+    ($scope, $location, RechercheService, $rootScope, $filter,$timeout) {
         $("#buttonFile").hide();
         $("#buttonadherent").hide();
         $scope.empruntBtn = 'Ajout Emprunt';
@@ -43,6 +43,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
             var options = document.getElementById("sel").options;
 
             if (options[index].text == "Médias") {
+                $scope.majMed();
                 $("#radioAdhe").hide();
                 $("#checkMedia").fadeIn();
                 $("#tabAdherent").hide();
@@ -205,6 +206,24 @@ angular.module('mediatic.recherche', ['ngRoute'])
             })
         }
 
+        $scope.majMed = function(){
+            RechercheService.getData().then(function(res){
+                $scope.donnees = res.data;
+                $scope.donnees.forEach(function (element) {
+                    if (element.type == "LIVRE")
+                        element.type = "book"
+                    else if (element.type == "CD")
+                        element.type = "music"
+                    else
+                        element.type = "film"
+
+                    RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+
+                    })
+                })
+            })
+        }
+        $scope.majMed();
         $scope.majAdh();
 
         $scope.hideTr = function () {
@@ -260,7 +279,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $scope.adh.forEach(function (elem) {
                     if(elem.dateCotisation != null){
                         var tmp = elem.dateCotisation.split("-");
-                        var dateCotisation = new Date(tmp[0], tmp[1], tmp[2]);
+                        var dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                         dateCotisation.setDate(dateCotisation.getDate() + 365);
                         var mnt = new Date();
                         if (mnt >= dateCotisation){
@@ -311,13 +330,50 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     }
                     else{
                         var tmp = res.data.dateCotisation.split("-");
-                        var dateCotisation = new Date(tmp[0], tmp[1], tmp[2]);
+                        var dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
+                        dateCotisation.setDate(dateCotisation.getDate() + 365);
                         var mnt = new Date();
                         if (mnt >= dateCotisation)
                             $('#pasValid').css('display','none');
                         else
                             $('#pasValid').css('display','inline');
                     }
+
+                    var cpt = 0;
+                    var tabCpt = [];
+                    var tabId = [];
+                    
+                    $scope.donnees.forEach(function (elem) {
+                        RechercheService.getEmpruntByMedia(elem.id).then(function(res){
+                            res.data.forEach(function(element) {
+                                if(element.dateRetourEffective == null){
+                                    tabId.push(element.media.id);
+                                }
+                            }, this);
+                        })
+                    });
+
+                    $timeout(function(){
+                        $scope.donnees.forEach(function(e) {
+                            tabId.forEach(function(el) {
+                                if(el == e.id)
+                                    tabCpt.push(cpt);
+                            }, this);
+                            cpt++;
+                        }, this);
+                        tabCpt.reverse();
+                        tabCpt.forEach(function(element) {
+                            $scope.donnees.splice(element,1);
+                        }, this);
+                    },0)
+                   
+                    /* tabCpt.reverse();
+                    tabCpt.forEach(function(e) {
+                        $scope.donnees.splice(e,1);
+                    }); */
+                        
+
+
                     $scope.adherent = res.data;
                     $scope.formEmprunt.adherent = res.data;
 

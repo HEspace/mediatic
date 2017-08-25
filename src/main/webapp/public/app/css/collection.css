@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 .grid {
-    width: 500px;
-    height: 250px;
     width: 100%;
     border: 0px;
   }
@@ -30,37 +27,4 @@
 
 .ui-grid{
     background-color:linen;
-=======
-.grid {
-    width: 500px;
-    height: 250px;
-    width: 100%;
-    border: 0px;
-  }
-
-  .ui-grid-header-cell-wrapper {
-    background: #333;
-    color : #ddd;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    height: 40px;
-    padding-top : 15px;
-    width:100%;
-}
-
-.ui-grid-header-cell{
-    border : 0px;
-}
-
-.ui-grid-row:nth-child(odd) .ui-grid-cell {
-    background-color: linen;
-}
-
-.ui-grid-row:nth-child(even) .ui-grid-cell {
-    background-color:linen;
-}
-
-.ui-grid{
-    background-color:linen;
->>>>>>> origin/husref
 }

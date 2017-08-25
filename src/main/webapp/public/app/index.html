@@ -129,9 +129,9 @@
 				<li style="display:none" class="log" ><a href="#!/recherche" ng-click="closeNav()"><span class="glyphicon glyphicon-search"></span>   Recherche</a></li>
 				<li style="display:none" class="log"><a class="dropdown-toggle" href="" ng-click=inverserCollectionMenu()>Collection<span class="caret"></span></a>
 					<ul class="menu collection" id="menuCollection">
-						<ul style="cursor:pointer"><a href="#!/collection">Livre</a></ul>
-						<ul style="cursor:pointer"><a href="#!/collection">CD</a></ul>
-						<ul style="cursor:pointer"><a href="#!/collection">DVD</a></ul>
+						<ul style="cursor:pointer"><a ng-click="collectLivre()">Livre</a></ul>
+						<ul style="cursor:pointer"><a ng-click="collectCd()">CD</a></ul>
+						<ul style="cursor:pointer"><a ng-click="collectDvd()">DVD</a></ul>
 					</ul>
 				</li>
 				<li style="cursor:pointer" class="log"><a ng-click="logout()"><span class="glyphicon glyphicon-off"></span>   Deconnection</a></li>

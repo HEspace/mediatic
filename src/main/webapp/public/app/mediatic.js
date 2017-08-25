@@ -112,7 +112,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$scope.invalid = '';
 		LoginService.storeUser(ctrl.user);
 		$timeout(function(){
-			$scope.invalid = "Utilisateur non Valide"
+			$scope.invalid = "Utilisateur non Valide";
 		},300);
 	}
 	
@@ -141,6 +141,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$timeout(function(){
 			$location.path('/collection');
 		}, 0);
+		$('#divlogin').slideUp();
+		$('#sideMenu').slideUp();
+		setTimeout(function(){
+			document.getElementById("idsidenav").style.width = "0";
+			document.getElementById("boutonside").style.marginLeft= "0";
+		}, 400)
 	}
 
 	$scope.collectCd = function(){
@@ -149,6 +155,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$timeout(function(){
 			$location.path('/collection');
 		}, 0);
+		$('#divlogin').slideUp();
+		$('#sideMenu').slideUp();
+		setTimeout(function(){
+			document.getElementById("idsidenav").style.width = "0";
+			document.getElementById("boutonside").style.marginLeft= "0";
+		}, 400)
 	}
 
 
@@ -158,6 +170,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$timeout(function(){
 			$location.path('/collection');
 		}, 0);
+		$('#divlogin').slideUp();
+		$('#sideMenu').slideUp();
+		setTimeout(function(){
+			document.getElementById("idsidenav").style.width = "0";
+			document.getElementById("boutonside").style.marginLeft= "0";
+		}, 400)
 	}
 
 	$scope.openNav = function() {

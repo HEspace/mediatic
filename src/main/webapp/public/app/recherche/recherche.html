@@ -218,7 +218,7 @@
     <div class="col-md-3 col-xs-12 text-left" style="margin-top:5px">
         <ul class="list-group">
             <li class="list-group-item active">Déjà emprunté par</li>
-            <li class="list-group-item" ng-repeat="e in emprunte track by e.id">{{e.nom}} {{e.prenom}}</li>
+            <li class="list-group-item" ng-repeat="e in emprunte ">{{e.nom}} {{e.prenom}}</li>
         </ul>
     </div>
 
@@ -271,7 +271,7 @@
     <div class=" col-md-5 col-xs-12 text-left" style="margin-top:5px">
         <ul class="list-group">
             <li class="list-group-item active">Média(s) emprunté(s) : </li>
-            <li class="list-group-item" ng-repeat="e in emprunte track by e.id"><span class="glyphicon glyphicon-{{e.type}}"></span> {{e.titre}}</li>
+            <li class="list-group-item" ng-repeat="e in emprunte "><span class="glyphicon glyphicon-{{e.type}}"></span> {{e.titre}}</li>
         </ul>
     </div>
 

@@ -12,7 +12,7 @@
         this.ajoutAdh = function(form){
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/adherent/create',
+                url: '/api/adherent/create',
                 data: form
             }).then(function successCallback(response) {
                 $location.path("/recherche");

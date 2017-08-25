@@ -12,7 +12,7 @@
         this.ajoutMedia = function(form){
             $http({
                 method: 'POST',
-                url: 'http://localhost:8080/api/media/create',
+                url: '/api/media/create',
                 data: form
             }).then(function successCallback(response) {
                 $location.path("/recherche");

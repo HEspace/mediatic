@@ -12,15 +12,15 @@
         
         if($rootScope.type == 0){
             ctrl.titre = 'Collection de Livres';
-            url = 'http://localhost:8080/api/media/type/livre';
+            url = '/api/media/type/livre';
         }
         else if($rootScope.type == 1){
             ctrl.titre = 'Collection de CD';
-            url = 'http://localhost:8080/api/media/type/cd';
+            url = '/api/media/type/cd';
         }
         else if($rootScope.type == 2){
             ctrl.titre = 'Collection de DVD';
-            url = 'http://localhost:8080/api/media/type/dvd';
+            url = '/api/media/type/dvd';
         }
         
         CollectionService.recup(url).then(function successCallback(res){

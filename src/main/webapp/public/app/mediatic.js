@@ -58,7 +58,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 .controller('MediaticCtrl', ['$http', '$timeout', '$window', '$scope', '$rootScope', '$location', '$localStorage', 'LoginService','RechercheService' , function($http, $timeout, $window, $scope, $rootScope, $location, $localStorage, LoginService, RechercheService){
 	var message = $http({
 		method: 'GET',
-		url: 'http://localhost:8080/api/login/user'
+		url: '/api/login/user'
 	}).then(function successCallback(response) {
 		$rootScope.login = response.data.name;
 		if(response.data.authorities)
@@ -104,7 +104,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 
 	$scope.logout = function(){
 		$rootScope.login ='';
-		$http.get('http://localhost:8080/logout')
+		$http.get('/logout')
       	$window.location.reload();
 	}
 

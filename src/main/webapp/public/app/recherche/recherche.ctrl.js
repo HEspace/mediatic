@@ -127,7 +127,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
 
 
-        $scope.$watchGroup(['checkBox.book', 'checkBox.music', 'checkBox.film', 'textSearch'], function () {
+        $scope.$watchGroup(['checkBox.book', 'checkBox.music', 'checkBox.film', 'textSearch', 'radioBox.selected'], function () {
             $scope.search();
         })
 

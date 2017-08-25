@@ -157,9 +157,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         else
                             element.type = "film"
 
-                        RechercheService.getEmpruntByMedia(element.id).then(function (result) {
-
-                        })
+                        $scope.ajoutEmprunterParEtDate(element);
                     })
                 })
 
@@ -206,6 +204,17 @@ angular.module('mediatic.recherche', ['ngRoute'])
             })
         }
 
+        $scope.ajoutEmprunterParEtDate = function(element){
+            RechercheService.getEmpruntByMedia(element.id).then(function (result) {
+                result.data.forEach(function(e) {
+                    if(e.dateRetourEffective == null){
+                        element.emprunterPar = e.adherent.prenom+' '+e.adherent.nom;
+                        element.retourPrevu = e.dateRetourPrevu;
+                    }
+                }, this);
+            })
+        }
+
         $scope.majMed = function(){
             RechercheService.getData().then(function(res){
                 $scope.donnees = res.data;
@@ -216,10 +225,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
                         element.type = "music"
                     else
                         element.type = "film"
-
-                    RechercheService.getEmpruntByMedia(element.id).then(function (result) {
-
-                    })
+                    $scope.ajoutEmprunterParEtDate(element)
                 })
             })
         }

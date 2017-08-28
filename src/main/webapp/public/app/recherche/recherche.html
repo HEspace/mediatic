@@ -203,8 +203,8 @@
 	                        </select>
                     </div>
                     <input ng-model="formEmprunt.media" style="display:none">
-                    <div>
-                        <input type='date' ng-model="date" class="form-control" placeholder="Date d'emprunt" required>
+                    <div id="dateInput">
+                        <input type='date' ng-model="date" style="min-width: 200px;" class="form-control" placeholder="Date d'emprunt" required>
                     </div>
                     <div>
                         <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formE.$invalid">
@@ -250,15 +250,16 @@
         <div id="empruntadherent" class="collapse col-md-6 col-xs-12">
             <div class="row">
                 <form name="formM" class="form-group" ng-submit="envoi()">
-                    <div>
-                        <select ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>
+                    <div >
+                        <select style="width: 200px;" ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
                     </div>
-                    <div>
-                        <input type='date' class="form-control " ng-model="date" required/>
-                        <input ng-model="formEmprunt.adherent" style="display:none">
+                    <div id="dateInput">
+                        <input  type='date' class="form-control " style="min-width: 200px;" ng-model="date" required/>
+                        
                     </div>
+                    <input ng-model="formEmprunt.adherent" style="display:none">
                     <div id="pasValid">
                         <input type="submit" class="btn btn-primary" value="OK" ng-disabled="formM.$invalid">
                     </div>

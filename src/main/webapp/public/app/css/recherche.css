@@ -39,8 +39,9 @@ table {
 
 @media (max-width: 992px) {
     .col-xs-12, .col-md-5 {
-        text-align: center;
+        text-align: center;     
     }
+
  
     label p{
         display: block;

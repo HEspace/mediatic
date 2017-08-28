@@ -52,6 +52,7 @@ angular.module('mediatic.accueil', ['ngRoute'])
     }
 
 
+    
     $scope.majMed = function(){
         AccueilService.getData().then(function(res){
             $scope.donnees = res.data;
@@ -67,6 +68,7 @@ angular.module('mediatic.accueil', ['ngRoute'])
         })
     }
 
+    if ($rootScope.droit>0)
     $scope.majMed();
 
 

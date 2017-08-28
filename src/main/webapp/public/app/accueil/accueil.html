@@ -31,7 +31,7 @@
 
                         </thead>
                         <tbody class="tbodyTab">
-                            <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees|orderBy:myOrder:reverse">
+                            <tr ng-click="showTr(d.id)" ng-repeat=" d in nonRendu|orderBy:myOrder:reverse">
                                 <td align="center"><span class="glyphicon glyphicon-{{d.type}} "></span></td>
                                 <td>{{d.titre}}</td>
                                 <td>{{d.auteur}}</td>

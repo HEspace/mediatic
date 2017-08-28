@@ -15,6 +15,7 @@ angular.module('mediatic.accueil', ['ngRoute'])
     $scope.m = "m";
     $scope.a = "a";
     $scope.formEmprunt = {};
+    $scope.nonRendu = [];
     $scope.myOrder = 'titre';
     $scope.reverse = false;
     $scope.cotisation = false;
@@ -30,12 +31,17 @@ angular.module('mediatic.accueil', ['ngRoute'])
 
 
      $scope.recuperationNonRendu = function(element){
-        console.log("OK");
         AccueilService.getEmpruntByMedia(element.id).then(function (result){
+            var date = new Date();
             result.data.forEach(function(e) {
                 if (e.dateRetourEffective == null){
                     element.emprunterPar=  e.adherent.prenom+' '+e.adherent.nom;
                     element.retourPrevu = e.dateRetourPrevu;
+                    var tmp = e.dateRetourPrevu.split("-");
+                    var retourPrevu = new Date(tmp[0], tmp[1] - 1, tmp[2]);
+                    if(retourPrevu < date){
+                        $scope.nonRendu.push(element);
+                    }
                 }
             }, this);
         })

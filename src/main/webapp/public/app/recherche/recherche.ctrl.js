@@ -3,7 +3,7 @@
 angular.module('mediatic.recherche', ['ngRoute'])
 
     .controller('RechercheCtrl', ['$scope', '$location', 'RechercheService', '$rootScope', '$filter', '$timeout', function
-    ($scope, $location, RechercheService, $rootScope, $filter,$timeout) {
+    ($scope, $location, RechercheService, $rootScope, $filter, $timeout) {
         $("#buttonFile").hide();
         $("#buttonadherent").hide();
         $("#media").hide();
@@ -32,11 +32,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
         if (!$rootScope.login)
             $location.path("/accueil")
 
-        if ($rootScope.droit > 1){
+        if ($rootScope.droit > 1) {
             $("#media").fadeIn();
             $("#buttonFile").fadeIn();
         }
-        if ($rootScope.droit > 2){
+        if ($rootScope.droit > 2) {
             $("#admin").fadeIn();
             $("#buttonadherent").fadeIn();
         }
@@ -168,24 +168,24 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 })
 
             } else {
-                
-                    RechercheService.getResultAdh($scope.textSearch, $scope.radioBox.selected).then(function (res) {
-                        $scope.adh = res.data
-                        $scope.adh.forEach(function (elem) {
-                            if (elem.dateCotisation != null) {
-                                var d2 = new Date(elem.dateCotisation);
-                                d2.setFullYear(d2.getFullYear() + 1)
-                                if (d2.getTime() > Date.now())
-                                    elem.cotisation = true;
-                            } else {
-                                elem.cotisation = false;
-                            }
 
-                            RechercheService.getEmpruntByMedia(elem.id).then(function (result) {
+                RechercheService.getResultAdh($scope.textSearch, $scope.radioBox.selected).then(function (res) {
+                    $scope.adh = res.data
+                    $scope.adh.forEach(function (elem) {
+                        if (elem.dateCotisation != null) {
+                            var d2 = new Date(elem.dateCotisation);
+                            d2.setFullYear(d2.getFullYear() + 1)
+                            if (d2.getTime() > Date.now())
+                                elem.cotisation = true;
+                        } else {
+                            elem.cotisation = false;
+                        }
 
-                            })
+                        RechercheService.getEmpruntByMedia(elem.id).then(function (result) {
+
                         })
                     })
+                })
 
 
             }
@@ -193,7 +193,7 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         }
 
-        $scope.majAdh = function(){
+        $scope.majAdh = function () {
             RechercheService.getAdh().then(function (res) {
                 $scope.adh = res.data
                 $scope.adh.forEach(function (elem) {
@@ -205,24 +205,24 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     } else {
                         elem.cotisation = false;
                     }
-    
+
                 })
             })
         }
 
-        $scope.ajoutEmprunterParEtDate = function(element){
+        $scope.ajoutEmprunterParEtDate = function (element) {
             RechercheService.getEmpruntByMedia(element.id).then(function (result) {
-                result.data.forEach(function(e) {
-                    if(e.dateRetourEffective == null){
-                        element.emprunterPar = e.adherent.prenom+' '+e.adherent.nom;
+                result.data.forEach(function (e) {
+                    if (e.dateRetourEffective == null) {
+                        element.emprunterPar = e.adherent.prenom + ' ' + e.adherent.nom;
                         element.retourPrevu = e.dateRetourPrevu;
                     }
                 }, this);
             })
         }
 
-        $scope.majMed = function(){
-            RechercheService.getData().then(function(res){
+        $scope.majMed = function () {
+            RechercheService.getData().then(function (res) {
                 $scope.donnees = res.data;
                 $scope.donnees.forEach(function (element) {
                     if (element.type == "LIVRE")
@@ -239,20 +239,24 @@ angular.module('mediatic.recherche', ['ngRoute'])
         $scope.majAdh();
 
         $scope.hideTr = function () {
-            $('.collapse').collapse("hide");
-            if ($('#sel').selectpicker().val() == "m") {
-                $scope.emprunte = [];
-                /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenMedia").animate({ height: "toggle" }, 100);
+            if ($("div#globalDiv").hasClass('blur')) {
+                $('.collapse').collapse("hide");
+                if ($('#sel').selectpicker().val() == "m") {
+                    $scope.emprunte = [];
+                    /* $(".divHiddenMedia").toggle({ effect: "scale", direction: "horizontal" }); */
+                    $(".divHiddenMedia").animate({ height: "toggle" }, 100);
 
 
-            } else {
-                $scope.emprunte = [];
-                /* $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
-                $(".divHiddenadherent").animate({ height: "toggle" }, 100);
+                } else {
+                    $scope.emprunte = [];
+                    /* $(".divHiddenadherent").toggle({ effect: "scale", direction: "horizontal" }); */
+                    $(".divHiddenadherent").animate({ height: "toggle" }, 100);
+                }
+
+                $("div#globalDiv").removeClass("blur");
             }
-            $("div#globalDiv").removeClass("blur");
         }
+
 
 
         /*    RechercheService.getEmprunt().then(function (res) {
@@ -264,10 +268,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
             if ($('#sel').selectpicker().val() == "m") {
 
-                RechercheService.getEmpruntByMedia(id).then(function(res){
-                    if(res.data.length != 0){
-                        res.data.forEach(function(element) {
-                            if(element.dateRetourEffective == null)
+                RechercheService.getEmpruntByMedia(id).then(function (res) {
+                    if (res.data.length != 0) {
+                        res.data.forEach(function (element) {
+                            if (element.dateRetourEffective == null)
                                 $scope.empruntBtn = 'Media Restitué';
                             else
                                 $scope.empruntBtn = 'Ajout Emprunt';
@@ -276,29 +280,29 @@ angular.module('mediatic.recherche', ['ngRoute'])
                     else
                         $scope.empruntBtn = 'Ajout Emprunt';
 
-                    if($scope.empruntBtn == 'Ajout Emprunt'){
-                        $('#restiOr').css('display','none');
-                        $('#empruntOr').css('display','inline');
+                    if ($scope.empruntBtn == 'Ajout Emprunt') {
+                        $('#restiOr').css('display', 'none');
+                        $('#empruntOr').css('display', 'inline');
                     }
-                    else{
-                        $('#restiOr').css('display','inline');
-                        $('#empruntOr').css('display','none');
+                    else {
+                        $('#restiOr').css('display', 'inline');
+                        $('#empruntOr').css('display', 'none');
                     }
                 });
                 var cpt = 0;
                 var tabCpt = [];
-                
+
                 $scope.adh.forEach(function (elem) {
-                    if(elem.dateCotisation != null){
+                    if (elem.dateCotisation != null) {
                         var tmp = elem.dateCotisation.split("-");
                         var dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                         dateCotisation.setDate(dateCotisation.getDate() + 365);
                         var mnt = new Date();
-                        if (mnt >= dateCotisation){
+                        if (mnt >= dateCotisation) {
                             tabCpt.push(cpt);
                         }
                     }
-                    else{
+                    else {
                         tabCpt.push(cpt)
                     }
                     cpt++;
@@ -306,10 +310,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
                 tabCpt.reverse();
 
-                tabCpt.forEach(function(e) {
-                    $scope.adh.splice(e,1);
+                tabCpt.forEach(function (e) {
+                    $scope.adh.splice(e, 1);
                 });
-                
+
 
                 RechercheService.getDataById(id).then(function (res) {
 
@@ -337,53 +341,53 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 $(".divHiddenMedia").animate({ height: "toggle" }, 300);
             } else {
                 RechercheService.getAdhById(id).then(function (res) {
-                    if(res.data.dateCotisation==null){
-                        $('#pasValid').css('display','none');
+                    if (res.data.dateCotisation == null) {
+                        $('#pasValid').css('display', 'none');
                     }
-                    else{
+                    else {
                         var tmp = res.data.dateCotisation.split("-");
                         var dateCotisation = new Date(tmp[0], tmp[1] - 1, tmp[2]);
                         dateCotisation.setDate(dateCotisation.getDate() + 365);
                         var mnt = new Date();
                         if (mnt >= dateCotisation)
-                            $('#pasValid').css('display','none');
+                            $('#pasValid').css('display', 'none');
                         else
-                            $('#pasValid').css('display','inline');
+                            $('#pasValid').css('display', 'inline');
                     }
 
                     var cpt = 0;
                     var tabCpt = [];
                     var tabId = [];
-                    
+
                     $scope.donnees.forEach(function (elem) {
-                        RechercheService.getEmpruntByMedia(elem.id).then(function(res){
-                            res.data.forEach(function(element) {
-                                if(element.dateRetourEffective == null){
+                        RechercheService.getEmpruntByMedia(elem.id).then(function (res) {
+                            res.data.forEach(function (element) {
+                                if (element.dateRetourEffective == null) {
                                     tabId.push(element.media.id);
                                 }
                             }, this);
                         })
                     });
 
-                    $timeout(function(){
-                        $scope.donnees.forEach(function(e) {
-                            tabId.forEach(function(el) {
-                                if(el == e.id)
+                    $timeout(function () {
+                        $scope.donnees.forEach(function (e) {
+                            tabId.forEach(function (el) {
+                                if (el == e.id)
                                     tabCpt.push(cpt);
                             }, this);
                             cpt++;
                         }, this);
                         tabCpt.reverse();
-                        tabCpt.forEach(function(element) {
-                            $scope.donnees.splice(element,1);
+                        tabCpt.forEach(function (element) {
+                            $scope.donnees.splice(element, 1);
                         }, this);
-                    },0)
-                   
+                    }, 0)
+
                     /* tabCpt.reverse();
                     tabCpt.forEach(function(e) {
                         $scope.donnees.splice(e,1);
                     }); */
-                        
+
 
 
                     $scope.adherent = res.data;
@@ -405,19 +409,22 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
             }
             /*  $("body").css({ "height" : ($(window).height() - 1) + 'px',  "overflow-y":"scroll"}); */
-            $("div#globalDiv").addClass("blur");
+            $timeout(function () {
+                $("div#globalDiv").addClass("blur");
+            }, 100)
+
         }
 
         $scope.envoi = function () {
-            if($scope.empruntBtn == 'Ajout Emprunt'){
+            if ($scope.empruntBtn == 'Ajout Emprunt') {
                 var EDate = $filter('date')($scope.date, 'yyyy-MM-dd')
                 $scope.formEmprunt.dateEmprunt = EDate;
                 RechercheService.ajoutEmprunt($scope.formEmprunt);
             }
-            else{
-                RechercheService.getEmpruntByMedia($scope.formEmprunt.media.id).then(function(res){
-                    res.data.forEach(function(element) {
-                        if(element.dateRetourEffective == null){
+            else {
+                RechercheService.getEmpruntByMedia($scope.formEmprunt.media.id).then(function (res) {
+                    res.data.forEach(function (element) {
+                        if (element.dateRetourEffective == null) {
                             element.dateRetourEffective = $filter('date')(new Date, 'yyyy-MM-dd');
                             RechercheService.ajoutEmprunt(element);
                         }
@@ -436,6 +443,13 @@ angular.module('mediatic.recherche', ['ngRoute'])
             $scope.reverse = ($scope.myOrder === order) ? !$scope.reverse : true;
             $scope.myOrder = order;
         }
+
+        $(document).ready(function(){
+            $('div#globalDiv').on('click', function(){
+                console.log("test")
+                $scope.hideTr();
+            });
+        })
 
         $scope.search();
     }]);    

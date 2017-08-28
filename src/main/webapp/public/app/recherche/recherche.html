@@ -17,85 +17,85 @@
 
 
 
-        <div id="globalDiv" class="row">
-            <div class="col-xs-12">
-                <div class="input-group">
-                    <div class="input-group-btn search-panel">
-                        <select class="selectpicker show-tick" id="sel" ng-model="selectedOptions">
+    <div id="globalDiv" class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <select class="selectpicker show-tick" id="sel" ng-model="selectedOptions">
                     <option value="m" >Médias</option>
                     <option value="a">Adhérents</option>
                 </select>
-                    </div>
+                </div>
 
-                    <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
+                <input type="text" ng-model="textSearch" class="form-control input-lg" id="inputSearch" placeholder="Titre, auteur, adhérent...">
 
-                    <span class="input-group-btn d-inline">
+                <span class="input-group-btn d-inline">
 							<button class="btn btn-default btn-lg" type="submit" ng-click="search()">
 								<span class="glyphicon glyphicon-search"></span>
-                    </button>
-                    </span>
-                </div>
+                </button>
+                </span>
             </div>
         </div>
-        <div id="globalDiv" class="row">
-            <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
-                <div class="col-xs-0 col-sm-2">
-                    <div class="checkbox">
-                        <label>
+    </div>
+    <div id="globalDiv" class="row">
+        <div class="col-sm-offset-3 col-xs-12" ng-if="show(m)">
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="checkBox.book" >
 	                        <span class="cr"></span>
 	                        Livre
 	                    </label>
-                    </div>
                 </div>
+            </div>
 
-                <div class="col-xs-0 col-sm-2">
-                    <div class="checkbox">
-                        <label>
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="checkBox.music">
 	                        <span class="cr"></span>
 	                        CD
 	                    </label>
-                    </div>
                 </div>
+            </div>
 
-                <div class="col-xs-0 col-sm-2">
-                    <div class="checkbox">
-                        <label>
+            <div class="col-xs-0 col-sm-2">
+                <div class="checkbox">
+                    <label>
 	                        <input type="checkbox" ng-model="checkBox.film">
 	                        <span class="cr"></span>
 	                        DVD
 	                    </label>
-                    </div>
                 </div>
             </div>
         </div>
-        <div id="radioButtonRow" class="row">
-            <div class="col-sm-offset-3 col-xs-12" ng-if="show(a)">
-                <div id="radioButton" class="col-sm-3">
-                    <div class="radio">
-                        <label>
+    </div>
+    <div id="radioButtonRow" class="row">
+        <div class="col-sm-offset-3 col-xs-12" ng-if="show(a)">
+            <div id="radioButton" class="col-sm-3">
+                <div class="radio">
+                    <label>
 	                        <input type="radio" value="nom" ng-model="radioBox.selected">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par nom
 	                    </label>
-                    </div>
                 </div>
+            </div>
 
-                <div id="radioButton" class="col-sm-3">
-                    <div class="radio">
-                        <label>
+            <div id="radioButton" class="col-sm-3">
+                <div class="radio">
+                    <label>
 	                        <input type="radio" value="identifiant" ng-model="radioBox.selected">
 	                        <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
 	                        Par identifiant
 	                    </label>
-                    </div>
                 </div>
             </div>
-
-
         </div>
-        <br>
+
+
+    </div>
+    <br>
 
 </div>
 
@@ -111,7 +111,9 @@
                     <th><span ng-click="orderByMe('emprunterPar')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Emprunté
                         par
                     </th>
-                    <th class="text-center"><span ng-click="orderByMe('retourPrevu')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Retour prévu</th>
+                    <th class="text-center"><span ng-click="orderByMe('retourPrevu')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Retour
+                        prévu
+                    </th>
                 </tr>
             </thead>
             <tbody class="tbodyTab">
@@ -121,8 +123,7 @@
                     <td>{{d.auteur}}</td>
                     <td>
                         <span class="glyphicon glyphicon-adherent"></span>
-                        <strong>&nbsp;&nbsp;</strong>
-                        {{d.emprunterPar}}
+                        <strong>&nbsp;&nbsp;</strong> {{d.emprunterPar}}
                     </td>
                     <td class="text-center">{{d.retourPrevu}}</td>
                 </tr>
@@ -139,7 +140,8 @@
             <thead class="theadSearch">
                 <tr>
                     <th><span ng-click="orderByMe('id')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Identifiant</th>
-                    <th><span ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom</th>
+                    <th><span ng-click="orderByMe('nom')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Nom Prénom
+                    </th>
                     <th class="text-center"><span ng-click="orderByMe('-dateNaissance')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Date
                         de naissance</th>
                     <th class="text-center"><span ng-click="orderByMe('dateCotisation')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;A
@@ -198,7 +200,7 @@
             <div class="row">
                 <form name="formE" ng-submit="envoi()" class="form-group">
                     <div>
-                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nom for d in adh" required>
+                        <select ng-model="formEmprunt.adherent" class="btn btn-primary" ng-options="d.nomPrenom as d.nom + ' ' + d.prenom for d in adh" required>
                                 <option value="" hidden>Adhérents</option>
 	                        </select>
                     </div>
@@ -244,20 +246,21 @@
         <button id="empruntOr" type="button" class="btn btn-primary" data-toggle="collapse" data-target="#empruntadherent">
                                             Ajout Emprunt </span>
                                         </button>
-        <button id ="admin" ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
+        <button id="admin" ng-click="modifFiche(adherent.id, a)" class="btn btn-md btn-primary">
 		                                    Modifier Fiche
 		                                </button><br>
         <div id="empruntadherent" class="collapse col-md-6 col-xs-12">
             <div class="row">
                 <form name="formM" class="form-group" ng-submit="envoi()">
-                    <div >
-                        <select style="width: 200px;" ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees" required>
+                    <div>
+                        <select style="width: 200px;" ng-model="formEmprunt.media" class="btn btn-primary" ng-options="d.titre for d in donnees"
+                            required>
                                 <option value="" hidden>Médias</option>
 		                    </select>
                     </div>
                     <div id="dateInput">
-                        <input  type='date' class="form-control " style="min-width: 200px;" ng-model="date" required/>
-                        
+                        <input type='date' class="form-control " style="min-width: 200px;" ng-model="date" required/>
+
                     </div>
                     <input ng-model="formEmprunt.adherent" style="display:none">
                     <div id="pasValid">

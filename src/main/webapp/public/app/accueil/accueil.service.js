@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('mediatic.accueil')
-.service('AccueilService', ['$http', '$window', '$timeout', function($http, $window, $timeout){
-
-
+.service('AccueilService', ['$http','$window', '$timeout', function($http, $window, $timeout){
+  
     this.getData = function () {
         return $http.get('/api/media/find')
     }

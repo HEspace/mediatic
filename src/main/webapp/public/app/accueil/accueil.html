@@ -8,22 +8,42 @@
 
             <div class="col-lg-12" id="titre">
                 <h1> Mediathèque HLH </h1>
-                <h4> - HLH Corporation - </h4>
+            </br>
+            </br>
+            </br>
+                <h4> - Média non rendu - </h4>
             </div>
             </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
-            </br>
+
+<!-- Affichage des Livres non rendu -->
+
+            <div id="globalDiv" class="center-block">
+                <div class="divTab">
+                    <table class="table table-hover" id="tab" height="20">
+                        <thead class="theadSearch">
+                            <tr>
+                                <th style="text-align:center"><span ng-click="orderByMe('type')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Type</th>
+                                <th><span ng-click="orderByMe('titre')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Titre</th>
+                                <th><span ng-click="orderByMe('auteur')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Auteur</th>
+                                <th><span ng-click="orderByMe('emprunterPar')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Emprunté par</th>
+                                <th class="text-center"><span ng-click="orderByMe('retourPrevu')" class="sortorder" ng-class="{reverse: reverse}"></span>&nbsp;Retour prévu</th>
+                            </tr>
+
+                        </thead>
+                        <tbody class="tbodyTab">
+                            <tr ng-click="showTr(d.id)" ng-repeat=" d in donnees|orderBy:myOrder:reverse">
+                                <td align="center"><span class="glyphicon glyphicon-{{d.type}} "></span></td>
+                                <td>{{d.titre}}</td>
+                                <td>{{d.auteur}}</td>
+                                <td><span class="glyphicon glyphicon-adherent"></span><strong>&nbsp;&nbsp;</strong>{{d.emprunterPar}}</td>
+                                <td class="text-center">{{d.retourPrevu}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
             <embed src="ton_fichier.mp3" autostart="true" loop="false" hidden="true"></embed>
-
 
             <div class="center-block">
                 <p class="text-center">

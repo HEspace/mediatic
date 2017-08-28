@@ -2,8 +2,8 @@
 
 angular.module('mediatic.accueil', ['ngRoute'])
 
-.controller('AccueilCtrl', ['$scope', 'AccueilService', function
-($scope, AccueilService) {
+.controller('AccueilCtrl', ['$scope', 'AccueilService', '$rootScope', function
+($scope, AccueilService, $rootScope) {
     $("#buttonFile").hide();
     $("#buttonadherent").hide();
     $("#media").hide();
@@ -26,6 +26,10 @@ angular.module('mediatic.accueil', ['ngRoute'])
         'music': false,
         'film': false
     }
+
+    if ($rootScope.droit>0)
+        $('#globalDiv').show();
+        
 
 
 

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('mediatic.collection', ['ngRoute' , 'ui.grid'])
+        .module('mediatic.collection', ['ngRoute'])
         .controller('CollectionCtrl', CollectionCtrl);
 
     CollectionCtrl.$inject = ['$scope', '$rootScope', 'CollectionService','$timeout'];
@@ -30,19 +30,8 @@
                 delete e.type;
             }, this);
 
-            ctrl.apresRecup();
         });
         
-
-        ctrl.apresRecup = function(){
-            $scope.gridOptions = { 
-                data: 'tab',
-                enableSorting: true,
-                showGroupPanel: true,
-                jqueryUIDraggable: true
-            };
-        }
-
         activate();
 
         ////////////////

@@ -1,7 +1,24 @@
-<div class="container">
-    <h1> <span ng-bind="ctrl.titre"></span> </h1>
-    
-            <div id="grid1" ui-grid="{ data: tab }" class="grid"></div>
+<h1 style="text-align:center;margin-top: 100px;"> <span ng-bind="ctrl.titre"></span> </h1>
+<div class="col-lg-offset-1 col-lg-10 col-lg-offset-1 col-xs-12">
+    <div>
+        <table class="table table-hover" id="tab" height="20">
+            <thead class="theadSearch">
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
 
+            </thead>
+            <tbody >
+                <tr ng-repeat=" d in tab">
+                    <td>{{d.id}}</td>
+                    <td>{{d.titre}}</td>
+                    <td>{{d.auteur}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
 </div>
+
+

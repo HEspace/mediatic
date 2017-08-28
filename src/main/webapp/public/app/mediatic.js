@@ -6,7 +6,6 @@ angular.module('mediatic', [
   'ngMessages',
  'ngResource',
   'ngStorage',
-  'ui.grid',
   'mediatic.recherche',
   'mediatic.accueil',
   'mediatic.collection',

@@ -62,7 +62,6 @@ angular.module('mediatic.accueil')
     this.recherche = function (chaine) {
         $timeout(function () {
             scope.textSearch = chaine;
-            console.log(scope);
         }, 0);
     }
     var scope = {};

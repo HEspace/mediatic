@@ -101,6 +101,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 		$('#boutonside').css('display','block');
 
 	$scope.logout = function(){
+		$rootScope.droit = 0;
 		$rootScope.login ='';
 		$http.get('/logout')
       	$window.location.reload();

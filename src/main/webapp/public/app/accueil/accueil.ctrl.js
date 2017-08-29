@@ -27,8 +27,10 @@ angular.module('mediatic.accueil', ['ngRoute'])
         'film': false
     }
 
-    if ($rootScope.droit>0)
+    if ($rootScope.droit>0){
         $('#globalDiv').show();
+        $('#mediaNonRendu').show();
+    }
         
 
 
@@ -132,6 +134,8 @@ angular.module('mediatic.accueil', ['ngRoute'])
                     $scope.reverse = ($scope.myOrder === order) ? !$scope.reverse : true;
                     $scope.myOrder = order;
                 }
-    $scope.search();
+
+    if($rootScope.droit>0)
+        $scope.search();
 
 }]);

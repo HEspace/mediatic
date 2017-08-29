@@ -135,10 +135,11 @@ angular.module('mediatic.recherche', ['ngRoute'])
         }
 
 
-
-        $scope.$watchGroup(['checkBox.book', 'checkBox.music', 'checkBox.film', 'textSearch', 'radioBox.selected'], function () {
-            $scope.search();
-        })
+        if($rootScope.droit > 0){
+            $scope.$watchGroup(['checkBox.book', 'checkBox.music', 'checkBox.film', 'textSearch', 'radioBox.selected'], function () {
+                $scope.search();
+            })
+        }
 
 
         $scope.search = function () {
@@ -235,8 +236,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
                 })
             })
         }
-        $scope.majMed();
-        $scope.majAdh();
+        if($rootScope.droit >0 ){
+            $scope.majMed();
+            $scope.majAdh();
+        }
 
         $scope.hideTr = function () {
             if ($("div#globalDiv").hasClass('blur')) {
@@ -446,10 +449,10 @@ angular.module('mediatic.recherche', ['ngRoute'])
 
         $(document).ready(function(){
             $('div#globalDiv').on('click', function(){
-                console.log("test")
                 $scope.hideTr();
             });
         })
 
-        $scope.search();
+        if($rootScope.droit > 0)
+            $scope.search();
     }]);    

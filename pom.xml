@@ -155,9 +155,15 @@
 		<finalName>Mediatic</finalName>
 		<plugins>
 			<plugin>
+				<groupId>fr.dta</groupId>
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>fr.dta.App</mainClass>
+						</manifest>
+					</archive>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
